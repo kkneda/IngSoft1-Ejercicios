@@ -1,0 +1,1494 @@
+
+
+----QUIT----(11 September 2022 19:10:09) CuisUniversity-5481.image priorSource: 2810882!
+
+----STARTUP---- (11 September 2022 19:10:10) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5481.image!
+
+
+----QUIT----(11 September 2022 19:10:10) CuisUniversity-5481.image priorSource: 7059465!
+
+----STARTUP---- (22 September 2022 17:24:35) as /home/clinux01/Escritorio/linux64/CuisUniversity-5481.image!
+
+
+----End fileIn of /home/clinux01/Escritorio/linux64/ISW1-2022-2C-1erParcial.st----!
+!Crew methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 18:00:00' prior: 50552626!
+moveTo: aPosition
+
+	| crewCanMove ix terrainOfDesignatedPosition |
+	
+	terrainOfDesignatedPosition := island terrainAt: aPosition.
+	
+	crewCanMove := true.
+	ix := 1.
+	
+	[ix <= pirates size] whileTrue: [ | pirate |
+		pirate := pirates at: ix.
+		
+		(pirate isKindOf: Corsario) ifTrue: [ 
+			terrainOfDesignatedPosition = #Tree ifTrue: [ crewCanMove := crewCanMove & false ].
+			terrainOfDesignatedPosition = #Empty ifTrue: [ 
+				pirate drawDirectionTo: aPosition.
+				crewCanMove := crewCanMove & true 
+			].
+			terrainOfDesignatedPosition = #Diggable ifTrue: [ crewCanMove := crewCanMove & true ].
+		].
+		
+		(pirate isKindOf: Filibustero) ifTrue: [
+			terrainOfDesignatedPosition = #Tree ifTrue: [ 
+				island clearTerrainAt: aPosition.
+				crewCanMove := crewCanMove & false
+			].
+			terrainOfDesignatedPosition = #Empty ifTrue: [ crewCanMove := crewCanMove & true ].
+			terrainOfDesignatedPosition = #Diggable ifTrue: [ crewCanMove := crewCanMove & true ].
+		].
+		
+		(pirate isKindOf: Bucanero) ifTrue: [
+			terrainOfDesignatedPosition = #Tree ifTrue: [ crewCanMove := crewCanMove & false ].
+			terrainOfDesignatedPosition = #Empty ifTrue: [ crewCanMove := crewCanMove & true ].
+			terrainOfDesignatedPosition = #Diggable ifTrue: [ crewCanMove := crewCanMove & true ].
+		].
+		
+		ix := ix + 1.
+	].
+
+	"nos movemos si todos pueden moverse"
+	crewCanMove ifTrue: [ island crewAt: aPosition ].
+	
+	! !
+
+!testRun: #CrewTest #test01MovingCrewToTreePlaceDoesNotMove stamp: 'olt 9/22/2022 18:01:14'!
+PASSED!
+
+!testRun: #CrewTest #test02MovingCrewToTreePlaceFilibusteroRemovesTree stamp: 'olt 9/22/2022 18:01:15'!
+PASSED!
+
+!testRun: #CrewTest #test03MovingCrewToFreePlace stamp: 'olt 9/22/2022 18:01:15'!
+PASSED!
+
+!testRun: #CrewTest #test04MovingCrewToFreePlaceCorsarioWritesDirectionInMap stamp: 'olt 9/22/2022 18:01:15'!
+PASSED!
+
+!testRun: #CrewTest #test05CrewCannotBuryTreasureIfBucaneroCannotDig stamp: 'olt 9/22/2022 18:01:15'!
+PASSED!
+
+!testRun: #CrewTest #test06CrewCanBuryTreasureIfBucaneroCanDig stamp: 'olt 9/22/2022 18:01:15'!
+PASSED!
+
+!testRun: #CrewTest #test07CaptainCanUseMap stamp: 'olt 9/22/2022 18:01:15'!
+PASSED!
+
+!testRun: #CrewTest #test08SimplePirateCannotUseMap stamp: 'olt 9/22/2022 18:01:15'!
+PASSED!
+!Crew methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 18:05:53' prior: 50552873!
+moveTo: aPosition
+
+	| crewCanMove ix terrainOfDesignatedPosition |
+	
+	terrainOfDesignatedPosition := island terrainAt: aPosition.
+	
+	crewCanMove := true.
+	ix := 1.
+	
+	pirates do: [ | pirate |
+		pirate := pirates at: ix.
+		
+		(pirate isKindOf: Corsario) ifTrue: [ 
+			terrainOfDesignatedPosition = #Tree ifTrue: [ crewCanMove := crewCanMove & false ].
+			terrainOfDesignatedPosition = #Empty ifTrue: [ 
+				pirate drawDirectionTo: aPosition.
+				crewCanMove := crewCanMove & true 
+			].
+			terrainOfDesignatedPosition = #Diggable ifTrue: [ crewCanMove := crewCanMove & true ].
+		].
+		
+		(pirate isKindOf: Filibustero) ifTrue: [
+			terrainOfDesignatedPosition = #Tree ifTrue: [ 
+				island clearTerrainAt: aPosition.
+				crewCanMove := crewCanMove & false
+			].
+			terrainOfDesignatedPosition = #Empty ifTrue: [ crewCanMove := crewCanMove & true ].
+			terrainOfDesignatedPosition = #Diggable ifTrue: [ crewCanMove := crewCanMove & true ].
+		].
+		
+		(pirate isKindOf: Bucanero) ifTrue: [
+			terrainOfDesignatedPosition = #Tree ifTrue: [ crewCanMove := crewCanMove & false ].
+			terrainOfDesignatedPosition = #Empty ifTrue: [ crewCanMove := crewCanMove & true ].
+			terrainOfDesignatedPosition = #Diggable ifTrue: [ crewCanMove := crewCanMove & true ].
+		].
+		
+		ix := ix + 1.
+	].
+
+	"nos movemos si todos pueden moverse"
+	crewCanMove ifTrue: [ island crewAt: aPosition ].
+	
+	! !
+
+!testRun: #CrewTest #test01MovingCrewToTreePlaceDoesNotMove stamp: 'olt 9/22/2022 18:06:00'!
+ERROR!
+
+!testRun: #CrewTest #test02MovingCrewToTreePlaceFilibusteroRemovesTree stamp: 'olt 9/22/2022 18:06:00'!
+ERROR!
+
+!testRun: #CrewTest #test03MovingCrewToFreePlace stamp: 'olt 9/22/2022 18:06:00'!
+ERROR!
+
+!testRun: #CrewTest #test04MovingCrewToFreePlaceCorsarioWritesDirectionInMap stamp: 'olt 9/22/2022 18:06:00'!
+ERROR!
+
+!testRun: #CrewTest #test05CrewCannotBuryTreasureIfBucaneroCannotDig stamp: 'olt 9/22/2022 18:06:00'!
+ERROR!
+
+!testRun: #CrewTest #test06CrewCanBuryTreasureIfBucaneroCanDig stamp: 'olt 9/22/2022 18:06:00'!
+ERROR!
+
+!testRun: #CrewTest #test07CaptainCanUseMap stamp: 'olt 9/22/2022 18:06:00'!
+ERROR!
+
+!testRun: #CrewTest #test08SimplePirateCannotUseMap stamp: 'olt 9/22/2022 18:06:00'!
+ERROR!
+
+----STARTUP---- (22 September 2022 18:07:32) as /home/clinux01/Escritorio/linux64/CuisUniversity-5481.image!
+
+
+----End fileIn of /home/clinux01/Escritorio/linux64/ISW1-2022-2C-1erParcial.st----!
+
+!testRun: #CrewTest #test01MovingCrewToTreePlaceDoesNotMove stamp: 'olt 9/22/2022 18:08:06'!
+PASSED!
+
+!testRun: #CrewTest #test02MovingCrewToTreePlaceFilibusteroRemovesTree stamp: 'olt 9/22/2022 18:08:06'!
+PASSED!
+
+!testRun: #CrewTest #test03MovingCrewToFreePlace stamp: 'olt 9/22/2022 18:08:06'!
+PASSED!
+
+!testRun: #CrewTest #test04MovingCrewToFreePlaceCorsarioWritesDirectionInMap stamp: 'olt 9/22/2022 18:08:06'!
+PASSED!
+
+!testRun: #CrewTest #test05CrewCannotBuryTreasureIfBucaneroCannotDig stamp: 'olt 9/22/2022 18:08:06'!
+PASSED!
+
+!testRun: #CrewTest #test06CrewCanBuryTreasureIfBucaneroCanDig stamp: 'olt 9/22/2022 18:08:06'!
+PASSED!
+
+!testRun: #CrewTest #test07CaptainCanUseMap stamp: 'olt 9/22/2022 18:08:06'!
+PASSED!
+
+!testRun: #CrewTest #test08SimplePirateCannotUseMap stamp: 'olt 9/22/2022 18:08:06'!
+PASSED!
+
+!classRemoval: #Pirate stamp: 'olt 9/22/2022 18:27:42'!
+Object subclass: #Pirate
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-2C-1erParcial'!
+
+!testRun: #CrewTest #test01MovingCrewToTreePlaceDoesNotMove stamp: 'olt 9/22/2022 18:27:45'!
+PASSED!
+
+!testRun: #CrewTest #test02MovingCrewToTreePlaceFilibusteroRemovesTree stamp: 'olt 9/22/2022 18:27:45'!
+PASSED!
+
+!testRun: #CrewTest #test03MovingCrewToFreePlace stamp: 'olt 9/22/2022 18:27:45'!
+PASSED!
+
+!testRun: #CrewTest #test04MovingCrewToFreePlaceCorsarioWritesDirectionInMap stamp: 'olt 9/22/2022 18:27:45'!
+PASSED!
+
+!testRun: #CrewTest #test05CrewCannotBuryTreasureIfBucaneroCannotDig stamp: 'olt 9/22/2022 18:27:45'!
+PASSED!
+
+!testRun: #CrewTest #test06CrewCanBuryTreasureIfBucaneroCanDig stamp: 'olt 9/22/2022 18:27:45'!
+PASSED!
+
+!testRun: #CrewTest #test07CaptainCanUseMap stamp: 'olt 9/22/2022 18:27:45'!
+PASSED!
+
+!testRun: #CrewTest #test08SimplePirateCannotUseMap stamp: 'olt 9/22/2022 18:27:45'!
+PASSED!
+
+!classDefinition: #Pirate category: 'ISW1-2022-2C-1erParcial' stamp: 'olt 9/22/2022 18:27:54'!
+Object subclass: #Pirate
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-2C-1erParcial'!
+
+!classDefinition: #Bucanero category: 'ISW1-2022-2C-1erParcial' stamp: 'olt 9/22/2022 18:27:54'!
+Pirate subclass: #Bucanero
+	instanceVariableNames: 'rank'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-2C-1erParcial'!
+
+Object subclass: #Corsario2
+	instanceVariableNames: 'rank map'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-2C-1erParcial'!
+
+!classDefinition: #Corsario2 category: 'ISW1-2022-2C-1erParcial' stamp: 'olt 9/22/2022 18:28:28'!
+Object subclass: #Corsario2
+	instanceVariableNames: 'rank map'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-2C-1erParcial'!
+
+Corsario2 class
+	instanceVariableNames: ''!
+
+!classDefinition: 'Corsario2 class' category: 'ISW1-2022-2C-1erParcial' stamp: 'olt 9/22/2022 18:28:28'!
+Corsario2 class
+	instanceVariableNames: ''!
+!Corsario2 methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 18:28:28'!
+aCaptainIWasMeantToBe
+
+	rank := #Captain! !
+!Corsario2 methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 18:28:28'!
+drawDirectionTo: aPosition
+
+	map nextStep: aPosition - (map lastPosition).
+	
+! !
+!Corsario2 methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 18:28:28'!
+drawTreasureMarkAt: aPosition
+
+	map nextStep: aPosition - map lastPosition.
+	map treasureMarkAt: aPosition.
+	
+! !
+!Corsario2 methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 18:28:28' overrides: 16920235!
+initialize
+
+	rank := #NoRank! !
+!Corsario2 methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 18:28:28'!
+initializeWith: aMap
+
+	rank := #SimplePirate.
+	map := aMap! !
+!Corsario2 methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 18:28:28'!
+searchTreasureIn: island with: aMap
+
+	rank = #SimplePirate ifTrue: [ self error: 'I am a simple pirate!!' ].
+	rank = #Captain ifTrue: [ ^ true "Aye, Aye!! La implementación está fuera del scope del parcial." ].
+	! !
+!Corsario2 class methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 18:28:28'!
+with: aMap
+
+	^ self new initializeWith: aMap.! !
+
+!classRemoval: #Corsario2 stamp: 'olt 9/22/2022 18:29:41'!
+Object subclass: #Corsario2
+	instanceVariableNames: 'rank map'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-2C-1erParcial'!
+
+!testRun: #CrewTest #test01MovingCrewToTreePlaceDoesNotMove stamp: 'olt 9/22/2022 18:29:54'!
+PASSED!
+
+!testRun: #CrewTest #test02MovingCrewToTreePlaceFilibusteroRemovesTree stamp: 'olt 9/22/2022 18:29:54'!
+PASSED!
+
+!testRun: #CrewTest #test03MovingCrewToFreePlace stamp: 'olt 9/22/2022 18:29:54'!
+PASSED!
+
+!testRun: #CrewTest #test04MovingCrewToFreePlaceCorsarioWritesDirectionInMap stamp: 'olt 9/22/2022 18:29:54'!
+PASSED!
+
+!testRun: #CrewTest #test05CrewCannotBuryTreasureIfBucaneroCannotDig stamp: 'olt 9/22/2022 18:29:54'!
+PASSED!
+
+!testRun: #CrewTest #test06CrewCanBuryTreasureIfBucaneroCanDig stamp: 'olt 9/22/2022 18:29:54'!
+PASSED!
+
+!testRun: #CrewTest #test07CaptainCanUseMap stamp: 'olt 9/22/2022 18:29:54'!
+PASSED!
+
+!testRun: #CrewTest #test08SimplePirateCannotUseMap stamp: 'olt 9/22/2022 18:29:54'!
+PASSED!
+
+Pirate subclass: #Corsario2
+	instanceVariableNames: 'rank'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-2C-1erParcial'!
+
+!classDefinition: #Corsario2 category: 'ISW1-2022-2C-1erParcial' stamp: 'olt 9/22/2022 18:37:45'!
+Pirate subclass: #Corsario2
+	instanceVariableNames: 'rank'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-2C-1erParcial'!
+
+Pirate subclass: #Corsario2
+	instanceVariableNames: 'rank map'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-2C-1erParcial'!
+
+!classDefinition: #Corsario2 category: 'ISW1-2022-2C-1erParcial' stamp: 'olt 9/22/2022 18:37:59'!
+Pirate subclass: #Corsario2
+	instanceVariableNames: 'rank map'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-2C-1erParcial'!
+!Corsario2 class methodsFor: 'nil' stamp: 'olt 9/22/2022 18:38:10'!
+with: aMap
+
+	^ self new initializeWith: aMap.! !
+!Corsario2 methodsFor: 'nil' stamp: 'olt 9/22/2022 18:38:34'!
+aCaptainIWasMeantToBe
+
+	rank := #Captain! !
+!Corsario2 methodsFor: 'nil' stamp: 'olt 9/22/2022 18:38:48'!
+drawDirectionTo: aPosition
+
+	map nextStep: aPosition - (map lastPosition).! !
+!Corsario2 methodsFor: 'nil' stamp: 'olt 9/22/2022 18:39:09'!
+drawTreasureMarkAt: aPosition
+
+	map nextStep: aPosition - map lastPosition.
+	map treasureMarkAt: aPosition.
+	! !
+!Corsario2 methodsFor: 'nil' stamp: 'olt 9/22/2022 18:39:28' overrides: 16920235!
+initialize
+
+	rank := #NoRank! !
+!Corsario2 methodsFor: 'nil' stamp: 'olt 9/22/2022 18:39:58'!
+initializeWith: aMap
+
+	rank := #SimplePirate.
+	map := aMap! !
+!Corsario2 methodsFor: 'nil' stamp: 'olt 9/22/2022 18:40:11'!
+searchTreasureIn: island with: aMap
+
+	rank = #SimplePirate ifTrue: [ self error: 'I am a simple pirate!!' ].
+	rank = #Captain ifTrue: [ ^ true "Aye, Aye!! La implementación está fuera del scope del parcial." ].
+	! !
+
+!classRenamed: #Corsario as: #Corsario3 stamp: 'olt 9/22/2022 18:40:45'!
+Smalltalk renameClassNamed: #Corsario as: #Corsario3!
+!CrewTest methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 18:40:45' prior: 50552352!
+test04MovingCrewToFreePlaceCorsarioWritesDirectionInMap
+
+	| island crew treePosition crewPosition nextPosition map |
+	
+	crewPosition := 1@1.
+	treePosition := 1@2.
+	
+	island := Island
+		sized: 3@3
+		treesAt: (OrderedCollection with: treePosition)
+		digsAt: (OrderedCollection with: 3@3).
+	
+	map := Map of: island crewStartsAt: crewPosition.
+	
+	crew := Crew 
+			at: island 
+			composedBy: (OrderedCollection with: (Corsario3 with: map) with: Filibustero new with: Bucanero new)
+			at: crewPosition.
+
+	nextPosition := 2@1.
+	self assert: map isEmpty.
+
+	crew moveTo: nextPosition.
+
+	self assert: map stepsSize equals: 1. 
+	self assert: map lastPosition equals: nextPosition.
+! !
+!CrewTest methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 18:40:45' prior: 50552424!
+test07CaptainCanUseMap
+
+	| island crew treePosition crewPosition map digPosition pirate |
+	
+	crewPosition := 1@1.
+	treePosition := 1@2.
+	digPosition := 2@2.
+	
+	island := Island
+		sized: 3@3
+		treesAt: (OrderedCollection with: treePosition)
+		digsAt: (OrderedCollection with: digPosition).
+	
+	map := Map of: island crewStartsAt: crewPosition.
+	
+	crew := Crew 
+			at: island 
+			composedBy: (OrderedCollection with: (Corsario3 with: map) with: Filibustero new with: Bucanero new)
+			at: crewPosition.
+
+	crew moveTo: 2@1.
+	crew buryTreasureAt: 2@2.
+
+	pirate := Bucanero new.
+	pirate aCaptainIWasMeantToBe.
+	
+	self assert: (pirate searchTreasureIn: island with: map)! !
+!CrewTest methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 18:40:45' prior: 50552375!
+test05CrewCannotBuryTreasureIfBucaneroCannotDig
+
+	| island crew treePosition crewPosition map digPosition |
+	
+	crewPosition := 1@1.
+	treePosition := 1@2.
+	digPosition := 2@2.
+	
+	island := Island
+		sized: 3@3
+		treesAt: (OrderedCollection with: treePosition)
+		digsAt: (OrderedCollection with: digPosition).
+	
+	map := Map of: island crewStartsAt: crewPosition.
+	
+	crew := Crew 
+			at: island 
+			composedBy: (OrderedCollection with: (Corsario3 with: map) with: Filibustero new with: Bucanero new)
+			at: crewPosition.
+
+	crew moveTo: 2@1.
+	
+	self 
+		should: [ crew buryTreasureAt: 3@1 ] 
+		raise: Error - MessageNotUnderstood 
+		withExceptionDo: [ :error | 
+			self assert: error messageText equals: Bucanero cannotDigErrorDescription.
+			self deny: map hasTreasureMark ]
+			
+	
+	
+	
+! !
+!CrewTest methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 18:40:45' prior: 50552402!
+test06CrewCanBuryTreasureIfBucaneroCanDig
+
+	| island crew treePosition crewPosition map digPosition |
+	
+	crewPosition := 1@1.
+	treePosition := 1@2.
+	digPosition := 2@2.
+	
+	island := Island
+		sized: 3@3
+		treesAt: (OrderedCollection with: treePosition)
+		digsAt: (OrderedCollection with: digPosition).
+	
+	map := Map of: island crewStartsAt: crewPosition.
+	
+	crew := Crew 
+			at: island 
+			composedBy: (OrderedCollection with: (Corsario3 with: map) with: Filibustero new with: Bucanero new)
+			at: crewPosition.
+
+	crew moveTo: 2@1.
+	crew buryTreasureAt: 2@2.
+	
+	self assert: map hasTreasureMark.
+	
+			
+	
+	
+	
+! !
+!CrewTest methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 18:40:45' prior: 50552305!
+test02MovingCrewToTreePlaceFilibusteroRemovesTree
+
+	| island crew treePosition crewPosition map |
+	
+	crewPosition := 1@1.
+	treePosition := 1@2.
+	
+	island := Island
+		sized: 3@3
+		treesAt: (OrderedCollection with: treePosition)
+		digsAt: (OrderedCollection with: 3@3).
+	
+	map := Map of: island crewStartsAt: crewPosition.
+
+	crew := Crew 
+			at: island 
+			composedBy: (OrderedCollection with: (Corsario3 with: map) with: Filibustero new with: Bucanero new)
+			at: crewPosition.
+
+	self deny: (island isEmptyAt: treePosition).
+				
+	crew moveTo: treePosition.
+
+	self assert: (island isEmptyAt: treePosition).
+	
+	self deny: (island hasCrewAt: treePosition).
+	self assert: (island hasCrewAt: crewPosition).! !
+!CrewTest methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 18:40:45' prior: 50552284!
+test01MovingCrewToTreePlaceDoesNotMove
+
+	| island crew crewPosition treePosition map |
+	
+	crewPosition := 1@1.
+	treePosition := 1@2.
+	
+	island := Island
+		sized: 3@3
+		treesAt: (OrderedCollection with: treePosition)
+		digsAt: (OrderedCollection with: 3@3).
+	
+	map := Map of: island crewStartsAt: crewPosition.
+
+	crew := Crew 
+			at: island 
+			composedBy: (OrderedCollection with: (Corsario3 with: map) with: Filibustero new with: Bucanero new)
+			at: crewPosition.
+			
+	crew moveTo: treePosition.
+	
+	self deny: (island hasCrewAt: treePosition).
+	self assert: (island hasCrewAt: crewPosition).! !
+!Crew methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 18:40:45' prior: 50552626!
+moveTo: aPosition
+
+	| crewCanMove ix terrainOfDesignatedPosition |
+	
+	terrainOfDesignatedPosition := island terrainAt: aPosition.
+	
+	crewCanMove := true.
+	ix := 1.
+	
+	[ix <= pirates size] whileTrue: [ | pirate |
+		pirate := pirates at: ix.
+		
+		(pirate isKindOf: Corsario3) ifTrue: [ 
+			terrainOfDesignatedPosition = #Tree ifTrue: [ crewCanMove := crewCanMove & false ].
+			terrainOfDesignatedPosition = #Empty ifTrue: [ 
+				pirate drawDirectionTo: aPosition.
+				crewCanMove := crewCanMove & true 
+			].
+			terrainOfDesignatedPosition = #Diggable ifTrue: [ crewCanMove := crewCanMove & true ].
+		].
+		
+		(pirate isKindOf: Filibustero) ifTrue: [
+			terrainOfDesignatedPosition = #Tree ifTrue: [ 
+				island clearTerrainAt: aPosition.
+				crewCanMove := crewCanMove & false
+			].
+			terrainOfDesignatedPosition = #Empty ifTrue: [ crewCanMove := crewCanMove & true ].
+			terrainOfDesignatedPosition = #Diggable ifTrue: [ crewCanMove := crewCanMove & true ].
+		].
+		
+		(pirate isKindOf: Bucanero) ifTrue: [
+			terrainOfDesignatedPosition = #Tree ifTrue: [ crewCanMove := crewCanMove & false ].
+			terrainOfDesignatedPosition = #Empty ifTrue: [ crewCanMove := crewCanMove & true ].
+			terrainOfDesignatedPosition = #Diggable ifTrue: [ crewCanMove := crewCanMove & true ].
+		].
+		
+		ix := ix + 1.
+	].
+
+	"nos movemos si todos pueden moverse"
+	crewCanMove ifTrue: [ island crewAt: aPosition ].
+	
+	! !
+!CrewTest methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 18:40:45' prior: 50552447!
+test08SimplePirateCannotUseMap
+
+	| island crew treePosition crewPosition map digPosition pirate |
+	
+	crewPosition := 1@1.
+	treePosition := 1@2.
+	digPosition := 2@2.
+	
+	island := Island
+		sized: 3@3
+		treesAt: (OrderedCollection with: treePosition)
+		digsAt: (OrderedCollection with: digPosition).
+	
+	map := Map of: island crewStartsAt: crewPosition.
+	
+	crew := Crew 
+			at: island 
+			composedBy: (OrderedCollection with: (Corsario3 with: map) with: Filibustero new with: Bucanero new)
+			at: crewPosition.
+
+	crew moveTo: 2@1.
+	crew buryTreasureAt: 2@2.
+
+	pirate := Bucanero new.
+	
+	self 
+		should: [ pirate searchTreasureIn: island with: map ] 
+		raise: Error - MessageNotUnderstood 
+		withMessageText: 'I am a simple pirate!!'
+! !
+!CrewTest methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 18:40:45' prior: 50552329!
+test03MovingCrewToFreePlace
+
+	| island crew treePosition crewPosition nextPosition map |
+	
+	crewPosition := 1@1.
+	treePosition := 1@2.
+	
+	island := Island
+		sized: 3@3
+		treesAt: (OrderedCollection with: treePosition)
+		digsAt: (OrderedCollection with: 3@3).
+	
+	map := Map of: island crewStartsAt: crewPosition.
+
+	crew := Crew 
+			at: island 
+			composedBy: (OrderedCollection with: (Corsario3 with: map) with: Filibustero new with: Bucanero new)
+			at: crewPosition.
+
+	nextPosition := 2@1.
+	self assert: (island isEmptyAt: nextPosition).
+	
+	crew moveTo: nextPosition.
+
+	self deny: (island hasCrewAt: crewPosition).
+	self assert: (island hasCrewAt: nextPosition).! !
+!Crew methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 18:40:45' prior: 50552590!
+buryTreasureAt: aPosition
+
+	| ix terrain |
+	
+	terrain := island terrainAt: aPosition.
+	
+	ix := 1.
+	[ix <= pirates size] whileTrue: [ | pirate |
+		pirate := pirates at: ix.
+		
+		(pirate isKindOf: Corsario3) ifTrue: [ 
+			terrain = #Tree ifTrue: [].
+			terrain = #Empty ifTrue: [].
+			terrain = #Diggable ifTrue: [ 				pirate drawTreasureMarkAt: aPosition ].
+		].
+		
+		(pirate isKindOf: Filibustero) ifTrue: [
+			terrain = #Tree ifTrue: [].
+			terrain = #Empty ifTrue: [].
+			terrain = #Diggable ifTrue: [].
+		].
+		
+		(pirate isKindOf: Bucanero) ifTrue: [
+			terrain = #Tree ifTrue: [ self error: 'Arrgh!! I cannot dig this type of terrain!!' ].
+			terrain = #Empty ifTrue: [ self error: 'Arrgh!! I cannot dig this type of terrain!!' ]	.
+			terrain = #Diggable ifTrue: [ island receiveTreasureAt: aPosition ].
+		].
+		
+		ix := ix + 1.
+	].
+	! !
+
+!classRemoval: #CrewTest stamp: 'olt 9/22/2022 18:42:25'!
+TestCase subclass: #CrewTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-2C-1erParcial'!
+
+!classRenamed: #Corsario2 as: #Corsario4 stamp: 'olt 9/22/2022 18:42:46'!
+Smalltalk renameClassNamed: #Corsario2 as: #Corsario4!
+
+----STARTUP---- (22 September 2022 18:42:59) as /home/clinux01/Escritorio/linux64/CuisUniversity-5481.image!
+
+
+----End fileIn of /home/clinux01/Escritorio/linux64/ISW1-2022-2C-1erParcial.st----!
+
+Object subclass: #Terrain
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-2C-1erParcial'!
+
+!classDefinition: #Terrain category: 'ISW1-2022-2C-1erParcial' stamp: 'olt 9/22/2022 18:55:18'!
+Object subclass: #Terrain
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-2C-1erParcial'!
+
+Object subclass: #Diggable
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-2C-1erParcial'!
+
+!classDefinition: #Diggable category: 'ISW1-2022-2C-1erParcial' stamp: 'olt 9/22/2022 18:55:50'!
+Object subclass: #Diggable
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-2C-1erParcial'!
+
+----STARTUP---- (22 September 2022 18:56:15) as /home/clinux01/Escritorio/linux64/CuisUniversity-5481.image!
+
+
+----End fileIn of /home/clinux01/Escritorio/linux64/ISW1-2022-2C-1erParcial.st----!
+
+Object subclass: #Terrain
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-2C-1erParcial'!
+
+!classDefinition: #Terrain category: 'ISW1-2022-2C-1erParcial' stamp: 'olt 9/22/2022 18:57:10'!
+Object subclass: #Terrain
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-2C-1erParcial'!
+
+Terrain subclass: #Diggable
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-2C-1erParcial'!
+
+!classDefinition: #Diggable category: 'ISW1-2022-2C-1erParcial' stamp: 'olt 9/22/2022 18:58:11'!
+Terrain subclass: #Diggable
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-2C-1erParcial'!
+
+Terrain subclass: #Empty
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-2C-1erParcial'!
+
+!classDefinition: #Empty category: 'ISW1-2022-2C-1erParcial' stamp: 'olt 9/22/2022 18:58:29'!
+Terrain subclass: #Empty
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-2C-1erParcial'!
+
+Terrain subclass: #Tree
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-2C-1erParcial'!
+
+!classDefinition: #Tree category: 'ISW1-2022-2C-1erParcial' stamp: 'olt 9/22/2022 18:58:44'!
+Terrain subclass: #Tree
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-2C-1erParcial'!
+!Tree methodsFor: 'nil' stamp: 'olt 9/22/2022 19:00:41'!
+m
+	"crewCanMove := crewCanMove & false"! !
+!Crew methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 19:08:34' prior: 50552626!
+moveTo: aPosition
+
+	| crewCanMove ix terrainOfDesignatedPosition |
+	
+	
+	terrainOfDesignatedPosition := Terrain initializeOn: island at: aPosition.
+	
+	crewCanMove := true.
+	ix := 1.
+	
+	[ix <= pirates size] whileTrue: [ | pirate |
+		pirate := pirates at: ix.
+		
+		(pirate isKindOf: Corsario) ifTrue: [ 
+			terrainOfDesignatedPosition = #Tree ifTrue: [ crewCanMove := crewCanMove & false ].
+			terrainOfDesignatedPosition = #Empty ifTrue: [ 
+				pirate drawDirectionTo: aPosition.
+				crewCanMove := crewCanMove & true 
+			].
+			terrainOfDesignatedPosition = #Diggable ifTrue: [ crewCanMove := crewCanMove & true ].
+		].
+		
+		(pirate isKindOf: Filibustero) ifTrue: [
+			terrainOfDesignatedPosition = #Tree ifTrue: [ 
+				island clearTerrainAt: aPosition.
+				crewCanMove := crewCanMove & false
+			].
+			terrainOfDesignatedPosition = #Empty ifTrue: [ crewCanMove := crewCanMove & true ].
+			terrainOfDesignatedPosition = #Diggable ifTrue: [ crewCanMove := crewCanMove & true ].
+		].
+		
+		(pirate isKindOf: Bucanero) ifTrue: [
+			terrainOfDesignatedPosition = #Tree ifTrue: [ crewCanMove := crewCanMove & false ].
+			terrainOfDesignatedPosition = #Empty ifTrue: [ crewCanMove := crewCanMove & true ].
+			terrainOfDesignatedPosition = #Diggable ifTrue: [ crewCanMove := crewCanMove & true ].
+		].
+		
+		ix := ix + 1.
+	].
+
+	"nos movemos si todos pueden moverse"
+	crewCanMove ifTrue: [ island crewAt: aPosition ].
+	
+	! !
+!Terrain class methodsFor: 'nil' stamp: 'olt 9/22/2022 19:09:36'!
+initializeOn: anIsland at: aPosition.
+	"comment stating purpose of message"
+
+	! !
+
+!methodRemoval: Tree #m stamp: 'olt 9/22/2022 19:26:44'!
+m
+	"crewCanMove := crewCanMove & false"!
+!Crew methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 19:33:58' prior: 50552935!
+moveTo: aPosition
+
+	| crewCanMove ix terrainOfDesignatedPosition |
+	
+	
+	terrainOfDesignatedPosition := Terrain initializeOn: island at: aPosition.
+	
+	crewCanMove := true.
+	ix := 1.
+	
+	[ix <= pirates size] whileTrue: [ | pirate |
+		pirate := pirates at: ix.
+		
+		(pirate isKindOf: Corsario) ifTrue: [
+			"
+			terrainOfDesignatedPosition = #Tree ifTrue: [ crewCanMove := crewCanMove & false ].
+			terrainOfDesignatedPosition = #Empty ifTrue: [ 
+				pirate drawDirectionTo: aPosition.
+				crewCanMove := crewCanMove & true 
+			].
+			terrainOfDesignatedPosition = #Diggable ifTrue: [ crewCanMove := crewCanMove & true ].
+			"
+		].
+		
+		(pirate isKindOf: Filibustero) ifTrue: [
+			"
+			terrainOfDesignatedPosition = #Tree ifTrue: [ 
+				island clearTerrainAt: aPosition.
+				crewCanMove := crewCanMove & false
+			].
+			terrainOfDesignatedPosition = #Empty ifTrue: [ crewCanMove := crewCanMove & true ].
+			terrainOfDesignatedPosition = #Diggable ifTrue: [ crewCanMove := crewCanMove & true ].
+			"
+		].
+		
+		(pirate isKindOf: Bucanero) ifTrue: [
+			"
+			terrainOfDesignatedPosition = #Tree ifTrue: [ crewCanMove := crewCanMove & false ].
+			terrainOfDesignatedPosition = #Empty ifTrue: [ crewCanMove := crewCanMove & true ].
+			terrainOfDesignatedPosition = #Diggable ifTrue: [ crewCanMove := crewCanMove & true ].
+			"
+		].
+		
+		ix := ix + 1.
+	].
+
+	"nos movemos si todos pueden moverse"
+	crewCanMove ifTrue: [ island crewAt: aPosition ].
+	
+	! !
+!Corsario methodsFor: 'nil' stamp: 'olt 9/22/2022 19:42:26'!
+m: aTerrainOfDesignatedPosition m1:crewCanMove m2:aPosition
+
+	aTerrainOfDesignatedPosition = #Tree ifTrue: [ "crewCanMove := crewCanMove & false "].
+	aTerrainOfDesignatedPosition = #Empty ifTrue: [ 
+		self drawDirectionTo: aPosition.
+		"crewCanMove := crewCanMove & true "
+	].
+	aTerrainOfDesignatedPosition = #Diggable ifTrue: [ "crewCanMove := crewCanMove & true "].! !
+
+Object subclass: #Crew
+	instanceVariableNames: 'island pirates crewIsAllowedToMove'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-2C-1erParcial'!
+
+!classDefinition: #Crew category: 'ISW1-2022-2C-1erParcial' stamp: 'olt 9/22/2022 19:48:40'!
+Object subclass: #Crew
+	instanceVariableNames: 'island pirates crewIsAllowedToMove'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-2C-1erParcial'!
+!Crew methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 19:49:23' prior: 50552619!
+initializeWith: anIsland pirates: aPirates at: aPosition
+
+	island := anIsland.
+	pirates := aPirates.
+	crewIsAllowedToMove := false.
+	
+	island crewAt: aPosition.! !
+!Corsario methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 19:53:19' prior: 50553038!
+m: aTerrainOfDesignatedPosition m1:crewCanMove m2:aPosition
+
+	aTerrainOfDesignatedPosition = #Tree ifTrue: [ "crewIsAllowedToMove crewIsNotAllowedToMove" ].
+	aTerrainOfDesignatedPosition = #Empty ifTrue: [ 
+		self drawDirectionTo: aPosition.
+		"crewCanMove := crewCanMove & true "
+	].
+	aTerrainOfDesignatedPosition = #Diggable ifTrue: [ "crewCanMove := crewCanMove & true "].! !
+
+Object subclass: #CrewMovementStatus
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-2C-1erParcial'!
+
+!classDefinition: #CrewMovementStatus category: 'ISW1-2022-2C-1erParcial' stamp: 'olt 9/22/2022 19:57:00'!
+Object subclass: #CrewMovementStatus
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-2C-1erParcial'!
+!CrewMovementStatus methodsFor: 'nil' stamp: 'olt 9/22/2022 19:58:26'!
+initialize: aBool
+
+	value:= aBool.! !
+!Crew methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 20:02:43'!
+initializeWith: anIsland pirates: aPirates at: aPosition withStatus: crewStatus
+
+	island := anIsland.
+	pirates := aPirates.
+	crewIsAllowedToMove := crewStatus.
+	
+	island crewAt: aPosition.! !
+!CrewMovementStatus methodsFor: 'nil' stamp: 'olt 9/22/2022 20:05:06'!
+crewIsNotAllowedToMove
+	
+	value:= false.! !
+!CrewMovementStatus methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 20:05:19'!
+crewIsAllowedToMove
+	
+	value:= true.! !
+!Corsario methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 20:06:24'!
+m: aTerrainOfDesignatedPosition m1:crewCanMove m2:aPosition m3: crewStatus
+
+	aTerrainOfDesignatedPosition = #Tree ifTrue: [ crewStatus crewIsNotAllowedToMove ].
+	aTerrainOfDesignatedPosition = #Empty ifTrue: [ 
+		self drawDirectionTo: aPosition.
+		crewStatus crewIsAllowedToMove
+	].
+	aTerrainOfDesignatedPosition = #Diggable ifTrue: [ crewStatus crewIsAllowedToMove].! !
+
+!methodRemoval: Corsario #m:m1:m2: stamp: 'olt 9/22/2022 20:06:33'!
+m: aTerrainOfDesignatedPosition m1:crewCanMove m2:aPosition
+
+	aTerrainOfDesignatedPosition = #Tree ifTrue: [ "crewIsAllowedToMove crewIsNotAllowedToMove" ].
+	aTerrainOfDesignatedPosition = #Empty ifTrue: [ 
+		self drawDirectionTo: aPosition.
+		"crewCanMove := crewCanMove & true "
+	].
+	aTerrainOfDesignatedPosition = #Diggable ifTrue: [ "crewCanMove := crewCanMove & true "].!
+!Corsario methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 20:08:51'!
+determineCrewMovementByKnowing: aTerrainOfDesignatedPosition crewsPreviousStatus:crewCanMove crewsCurrentPosition:aPosition crewsCurrentStatus: crewStatus
+
+	aTerrainOfDesignatedPosition = #Tree ifTrue: [ crewStatus crewIsNotAllowedToMove ].
+	aTerrainOfDesignatedPosition = #Empty ifTrue: [ 
+		self drawDirectionTo: aPosition.
+		crewStatus crewIsAllowedToMove
+	].
+	aTerrainOfDesignatedPosition = #Diggable ifTrue: [ crewStatus crewIsAllowedToMove].! !
+
+!methodRemoval: Corsario #m:m1:m2:m3: stamp: 'olt 9/22/2022 20:08:56'!
+m: aTerrainOfDesignatedPosition m1:crewCanMove m2:aPosition m3: crewStatus
+
+	aTerrainOfDesignatedPosition = #Tree ifTrue: [ crewStatus crewIsNotAllowedToMove ].
+	aTerrainOfDesignatedPosition = #Empty ifTrue: [ 
+		self drawDirectionTo: aPosition.
+		crewStatus crewIsAllowedToMove
+	].
+	aTerrainOfDesignatedPosition = #Diggable ifTrue: [ crewStatus crewIsAllowedToMove].!
+!Bucanero methodsFor: 'nil' stamp: 'olt 9/22/2022 20:09:36'!
+determineCrewMovementByKnowing: aTerrainOfDesignatedPosition crewsPreviousStatus:crewCanMove crewsCurrentPosition:aPosition crewsCurrentStatus: crewStatus
+
+	"comment stating purpose of message"
+! !
+!Filibustero methodsFor: 'nil' stamp: 'olt 9/22/2022 20:09:46'!
+determineCrewMovementByKnowing: aTerrainOfDesignatedPosition crewsPreviousStatus:crewCanMove crewsCurrentPosition:aPosition crewsCurrentStatus: crewStatus
+
+	! !
+!Filibustero methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 20:12:26'!
+determineCrewMovementByKnowing: aTerrainOfDesignatedPosition crewsPreviousStatus:crewCanMove crewsCurrentPosition:aPosition crewsCurrentStatus: crewStatus onAnIsland: anIsland
+
+			aTerrainOfDesignatedPosition = #Tree ifTrue: [ 
+				anIsland clearTerrainAt: aPosition.
+				crewStatus crewIsNotAllowedToMove 
+			].
+			aTerrainOfDesignatedPosition = #Empty ifTrue: [ crewStatus crewIsAllowedToMove ].
+			aTerrainOfDesignatedPosition = #Diggable ifTrue: [ crewStatus crewIsAllowedToMove ].! !
+
+!methodRemoval: Filibustero #determineCrewMovementByKnowing:crewsPreviousStatus:crewsCurrentPosition:crewsCurrentStatus: stamp: 'olt 9/22/2022 20:12:32'!
+determineCrewMovementByKnowing: aTerrainOfDesignatedPosition crewsPreviousStatus:crewCanMove crewsCurrentPosition:aPosition crewsCurrentStatus: crewStatus
+
+	!
+!Corsario methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 20:13:16'!
+determineCrewMovementByKnowing: aTerrainOfDesignatedPosition crewsPreviousStatus:crewCanMove crewsCurrentPosition:aPosition crewsCurrentStatus: crewStatus onAnIsland: anIsland
+
+	aTerrainOfDesignatedPosition = #Tree ifTrue: [ crewStatus crewIsNotAllowedToMove ].
+	aTerrainOfDesignatedPosition = #Empty ifTrue: [ 
+		self drawDirectionTo: aPosition.
+		crewStatus crewIsAllowedToMove
+	].
+	aTerrainOfDesignatedPosition = #Diggable ifTrue: [ crewStatus crewIsAllowedToMove].! !
+
+!methodRemoval: Corsario #determineCrewMovementByKnowing:crewsPreviousStatus:crewsCurrentPosition:crewsCurrentStatus: stamp: 'olt 9/22/2022 20:13:20'!
+determineCrewMovementByKnowing: aTerrainOfDesignatedPosition crewsPreviousStatus:crewCanMove crewsCurrentPosition:aPosition crewsCurrentStatus: crewStatus
+
+	aTerrainOfDesignatedPosition = #Tree ifTrue: [ crewStatus crewIsNotAllowedToMove ].
+	aTerrainOfDesignatedPosition = #Empty ifTrue: [ 
+		self drawDirectionTo: aPosition.
+		crewStatus crewIsAllowedToMove
+	].
+	aTerrainOfDesignatedPosition = #Diggable ifTrue: [ crewStatus crewIsAllowedToMove].!
+!Bucanero methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 20:13:28'!
+determineCrewMovementByKnowing: aTerrainOfDesignatedPosition crewsPreviousStatus:crewCanMove crewsCurrentPosition:aPosition crewsCurrentStatus: crewStatus onAnIsland: anIsland
+
+	"comment stating purpose of message"
+! !
+
+!methodRemoval: Bucanero #determineCrewMovementByKnowing:crewsPreviousStatus:crewsCurrentPosition:crewsCurrentStatus: stamp: 'olt 9/22/2022 20:13:32'!
+determineCrewMovementByKnowing: aTerrainOfDesignatedPosition crewsPreviousStatus:crewCanMove crewsCurrentPosition:aPosition crewsCurrentStatus: crewStatus
+
+	"comment stating purpose of message"
+!
+!Bucanero methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 20:15:31'!
+determineCrewMovementByKnowing: aTerrainOfDesignatedPosition crewsStatus:crewCanMove crewsCurrentPosition:aPosition onAnIsland: anIsland
+
+		aTerrainOfDesignatedPosition = #Tree ifTrue: [ crewCanMove crewIsNotAllowedToMove ].
+		aTerrainOfDesignatedPosition = #Empty ifTrue: [ crewCanMove crewIsAllowedToMove ].
+		aTerrainOfDesignatedPosition = #Diggable ifTrue: [ crewCanMove crewIsAllowedToMove ].
+! !
+
+!methodRemoval: Bucanero #determineCrewMovementByKnowing:crewsPreviousStatus:crewsCurrentPosition:crewsCurrentStatus:onAnIsland: stamp: 'olt 9/22/2022 20:15:36'!
+determineCrewMovementByKnowing: aTerrainOfDesignatedPosition crewsPreviousStatus:crewCanMove crewsCurrentPosition:aPosition crewsCurrentStatus: crewStatus onAnIsland: anIsland
+
+	"comment stating purpose of message"
+!
+!Corsario methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 20:15:53'!
+determineCrewMovementByKnowing: aTerrainOfDesignatedPosition crewsStatus:crewCanMove crewsCurrentPosition:aPosition onAnIsland: anIsland
+
+
+	aTerrainOfDesignatedPosition = #Tree ifTrue: [ crewCanMove crewIsNotAllowedToMove ].
+	aTerrainOfDesignatedPosition = #Empty ifTrue: [ 
+		self drawDirectionTo: aPosition.
+		crewCanMove crewIsAllowedToMove
+	].
+	aTerrainOfDesignatedPosition = #Diggable ifTrue: [ crewCanMove crewIsAllowedToMove].! !
+
+!methodRemoval: Corsario #determineCrewMovementByKnowing:crewsPreviousStatus:crewsCurrentPosition:crewsCurrentStatus:onAnIsland: stamp: 'olt 9/22/2022 20:15:57'!
+determineCrewMovementByKnowing: aTerrainOfDesignatedPosition crewsPreviousStatus:crewCanMove crewsCurrentPosition:aPosition crewsCurrentStatus: crewStatus onAnIsland: anIsland
+
+	aTerrainOfDesignatedPosition = #Tree ifTrue: [ crewStatus crewIsNotAllowedToMove ].
+	aTerrainOfDesignatedPosition = #Empty ifTrue: [ 
+		self drawDirectionTo: aPosition.
+		crewStatus crewIsAllowedToMove
+	].
+	aTerrainOfDesignatedPosition = #Diggable ifTrue: [ crewStatus crewIsAllowedToMove].!
+!Filibustero methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 20:16:17'!
+determineCrewMovementByKnowing: aTerrainOfDesignatedPosition crewsStatus:crewCanMove crewsCurrentPosition:aPosition onAnIsland: anIsland
+
+
+			aTerrainOfDesignatedPosition = #Tree ifTrue: [ 
+				anIsland clearTerrainAt: aPosition.
+				crewCanMove crewIsNotAllowedToMove 
+			].
+			aTerrainOfDesignatedPosition = #Empty ifTrue: [ crewCanMove crewIsAllowedToMove ].
+			aTerrainOfDesignatedPosition = #Diggable ifTrue: [ crewCanMove crewIsAllowedToMove ].! !
+
+!methodRemoval: Filibustero #determineCrewMovementByKnowing:crewsPreviousStatus:crewsCurrentPosition:crewsCurrentStatus:onAnIsland: stamp: 'olt 9/22/2022 20:16:20'!
+determineCrewMovementByKnowing: aTerrainOfDesignatedPosition crewsPreviousStatus:crewCanMove crewsCurrentPosition:aPosition crewsCurrentStatus: crewStatus onAnIsland: anIsland
+
+			aTerrainOfDesignatedPosition = #Tree ifTrue: [ 
+				anIsland clearTerrainAt: aPosition.
+				crewStatus crewIsNotAllowedToMove 
+			].
+			aTerrainOfDesignatedPosition = #Empty ifTrue: [ crewStatus crewIsAllowedToMove ].
+			aTerrainOfDesignatedPosition = #Diggable ifTrue: [ crewStatus crewIsAllowedToMove ].!
+!Crew methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 20:19:48' prior: 50552991!
+moveTo: aPosition
+
+	| crewCanMove ix terrainOfDesignatedPosition |
+	
+	
+	terrainOfDesignatedPosition := Terrain initializeOn: island at: aPosition.
+	
+	crewCanMove := true.
+	ix := 1.
+	
+	[ix <= pirates size] whileTrue: [ | pirate |
+		pirate := pirates at: ix.
+		
+		pirate determineCrewMovementByKnowing: terrainOfDesignatedPosition crewsStatus:crewCanMove crewsCurrentPosition:aPosition onAnIsland: island.
+
+			"
+			terrainOfDesignatedPosition = #Tree ifTrue: [ crewCanMove := crewCanMove & false ].
+			terrainOfDesignatedPosition = #Empty ifTrue: [ 
+				pirate drawDirectionTo: aPosition.
+				crewCanMove := crewCanMove & true 
+			].
+			terrainOfDesignatedPosition = #Diggable ifTrue: [ crewCanMove := crewCanMove & true ].
+			
+			determineCrewMovementByKnowing: aTerrainOfDesignatedPosition crewsStatus:crewCanMove crewsCurrentPosition:aPosition onAnIsland: anIsland
+
+			"
+		
+		
+		(pirate isKindOf: Filibustero) ifTrue: [
+			"
+			terrainOfDesignatedPosition = #Tree ifTrue: [ 
+				island clearTerrainAt: aPosition.
+				crewCanMove := crewCanMove & false
+			].
+			terrainOfDesignatedPosition = #Empty ifTrue: [ crewCanMove := crewCanMove & true ].
+			terrainOfDesignatedPosition = #Diggable ifTrue: [ crewCanMove := crewCanMove & true ].
+			"
+		].
+		
+		(pirate isKindOf: Bucanero) ifTrue: [
+			"
+			terrainOfDesignatedPosition = #Tree ifTrue: [ crewCanMove := crewCanMove & false ].
+			terrainOfDesignatedPosition = #Empty ifTrue: [ crewCanMove := crewCanMove & true ].
+			terrainOfDesignatedPosition = #Diggable ifTrue: [ crewCanMove := crewCanMove & true ].
+			"
+		].
+		
+		ix := ix + 1.
+	].
+
+	"nos movemos si todos pueden moverse"
+	crewCanMove ifTrue: [ island crewAt: aPosition ].
+	
+	! !
+!Crew methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 20:21:29' prior: 50553386!
+moveTo: aPosition
+
+	| crewCanMove ix terrainOfDesignatedPosition |
+	
+	
+	terrainOfDesignatedPosition := Terrain initializeOn: island at: aPosition.
+	
+	crewCanMove := true.
+	ix := 1.
+	
+	[ix <= pirates size] whileTrue: [ | pirate |
+		pirate := pirates at: ix.
+		
+		pirate determineCrewMovementByKnowing: terrainOfDesignatedPosition crewsStatus:crewCanMove crewsCurrentPosition:aPosition onAnIsland: island.
+		
+		ix := ix + 1.
+	].
+
+	"nos movemos si todos pueden moverse"
+	crewCanMove ifTrue: [ island crewAt: aPosition ].
+	
+	! !
+
+Object subclass: #Crew
+	instanceVariableNames: 'island pirates crewStatus'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-2C-1erParcial'!
+!Crew methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 20:22:42' prior: 50553107!
+initializeWith: anIsland pirates: aPirates at: aPosition withStatus: aCrewStatus
+
+	island := anIsland.
+	pirates := aPirates.
+	"crewStatus := aCrewStatus."
+	
+	island crewAt: aPosition.! !
+
+Object subclass: #Crew
+	instanceVariableNames: 'island pirates crewStatus'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-2C-1erParcial'!
+
+!classDefinition: #Crew category: 'ISW1-2022-2C-1erParcial' stamp: 'olt 9/22/2022 20:22:53'!
+Object subclass: #Crew
+	instanceVariableNames: 'island pirates crewStatus'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-2C-1erParcial'!
+!Crew methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 20:23:02' prior: 50553467!
+initializeWith: anIsland pirates: aPirates at: aPosition withStatus: aCrewStatus
+
+	island := anIsland.
+	pirates := aPirates.
+	crewStatus := aCrewStatus.
+	
+	island crewAt: aPosition.! !
+!Crew methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 20:23:41' prior: 50553442!
+moveTo: aPosition
+
+	| ix terrainOfDesignatedPosition |
+	
+	
+	terrainOfDesignatedPosition := Terrain initializeOn: island at: aPosition.
+	
+	
+	ix := 1.
+	
+	[ix <= pirates size] whileTrue: [ | pirate |
+		pirate := pirates at: ix.
+		
+		pirate determineCrewMovementByKnowing: terrainOfDesignatedPosition crewsStatus:crewStatus crewsCurrentPosition:aPosition onAnIsland: island.
+		
+		ix := ix + 1.
+	].
+
+	"nos movemos si todos pueden moverse"
+	(crewStatus value) ifTrue: [ island crewAt: aPosition ].
+	
+	! !
+!CrewMovementStatus methodsFor: 'nil' stamp: 'olt 9/22/2022 20:24:08' overrides: 16902254!
+value
+	
+	^value.! !
+
+!methodRemoval: Crew #initializeWith:pirates:at: stamp: 'olt 9/22/2022 20:24:26'!
+initializeWith: anIsland pirates: aPirates at: aPosition
+
+	island := anIsland.
+	pirates := aPirates.
+	crewIsAllowedToMove := false.
+	
+	island crewAt: aPosition.!
+
+----STARTUP---- (22 September 2022 20:34:13) as /home/clinux01/Escritorio/linux64/CuisUniversity-5481.image!
+
+
+----End fileIn of /home/clinux01/Descargas/ISW1-2022-2C-1erParcial.st----!
+!Terrain class methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 20:37:20' prior: 50552982!
+initializeOn: anIsland at: aPosition.
+
+	(self new) initializeAt anIsland at: aPosition.
+
+	! !
+
+----End fileIn of /media/clinux01/KINGSTON/Ejercicios/2022-2c-main/02-Numeros/Pre-Numero-Exercise.st----!
+
+!classRemoval: #Numero stamp: 'asd 9/22/2022 20:41:22'!
+Object subclass: #Numero
+	instanceVariableNames: 'type value numerator denominator'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Numero-Exercise'!
+
+!classRemoval: #NumeroTest stamp: 'asd 9/22/2022 20:41:23'!
+TestCase subclass: #NumeroTest
+	instanceVariableNames: 'zero one two four oneFifth oneHalf five twoFifth twoTwentyfifth fiveHalfs three eight negativeOne negativeTwo negativeOneHalf'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Numero-Exercise'!
+
+----End fileIn of /home/clinux01/Descargas/Numero-Exercise.st----!
+
+!methodRemoval: Terrain class #initializeOn:at: stamp: 'olt 9/22/2022 20:44:30'!
+initializeOn: anIsland at: aPosition.
+
+	(self new) initializeAt anIsland at: aPosition.
+
+	!
+!Diggable class methodsFor: 'nil' stamp: 'olt 9/22/2022 20:44:36'!
+initializeOn: anIsland at: aPosition.
+
+	(self new) initializeAt anIsland at: aPosition.! !
+!Crew methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 21:04:50' prior: 50553498!
+moveTo: aPosition
+
+	| ix terrainOfDesignatedPosition |
+	
+	
+	terrainOfDesignatedPosition := island terrainAt: aPosition..
+	
+	
+	ix := 1.
+	
+	[ix <= pirates size] whileTrue: [ | pirate |
+		pirate := pirates at: ix.
+		
+		pirate determineCrewMovementByKnowing: terrainOfDesignatedPosition crewsStatus:crewStatus crewsCurrentPosition:aPosition onAnIsland: island.
+		
+		ix := ix + 1.
+	].
+
+	"nos movemos si todos pueden moverse"
+	(crewStatus value) ifTrue: [ island crewAt: aPosition ].
+	
+	! !
+
+!testRun: #CrewTest #test01MovingCrewToTreePlaceDoesNotMove stamp: 'olt 9/22/2022 21:05:04'!
+ERROR!
+
+!testRun: #CrewTest #test02MovingCrewToTreePlaceFilibusteroRemovesTree stamp: 'olt 9/22/2022 21:05:04'!
+ERROR!
+
+!testRun: #CrewTest #test03MovingCrewToFreePlace stamp: 'olt 9/22/2022 21:05:04'!
+ERROR!
+
+!testRun: #CrewTest #test04MovingCrewToFreePlaceCorsarioWritesDirectionInMap stamp: 'olt 9/22/2022 21:05:04'!
+ERROR!
+
+!testRun: #CrewTest #test05CrewCannotBuryTreasureIfBucaneroCannotDig stamp: 'olt 9/22/2022 21:05:04'!
+ERROR!
+
+!testRun: #CrewTest #test06CrewCanBuryTreasureIfBucaneroCanDig stamp: 'olt 9/22/2022 21:05:04'!
+ERROR!
+
+!testRun: #CrewTest #test07CaptainCanUseMap stamp: 'olt 9/22/2022 21:05:04'!
+ERROR!
+
+!testRun: #CrewTest #test08SimplePirateCannotUseMap stamp: 'olt 9/22/2022 21:05:04'!
+ERROR!
+!Crew methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 21:09:32' prior: 50553489!
+initializeWith: anIsland pirates: aPirates at: aPosition withStatus: aCrewStatus
+
+	island := anIsland.
+	pirates := aPirates.
+	crewStatus := (CrewMovementStatus initialize: true).
+	
+	island crewAt: aPosition.! !
+!CrewMovementStatus class methodsFor: 'nil' stamp: 'olt 9/22/2022 21:11:30'!
+initialize: aBool
+	^self new initialize: aBool! !
+!Crew methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 21:13:11' prior: 50555115!
+moveTo: aPosition
+
+	| ix terrainOfDesignatedPosition |
+	
+	
+	terrainOfDesignatedPosition := island terrainAt: aPosition..
+	
+	crewStatus crewIsAllowedToMove.
+	
+	ix := 1.
+	
+	[ix <= pirates size] whileTrue: [ | pirate |
+		pirate := pirates at: ix.
+		
+		pirate determineCrewMovementByKnowing: terrainOfDesignatedPosition crewsStatus:crewStatus crewsCurrentPosition:aPosition onAnIsland: island.
+		
+		ix := ix + 1.
+	].
+
+	"nos movemos si todos pueden moverse"
+	(crewStatus value) ifTrue: [ island crewAt: aPosition ].
+	
+	! !
+
+!testRun: #CrewTest #test01MovingCrewToTreePlaceDoesNotMove stamp: 'olt 9/22/2022 21:13:17'!
+ERROR!
+
+!testRun: #CrewTest #test02MovingCrewToTreePlaceFilibusteroRemovesTree stamp: 'olt 9/22/2022 21:13:17'!
+ERROR!
+
+!testRun: #CrewTest #test03MovingCrewToFreePlace stamp: 'olt 9/22/2022 21:13:17'!
+ERROR!
+
+!testRun: #CrewTest #test04MovingCrewToFreePlaceCorsarioWritesDirectionInMap stamp: 'olt 9/22/2022 21:13:17'!
+ERROR!
+
+!testRun: #CrewTest #test05CrewCannotBuryTreasureIfBucaneroCannotDig stamp: 'olt 9/22/2022 21:13:17'!
+ERROR!
+
+!testRun: #CrewTest #test06CrewCanBuryTreasureIfBucaneroCanDig stamp: 'olt 9/22/2022 21:13:17'!
+ERROR!
+
+!testRun: #CrewTest #test07CaptainCanUseMap stamp: 'olt 9/22/2022 21:13:17'!
+ERROR!
+
+!testRun: #CrewTest #test08SimplePirateCannotUseMap stamp: 'olt 9/22/2022 21:13:17'!
+ERROR!
+
+!testRun: #CrewTest #test01MovingCrewToTreePlaceDoesNotMove stamp: 'olt 9/22/2022 21:14:49'!
+ERROR!
+
+!testRun: #CrewTest #test02MovingCrewToTreePlaceFilibusteroRemovesTree stamp: 'olt 9/22/2022 21:14:49'!
+ERROR!
+
+!testRun: #CrewTest #test03MovingCrewToFreePlace stamp: 'olt 9/22/2022 21:14:49'!
+ERROR!
+
+!testRun: #CrewTest #test04MovingCrewToFreePlaceCorsarioWritesDirectionInMap stamp: 'olt 9/22/2022 21:14:49'!
+ERROR!
+
+!testRun: #CrewTest #test05CrewCannotBuryTreasureIfBucaneroCannotDig stamp: 'olt 9/22/2022 21:14:49'!
+ERROR!
+
+!testRun: #CrewTest #test06CrewCanBuryTreasureIfBucaneroCanDig stamp: 'olt 9/22/2022 21:14:49'!
+ERROR!
+
+!testRun: #CrewTest #test07CaptainCanUseMap stamp: 'olt 9/22/2022 21:14:49'!
+ERROR!
+
+!testRun: #CrewTest #test08SimplePirateCannotUseMap stamp: 'olt 9/22/2022 21:14:49'!
+ERROR!
+
+!testRun: #CrewTest #test01MovingCrewToTreePlaceDoesNotMove stamp: 'olt 9/22/2022 21:15:49'!
+ERROR!
+
+!testRun: #CrewTest #test01MovingCrewToTreePlaceDoesNotMove stamp: 'olt 9/22/2022 21:15:49'!
+ERROR!
+
+!testRun: #CrewTest #test01MovingCrewToTreePlaceDoesNotMove stamp: 'olt 9/22/2022 21:17:39'!
+ERROR!
+!Crew methodsFor: 'as yet unclassified' stamp: 'olt 9/22/2022 21:31:02'!
+initializeWith: anIsland pirates: aPirates at: aPosition
+
+	island := anIsland.
+	pirates := aPirates.
+	crewStatus := (CrewMovementStatus initialize: true).
+	
+	island crewAt: aPosition.! !
+
+!methodRemoval: Crew #initializeWith:pirates:at:withStatus: stamp: 'olt 9/22/2022 21:31:10'!
+initializeWith: anIsland pirates: aPirates at: aPosition withStatus: aCrewStatus
+
+	island := anIsland.
+	pirates := aPirates.
+	crewStatus := (CrewMovementStatus initialize: true).
+	
+	island crewAt: aPosition.!
+
+!testRun: #CrewTest #test01MovingCrewToTreePlaceDoesNotMove stamp: 'olt 9/22/2022 21:31:14'!
+PASSED!
+
+!testRun: #CrewTest #test02MovingCrewToTreePlaceFilibusteroRemovesTree stamp: 'olt 9/22/2022 21:31:14'!
+PASSED!
+
+!testRun: #CrewTest #test03MovingCrewToFreePlace stamp: 'olt 9/22/2022 21:31:14'!
+PASSED!
+
+!testRun: #CrewTest #test04MovingCrewToFreePlaceCorsarioWritesDirectionInMap stamp: 'olt 9/22/2022 21:31:14'!
+PASSED!
+
+!testRun: #CrewTest #test05CrewCannotBuryTreasureIfBucaneroCannotDig stamp: 'olt 9/22/2022 21:31:14'!
+PASSED!
+
+!testRun: #CrewTest #test06CrewCanBuryTreasureIfBucaneroCanDig stamp: 'olt 9/22/2022 21:31:14'!
+PASSED!
+
+!testRun: #CrewTest #test07CaptainCanUseMap stamp: 'olt 9/22/2022 21:31:14'!
+PASSED!
+
+!testRun: #CrewTest #test08SimplePirateCannotUseMap stamp: 'olt 9/22/2022 21:31:14'!
+PASSED!
+
+!testRun: #CrewTest #test01MovingCrewToTreePlaceDoesNotMove stamp: 'olt 9/22/2022 21:49:19'!
+PASSED!
+
+!testRun: #CrewTest #test02MovingCrewToTreePlaceFilibusteroRemovesTree stamp: 'olt 9/22/2022 21:49:19'!
+PASSED!
+
+!testRun: #CrewTest #test03MovingCrewToFreePlace stamp: 'olt 9/22/2022 21:49:19'!
+PASSED!
+
+!testRun: #CrewTest #test04MovingCrewToFreePlaceCorsarioWritesDirectionInMap stamp: 'olt 9/22/2022 21:49:19'!
+PASSED!
+
+!testRun: #CrewTest #test05CrewCannotBuryTreasureIfBucaneroCannotDig stamp: 'olt 9/22/2022 21:49:19'!
+PASSED!
+
+!testRun: #CrewTest #test06CrewCanBuryTreasureIfBucaneroCanDig stamp: 'olt 9/22/2022 21:49:19'!
+PASSED!
+
+!testRun: #CrewTest #test07CaptainCanUseMap stamp: 'olt 9/22/2022 21:49:19'!
+PASSED!
+
+!testRun: #CrewTest #test08SimplePirateCannotUseMap stamp: 'olt 9/22/2022 21:49:19'!
+PASSED!
