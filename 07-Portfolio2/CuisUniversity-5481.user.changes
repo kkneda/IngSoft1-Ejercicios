@@ -1,0 +1,4157 @@
+
+
+----QUIT----(11 September 2022 19:10:09) CuisUniversity-5481.image priorSource: 2810882!
+
+----STARTUP---- (11 September 2022 19:10:10) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5481.image!
+
+
+----QUIT----(11 September 2022 19:10:10) CuisUniversity-5481.image priorSource: 7059465!
+
+----STARTUP---- (20 October 2022 19:45:32) as /home/clinux01/Descargas/is1/2022-2c-main/linux64/CuisUniversity-5481.image!
+
+
+----End fileIn of /home/clinux01/Descargas/is1/2022-2c-main/linux64/Portfolio-Solucion.st----!
+
+TestCase subclass: #TransferTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferTest category: 'Portfolio-Solucion' stamp: 'TC 10/20/2022 19:49:40'!
+TestCase subclass: #TransferTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!TransferTest methodsFor: 'no messages' stamp: 'TC 10/20/2022 19:49:52'!
+test1
+	
+	"TODO"! !
+
+!classDefinition: #Transfer category: 'Portfolio-Solucion' stamp: 'TC 10/20/2022 19:52:14'!
+Object subclass: #Transfer
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!TransferTest methodsFor: 'as yet unclassified' stamp: 'TC 10/20/2022 19:52:09' prior: 50553004!
+test1
+	
+	| sourceAccount destinationAccount |
+	
+	sourceAccount := ReceptiveAccount new.
+	
+	destinationAccount := ReceptiveAccount new.
+	
+	Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+	self assert: sourceAccount balance equals: -100.
+	self assert: destinationAccount balance equals: 100.! !
+
+!testRun: #TransferTest #test1 stamp: 'TC 10/20/2022 19:52:42'!
+ERROR!
+!Transfer class methodsFor: 'category-name' stamp: 'TC 10/20/2022 19:52:53'!
+register: aSmallInteger from: aReceptiveAccount to: aReceptiveAccount3 
+	self shouldBeImplemented.! !
+!Transfer class methodsFor: 'category-name' stamp: 'TC 10/20/2022 19:55:30' prior: 50553030!
+register: anAmountToTransfer from: aSourceAccount to:  aDestinationAccount
+	
+	^(Transfer new) initializeWith: anAmountToTransfer from: aSourceAccount to: aDestinationAccount.! !
+!Transfer methodsFor: 'no messages' stamp: 'TC 10/20/2022 19:56:37'!
+register: anAmountToTransfer from: aSourceAccount to:  aDestinationAccount
+	
+	Withdraw register: 100 on: aSourceAccount.
+	Deposit register: 100 on: aDestinationAccount.! !
+
+!testRun: #TransferTest #test1 stamp: 'TC 10/20/2022 19:56:39'!
+ERROR!
+
+!testRun: #TransferTest #test1 stamp: 'TC 10/20/2022 19:56:40'!
+ERROR!
+!Transfer methodsFor: 'as yet unclassified' stamp: 'TC 10/20/2022 19:57:02'!
+initializeWith: anAmountToTransfer from: aSourceAccount to:  aDestinationAccount
+	
+	Withdraw register: 100 on: aSourceAccount.
+	Deposit register: 100 on: aDestinationAccount.! !
+
+!testRun: #TransferTest #test1 stamp: 'TC 10/20/2022 19:57:20'!
+PASSED!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'TC 10/20/2022 19:59:36'!
+test08
+	
+	| account |
+	
+	account := ReceptiveAccount new.
+	
+	self assert: account accountSummary equals: OrderedCollection new.! !
+
+!testRun: #ReceptiveAccountTest #test08 stamp: 'TC 10/20/2022 19:59:41'!
+ERROR!
+
+!testRun: #ReceptiveAccountTest #test08 stamp: 'TC 10/20/2022 19:59:41'!
+ERROR!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'TC 10/20/2022 19:59:44'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'TC 10/20/2022 19:59:44'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'TC 10/20/2022 19:59:44'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'TC 10/20/2022 19:59:44'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'TC 10/20/2022 19:59:44'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'TC 10/20/2022 19:59:44'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'TC 10/20/2022 19:59:44'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08 stamp: 'TC 10/20/2022 19:59:44'!
+ERROR!
+
+!testRun: #ReceptiveAccountTest #test08 stamp: 'TC 10/20/2022 19:59:44'!
+ERROR!
+!ReceptiveAccount methodsFor: 'nil' stamp: 'TC 10/20/2022 20:00:25'!
+accountSummary
+	
+	^OrderedCollection new.! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'TC 10/20/2022 20:00:28'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'TC 10/20/2022 20:00:28'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'TC 10/20/2022 20:00:28'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'TC 10/20/2022 20:00:28'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'TC 10/20/2022 20:00:28'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'TC 10/20/2022 20:00:28'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'TC 10/20/2022 20:00:28'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08 stamp: 'TC 10/20/2022 20:00:28'!
+PASSED!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'TC 10/20/2022 20:00:58'!
+test09
+	
+	| account |
+	
+	account := ReceptiveAccount new.
+	
+	Deposit register: 100 on: account.
+	
+	self assert: account accountSummary equals: (OrderedCollection with: 100).! !
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'TC 10/20/2022 20:01:12' prior: 50553145!
+test09
+	
+	| account |
+	
+	account := ReceptiveAccount new.
+	
+	Deposit register: 100 on: account.
+	
+	self assert: account accountSummary equals: (OrderedCollection with: 'Depósito por 100').! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'TC 10/20/2022 20:01:18'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'TC 10/20/2022 20:01:18'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'TC 10/20/2022 20:01:18'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'TC 10/20/2022 20:01:18'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'TC 10/20/2022 20:01:18'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'TC 10/20/2022 20:01:18'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'TC 10/20/2022 20:01:18'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08 stamp: 'TC 10/20/2022 20:01:18'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09 stamp: 'TC 10/20/2022 20:01:18'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test09 stamp: 'TC 10/20/2022 20:01:18'!
+FAILURE!
+!ReceptiveAccount methodsFor: 'as yet unclassified' stamp: 'TC 10/20/2022 20:04:23' prior: 50553112!
+accountSummary
+	
+	| summary |
+	
+	summary := OrderedCollection new.
+	
+	transactions do: [
+		:aTransaction |
+		summary add: 'Depósito por ' . aTransaction value.
+	].
+	
+	^summary.! !
+!ReceptiveAccount methodsFor: 'as yet unclassified' stamp: 'TC 10/20/2022 20:04:51' prior: 50553198!
+accountSummary
+	
+	| summary |
+	
+	summary := OrderedCollection new.
+	
+	transactions do: [
+		:aTransaction |
+		summary add: 'Depósito por ' . (aTransaction value).
+	].
+	
+	^summary.! !
+
+----End fileIn of /home/clinux01/Descargas/is1/2022-2c-main/linux64/Packages/TerseGuide.pck.st----!
+!ReceptiveAccount methodsFor: 'as yet unclassified' stamp: 'TC 10/20/2022 20:05:08' prior: 50553207!
+accountSummary
+	
+	| summary |
+	
+	summary := OrderedCollection new.
+	
+	transactions do: [
+		:aTransaction |
+		summary add: 'Depósito por ' . (aTransaction value asString).
+	].
+	
+	^summary.! !
+!ReceptiveAccount methodsFor: 'as yet unclassified' stamp: 'TC 10/20/2022 20:05:14' prior: 50556136!
+accountSummary
+	
+	| summary |
+	
+	summary := OrderedCollection new.
+	
+	transactions do: [
+		:aTransaction |
+		summary add: 'Depósito por ' . (aTransaction value asString) . '.'.
+	].
+	
+	^summary.! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'TC 10/20/2022 20:05:19'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'TC 10/20/2022 20:05:19'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'TC 10/20/2022 20:05:19'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'TC 10/20/2022 20:05:19'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'TC 10/20/2022 20:05:19'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'TC 10/20/2022 20:05:19'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'TC 10/20/2022 20:05:19'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08 stamp: 'TC 10/20/2022 20:05:19'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09 stamp: 'TC 10/20/2022 20:05:19'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test09 stamp: 'TC 10/20/2022 20:05:19'!
+FAILURE!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'TC 10/20/2022 20:05:27' prior: 50553154!
+test09
+	
+	| account |
+	
+	account := ReceptiveAccount new.
+	
+	Deposit register: 100 on: account.
+	
+	self assert: account accountSummary equals: (OrderedCollection with: 'Depósito por 100.').! !
+
+!testRun: #ReceptiveAccountTest #test09 stamp: 'TC 10/20/2022 20:05:29'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test09 stamp: 'TC 10/20/2022 20:05:29'!
+FAILURE!
+!ReceptiveAccount methodsFor: 'as yet unclassified' stamp: 'TC 10/20/2022 20:06:18' prior: 50556146!
+accountSummary
+	
+	| summary |
+	
+	summary := OrderedCollection new.
+	
+	transactions do: [
+		:aTransaction |
+		summary add: 'Depósito por ' , (aTransaction value asString), '.'.
+	].
+	
+	^summary.! !
+!ReceptiveAccount methodsFor: 'as yet unclassified' stamp: 'TC 10/20/2022 20:06:20' prior: 50556205!
+accountSummary
+	
+	| summary |
+	
+	summary := OrderedCollection new.
+	
+	transactions do: [
+		:aTransaction |
+		summary add: 'Depósito por ' , (aTransaction value asString) , '.'.
+	].
+	
+	^summary.! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'TC 10/20/2022 20:06:26'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'TC 10/20/2022 20:06:26'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'TC 10/20/2022 20:06:26'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'TC 10/20/2022 20:06:26'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'TC 10/20/2022 20:06:26'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'TC 10/20/2022 20:06:26'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'TC 10/20/2022 20:06:26'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08 stamp: 'TC 10/20/2022 20:06:26'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09 stamp: 'TC 10/20/2022 20:06:26'!
+PASSED!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'TC 10/20/2022 20:06:56' prior: 50556190!
+test09
+	
+	| account |
+	
+	account := ReceptiveAccount new.
+	
+	Deposit register: 100 on: account.
+	Withdraw register: 100 on: account.
+	
+	self assert: account accountSummary equals: (OrderedCollection with: 'Depósito por 100.' with: 'Extracción por 100.').! !
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'TC 10/20/2022 20:05:27' prior: 50556256!
+test09
+	
+	| account |
+	
+	account := ReceptiveAccount new.
+	
+	Deposit register: 100 on: account.
+	
+	self assert: account accountSummary equals: (OrderedCollection with: 'Depósito por 100.').! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'TC 10/20/2022 20:07:09'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'TC 10/20/2022 20:07:09'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'TC 10/20/2022 20:07:09'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'TC 10/20/2022 20:07:09'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'TC 10/20/2022 20:07:09'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'TC 10/20/2022 20:07:09'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'TC 10/20/2022 20:07:09'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08 stamp: 'TC 10/20/2022 20:07:09'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09 stamp: 'TC 10/20/2022 20:07:09'!
+PASSED!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'TC 10/20/2022 20:07:14'!
+test10
+	
+	| account |
+	
+	account := ReceptiveAccount new.
+	
+	Deposit register: 100 on: account.
+	Withdraw register: 100 on: account.
+	
+	self assert: account accountSummary equals: (OrderedCollection with: 'Depósito por 100.' with: 'Extracción por 100.').! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'TC 10/20/2022 20:07:17'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'TC 10/20/2022 20:07:17'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'TC 10/20/2022 20:07:17'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'TC 10/20/2022 20:07:17'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'TC 10/20/2022 20:07:17'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'TC 10/20/2022 20:07:17'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'TC 10/20/2022 20:07:17'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08 stamp: 'TC 10/20/2022 20:07:17'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09 stamp: 'TC 10/20/2022 20:07:17'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test10 stamp: 'TC 10/20/2022 20:07:17'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test10 stamp: 'TC 10/20/2022 20:07:17'!
+FAILURE!
+!ReceptiveAccount methodsFor: 'as yet unclassified' stamp: 'TC 10/20/2022 20:08:22' prior: 50556215!
+accountSummary
+	
+	| summary |
+	
+	summary := OrderedCollection new.
+	
+	transactions do: [
+		:aTransaction |
+		(aTransaction isKindOf: Deposit) ifTrue: [
+			summary add: 'Depósito por ' , (aTransaction value asString) , '.'.
+		].
+		(aTransaction isKindOf: Withdraw) ifTrue: [
+			summary add: 'Extracción por ' , (aTransaction value asString) , '.'.
+		].
+	].
+	
+	^summary.! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'TC 10/20/2022 20:08:26'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'TC 10/20/2022 20:08:26'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'TC 10/20/2022 20:08:26'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'TC 10/20/2022 20:08:26'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'TC 10/20/2022 20:08:26'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'TC 10/20/2022 20:08:26'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'TC 10/20/2022 20:08:26'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08 stamp: 'TC 10/20/2022 20:08:26'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09 stamp: 'TC 10/20/2022 20:08:26'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test10 stamp: 'TC 10/20/2022 20:08:26'!
+PASSED!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'TC 10/20/2022 20:09:01' prior: 50553069!
+test08
+	
+	| account |
+	
+	account := ReceptiveAccount new.
+	
+	self assert: account accountSummary equals: OrderedCollection with: 'Balance = 0'.! !
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'TC 10/20/2022 20:09:08' prior: 50556405!
+test08
+	
+	| account |
+	
+	account := ReceptiveAccount new.
+	
+	self assert: account accountSummary equals: (OrderedCollection with: 'Balance = 0').! !
+
+!testRun: #ReceptiveAccountTest #test08 stamp: 'TC 10/20/2022 20:09:10'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test08 stamp: 'TC 10/20/2022 20:09:10'!
+FAILURE!
+!ReceptiveAccount methodsFor: 'as yet unclassified' stamp: 'TC 10/20/2022 20:09:36' prior: 50556356!
+accountSummary
+	
+	| summary |
+	
+	summary := OrderedCollection new.
+	
+	transactions do: [
+		:aTransaction |
+		(aTransaction isKindOf: Deposit) ifTrue: [
+			summary add: 'Depósito por ' , (aTransaction value asString) , '.'.
+		].
+		(aTransaction isKindOf: Withdraw) ifTrue: [
+			summary add: 'Extracción por ' , (aTransaction value asString) , '.'.
+		].
+	].
+	
+	summary add: 'Balance = ', self balance asString.
+	
+	^summary.! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'TC 10/20/2022 20:09:40'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'TC 10/20/2022 20:09:40'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'TC 10/20/2022 20:09:40'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'TC 10/20/2022 20:09:40'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'TC 10/20/2022 20:09:40'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'TC 10/20/2022 20:09:40'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'TC 10/20/2022 20:09:40'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08 stamp: 'TC 10/20/2022 20:09:40'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09 stamp: 'TC 10/20/2022 20:09:40'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test10 stamp: 'TC 10/20/2022 20:09:40'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test08 stamp: 'TC 10/20/2022 20:09:46'!
+PASSED!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'TC 10/20/2022 20:10:01' prior: 50556267!
+test09
+	
+	| account |
+	
+	account := ReceptiveAccount new.
+	
+	Deposit register: 100 on: account.
+	
+	self assert: account accountSummary equals: (OrderedCollection with: 'Depósito por 100.' with: 'Balance = 100').! !
+
+!testRun: #ReceptiveAccountTest #test09 stamp: 'TC 10/20/2022 20:10:03'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test10 stamp: 'TC 10/20/2022 20:10:05'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test10 stamp: 'TC 10/20/2022 20:10:05'!
+FAILURE!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'TC 10/20/2022 20:10:14' prior: 50556307!
+test10
+	
+	| account |
+	
+	account := ReceptiveAccount new.
+	
+	Deposit register: 100 on: account.
+	Withdraw register: 100 on: account.
+	
+	self assert: account accountSummary equals: (OrderedCollection with: 'Depósito por 100.' with: 'Extracción por 100.' with: 'Balance = 0').! !
+
+!testRun: #ReceptiveAccountTest #test10 stamp: 'TC 10/20/2022 20:10:16'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'TC 10/20/2022 20:10:19'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'TC 10/20/2022 20:10:19'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'TC 10/20/2022 20:10:19'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'TC 10/20/2022 20:10:19'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'TC 10/20/2022 20:10:19'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'TC 10/20/2022 20:10:19'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'TC 10/20/2022 20:10:19'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08 stamp: 'TC 10/20/2022 20:10:19'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09 stamp: 'TC 10/20/2022 20:10:19'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test10 stamp: 'TC 10/20/2022 20:10:19'!
+PASSED!
+!Behavior method!
+initialize
+	#_coverageTracker1543442_ markAsExecuted.
+	#_coverageTracker1543442_
+		coverAll:
+			{20 to: 29}
+		evaluating: [ super initialize ].
+	#_coverageTracker1543442_
+		cover: (33 to: 44)
+		declaredAt: (33 to: 44)
+		by:
+			(transactions _ #_coverageTracker1543442_
+				coverAll:
+					{67 to: 69}
+				evaluating: [
+					(#_coverageTracker1543442_
+						coverAll:
+							{49 to: 65}
+						by: OrderedCollection) new ]).! !
+!Behavior method!
+register: anAmountToTransfer from: aSourceAccount to: aDestinationAccount
+	#_coverageTracker1543450_ markAsExecuted.
+	^ #_coverageTracker1543450_
+		coverAll:
+			{95 to: 109. 130 to: 134. 151 to: 153}
+		evaluating: [
+			(#_coverageTracker1543450_
+				coverAll:
+					{90 to: 92}
+				evaluating: [
+					(#_coverageTracker1543450_
+						coverAll:
+							{81 to: 88}
+						by: Transfer) new ])
+				initializeWith:
+					(#_coverageTracker1543450_
+						cover: (111 to: 128)
+						declaredAt: (11 to: 28)
+						by: anAmountToTransfer)
+				from:
+					(#_coverageTracker1543450_
+						cover: (136 to: 149)
+						declaredAt: (36 to: 49)
+						by: aSourceAccount)
+				to:
+					(#_coverageTracker1543450_
+						cover: (155 to: 173)
+						declaredAt: (56 to: 74)
+						by: aDestinationAccount) ].! !
+!Behavior method!
+initializeWith: anAmountToTransfer from: aSourceAccount to: aDestinationAccount
+	#_coverageTracker1543932_ markAsExecuted.
+	#_coverageTracker1543932_
+		coverAll:
+			{94 to: 102. 108 to: 110}
+		evaluating: [
+			(#_coverageTracker1543932_
+				coverAll:
+					{85 to: 92}
+				by: Withdraw)
+				register:
+					(#_coverageTracker1543932_
+						coverAll:
+							{104 to: 106}
+						byLiteralOrPseudoVariable: 100)
+				on:
+					(#_coverageTracker1543932_
+						cover: (112 to: 125)
+						declaredAt: (42 to: 55)
+						by: aSourceAccount) ].
+	#_coverageTracker1543932_
+		coverAll:
+			{137 to: 145. 151 to: 153}
+		evaluating: [
+			(#_coverageTracker1543932_
+				coverAll:
+					{129 to: 135}
+				by: Deposit)
+				register:
+					(#_coverageTracker1543932_
+						coverAll:
+							{147 to: 149}
+						byLiteralOrPseudoVariable: 100)
+				on:
+					(#_coverageTracker1543932_
+						cover: (155 to: 173)
+						declaredAt: (62 to: 80)
+						by: aDestinationAccount) ].! !
+!Behavior method!
+register: aValue on: account
+	| transaction |
+	#_coverageTracker1543615_ markAsExecuted.
+	#_coverageTracker1543615_
+		cover: (51 to: 61)
+		declaredAt: (34 to: 44)
+		by:
+			(transaction _ #_coverageTracker1543615_
+				coverAll:
+					{71 to: 74}
+				evaluating: [
+					(#_coverageTracker1543615_
+						coverAll:
+							{66 to: 69}
+						byLiteralOrPseudoVariable: self) for:
+						(#_coverageTracker1543615_
+							cover: (76 to: 81)
+							declaredAt: (11 to: 16)
+							by: aValue) ]).
+	#_coverageTracker1543615_
+		coverAll:
+			{93 to: 101}
+		evaluating: [
+			(#_coverageTracker1543615_
+				cover: (85 to: 91)
+				declaredAt: (22 to: 28)
+				by: account) register:
+				(#_coverageTracker1543615_
+					cover: (103 to: 113)
+					declaredAt: (34 to: 44)
+					by: transaction) ].
+	^ #_coverageTracker1543615_
+		cover: (122 to: 132)
+		declaredAt: (34 to: 44)
+		by: transaction.! !
+!Behavior method!
+for: aValue
+	#_coverageTracker1543722_ markAsExecuted.
+	^ #_coverageTracker1543722_
+		coverAll:
+			{26 to: 39}
+		evaluating: [
+			(#_coverageTracker1543722_
+				coverAll:
+					{22 to: 24}
+				evaluating: [
+					(#_coverageTracker1543722_
+						coverAll:
+							{17 to: 20}
+						byLiteralOrPseudoVariable: self) new ]) initializeFor:
+				(#_coverageTracker1543722_
+					cover: (41 to: 46)
+					declaredAt: (6 to: 11)
+					by: aValue) ].! !
+!Behavior method!
+initializeFor: aValue
+	#_coverageTracker1543930_ markAsExecuted.
+	#_coverageTracker1543930_
+		cover: (25 to: 29)
+		declaredAt: (25 to: 29)
+		by:
+			(value _ #_coverageTracker1543930_
+				cover: (34 to: 39)
+				declaredAt: (16 to: 21)
+				by: aValue).! !
+!Behavior method!
+register: aTransaction
+	#_coverageTracker1543939_ markAsExecuted.
+	#_coverageTracker1543939_
+		coverAll:
+			{39 to: 42}
+		evaluating: [
+			(#_coverageTracker1543939_
+				cover: (26 to: 37)
+				declaredAt: (26 to: 37)
+				by: transactions) add:
+				(#_coverageTracker1543939_
+					cover: (44 to: 55)
+					declaredAt: (11 to: 22)
+					by: aTransaction) ].! !
+!Behavior method!
+for: aValue
+	#_coverageTracker1543578_ markAsExecuted.
+	^ #_coverageTracker1543578_
+		coverAll:
+			{26 to: 39}
+		evaluating: [
+			(#_coverageTracker1543578_
+				coverAll:
+					{22 to: 24}
+				evaluating: [
+					(#_coverageTracker1543578_
+						coverAll:
+							{17 to: 20}
+						byLiteralOrPseudoVariable: self) new ]) initializeFor:
+				(#_coverageTracker1543578_
+					cover: (41 to: 46)
+					declaredAt: (6 to: 11)
+					by: aValue) ].! !
+!Behavior method!
+initializeFor: aValue
+	#_coverageTracker1543713_ markAsExecuted.
+	#_coverageTracker1543713_
+		cover: (25 to: 29)
+		declaredAt: (25 to: 29)
+		by:
+			(value _ #_coverageTracker1543713_
+				cover: (34 to: 39)
+				declaredAt: (16 to: 21)
+				by: aValue).! !
+!Behavior method!
+balance
+	#_coverageTracker1543404_ markAsExecuted.
+	^ #_coverageTracker1543404_
+		coverAll:
+			{28 to: 34. 40 to: 44}
+		evaluating: [
+			(#_coverageTracker1543404_
+				cover: (12 to: 23)
+				declaredAt: (12 to: 23)
+				by: transactions)
+				inject:
+					(#_coverageTracker1543404_
+						coverAll:
+							{36 to: 36}
+						byLiteralOrPseudoVariable: 0)
+				into: [ :currentBalance :transaction |
+					#_coverageTracker1543404_
+						coverAll:
+							{91 to: 104}
+						evaluating: [
+							(#_coverageTracker1543404_
+								cover: (79 to: 89)
+								declaredAt: (65 to: 75)
+								by: transaction) affectBalance:
+								(#_coverageTracker1543404_
+									cover: (106 to: 119)
+									declaredAt: (49 to: 62)
+									by: currentBalance) ]]].! !
+!Behavior method!
+affectBalance: aBalance
+	#_coverageTracker1543726_ markAsExecuted.
+	^ #_coverageTracker1543726_
+		coverAll:
+			{37 to: 37}
+		evaluating: [
+			(#_coverageTracker1543726_
+				cover: (28 to: 35)
+				declaredAt: (16 to: 23)
+				by: aBalance) -
+				(#_coverageTracker1543726_
+					cover: (39 to: 43)
+					declaredAt: (39 to: 43)
+					by: value) ].! !
+!Behavior method!
+affectBalance: aBalance
+	#_coverageTracker1543400_ markAsExecuted.
+	^ #_coverageTracker1543400_
+		coverAll:
+			{37 to: 37}
+		evaluating: [
+			(#_coverageTracker1543400_
+				cover: (28 to: 35)
+				declaredAt: (16 to: 23)
+				by: aBalance) +
+				(#_coverageTracker1543400_
+					cover: (39 to: 43)
+					declaredAt: (39 to: 43)
+					by: value) ].! !
+
+!testRun: #TransferTest #test1 stamp: 'TC 10/20/2022 20:11:16'!
+PASSED!
+
+!methodRemoval: Transfer #register:from:to: stamp: 'TC 10/20/2022 20:11:50'!
+register: anAmountToTransfer from: aSourceAccount to:  aDestinationAccount
+	
+	Withdraw register: 100 on: aSourceAccount.
+	Deposit register: 100 on: aDestinationAccount.!
+
+!testRun: #TransferTest #test1 stamp: 'TC 10/20/2022 20:11:52'!
+PASSED!
+!TransferTest methodsFor: 'as yet unclassified' stamp: 'TC 10/20/2022 20:14:59'!
+test2
+	
+	| sourceAccount destinationAccount |
+	
+	sourceAccount := ReceptiveAccount new.
+	
+	destinationAccount := ReceptiveAccount new.
+	
+	Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+	"self assert: sourceAccount balance equals: -100.
+	self assert: destinationAccount balance equals: 100."
+	
+	self assert: sourceAccount transactions size equals: 1.
+	self assert: (sourceAccount transactions first isKindOf: Deposit).
+	self assert: (sourceAccount transactions first value) equals: 100.! !
+!TransferTest methodsFor: 'as yet unclassified' stamp: 'TC 10/20/2022 20:15:49' prior: 50556764!
+test2
+	
+	| sourceAccount destinationAccount |
+	
+	sourceAccount := ReceptiveAccount new.
+	
+	destinationAccount := ReceptiveAccount new.
+	
+	Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+	self assert: sourceAccount transactions size equals: 1.
+	self assert: (sourceAccount transactions first isKindOf: Withdraw).
+	self assert: (sourceAccount transactions first value) equals: 100.
+	
+	self assert: destinationAccount transactions size equals: 1.
+	self assert: (destinationAccount transactions first isKindOf: Deposit).
+	self assert: (destinationAccount transactions first value) equals: 100.! !
+
+!testRun: #TransferTest #test2 stamp: 'TC 10/20/2022 20:15:54'!
+PASSED!
+!TransferTest methodsFor: 'as yet unclassified' stamp: 'TC 10/20/2022 20:19:54' prior: 50556783!
+test2
+	
+	| sourceAccount destinationAccount transfer |
+	
+	sourceAccount := ReceptiveAccount new.
+	
+	destinationAccount := ReceptiveAccount new.
+	
+	transfer := Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+	self assert: sourceAccount hasRegistered: transfer withdrawLeg.
+	self assert: destinationAccount hasRegistered: transfer depositLeg.! !
+
+!testRun: #TransferTest #test2 stamp: 'TC 10/20/2022 20:19:59'!
+ERROR!
+
+!testRun: #TransferTest #test2 stamp: 'TC 10/20/2022 20:19:59'!
+ERROR!
+
+Object subclass: #Transfer
+	instanceVariableNames: 'withdrawLeg depositLeg'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Transfer category: 'Portfolio-Solucion' stamp: 'TC 10/20/2022 20:20:33'!
+Object subclass: #Transfer
+	instanceVariableNames: 'withdrawLeg depositLeg'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!Transfer methodsFor: 'initialization' stamp: 'TC 10/20/2022 20:20:45' prior: 50553058!
+initializeWith: anAmountToTransfer from: aSourceAccount to:  aDestinationAccount
+	
+	withdrawLeg := Withdraw register: 100 on: aSourceAccount.
+	depositLeg := Deposit register: 100 on: aDestinationAccount.! !
+!Transfer methodsFor: 'nil' stamp: 'TC 10/20/2022 20:20:53'!
+depositLeg
+	
+	^depositLeg.! !
+!Transfer methodsFor: 'as yet unclassified' stamp: 'TC 10/20/2022 20:21:06'!
+withdrawLeg
+	
+	^withdrawLeg.! !
+
+!testRun: #TransferTest #test1 stamp: 'TC 10/20/2022 20:21:08'!
+PASSED!
+
+!testRun: #TransferTest #test2 stamp: 'TC 10/20/2022 20:21:08'!
+ERROR!
+
+!testRun: #TransferTest #test2 stamp: 'TC 10/20/2022 20:21:08'!
+ERROR!
+!TransferTest methodsFor: 'as yet unclassified' stamp: 'TC 10/20/2022 20:21:37' prior: 50556808!
+test2
+	
+	| sourceAccount destinationAccount transfer |
+	
+	sourceAccount := ReceptiveAccount new.
+	
+	destinationAccount := ReceptiveAccount new.
+	
+	transfer := Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+	self assert: (sourceAccount hasRegistered: transfer withdrawLeg).
+	self assert: (destinationAccount hasRegistered: transfer depositLeg).! !
+
+!testRun: #TransferTest #test2 stamp: 'TC 10/20/2022 20:21:39'!
+PASSED!
+!TransferTest methodsFor: 'as yet unclassified' stamp: 'TC 10/20/2022 20:27:55'!
+test3
+	
+	| sourceAccount destinationAccount transfer |
+	
+	sourceAccount := ReceptiveAccount new.
+	
+	destinationAccount := ReceptiveAccount new.
+	
+	transfer := Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+	self assert: (transfer withdrawLeg transferRoot) equals: transfer.
+	self assert: (transfer depositLeg transferRoot) equals: transfer.! !
+
+!testRun: #TransferTest #test3 stamp: 'TC 10/20/2022 20:28:01'!
+ERROR!
+
+----SNAPSHOT----(20 October 2022 20:33:20) CuisUniversity-5481.image priorSource: 7059698!
+
+!testRun: #TransferTest #test3 stamp: 'TC 10/20/2022 21:43:18'!
+ERROR!
+
+!testRun: #TransferTest #test3 stamp: 'TC 10/20/2022 21:43:18'!
+ERROR!
+
+!testRun: #TransferTest #test3 stamp: 'TC 10/20/2022 21:44:42'!
+ERROR!
+
+!testRun: #TransferTest #test3 stamp: 'TC 10/20/2022 21:44:42'!
+ERROR!
+
+Object subclass: #AccountTransactionFromTransfer
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #AccountTransactionFromTransfer category: 'Portfolio-Solucion' stamp: 'TC 10/20/2022 21:46:13'!
+Object subclass: #AccountTransactionFromTransfer
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+AccountTransactionFromTransfer subclass: #DepositFromTransfer
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #DepositFromTransfer category: 'Portfolio-Solucion' stamp: 'TC 10/20/2022 21:46:44'!
+AccountTransactionFromTransfer subclass: #DepositFromTransfer
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+AccountTransactionFromTransfer subclass: #WithdrawFromTransfer
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #WithdrawFromTransfer category: 'Portfolio-Solucion' stamp: 'TC 10/20/2022 21:46:53'!
+AccountTransactionFromTransfer subclass: #WithdrawFromTransfer
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+AccountTransactionFromTransfer subclass: #DepositFromTransfer
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #DepositFromTransfer category: 'Portfolio-Solucion' stamp: 'TC 10/20/2022 21:51:21'!
+AccountTransactionFromTransfer subclass: #DepositFromTransfer
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+AccountTransactionFromTransfer subclass: #WithdrawFromTransfer
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #WithdrawFromTransfer category: 'Portfolio-Solucion' stamp: 'TC 10/20/2022 21:51:24'!
+AccountTransactionFromTransfer subclass: #WithdrawFromTransfer
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!DepositFromTransfer methodsFor: 'nil' stamp: 'TC 10/20/2022 21:51:33'!
+affectBalance: aBalance
+
+	^aBalance + value ! !
+!DepositFromTransfer methodsFor: 'nil' stamp: 'TC 10/20/2022 21:51:47'!
+initializeFor: aValue
+
+	value := aValue ! !
+!DepositFromTransfer methodsFor: 'nil' stamp: 'TC 10/20/2022 21:51:56' overrides: 16902254!
+value
+
+	^ value! !
+!WithdrawFromTransfer methodsFor: 'nil' stamp: 'TC 10/20/2022 21:52:04'!
+affectBalance: aBalance
+
+	^aBalance - value! !
+!WithdrawFromTransfer methodsFor: 'nil' stamp: 'TC 10/20/2022 21:52:13'!
+initializeFor: aValue
+
+	value := aValue ! !
+!WithdrawFromTransfer methodsFor: 'nil' stamp: 'TC 10/20/2022 21:52:22' overrides: 16902254!
+value
+
+	^ value! !
+!DepositFromTransfer class methodsFor: 'nil' stamp: 'TC 10/20/2022 21:52:29'!
+for: aValue
+
+	^ self new initializeFor: aValue ! !
+!WithdrawFromTransfer class methodsFor: 'nil' stamp: 'TC 10/20/2022 21:52:38'!
+for: aValue
+
+	^ self new initializeFor: aValue ! !
+
+!classRemoval: #DepositFromTransfer stamp: 'TC 10/20/2022 21:53:36'!
+AccountTransactionFromTransfer subclass: #DepositFromTransfer
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #WithdrawFromTransfer stamp: 'TC 10/20/2022 21:53:36'!
+AccountTransactionFromTransfer subclass: #WithdrawFromTransfer
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #AccountTransactionFromTransfer stamp: 'TC 10/20/2022 21:53:36'!
+Object subclass: #AccountTransactionFromTransfer
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+Deposit subclass: #DepositFromTransfer
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #DepositFromTransfer category: 'Portfolio-Solucion' stamp: 'TC 10/20/2022 21:54:06'!
+Deposit subclass: #DepositFromTransfer
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+Withdraw subclass: #WithdrawFromTransfer
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #WithdrawFromTransfer category: 'Portfolio-Solucion' stamp: 'TC 10/20/2022 21:54:26'!
+Withdraw subclass: #WithdrawFromTransfer
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!testRun: #TransferTest #test3 stamp: 'TC 10/20/2022 21:54:50'!
+ERROR!
+
+!testRun: #TransferTest #test3 stamp: 'TC 10/20/2022 21:54:58'!
+ERROR!
+
+!classRemoval: #DepositFromTransfer stamp: 'TC 10/20/2022 21:56:39'!
+Deposit subclass: #DepositFromTransfer
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #WithdrawFromTransfer stamp: 'TC 10/20/2022 21:56:45'!
+Withdraw subclass: #WithdrawFromTransfer
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+Object subclass: #AccountTransactionFromTransfer
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #AccountTransactionFromTransfer category: 'Portfolio-Solucion' stamp: 'TC 10/20/2022 21:57:32'!
+Object subclass: #AccountTransactionFromTransfer
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+AccountTransactionFromTransfer subclass: #DepositFromTransfer
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #DepositFromTransfer category: 'Portfolio-Solucion' stamp: 'TC 10/20/2022 21:57:59'!
+AccountTransactionFromTransfer subclass: #DepositFromTransfer
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+AccountTransactionFromTransfer subclass: #WithdrawFromTransfer
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #WithdrawFromTransfer category: 'Portfolio-Solucion' stamp: 'TC 10/20/2022 21:58:13'!
+AccountTransactionFromTransfer subclass: #WithdrawFromTransfer
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+----SNAPSHOT----(20 October 2022 21:58:17) CuisUniversity-5481.image priorSource: 7207893!
+
+----STARTUP---- (24 October 2022 09:57:56) as /home/kaneda/Downloads/portfolio2/linux64/CuisUniversity-5481.image!
+
+!TransferTest methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/24/2022 10:08:10'!
+test1SingleTransferReflectsOnBalance
+	
+	| sourceAccount destinationAccount |
+	
+	sourceAccount := ReceptiveAccount new.
+	
+	destinationAccount := ReceptiveAccount new.
+	
+	Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+	self assert: sourceAccount balance equals: -100.
+	self assert: destinationAccount balance equals: 100.! !
+
+!methodRemoval: TransferTest #test1SingleTransferReflectsOnBalance stamp: 'TC&OLT 10/24/2022 10:08:39'!
+test1SingleTransferReflectsOnBalance
+	
+	| sourceAccount destinationAccount |
+	
+	sourceAccount := ReceptiveAccount new.
+	
+	destinationAccount := ReceptiveAccount new.
+	
+	Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+	self assert: sourceAccount balance equals: -100.
+	self assert: destinationAccount balance equals: 100.!
+!TransferTest methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/24/2022 10:08:52'!
+test1SingleTransferReflectsOnBalance
+	
+	| sourceAccount destinationAccount |
+	
+	sourceAccount := ReceptiveAccount new.
+	
+	destinationAccount := ReceptiveAccount new.
+	
+	Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+	self assert: sourceAccount balance equals: -100.
+	self assert: destinationAccount balance equals: 100.! !
+
+!methodRemoval: TransferTest #test1 stamp: 'TC&OLT 10/24/2022 10:08:52'!
+test1
+	
+	| sourceAccount destinationAccount |
+	
+	sourceAccount := ReceptiveAccount new.
+	
+	destinationAccount := ReceptiveAccount new.
+	
+	Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+	self assert: sourceAccount balance equals: -100.
+	self assert: destinationAccount balance equals: 100.!
+!TransferTest methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/24/2022 10:09:51'!
+test2TransferLegsAreRegistered
+	
+	| sourceAccount destinationAccount transfer |
+	
+	sourceAccount := ReceptiveAccount new.
+	
+	destinationAccount := ReceptiveAccount new.
+	
+	transfer := Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+	self assert: (sourceAccount hasRegistered: transfer withdrawLeg).
+	self assert: (destinationAccount hasRegistered: transfer depositLeg).! !
+
+!methodRemoval: TransferTest #test2 stamp: 'TC&OLT 10/24/2022 10:09:51'!
+test2
+	
+	| sourceAccount destinationAccount transfer |
+	
+	sourceAccount := ReceptiveAccount new.
+	
+	destinationAccount := ReceptiveAccount new.
+	
+	transfer := Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+	self assert: (sourceAccount hasRegistered: transfer withdrawLeg).
+	self assert: (destinationAccount hasRegistered: transfer depositLeg).!
+!TransferTest methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/24/2022 10:10:14'!
+test1TransferReflectsOnBalance
+	
+	| sourceAccount destinationAccount |
+	
+	sourceAccount := ReceptiveAccount new.
+	
+	destinationAccount := ReceptiveAccount new.
+	
+	Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+	self assert: sourceAccount balance equals: -100.
+	self assert: destinationAccount balance equals: 100.! !
+
+!methodRemoval: TransferTest #test1SingleTransferReflectsOnBalance stamp: 'TC&OLT 10/24/2022 10:10:14'!
+test1SingleTransferReflectsOnBalance
+	
+	| sourceAccount destinationAccount |
+	
+	sourceAccount := ReceptiveAccount new.
+	
+	destinationAccount := ReceptiveAccount new.
+	
+	Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+	self assert: sourceAccount balance equals: -100.
+	self assert: destinationAccount balance equals: 100.!
+!TransferTest methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/24/2022 10:10:25'!
+test1TransferReflectsOnAccountBalance
+	
+	| sourceAccount destinationAccount |
+	
+	sourceAccount := ReceptiveAccount new.
+	
+	destinationAccount := ReceptiveAccount new.
+	
+	Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+	self assert: sourceAccount balance equals: -100.
+	self assert: destinationAccount balance equals: 100.! !
+
+!methodRemoval: TransferTest #test1TransferReflectsOnBalance stamp: 'TC&OLT 10/24/2022 10:10:25'!
+test1TransferReflectsOnBalance
+	
+	| sourceAccount destinationAccount |
+	
+	sourceAccount := ReceptiveAccount new.
+	
+	destinationAccount := ReceptiveAccount new.
+	
+	Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+	self assert: sourceAccount balance equals: -100.
+	self assert: destinationAccount balance equals: 100.!
+!TransferTest methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/24/2022 10:10:34'!
+test2TransferLegsAreRegisteredOnAccount
+	
+	| sourceAccount destinationAccount transfer |
+	
+	sourceAccount := ReceptiveAccount new.
+	
+	destinationAccount := ReceptiveAccount new.
+	
+	transfer := Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+	self assert: (sourceAccount hasRegistered: transfer withdrawLeg).
+	self assert: (destinationAccount hasRegistered: transfer depositLeg).! !
+
+!methodRemoval: TransferTest #test2TransferLegsAreRegistered stamp: 'TC&OLT 10/24/2022 10:10:34'!
+test2TransferLegsAreRegistered
+	
+	| sourceAccount destinationAccount transfer |
+	
+	sourceAccount := ReceptiveAccount new.
+	
+	destinationAccount := ReceptiveAccount new.
+	
+	transfer := Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+	self assert: (sourceAccount hasRegistered: transfer withdrawLeg).
+	self assert: (destinationAccount hasRegistered: transfer depositLeg).!
+!TransferTest methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/24/2022 10:10:55'!
+test3TransferLegsCanNavigateBackToTransfer
+	
+	| sourceAccount destinationAccount transfer |
+	
+	sourceAccount := ReceptiveAccount new.
+	
+	destinationAccount := ReceptiveAccount new.
+	
+	transfer := Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+	self assert: (transfer withdrawLeg transferRoot) equals: transfer.
+	self assert: (transfer depositLeg transferRoot) equals: transfer.! !
+
+!methodRemoval: TransferTest #test3 stamp: 'TC&OLT 10/24/2022 10:10:55'!
+test3
+	
+	| sourceAccount destinationAccount transfer |
+	
+	sourceAccount := ReceptiveAccount new.
+	
+	destinationAccount := ReceptiveAccount new.
+	
+	transfer := Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+	self assert: (transfer withdrawLeg transferRoot) equals: transfer.
+	self assert: (transfer depositLeg transferRoot) equals: transfer.!
+!TransferTest methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/24/2022 10:28:00'!
+test3TransferLegsAreRegisteredOnAccount
+	
+	| sourceAccount destinationAccount transfer |
+	
+	sourceAccount := ReceptiveAccount new.
+	
+	destinationAccount := ReceptiveAccount new.
+	
+	transfer := Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+	self assert: (sourceAccount hasRegistered: transfer withdrawLeg).
+	self assert: (destinationAccount hasRegistered: transfer depositLeg).! !
+
+!methodRemoval: TransferTest #test2TransferLegsAreRegisteredOnAccount stamp: 'TC&OLT 10/24/2022 10:28:00'!
+test2TransferLegsAreRegisteredOnAccount
+	
+	| sourceAccount destinationAccount transfer |
+	
+	sourceAccount := ReceptiveAccount new.
+	
+	destinationAccount := ReceptiveAccount new.
+	
+	transfer := Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+	self assert: (sourceAccount hasRegistered: transfer withdrawLeg).
+	self assert: (destinationAccount hasRegistered: transfer depositLeg).!
+!TransferTest methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/24/2022 10:28:06'!
+test4TransferLegsCanNavigateBackToTransfer
+	
+	| sourceAccount destinationAccount transfer |
+	
+	sourceAccount := ReceptiveAccount new.
+	
+	destinationAccount := ReceptiveAccount new.
+	
+	transfer := Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+	self assert: (transfer withdrawLeg transferRoot) equals: transfer.
+	self assert: (transfer depositLeg transferRoot) equals: transfer.! !
+
+!methodRemoval: TransferTest #test3TransferLegsCanNavigateBackToTransfer stamp: 'TC&OLT 10/24/2022 10:28:06'!
+test3TransferLegsCanNavigateBackToTransfer
+	
+	| sourceAccount destinationAccount transfer |
+	
+	sourceAccount := ReceptiveAccount new.
+	
+	destinationAccount := ReceptiveAccount new.
+	
+	transfer := Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+	self assert: (transfer withdrawLeg transferRoot) equals: transfer.
+	self assert: (transfer depositLeg transferRoot) equals: transfer.!
+!TransferTest methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/24/2022 10:28:57'!
+test2MultipleTransfersReflectOnAccountBalance
+	
+	| sourceAccount destinationAccount |
+	
+	sourceAccount := ReceptiveAccount new.
+	
+	destinationAccount := ReceptiveAccount new.
+	
+	Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+	Transfer register: 50 from: sourceAccount to: destinationAccount.
+	
+	self assert: sourceAccount balance equals: -150.
+	self assert: destinationAccount balance equals: 150.! !
+!TransferTest methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/24/2022 10:29:05'!
+test1SingleTransferReflectsOnAccountBalance
+	
+	| sourceAccount destinationAccount |
+	
+	sourceAccount := ReceptiveAccount new.
+	
+	destinationAccount := ReceptiveAccount new.
+	
+	Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+	self assert: sourceAccount balance equals: -100.
+	self assert: destinationAccount balance equals: 100.! !
+
+!methodRemoval: TransferTest #test1TransferReflectsOnAccountBalance stamp: 'TC&OLT 10/24/2022 10:29:05'!
+test1TransferReflectsOnAccountBalance
+	
+	| sourceAccount destinationAccount |
+	
+	sourceAccount := ReceptiveAccount new.
+	
+	destinationAccount := ReceptiveAccount new.
+	
+	Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+	self assert: sourceAccount balance equals: -100.
+	self assert: destinationAccount balance equals: 100.!
+
+!testRun: #TransferTest #test2MultipleTransfersReflectOnAccountBalance stamp: 'TC&OLT 10/24/2022 10:29:14'!
+FAILURE!
+
+!testRun: #TransferTest #test2MultipleTransfersReflectOnAccountBalance stamp: 'TC&OLT 10/24/2022 10:29:14'!
+FAILURE!
+!Transfer methodsFor: 'initialization' stamp: 'TC&OLT 10/24/2022 10:29:29' prior: 50556840!
+initializeWith: anAmountToTransfer from: aSourceAccount to:  aDestinationAccount
+	
+	withdrawLeg := Withdraw register: anAmountToTransfer on: aSourceAccount.
+	depositLeg := Deposit register: anAmountToTransfer on: aDestinationAccount.! !
+
+!testRun: #TransferTest #test1SingleTransferReflectsOnAccountBalance stamp: 'TC&OLT 10/24/2022 10:29:35'!
+PASSED!
+
+!testRun: #TransferTest #test2MultipleTransfersReflectOnAccountBalance stamp: 'TC&OLT 10/24/2022 10:29:37'!
+PASSED!
+
+!testRun: #TransferTest #test1SingleTransferReflectsOnAccountBalance stamp: 'TC&OLT 10/24/2022 10:29:45'!
+PASSED!
+
+!testRun: #TransferTest #test2MultipleTransfersReflectOnAccountBalance stamp: 'TC&OLT 10/24/2022 10:29:45'!
+PASSED!
+
+!testRun: #TransferTest #test3TransferLegsAreRegisteredOnAccount stamp: 'TC&OLT 10/24/2022 10:29:45'!
+PASSED!
+
+!testRun: #TransferTest #test4TransferLegsCanNavigateBackToTransfer stamp: 'TC&OLT 10/24/2022 10:29:45'!
+ERROR!
+
+!testRun: #TransferTest #test4TransferLegsCanNavigateBackToTransfer stamp: 'TC&OLT 10/24/2022 10:29:45'!
+ERROR!
+
+!testRun: #TransferTest #test1SingleTransferReflectsOnAccountBalance stamp: 'TC&OLT 10/24/2022 10:29:56'!
+PASSED!
+
+!testRun: #TransferTest #test2MultipleTransfersReflectOnAccountBalance stamp: 'TC&OLT 10/24/2022 10:29:56'!
+PASSED!
+
+!testRun: #TransferTest #test3TransferLegsAreRegisteredOnAccount stamp: 'TC&OLT 10/24/2022 10:29:56'!
+PASSED!
+
+!testRun: #TransferTest #test4TransferLegsCanNavigateBackToTransfer stamp: 'TC&OLT 10/24/2022 10:29:56'!
+ERROR!
+
+!testRun: #TransferTest #test4TransferLegsCanNavigateBackToTransfer stamp: 'TC&OLT 10/24/2022 10:29:56'!
+ERROR!
+!TransferTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 10:31:28' prior: 50557358!
+test4TransferLegsCanNavigateBackToTransfer
+	
+	| sourceAccount destinationAccount transfer |
+	
+	sourceAccount := ReceptiveAccount new.
+	
+	destinationAccount := ReceptiveAccount new.
+	
+	transfer := Transfer register: 75 from: sourceAccount to: destinationAccount.
+	
+	self assert: (transfer withdrawLeg transferRoot) equals: transfer.
+	self assert: (transfer depositLeg transferRoot) equals: transfer.! !
+!TransferTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 10:31:35' prior: 50557495!
+test4TransferLegsCanNavigateBackToTransfer
+	
+	| sourceAccount destinationAccount transfer |
+	
+	sourceAccount := ReceptiveAccount new.
+	
+	destinationAccount := ReceptiveAccount new.
+	
+	transfer := Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+	self assert: (transfer withdrawLeg transferRoot) equals: transfer.
+	self assert: (transfer depositLeg transferRoot) equals: transfer.! !
+!Transfer methodsFor: 'initialization' stamp: 'TC&OLT 10/24/2022 10:32:24' prior: 50557442!
+initializeWith: anAmountToTransfer from: aSourceAccount to:  aDestinationAccount
+	
+	withdrawLeg := WithdrawFromTransfer register: anAmountToTransfer on: aSourceAccount.
+	depositLeg := DepositFromTransfer register: anAmountToTransfer on: aDestinationAccount.! !
+!AccountTransaction class methodsFor: 'instance creation' stamp: 'TC&OLT 10/24/2022 10:33:41' prior: 50552907!
+register: aValue on: account
+
+	| transaction |
+	
+	transaction := self for: aValue.
+	account register: transaction.
+	
+	^ transaction! !
+!AccountTransactionFromTransfer class methodsFor: 'no messages' stamp: 'TC&OLT 10/24/2022 10:34:59'!
+register: aValue on: account
+
+	| transaction |
+	
+	transaction := self for: aValue.
+	account register: transaction.
+	
+	^ transaction! !
+!DepositFromTransfer class methodsFor: 'no messages' stamp: 'TC&OLT 10/24/2022 10:35:13'!
+for: aValue
+
+	^ self new initializeFor: aValue ! !
+!WithdrawFromTransfer class methodsFor: 'no messages' stamp: 'TC&OLT 10/24/2022 10:35:16'!
+for: aValue
+
+	^ self new initializeFor: aValue ! !
+
+AccountTransactionFromTransfer subclass: #DepositFromTransfer
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #DepositFromTransfer category: 'Portfolio-Solucion' stamp: 'TC&OLT 10/24/2022 10:36:42'!
+AccountTransactionFromTransfer subclass: #DepositFromTransfer
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+AccountTransactionFromTransfer subclass: #WithdrawFromTransfer
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #WithdrawFromTransfer category: 'Portfolio-Solucion' stamp: 'TC&OLT 10/24/2022 10:36:46'!
+AccountTransactionFromTransfer subclass: #WithdrawFromTransfer
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!DepositFromTransfer methodsFor: 'no messages' stamp: 'TC&OLT 10/24/2022 10:36:50'!
+initializeFor: aValue
+
+	value := aValue ! !
+!DepositFromTransfer methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/24/2022 10:36:52' prior: 50557593!
+initializeFor: aValue
+
+	value := aValue.! !
+!WithdrawFromTransfer methodsFor: 'no messages' stamp: 'TC&OLT 10/24/2022 10:36:58'!
+initializeFor: aValue
+
+	value := aValue.! !
+
+AccountTransactionFromTransfer subclass: #DepositFromTransfer
+	instanceVariableNames: 'value transferRoot'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #DepositFromTransfer category: 'Portfolio-Solucion' stamp: 'TC&OLT 10/24/2022 10:38:49'!
+AccountTransactionFromTransfer subclass: #DepositFromTransfer
+	instanceVariableNames: 'value transferRoot'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+AccountTransactionFromTransfer subclass: #WithdrawFromTransfer
+	instanceVariableNames: 'value transferRoot'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #WithdrawFromTransfer category: 'Portfolio-Solucion' stamp: 'TC&OLT 10/24/2022 10:38:55'!
+AccountTransactionFromTransfer subclass: #WithdrawFromTransfer
+	instanceVariableNames: 'value transferRoot'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!DepositFromTransfer methodsFor: 'initialization' stamp: 'TC&OLT 10/24/2022 10:41:20'!
+transferRoot
+	
+	^transferRoot.! !
+!WithdrawFromTransfer methodsFor: 'initialization' stamp: 'TC&OLT 10/24/2022 10:41:38'!
+transferRoot
+	
+	^transferRoot.! !
+!Transfer methodsFor: 'initialization' stamp: 'TC&OLT 10/24/2022 10:56:07' prior: 50557527!
+initializeWith: anAmountToTransfer from: aSourceAccount to: aDestinationAccount
+	
+	withdrawLeg := WithdrawFromTransfer register: anAmountToTransfer on: aSourceAccount for: self.
+	depositLeg := DepositFromTransfer register: anAmountToTransfer on: aDestinationAccount for: self.! !
+!Transfer class methodsFor: 'instance creation' stamp: 'TC&OLT 10/24/2022 11:01:32' prior: 50553037!
+register: anAmountToTransfer from: aSourceAccount to: aDestinationAccount
+	
+	^(Transfer new) initializeWith: anAmountToTransfer from: aSourceAccount to: aDestinationAccount.! !
+!Transfer methodsFor: 'initialization' stamp: 'TC&OLT 10/24/2022 11:01:51' prior: 50557646!
+initializeWith: anAmountToTransfer from: aSourceAccount to: aDestinationAccount
+	
+	withdrawLeg := WithdrawFromTransfer register: anAmountToTransfer on: aSourceAccount from: self.
+	depositLeg := DepositFromTransfer register: anAmountToTransfer on: aDestinationAccount from: self.! !
+!Transfer methodsFor: 'initialization' stamp: 'TC&OLT 10/24/2022 11:09:20' prior: 50557667!
+initializeWith: anAmountToTransfer from: aSourceAccount to: aDestinationAccount
+	
+	withdrawLeg := WithdrawFromTransfer register: anAmountToTransfer on: aSourceAccount for: self.
+	depositLeg := DepositFromTransfer register: anAmountToTransfer on: aDestinationAccount for: self.! !
+!AccountTransactionFromTransfer class methodsFor: 'instance creation' stamp: 'TC&OLT 10/24/2022 11:10:01'!
+register: aValue on: anAccount for: aTransfer
+
+	| transaction |
+	
+	transaction := self with: aValue for: aTransfer.
+	anAccount register: transaction.
+	
+	^ transaction! !
+
+!methodRemoval: AccountTransactionFromTransfer class #register:on: stamp: 'TC&OLT 10/24/2022 11:10:11'!
+register: aValue on: account
+
+	| transaction |
+	
+	transaction := self for: aValue.
+	account register: transaction.
+	
+	^ transaction!
+!DepositFromTransfer class methodsFor: 'instance creation' stamp: 'TC&OLT 10/24/2022 11:10:36'!
+with: aValue for: aTransfer.
+
+	^ self new initializeWith: aValue for: aTransfer.! !
+
+!methodRemoval: DepositFromTransfer class #for: stamp: 'TC&OLT 10/24/2022 11:10:41'!
+for: aValue
+
+	^ self new initializeFor: aValue !
+
+AccountTransactionFromTransfer subclass: #DepositFromTransfer
+	instanceVariableNames: 'value transfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #DepositFromTransfer category: 'Portfolio-Solucion' stamp: 'TC&OLT 10/24/2022 11:11:36'!
+AccountTransactionFromTransfer subclass: #DepositFromTransfer
+	instanceVariableNames: 'value transfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+AccountTransactionFromTransfer subclass: #WithdrawFromTransfer
+	instanceVariableNames: 'value transfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #WithdrawFromTransfer category: 'Portfolio-Solucion' stamp: 'TC&OLT 10/24/2022 11:11:39'!
+AccountTransactionFromTransfer subclass: #WithdrawFromTransfer
+	instanceVariableNames: 'value transfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+AccountTransactionFromTransfer subclass: #DepositFromTransfer
+	instanceVariableNames: 'value transferRoot'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #DepositFromTransfer category: 'Portfolio-Solucion' stamp: 'TC&OLT 10/24/2022 11:12:19'!
+AccountTransactionFromTransfer subclass: #DepositFromTransfer
+	instanceVariableNames: 'value transferRoot'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+AccountTransactionFromTransfer subclass: #WithdrawFromTransfer
+	instanceVariableNames: 'value transferRoot'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #WithdrawFromTransfer category: 'Portfolio-Solucion' stamp: 'TC&OLT 10/24/2022 11:12:23'!
+AccountTransactionFromTransfer subclass: #WithdrawFromTransfer
+	instanceVariableNames: 'value transferRoot'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!WithdrawFromTransfer methodsFor: 'initialization' stamp: 'TC&OLT 10/24/2022 11:12:40'!
+initializeWith: aValue for: aTransfer
+
+	value := aValue.
+	transferRoot := aTransfer.! !
+
+!methodRemoval: WithdrawFromTransfer #initializeFor: stamp: 'TC&OLT 10/24/2022 11:12:49'!
+initializeFor: aValue
+
+	value := aValue.!
+!DepositFromTransfer methodsFor: 'initialization' stamp: 'TC&OLT 10/24/2022 11:12:53'!
+initializeWith: aValue for: aTransfer
+
+	value := aValue.
+	transferRoot := aTransfer.! !
+
+!methodRemoval: DepositFromTransfer #initializeFor: stamp: 'TC&OLT 10/24/2022 11:12:57'!
+initializeFor: aValue
+
+	value := aValue.!
+
+!testRun: #TransferTest #test1SingleTransferReflectsOnAccountBalance stamp: 'TC&OLT 10/24/2022 11:13:09'!
+ERROR!
+
+!testRun: #TransferTest #test2MultipleTransfersReflectOnAccountBalance stamp: 'TC&OLT 10/24/2022 11:13:09'!
+ERROR!
+
+!testRun: #TransferTest #test3TransferLegsAreRegisteredOnAccount stamp: 'TC&OLT 10/24/2022 11:13:09'!
+ERROR!
+
+!testRun: #TransferTest #test4TransferLegsCanNavigateBackToTransfer stamp: 'TC&OLT 10/24/2022 11:13:09'!
+ERROR!
+
+!testRun: #TransferTest #test4TransferLegsCanNavigateBackToTransfer stamp: 'TC&OLT 10/24/2022 11:13:20'!
+ERROR!
+
+!testRun: #TransferTest #test4TransferLegsCanNavigateBackToTransfer stamp: 'TC&OLT 10/24/2022 11:13:20'!
+ERROR!
+
+!testRun: #TransferTest #test4TransferLegsCanNavigateBackToTransfer stamp: 'TC&OLT 10/24/2022 11:13:28'!
+ERROR!
+
+!testRun: #TransferTest #test4TransferLegsCanNavigateBackToTransfer stamp: 'TC&OLT 10/24/2022 11:13:28'!
+ERROR!
+
+!testRun: #TransferTest #test4TransferLegsCanNavigateBackToTransfer stamp: 'TC&OLT 10/24/2022 11:14:56'!
+ERROR!
+!WithdrawFromTransfer class methodsFor: 'instance creation' stamp: 'TC&OLT 10/24/2022 11:16:40'!
+with: aValue for: aTransfer.
+
+	^ self new initializeWith: aValue for: aTransfer.! !
+
+!testRun: #TransferTest #test4TransferLegsCanNavigateBackToTransfer stamp: 'TC&OLT 10/24/2022 11:16:47'!
+PASSED!
+
+!testRun: #TransferTest #test1SingleTransferReflectsOnAccountBalance stamp: 'TC&OLT 10/24/2022 11:18:26'!
+ERROR!
+
+!testRun: #TransferTest #test1SingleTransferReflectsOnAccountBalance stamp: 'TC&OLT 10/24/2022 11:18:26'!
+ERROR!
+!DepositFromTransfer methodsFor: 'nil' stamp: 'TC&OLT 10/24/2022 11:18:52'!
+affectBalance: aBalance
+
+	^aBalance + value.! !
+!WithdrawFromTransfer methodsFor: 'nil' stamp: 'TC&OLT 10/24/2022 11:19:04'!
+affectBalance: aBalance
+
+	^aBalance - value.! !
+
+!testRun: #TransferTest #test1SingleTransferReflectsOnAccountBalance stamp: 'TC&OLT 10/24/2022 11:19:19'!
+PASSED!
+
+!testRun: #TransferTest #test2MultipleTransfersReflectOnAccountBalance stamp: 'TC&OLT 10/24/2022 11:19:23'!
+PASSED!
+
+!testRun: #TransferTest #test3TransferLegsAreRegisteredOnAccount stamp: 'TC&OLT 10/24/2022 11:19:28'!
+PASSED!
+!TransferTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 11:27:44' prior: 50557511!
+test4TransferLegsCanNavigateBackToTransfer
+	
+	| sourceAccount destinationAccount transfer |
+	
+	sourceAccount := ReceptiveAccount new.
+	
+	destinationAccount := ReceptiveAccount new.
+	
+	transfer := Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+	self assert: (transfer withdrawLeg transferRoot) equals: transfer.
+	self assert: (transfer depositLeg transferRoot) equals: transfer.
+	
+	"Podríamos chequear con un test5 que el valor no sea redundante (algo como que los objetos a los que refieren los colaboradores internos de un transfer y sus patas sean distintos), pero no sería un test funcional y entendemos que no es la idea del ejercicio."! !
+
+Object subclass: #Transfer
+	instanceVariableNames: 'value withdrawLeg depositLeg'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Transfer category: 'Portfolio-Solucion' stamp: 'TC&OLT 10/24/2022 11:29:00'!
+Object subclass: #Transfer
+	instanceVariableNames: 'value withdrawLeg depositLeg'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!Transfer methodsFor: 'initialization' stamp: 'TC&OLT 10/24/2022 11:29:31' prior: 50557679!
+initializeWith: anAmountToTransfer from: aSourceAccount to: aDestinationAccount
+	
+	value := anAmountToTransfer.
+	withdrawLeg := WithdrawFromTransfer register: anAmountToTransfer on: aSourceAccount for: self.
+	depositLeg := DepositFromTransfer register: anAmountToTransfer on: aDestinationAccount for: self.! !
+!AccountTransactionFromTransfer class methodsFor: 'instance creation' stamp: 'TC&OLT 10/24/2022 11:29:45' prior: 50557692!
+register: aValue on: anAccount for: aTransfer
+
+	| transaction |
+	
+	transaction := self for: aTransfer.
+	anAccount register: transaction.
+	
+	^ transaction! !
+!DepositFromTransfer class methodsFor: 'instance creation' stamp: 'TC&OLT 10/24/2022 11:30:12'!
+for: aTransfer.
+
+	^ self new initializeFor: aTransfer.! !
+!WithdrawFromTransfer class methodsFor: 'instance creation' stamp: 'TC&OLT 10/24/2022 11:30:21' prior: 50557560!
+for: aTransfer.
+
+	^ self new initializeFor: aTransfer.! !
+!WithdrawFromTransfer methodsFor: 'initialization' stamp: 'TC&OLT 10/24/2022 11:30:32'!
+initializeFor: aTransfer
+
+	transferRoot := aTransfer.! !
+!DepositFromTransfer methodsFor: 'initialization' stamp: 'TC&OLT 10/24/2022 11:30:37'!
+initializeFor: aTransfer
+
+	transferRoot := aTransfer.! !
+
+AccountTransactionFromTransfer subclass: #DepositFromTransfer
+	instanceVariableNames: 'transferRoot'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #DepositFromTransfer category: 'Portfolio-Solucion' stamp: 'TC&OLT 10/24/2022 11:30:50'!
+AccountTransactionFromTransfer subclass: #DepositFromTransfer
+	instanceVariableNames: 'transferRoot'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+AccountTransactionFromTransfer subclass: #WithdrawFromTransfer
+	instanceVariableNames: 'transferRoot'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #WithdrawFromTransfer category: 'Portfolio-Solucion' stamp: 'TC&OLT 10/24/2022 11:30:54'!
+AccountTransactionFromTransfer subclass: #WithdrawFromTransfer
+	instanceVariableNames: 'transferRoot'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!DepositFromTransfer methodsFor: 'balance' stamp: 'TC&OLT 10/24/2022 11:31:13' prior: 50557846!
+affectBalance: aBalance
+
+	^aBalance + transferRoot value.! !
+!WithdrawFromTransfer methodsFor: 'balance' stamp: 'TC&OLT 10/24/2022 11:31:22' prior: 50557850!
+affectBalance: aBalance
+
+	^aBalance + transferRoot value.! !
+!WithdrawFromTransfer methodsFor: 'balance' stamp: 'TC&OLT 10/24/2022 11:31:24' prior: 50557980!
+affectBalance: aBalance
+
+	^aBalance - transferRoot value.! !
+!Transfer methodsFor: 'nil' stamp: 'TC&OLT 10/24/2022 11:31:33' overrides: 16902254!
+value
+	
+	^value.! !
+
+!methodRemoval: DepositFromTransfer #initializeWith:for: stamp: 'TC&OLT 10/24/2022 11:34:18'!
+initializeWith: aValue for: aTransfer
+
+	value := aValue.
+	transferRoot := aTransfer.!
+
+!methodRemoval: WithdrawFromTransfer #initializeWith:for: stamp: 'TC&OLT 10/24/2022 11:34:23'!
+initializeWith: aValue for: aTransfer
+
+	value := aValue.
+	transferRoot := aTransfer.!
+
+!methodRemoval: WithdrawFromTransfer class #with:for: stamp: 'TC&OLT 10/24/2022 11:34:34'!
+with: aValue for: aTransfer.
+
+	^ self new initializeWith: aValue for: aTransfer.!
+
+!methodRemoval: DepositFromTransfer class #with:for: stamp: 'TC&OLT 10/24/2022 11:34:49'!
+with: aValue for: aTransfer.
+
+	^ self new initializeWith: aValue for: aTransfer.!
+!AccountTransactionFromTransfer class methodsFor: 'instance creation' stamp: 'TC&OLT 10/24/2022 11:36:16'!
+on: anAccount for: aTransfer
+
+	| transaction |
+	
+	transaction := self for: aTransfer.
+	anAccount register: transaction.
+	
+	^ transaction! !
+!Transfer methodsFor: 'initialization' stamp: 'TC&OLT 10/24/2022 11:36:32' prior: 50557902!
+initializeWith: anAmountToTransfer from: aSourceAccount to: aDestinationAccount
+	
+	value := anAmountToTransfer.
+	withdrawLeg := WithdrawFromTransfer on: aSourceAccount for: self.
+	depositLeg := DepositFromTransfer on: aDestinationAccount for: self.! !
+
+!methodRemoval: AccountTransactionFromTransfer class #register:on:for: stamp: 'TC&OLT 10/24/2022 11:36:51'!
+register: aValue on: anAccount for: aTransfer
+
+	| transaction |
+	
+	transaction := self for: aTransfer.
+	anAccount register: transaction.
+	
+	^ transaction!
+
+!testRun: #TransferTest #test1SingleTransferReflectsOnAccountBalance stamp: 'TC&OLT 10/24/2022 11:36:54'!
+PASSED!
+
+!testRun: #TransferTest #test2MultipleTransfersReflectOnAccountBalance stamp: 'TC&OLT 10/24/2022 11:36:54'!
+PASSED!
+
+!testRun: #TransferTest #test3TransferLegsAreRegisteredOnAccount stamp: 'TC&OLT 10/24/2022 11:36:54'!
+PASSED!
+
+!testRun: #TransferTest #test4TransferLegsCanNavigateBackToTransfer stamp: 'TC&OLT 10/24/2022 11:36:54'!
+PASSED!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 11:39:37'!
+test08fdsfds
+	
+	| account |
+	
+	account := ReceptiveAccount new.
+	
+	self assert: account accountSummary equals: (OrderedCollection with: 'Balance = 0').! !
+
+!methodRemoval: ReceptiveAccountTest #test08 stamp: 'TC&OLT 10/24/2022 11:39:37'!
+test08
+	
+	| account |
+	
+	account := ReceptiveAccount new.
+	
+	self assert: account accountSummary equals: (OrderedCollection with: 'Balance = 0').!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 11:39:52'!
+test08EmptyAccountSummaryIsBalance
+	
+	| account |
+	
+	account := ReceptiveAccount new.
+	
+	self assert: account accountSummary equals: (OrderedCollection with: 'Balance = 0').! !
+
+!methodRemoval: ReceptiveAccountTest #test08fdsfds stamp: 'TC&OLT 10/24/2022 11:39:52'!
+test08fdsfds
+	
+	| account |
+	
+	account := ReceptiveAccount new.
+	
+	self assert: account accountSummary equals: (OrderedCollection with: 'Balance = 0').!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 11:40:27'!
+test09AccountWIthSingleDepositSummaryIsDepositWithBalance
+	
+	| account |
+	
+	account := ReceptiveAccount new.
+	
+	Deposit register: 100 on: account.
+	
+	self assert: account accountSummary equals: (OrderedCollection with: 'Depósito por 100.' with: 'Balance = 100').! !
+
+!methodRemoval: ReceptiveAccountTest #test09 stamp: 'TC&OLT 10/24/2022 11:40:27'!
+test09
+	
+	| account |
+	
+	account := ReceptiveAccount new.
+	
+	Deposit register: 100 on: account.
+	
+	self assert: account accountSummary equals: (OrderedCollection with: 'Depósito por 100.' with: 'Balance = 100').!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 11:41:50'!
+test09AccountWithSingleDepositSummaryIsDepositWithBalance
+	
+	| account |
+	
+	account := ReceptiveAccount new.
+	
+	Deposit register: 100 on: account.
+	
+	self assert: account accountSummary equals: (OrderedCollection with: 'Depósito por 100.' with: 'Balance = 100').! !
+
+!methodRemoval: ReceptiveAccountTest #test09AccountWIthSingleDepositSummaryIsDepositWithBalance stamp: 'TC&OLT 10/24/2022 11:41:50'!
+test09AccountWIthSingleDepositSummaryIsDepositWithBalance
+	
+	| account |
+	
+	account := ReceptiveAccount new.
+	
+	Deposit register: 100 on: account.
+	
+	self assert: account accountSummary equals: (OrderedCollection with: 'Depósito por 100.' with: 'Balance = 100').!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 11:42:37'!
+test10AccountWithDepositandWithdrawSummaryIsDepositAndWithdraeWithBalance
+	
+	| account |
+	
+	account := ReceptiveAccount new.
+	
+	Deposit register: 100 on: account.
+	Withdraw register: 100 on: account.
+	
+	self assert: account accountSummary equals: (OrderedCollection with: 'Depósito por 100.' with: 'Extracción por 100.' with: 'Balance = 0').! !
+
+!methodRemoval: ReceptiveAccountTest #test10 stamp: 'TC&OLT 10/24/2022 11:42:37'!
+test10
+	
+	| account |
+	
+	account := ReceptiveAccount new.
+	
+	Deposit register: 100 on: account.
+	Withdraw register: 100 on: account.
+	
+	self assert: account accountSummary equals: (OrderedCollection with: 'Depósito por 100.' with: 'Extracción por 100.' with: 'Balance = 0').!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 11:42:46'!
+test10AccountWithDepositandWithdrawSummaryIsDepositAndWithdrawWithBalance
+	
+	| account |
+	
+	account := ReceptiveAccount new.
+	
+	Deposit register: 100 on: account.
+	Withdraw register: 100 on: account.
+	
+	self assert: account accountSummary equals: (OrderedCollection with: 'Depósito por 100.' with: 'Extracción por 100.' with: 'Balance = 0').! !
+
+!methodRemoval: ReceptiveAccountTest #test10AccountWithDepositandWithdrawSummaryIsDepositAndWithdraeWithBalance stamp: 'TC&OLT 10/24/2022 11:42:46'!
+test10AccountWithDepositandWithdrawSummaryIsDepositAndWithdraeWithBalance
+	
+	| account |
+	
+	account := ReceptiveAccount new.
+	
+	Deposit register: 100 on: account.
+	Withdraw register: 100 on: account.
+	
+	self assert: account accountSummary equals: (OrderedCollection with: 'Depósito por 100.' with: 'Extracción por 100.' with: 'Balance = 0').!
+
+----SNAPSHOT----(24 October 2022 11:43:03) CuisUniversity-5481.image priorSource: 7215009!
+
+----STARTUP---- (24 October 2022 11:47:59) as /media/elage3/7e7b8103-5bbe-454e-bc02-f2be1a6d15c7/home/elage/Desktop/Ciencias_de_la_Computacion/ISW1/Ejercicios/2022-2c-main/07-Portfolio2/linux64/CuisUniversity-5481.image!
+
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 11:55:50'!
+test11AccountsWithTransferSummaryHasTransfers
+	
+	| sourceAccount destinationAccount|
+	
+	sourceAccount := ReceptiveAccount new.
+	destinationAccount := ReceptiveAccount new.
+		
+	Deposit register: 100 on: sourceAccount.
+	Withdraw register: 50 on: sourceAccount.
+	
+	
+	
+	self assert: sourceAccount accountSummary equals: (OrderedCollection with: 'Depósito por 100.' with: 'Extracción por 100.' with: 'Balance = 0').! !
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 12:00:51' prior: 50558198!
+test11AccountsWithTransferSummaryHasTransfers
+	
+	| sourceAccount destinationAccount|
+	
+	sourceAccount := ReceptiveAccount new.
+	destinationAccount := ReceptiveAccount new.
+		
+	Deposit register: 100 on: sourceAccount.
+	Withdraw register: 50 on: sourceAccount.
+	
+	Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+	self assert: sourceAccount accountSummary equals: (OrderedCollection with: 'Depósito por 100.' with: 'Extracción por 50.' with: 'Salida por transferencia de 100.' with: 'Balance = -50').
+	self assert: destinationAccount accountSummary equals: (OrderedCollection with: 'Entrada por transferencia de 100.' with: 'Balance = 100').! !
+
+!testRun: #ReceptiveAccountTest #test11AccountsWithTransferSummaryHasTransfers stamp: 'TC&OLT 10/24/2022 12:01:03'!
+FAILURE!
+!ReceptiveAccount methodsFor: 'summary' stamp: 'TC&OLT 10/24/2022 12:04:29' prior: 50556426!
+accountSummary
+	
+	| summary |
+	
+	summary := OrderedCollection new.
+	
+	transactions do: [
+		:aTransaction |
+		(aTransaction isKindOf: Deposit) ifTrue: [
+			summary add: 'Depósito por ' , (aTransaction value asString) , '.'.
+		].
+		(aTransaction isKindOf: Withdraw) ifTrue: [
+			summary add: 'Extracción por ' , (aTransaction value asString) , '.'.
+		].
+		(aTransaction isKindOf: WithdrawFromTransfer) ifTrue: [
+			summary add: 'Salida por transferencia de ' , (aTransaction value asString) , '.'.
+		].
+		(aTransaction isKindOf: DepositFromTransfer) ifTrue: [
+			summary add: 'Entrada por transferencia de ' , (aTransaction value asString) , '.'.
+		].
+	].
+	
+	summary add: 'Balance = ', self balance asString.
+	
+	^summary.! !
+!AccountTransactionFromTransfer methodsFor: 'nil' stamp: 'TC&OLT 10/24/2022 12:05:01' overrides: 16902254!
+value 
+
+	self subclassResponsibility ! !
+!AccountTransactionFromTransfer methodsFor: 'nil' stamp: 'TC&OLT 10/24/2022 12:05:16'!
+affectBalance: aBalance
+
+	self subclassResponsibility ! !
+!DepositFromTransfer methodsFor: 'nil' stamp: 'TC&OLT 10/24/2022 12:06:48' overrides: 50558268!
+value
+
+	^transferRoot value! !
+!DepositFromTransfer methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/24/2022 12:06:55' prior: 50558277 overrides: 50558268!
+value
+
+	^transferRoot value.! !
+!WithdrawFromTransfer methodsFor: 'nil' stamp: 'TC&OLT 10/24/2022 12:07:01' overrides: 50558268!
+value
+
+	^transferRoot value.! !
+
+----SNAPSHOT----(24 October 2022 12:07:50) CuisUniversity-5481.image priorSource: 7249189!
+
+----SNAPSHOT----(24 October 2022 12:08:32) CuisUniversity-5481.image priorSource: 7252479!
+
+!testRun: #ReceptiveAccountTest #test11AccountsWithTransferSummaryHasTransfers stamp: 'TC&OLT 10/24/2022 12:08:41'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'TC&OLT 10/24/2022 12:08:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'TC&OLT 10/24/2022 12:08:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'TC&OLT 10/24/2022 12:08:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'TC&OLT 10/24/2022 12:08:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'TC&OLT 10/24/2022 12:08:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'TC&OLT 10/24/2022 12:08:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'TC&OLT 10/24/2022 12:08:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08EmptyAccountSummaryIsBalance stamp: 'TC&OLT 10/24/2022 12:08:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09AccountWithSingleDepositSummaryIsDepositWithBalance stamp: 'TC&OLT 10/24/2022 12:08:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test10AccountWithDepositandWithdrawSummaryIsDepositAndWithdrawWithBalance stamp: 'TC&OLT 10/24/2022 12:08:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test11AccountsWithTransferSummaryHasTransfers stamp: 'TC&OLT 10/24/2022 12:08:45'!
+PASSED!
+!ReceptiveAccount methodsFor: 'summary' stamp: 'TC&OLT 10/24/2022 12:18:59' prior: 50558242!
+accountSummary
+	
+	| summary |
+	
+	summary := OrderedCollection new.
+	
+	transactions do: [
+		:aTransaction |
+		summary add: aTransaction summaryLine.
+		"
+		(aTransaction isKindOf: Deposit) ifTrue: [
+			summary add: 'Depósito por ' , (aTransaction value asString) , '.'.
+		].
+		(aTransaction isKindOf: Withdraw) ifTrue: [
+			summary add: 'Extracción por ' , (aTransaction value asString) , '.'.
+		].
+		(aTransaction isKindOf: WithdrawFromTransfer) ifTrue: [
+			summary add: 'Salida por transferencia de ' , (aTransaction value asString) , '.'.
+		].
+		(aTransaction isKindOf: DepositFromTransfer) ifTrue: [
+			summary add: 'Entrada por transferencia de ' , (aTransaction value asString) , '.'.
+		].
+		"
+	].
+	
+	summary add: 'Balance = ', self balance asString.
+	
+	^summary.! !
+!Deposit methodsFor: 'nil' stamp: 'TC&OLT 10/24/2022 12:19:53'!
+summaryLine
+
+	^'Depósito por ' , (self value asString) , '.'.! !
+!Withdraw methodsFor: 'nil' stamp: 'TC&OLT 10/24/2022 12:20:36'!
+summaryLine
+
+	'Extracción por ' , (self value asString) , '.'.! !
+!WithdrawFromTransfer methodsFor: 'nil' stamp: 'TC&OLT 10/24/2022 12:21:20'!
+summaryLine
+
+	'Salida por transferencia de ' , (self value asString) , '.'.! !
+!DepositFromTransfer methodsFor: 'nil' stamp: 'TC&OLT 10/24/2022 12:21:54'!
+summaryLine
+
+	'Entrada por transferencia de ' , (self value asString) , '.'.! !
+!ReceptiveAccount methodsFor: 'summary' stamp: 'TC&OLT 10/24/2022 12:24:25' prior: 50558345!
+accountSummary
+	
+	| summary |
+	
+	summary := OrderedCollection new.
+	
+	transactions do: [
+		:aTransaction |
+		summary add: aTransaction summaryLine.
+	].
+	
+	summary add: 'Balance = ', self balance asString.
+	
+	^summary.! !
+
+!testRun: #ReceptiveAccountTest #test11AccountsWithTransferSummaryHasTransfers stamp: 'TC&OLT 10/24/2022 12:25:11'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test11AccountsWithTransferSummaryHasTransfers stamp: 'TC&OLT 10/24/2022 12:25:11'!
+FAILURE!
+!DepositFromTransfer methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/24/2022 12:27:04' prior: 50558387!
+summaryLine
+
+	^'Entrada por transferencia de ' , (self value asString) , '.'.! !
+!WithdrawFromTransfer methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/24/2022 12:27:12' prior: 50558382!
+summaryLine
+
+	^'Salida por transferencia de ' , (self value asString) , '.'.! !
+!Withdraw methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/24/2022 12:27:19' prior: 50558377!
+summaryLine
+
+	^'Extracción por ' , (self value asString) , '.'.! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'TC&OLT 10/24/2022 12:27:32'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'TC&OLT 10/24/2022 12:27:32'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'TC&OLT 10/24/2022 12:27:32'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'TC&OLT 10/24/2022 12:27:32'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'TC&OLT 10/24/2022 12:27:32'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'TC&OLT 10/24/2022 12:27:32'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'TC&OLT 10/24/2022 12:27:32'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08EmptyAccountSummaryIsBalance stamp: 'TC&OLT 10/24/2022 12:27:32'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09AccountWithSingleDepositSummaryIsDepositWithBalance stamp: 'TC&OLT 10/24/2022 12:27:32'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test10AccountWithDepositandWithdrawSummaryIsDepositAndWithdrawWithBalance stamp: 'TC&OLT 10/24/2022 12:27:32'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test11AccountsWithTransferSummaryHasTransfers stamp: 'TC&OLT 10/24/2022 12:27:32'!
+PASSED!
+
+----SNAPSHOT----(24 October 2022 12:30:19) CuisUniversity-5481.image priorSource: 7252571!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 12:36:13'!
+test12AccountsWithZeroTransfersReflectsOnTranferNet
+	
+	| account |
+	
+	account := ReceptiveAccount new.
+	
+		
+	Deposit register: 100 on: account.
+	Withdraw register: 50 on: account.
+	
+		
+	self assert: account transferNet equals: 0.! !
+
+!testRun: #ReceptiveAccountTest #test12AccountsWithZeroTransfersReflectsOnTranferNet stamp: 'TC&OLT 10/24/2022 13:03:54'!
+ERROR!
+
+!testRun: #ReceptiveAccountTest #test12AccountsWithZeroTransfersReflectsOnTranferNet stamp: 'TC&OLT 10/24/2022 13:03:54'!
+ERROR!
+!ReceptiveAccount methodsFor: 'category-name' stamp: 'TC&OLT 10/24/2022 13:04:15'!
+transferNet
+	self shouldBeImplemented.! !
+
+----SNAPSHOT----(24 October 2022 13:07:30) CuisUniversity-5481.image priorSource: 7258303!
+!ReceptiveAccount methodsFor: 'category-name' stamp: 'TC&OLT 10/24/2022 13:17:49' prior: 50558494!
+transferNet
+	^0! !
+
+!testRun: #ReceptiveAccountTest #test12AccountsWithZeroTransfersReflectsOnTranferNet stamp: 'TC&OLT 10/24/2022 13:17:51'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test12AccountsWithZeroTransfersReflectsOnTranferNet stamp: 'TC&OLT 10/24/2022 13:17:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'TC&OLT 10/24/2022 13:17:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'TC&OLT 10/24/2022 13:17:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'TC&OLT 10/24/2022 13:17:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'TC&OLT 10/24/2022 13:17:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'TC&OLT 10/24/2022 13:17:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'TC&OLT 10/24/2022 13:17:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'TC&OLT 10/24/2022 13:17:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08EmptyAccountSummaryIsBalance stamp: 'TC&OLT 10/24/2022 13:17:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09AccountWithSingleDepositSummaryIsDepositWithBalance stamp: 'TC&OLT 10/24/2022 13:17:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test10AccountWithDepositandWithdrawSummaryIsDepositAndWithdrawWithBalance stamp: 'TC&OLT 10/24/2022 13:17:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test11AccountsWithTransferSummaryHasTransfers stamp: 'TC&OLT 10/24/2022 13:17:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test12AccountsWithZeroTransfersReflectsOnTranferNet stamp: 'TC&OLT 10/24/2022 13:17:53'!
+PASSED!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 13:18:12'!
+test13AccountsWithOneTransfersReflectsOnTransferNet
+	
+	| account |
+	
+	account := ReceptiveAccount new.
+	
+		
+	Deposit register: 100 on: account.
+	Withdraw register: 50 on: account.
+	
+		
+	self assert: account transferNet equals: 0.! !
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 13:18:17'!
+test12AccountsWithZeroTransfersReflectsOnTransferNet
+	
+	| account |
+	
+	account := ReceptiveAccount new.
+	
+		
+	Deposit register: 100 on: account.
+	Withdraw register: 50 on: account.
+	
+		
+	self assert: account transferNet equals: 0.! !
+
+!methodRemoval: ReceptiveAccountTest #test12AccountsWithZeroTransfersReflectsOnTranferNet stamp: 'TC&OLT 10/24/2022 13:18:20'!
+test12AccountsWithZeroTransfersReflectsOnTranferNet
+	
+	| account |
+	
+	account := ReceptiveAccount new.
+	
+		
+	Deposit register: 100 on: account.
+	Withdraw register: 50 on: account.
+	
+		
+	self assert: account transferNet equals: 0.!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 13:20:09' prior: 50558562!
+test13AccountsWithOneTransfersReflectsOnTransferNet
+	
+	| sourceAccount destinationAccount|
+	
+	sourceAccount := ReceptiveAccount new.
+	destinationAccount := ReceptiveAccount new.
+		
+	Deposit register: 100 on: sourceAccount.
+	Withdraw register: 50 on: sourceAccount.
+	
+	Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+		
+	self assert: sourceAccount transferNet equals: -100.! !
+!Transfer methodsFor: 'initialization' stamp: 'TC&OLT 10/24/2022 13:24:58' prior: 50558025!
+initializeWith: anAmountToTransfer from: aSourceAccount to: aDestinationAccount
+	
+	value := anAmountToTransfer.
+	withdrawLeg := WithdrawFromTransfer on: aSourceAccount for: self.
+	depositLeg := DepositFromTransfer on: aDestinationAccount for: self.
+	
+	aSourceAccount register: self.
+	aDestinationAccount register: self.! !
+!Transfer methodsFor: 'initialization' stamp: 'TC&OLT 10/24/2022 13:38:46' prior: 50558610!
+initializeWith: anAmountToTransfer from: aSourceAccount to: aDestinationAccount
+	
+	value := anAmountToTransfer.
+	withdrawLeg := WithdrawFromTransfer on: aSourceAccount for: self.
+	depositLeg := DepositFromTransfer on: aDestinationAccount for: self.! !
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 13:39:50'!
+test12AccountsWithZeroTransfersHaveTransferNetZero
+	
+	| account |
+	
+	account := ReceptiveAccount new.
+	
+		
+	Deposit register: 100 on: account.
+	Withdraw register: 50 on: account.
+	
+		
+	self assert: account transferNet equals: 0.! !
+
+!methodRemoval: ReceptiveAccountTest #test12AccountsWithZeroTransfersReflectsOnTransferNet stamp: 'TC&OLT 10/24/2022 13:39:53'!
+test12AccountsWithZeroTransfersReflectsOnTransferNet
+	
+	| account |
+	
+	account := ReceptiveAccount new.
+	
+		
+	Deposit register: 100 on: account.
+	Withdraw register: 50 on: account.
+	
+		
+	self assert: account transferNet equals: 0.!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 13:43:03' prior: 50558594!
+test13AccountsWithOneTransfersReflectsOnTransferNet
+	
+	| sourceAccount destinationAccount|
+	
+	sourceAccount := ReceptiveAccount new.
+	destinationAccount := ReceptiveAccount new.
+		
+	Deposit register: 100 on: sourceAccount.
+	Withdraw register: 50 on: sourceAccount.
+	
+	Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+		
+	self assert: sourceAccount transferNet equals: -100.
+	self assert: destinationAccount transferNet equals: -100.! !
+
+!testRun: #ReceptiveAccountTest #test12AccountsWithZeroTransfersHaveTransferNetZero stamp: 'TC&OLT 10/24/2022 13:43:21'!
+PASSED!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 13:43:36' prior: 50558656!
+test13AccountsWithOneTransfersReflectsOnTransferNet
+	
+	| sourceAccount destinationAccount|
+	
+	sourceAccount := ReceptiveAccount new.
+	destinationAccount := ReceptiveAccount new.
+		
+	Deposit register: 100 on: sourceAccount.
+	Withdraw register: 50 on: sourceAccount.
+	
+	Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+		
+	self assert: sourceAccount transferNet equals: -100.
+	self assert: destinationAccount transferNet equals: 100.! !
+
+!testRun: #ReceptiveAccountTest #test13AccountsWithOneTransfersReflectsOnTransferNet stamp: 'TC&OLT 10/24/2022 13:44:12'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test13AccountsWithOneTransfersReflectsOnTransferNet stamp: 'TC&OLT 10/24/2022 13:44:12'!
+FAILURE!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 13:45:42' prior: 50558678!
+test13AccountsWithOneTransfersReflectsOnTransferNet
+	
+	| sourceAccount destinationAccount|
+	
+	sourceAccount := ReceptiveAccount new.
+	destinationAccount := ReceptiveAccount new.
+	
+	
+	Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+		
+	self assert: sourceAccount transferNet equals: -100.
+	self assert: destinationAccount transferNet equals: 100.! !
+!ReceptiveAccount methodsFor: 'category-name' stamp: 'TC&OLT 10/24/2022 13:47:28' prior: 50558502!
+transferNet
+	
+	
+	^(transactions first) affectBalance: 0.! !
+
+!testRun: #ReceptiveAccountTest #test13AccountsWithOneTransfersReflectsOnTransferNet stamp: 'TC&OLT 10/24/2022 13:47:32'!
+PASSED!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 13:47:53'!
+test14AccountsWithManyTransfersReflectsOnTransferNet
+	
+	| sourceAccount destinationAccount|
+	
+	sourceAccount := ReceptiveAccount new.
+	destinationAccount := ReceptiveAccount new.
+	
+	
+	Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+		
+	self assert: sourceAccount transferNet equals: -100.
+	self assert: destinationAccount transferNet equals: 100.! !
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 13:49:21' prior: 50558728!
+test14AccountsWithManyTransfersReflectsOnTransferNet
+	
+	| sourceAccount destinationAccount|
+	
+	sourceAccount := ReceptiveAccount new.
+	destinationAccount := ReceptiveAccount new.
+	
+	Deposit register: 100 on: sourceAccount.
+	Withdraw register: 50 on: sourceAccount.
+	
+	Transfer register: 100 from: sourceAccount to: destinationAccount.
+	Transfer register: 25 from: sourceAccount to: destinationAccount.
+		
+	self assert: sourceAccount transferNet equals: -125.
+	self assert: destinationAccount transferNet equals: 125.! !
+
+!testRun: #ReceptiveAccountTest #test14AccountsWithManyTransfersReflectsOnTransferNet stamp: 'TC&OLT 10/24/2022 13:49:30'!
+FAILURE!
+
+!methodRemoval: ReceptiveAccountTest #test14AccountsWithManyTransfersReflectsOnTransferNet stamp: 'TC&OLT 10/24/2022 13:51:46'!
+test14AccountsWithManyTransfersReflectsOnTransferNet
+	
+	| sourceAccount destinationAccount|
+	
+	sourceAccount := ReceptiveAccount new.
+	destinationAccount := ReceptiveAccount new.
+	
+	Deposit register: 100 on: sourceAccount.
+	Withdraw register: 50 on: sourceAccount.
+	
+	Transfer register: 100 from: sourceAccount to: destinationAccount.
+	Transfer register: 25 from: sourceAccount to: destinationAccount.
+		
+	self assert: sourceAccount transferNet equals: -125.
+	self assert: destinationAccount transferNet equals: 125.!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 13:52:22' prior: 50558704!
+test13AccountsWithOneTransfersReflectsOnTransferNet
+	
+	| sourceAccount destinationAccount|
+	
+	sourceAccount := ReceptiveAccount new.
+	destinationAccount := ReceptiveAccount new.
+	
+			
+	Deposit register: 100 on: sourceAccount.
+	Withdraw register: 50 on: sourceAccount.
+	
+	Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+		
+	self assert: sourceAccount transferNet equals: -100.
+	self assert: destinationAccount transferNet equals: 100.! !
+
+!testRun: #ReceptiveAccountTest #test13AccountsWithOneTransfersReflectsOnTransferNet stamp: 'TC&OLT 10/24/2022 13:52:23'!
+FAILURE!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 13:56:53' prior: 50558634!
+test12AccountsWithZeroTransfersHaveTransferNetZero
+	
+	| account |
+	
+	account := ReceptiveAccount new.
+	
+	
+		
+	self assert: account transferNet equals: 0.! !
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 13:57:12' prior: 50558787!
+test13AccountsWithOneTransfersReflectsOnTransferNet
+	
+	| sourceAccount destinationAccount|
+	
+	sourceAccount := ReceptiveAccount new.
+	destinationAccount := ReceptiveAccount new.
+	
+	Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+		
+	self assert: sourceAccount transferNet equals: -100.
+	self assert: destinationAccount transferNet equals: 100.! !
+!ReceptiveAccount methodsFor: 'category-name' stamp: 'TC&OLT 10/24/2022 13:58:47' prior: 50558719!
+transferNet
+	
+	
+	^0.! !
+
+!testRun: #ReceptiveAccountTest #test12AccountsWithZeroTransfersHaveTransferNetZero stamp: 'TC&OLT 10/24/2022 13:58:55'!
+PASSED!
+
+!methodRemoval: ReceptiveAccount #transferNet stamp: 'TC&OLT 10/24/2022 13:59:09'!
+transferNet
+	
+	
+	^0.!
+
+!testRun: #ReceptiveAccountTest #test12AccountsWithZeroTransfersHaveTransferNetZero stamp: 'TC&OLT 10/24/2022 13:59:14'!
+ERROR!
+
+!testRun: #ReceptiveAccountTest #test12AccountsWithZeroTransfersHaveTransferNetZero stamp: 'TC&OLT 10/24/2022 13:59:14'!
+ERROR!
+!ReceptiveAccount methodsFor: 'category-name' stamp: 'TC&OLT 10/24/2022 13:59:20'!
+transferNet
+	self shouldBeImplemented.! !
+!ReceptiveAccount methodsFor: 'category-name' stamp: 'TC&OLT 10/24/2022 13:59:28' prior: 50558851!
+transferNet
+	^0.! !
+
+!testRun: #ReceptiveAccountTest #test12AccountsWithZeroTransfersHaveTransferNetZero stamp: 'TC&OLT 10/24/2022 13:59:29'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test12AccountsWithZeroTransfersHaveTransferNetZero stamp: 'TC&OLT 10/24/2022 13:59:31'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'TC&OLT 10/24/2022 13:59:31'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'TC&OLT 10/24/2022 13:59:31'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'TC&OLT 10/24/2022 13:59:31'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'TC&OLT 10/24/2022 13:59:31'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'TC&OLT 10/24/2022 13:59:31'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'TC&OLT 10/24/2022 13:59:31'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'TC&OLT 10/24/2022 13:59:31'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08EmptyAccountSummaryIsBalance stamp: 'TC&OLT 10/24/2022 13:59:31'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09AccountWithSingleDepositSummaryIsDepositWithBalance stamp: 'TC&OLT 10/24/2022 13:59:31'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test10AccountWithDepositandWithdrawSummaryIsDepositAndWithdrawWithBalance stamp: 'TC&OLT 10/24/2022 13:59:31'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test11AccountsWithTransferSummaryHasTransfers stamp: 'TC&OLT 10/24/2022 13:59:31'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test12AccountsWithZeroTransfersHaveTransferNetZero stamp: 'TC&OLT 10/24/2022 13:59:31'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test13AccountsWithOneTransfersReflectsOnTransferNet stamp: 'TC&OLT 10/24/2022 13:59:31'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test13AccountsWithOneTransfersReflectsOnTransferNet stamp: 'TC&OLT 10/24/2022 13:59:31'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test12AccountsWithZeroTransfersHaveTransferNetZero stamp: 'TC&OLT 10/24/2022 13:59:37'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test13AccountsWithOneTransfersReflectsOnTransferNet stamp: 'TC&OLT 10/24/2022 14:00:08'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test13AccountsWithOneTransfersReflectsOnTransferNet stamp: 'TC&OLT 10/24/2022 14:00:08'!
+FAILURE!
+!ReceptiveAccount methodsFor: 'category-name' stamp: 'TC&OLT 10/24/2022 14:04:49' prior: 50558856!
+transferNet
+	
+	^ (transactions first) effectOnBalance: 0.! !
+!ReceptiveAccount methodsFor: 'category-name' stamp: 'TC&OLT 10/24/2022 14:05:05' prior: 50558937!
+transferNet
+	
+	^ (transactions first) affectBalance: 0.! !
+
+!testRun: #ReceptiveAccountTest #test13AccountsWithOneTransfersReflectsOnTransferNet stamp: 'TC&OLT 10/24/2022 14:05:19'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'TC&OLT 10/24/2022 14:05:23'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'TC&OLT 10/24/2022 14:05:23'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'TC&OLT 10/24/2022 14:05:23'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'TC&OLT 10/24/2022 14:05:23'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'TC&OLT 10/24/2022 14:05:23'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'TC&OLT 10/24/2022 14:05:23'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'TC&OLT 10/24/2022 14:05:23'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08EmptyAccountSummaryIsBalance stamp: 'TC&OLT 10/24/2022 14:05:23'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09AccountWithSingleDepositSummaryIsDepositWithBalance stamp: 'TC&OLT 10/24/2022 14:05:23'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test10AccountWithDepositandWithdrawSummaryIsDepositAndWithdrawWithBalance stamp: 'TC&OLT 10/24/2022 14:05:23'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test11AccountsWithTransferSummaryHasTransfers stamp: 'TC&OLT 10/24/2022 14:05:23'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test12AccountsWithZeroTransfersHaveTransferNetZero stamp: 'TC&OLT 10/24/2022 14:05:23'!
+ERROR!
+
+!testRun: #ReceptiveAccountTest #test13AccountsWithOneTransfersReflectsOnTransferNet stamp: 'TC&OLT 10/24/2022 14:05:23'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test12AccountsWithZeroTransfersHaveTransferNetZero stamp: 'TC&OLT 10/24/2022 14:05:23'!
+ERROR!
+!ReceptiveAccount methodsFor: 'category-name' stamp: 'TC&OLT 10/24/2022 14:06:42' prior: 50558942!
+transferNet
+	
+	| transferNet |
+	
+	transferNet:= 0.
+	(transactions first) affectBalance: transferNet.
+	^transferNet.! !
+!ReceptiveAccount methodsFor: 'category-name' stamp: 'TC&OLT 10/24/2022 14:07:30' prior: 50559008!
+transferNet
+	
+	| transferNet |
+	
+
+	transferNet:= (transactions first) affectBalance: 0.
+	^transferNet.! !
+
+!testRun: #ReceptiveAccountTest #test12AccountsWithZeroTransfersHaveTransferNetZero stamp: 'TC&OLT 10/24/2022 14:07:34'!
+ERROR!
+
+!testRun: #ReceptiveAccountTest #test12AccountsWithZeroTransfersHaveTransferNetZero stamp: 'TC&OLT 10/24/2022 14:07:34'!
+ERROR!
+!ReceptiveAccount methodsFor: 'category-name' stamp: 'TC&OLT 10/24/2022 14:09:43' prior: 50559015!
+transferNet
+	
+	| transferNet |
+	
+	transferNet:= 0.
+	(transactions size > 0) ifTrue:[
+	transferNet:= (transactions first) affectBalance: 0.
+	].
+	^transferNet.! !
+
+!testRun: #ReceptiveAccountTest #test12AccountsWithZeroTransfersHaveTransferNetZero stamp: 'TC&OLT 10/24/2022 14:09:49'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test13AccountsWithOneTransfersReflectsOnTransferNet stamp: 'TC&OLT 10/24/2022 14:09:51'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'TC&OLT 10/24/2022 14:09:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'TC&OLT 10/24/2022 14:09:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'TC&OLT 10/24/2022 14:09:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'TC&OLT 10/24/2022 14:09:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'TC&OLT 10/24/2022 14:09:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'TC&OLT 10/24/2022 14:09:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'TC&OLT 10/24/2022 14:09:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08EmptyAccountSummaryIsBalance stamp: 'TC&OLT 10/24/2022 14:09:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09AccountWithSingleDepositSummaryIsDepositWithBalance stamp: 'TC&OLT 10/24/2022 14:09:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test10AccountWithDepositandWithdrawSummaryIsDepositAndWithdrawWithBalance stamp: 'TC&OLT 10/24/2022 14:09:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test11AccountsWithTransferSummaryHasTransfers stamp: 'TC&OLT 10/24/2022 14:09:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test12AccountsWithZeroTransfersHaveTransferNetZero stamp: 'TC&OLT 10/24/2022 14:09:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test13AccountsWithOneTransfersReflectsOnTransferNet stamp: 'TC&OLT 10/24/2022 14:09:53'!
+PASSED!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 14:10:22'!
+test14AccountsWithOneTransfersReflectsOnTransferNet
+	
+	| sourceAccount destinationAccount|
+	
+	sourceAccount := ReceptiveAccount new.
+	destinationAccount := ReceptiveAccount new.
+	
+	Transfer register: 100 from: sourceAccount to: destinationAccount.
+	Transfer register: 200 from: sourceAccount to: destinationAccount.
+		
+	self assert: sourceAccount transferNet equals: -300.
+	self assert: destinationAccount transferNet equals: 300.! !
+
+!testRun: #ReceptiveAccountTest #test14AccountsWithOneTransfersReflectsOnTransferNet stamp: 'TC&OLT 10/24/2022 14:10:25'!
+FAILURE!
+!ReceptiveAccount methodsFor: 'category-name' stamp: 'TC&OLT 10/24/2022 14:12:21' prior: 50559030!
+transferNet
+	
+	| transferNet |
+	
+	transferNet:= 0.
+
+	transactions do: [: aTransaction | transferNet:= aTransaction affectBalance: transferNet.].
+	
+	^transferNet.! !
+
+!testRun: #ReceptiveAccountTest #test14AccountsWithOneTransfersReflectsOnTransferNet stamp: 'TC&OLT 10/24/2022 14:12:35'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'TC&OLT 10/24/2022 14:12:37'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'TC&OLT 10/24/2022 14:12:37'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'TC&OLT 10/24/2022 14:12:37'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'TC&OLT 10/24/2022 14:12:37'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'TC&OLT 10/24/2022 14:12:37'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'TC&OLT 10/24/2022 14:12:37'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'TC&OLT 10/24/2022 14:12:37'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08EmptyAccountSummaryIsBalance stamp: 'TC&OLT 10/24/2022 14:12:37'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09AccountWithSingleDepositSummaryIsDepositWithBalance stamp: 'TC&OLT 10/24/2022 14:12:37'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test10AccountWithDepositandWithdrawSummaryIsDepositAndWithdrawWithBalance stamp: 'TC&OLT 10/24/2022 14:12:37'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test11AccountsWithTransferSummaryHasTransfers stamp: 'TC&OLT 10/24/2022 14:12:37'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test12AccountsWithZeroTransfersHaveTransferNetZero stamp: 'TC&OLT 10/24/2022 14:12:37'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test13AccountsWithOneTransfersReflectsOnTransferNet stamp: 'TC&OLT 10/24/2022 14:12:37'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test14AccountsWithOneTransfersReflectsOnTransferNet stamp: 'TC&OLT 10/24/2022 14:12:37'!
+PASSED!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 14:13:10'!
+test14AccountsWithMultipleTransfersReflectsOnTransferNet
+	
+	| sourceAccount destinationAccount|
+	
+	sourceAccount := ReceptiveAccount new.
+	destinationAccount := ReceptiveAccount new.
+	
+	Transfer register: 100 from: sourceAccount to: destinationAccount.
+	Transfer register: 200 from: sourceAccount to: destinationAccount.
+		
+	self assert: sourceAccount transferNet equals: -300.
+	self assert: destinationAccount transferNet equals: 300.! !
+
+!methodRemoval: ReceptiveAccountTest #test14AccountsWithOneTransfersReflectsOnTransferNet stamp: 'TC&OLT 10/24/2022 14:13:10'!
+test14AccountsWithOneTransfersReflectsOnTransferNet
+	
+	| sourceAccount destinationAccount|
+	
+	sourceAccount := ReceptiveAccount new.
+	destinationAccount := ReceptiveAccount new.
+	
+	Transfer register: 100 from: sourceAccount to: destinationAccount.
+	Transfer register: 200 from: sourceAccount to: destinationAccount.
+		
+	self assert: sourceAccount transferNet equals: -300.
+	self assert: destinationAccount transferNet equals: 300.!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 14:13:45'!
+test15AccountsWithMultipleTransactionsReflectsOnTransferNet
+	
+	| sourceAccount destinationAccount|
+	
+	sourceAccount := ReceptiveAccount new.
+	destinationAccount := ReceptiveAccount new.
+	
+	Deposit register: 100 on: sourceAccount.
+	Withdraw register: 50 on: sourceAccount.
+	
+	Transfer register: 100 from: sourceAccount to: destinationAccount.
+	Transfer register: 200 from: sourceAccount to: destinationAccount.
+		
+	self assert: sourceAccount transferNet equals: -300.
+	self assert: destinationAccount transferNet equals: 300.! !
+
+!testRun: #ReceptiveAccountTest #test15AccountsWithMultipleTransactionsReflectsOnTransferNet stamp: 'TC&OLT 10/24/2022 14:13:48'!
+FAILURE!
+!ReceptiveAccount methodsFor: 'category-name' stamp: 'TC&OLT 10/24/2022 14:15:38' prior: 50559119!
+transferNet
+	
+	| transferNet |
+	
+	transferNet:= 0.
+
+	transactions do: [: aTransaction |
+		(aTransaction isKindOf: AccountTransactionFromTransfer) ifTrue: [
+			transferNet:= aTransaction affectBalance: transferNet.
+			].
+	].
+	
+	^transferNet.! !
+
+!testRun: #ReceptiveAccountTest #test15AccountsWithMultipleTransactionsReflectsOnTransferNet stamp: 'TC&OLT 10/24/2022 14:15:56'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'TC&OLT 10/24/2022 14:15:58'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'TC&OLT 10/24/2022 14:15:58'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'TC&OLT 10/24/2022 14:15:58'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'TC&OLT 10/24/2022 14:15:58'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'TC&OLT 10/24/2022 14:15:58'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'TC&OLT 10/24/2022 14:15:58'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'TC&OLT 10/24/2022 14:15:58'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08EmptyAccountSummaryIsBalance stamp: 'TC&OLT 10/24/2022 14:15:58'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09AccountWithSingleDepositSummaryIsDepositWithBalance stamp: 'TC&OLT 10/24/2022 14:15:58'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test10AccountWithDepositandWithdrawSummaryIsDepositAndWithdrawWithBalance stamp: 'TC&OLT 10/24/2022 14:15:58'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test11AccountsWithTransferSummaryHasTransfers stamp: 'TC&OLT 10/24/2022 14:15:58'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test12AccountsWithZeroTransfersHaveTransferNetZero stamp: 'TC&OLT 10/24/2022 14:15:58'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test13AccountsWithOneTransfersReflectsOnTransferNet stamp: 'TC&OLT 10/24/2022 14:15:58'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test14AccountsWithMultipleTransfersReflectsOnTransferNet stamp: 'TC&OLT 10/24/2022 14:15:58'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test15AccountsWithMultipleTransactionsReflectsOnTransferNet stamp: 'TC&OLT 10/24/2022 14:15:58'!
+PASSED!
+!DepositFromTransfer methodsFor: 'nil' stamp: 'TC&OLT 10/24/2022 14:20:15'!
+affectTransferNet: transferNet
+
+	^ self affectTransfer: transferNet.
+
+! !
+!DepositFromTransfer methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/24/2022 14:21:51' prior: 50559320!
+affectTransferNet: aTransferNet
+
+	^aTransferNet + transferRoot value.
+
+! !
+!DepositFromTransfer methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/24/2022 14:21:58' prior: 50559326!
+affectTransferNet: aTransferNet
+
+	^aTransferNet + self value.
+
+! !
+!WithdrawFromTransfer methodsFor: 'nil' stamp: 'TC&OLT 10/24/2022 14:22:15'!
+affectTransferNet: aTransferNet
+
+	^aTransferNet + self value.! !
+!WithdrawFromTransfer methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/24/2022 14:22:19' prior: 50559337!
+affectTransferNet: aTransferNet
+
+	^aTransferNet - self value.! !
+!Withdraw methodsFor: 'nil' stamp: 'TC&OLT 10/24/2022 14:22:32'!
+affectTransferNet: aTransferNet
+
+	^aTransferNet.! !
+!Deposit methodsFor: 'nil' stamp: 'TC&OLT 10/24/2022 14:22:39'!
+affectTransferNet: aTransferNet
+
+	^aTransferNet.! !
+!ReceptiveAccount methodsFor: 'category-name' stamp: 'TC&OLT 10/24/2022 14:26:28' prior: 50559245!
+transferNet
+	
+	| transferNet |
+	
+	transferNet:= 0.
+
+	transactions do: [: aTransaction |
+		transferNet:= aTransaction affectTransferNet: transferNet.
+		].
+	
+	^transferNet.! !
+
+!testRun: #ReceptiveAccountTest #test15AccountsWithMultipleTransactionsReflectsOnTransferNet stamp: 'TC&OLT 10/24/2022 14:26:36'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'TC&OLT 10/24/2022 14:26:42'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'TC&OLT 10/24/2022 14:26:42'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'TC&OLT 10/24/2022 14:26:42'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'TC&OLT 10/24/2022 14:26:42'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'TC&OLT 10/24/2022 14:26:42'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'TC&OLT 10/24/2022 14:26:42'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'TC&OLT 10/24/2022 14:26:42'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08EmptyAccountSummaryIsBalance stamp: 'TC&OLT 10/24/2022 14:26:42'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09AccountWithSingleDepositSummaryIsDepositWithBalance stamp: 'TC&OLT 10/24/2022 14:26:42'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test10AccountWithDepositandWithdrawSummaryIsDepositAndWithdrawWithBalance stamp: 'TC&OLT 10/24/2022 14:26:42'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test11AccountsWithTransferSummaryHasTransfers stamp: 'TC&OLT 10/24/2022 14:26:42'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test12AccountsWithZeroTransfersHaveTransferNetZero stamp: 'TC&OLT 10/24/2022 14:26:42'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test13AccountsWithOneTransfersReflectsOnTransferNet stamp: 'TC&OLT 10/24/2022 14:26:42'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test14AccountsWithMultipleTransfersReflectsOnTransferNet stamp: 'TC&OLT 10/24/2022 14:26:42'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test15AccountsWithMultipleTransactionsReflectsOnTransferNet stamp: 'TC&OLT 10/24/2022 14:26:42'!
+PASSED!
+
+----SNAPSHOT----(24 October 2022 14:26:46) CuisUniversity-5481.image priorSource: 7259113!
+!ReceptiveAccount methodsFor: 'category-name' stamp: 'TC&OLT 10/24/2022 14:29:15' prior: 50559357!
+transferNet
+
+	^transactions 
+		inject: 0
+		into: [ :currentTransferNet :aTransaction | aTransaction affectTransferNet: currentTransferNet ]
+	
+
+! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'TC&OLT 10/24/2022 14:29:24'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'TC&OLT 10/24/2022 14:29:24'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'TC&OLT 10/24/2022 14:29:24'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'TC&OLT 10/24/2022 14:29:24'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'TC&OLT 10/24/2022 14:29:24'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'TC&OLT 10/24/2022 14:29:24'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'TC&OLT 10/24/2022 14:29:24'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08EmptyAccountSummaryIsBalance stamp: 'TC&OLT 10/24/2022 14:29:24'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09AccountWithSingleDepositSummaryIsDepositWithBalance stamp: 'TC&OLT 10/24/2022 14:29:24'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test10AccountWithDepositandWithdrawSummaryIsDepositAndWithdrawWithBalance stamp: 'TC&OLT 10/24/2022 14:29:24'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test11AccountsWithTransferSummaryHasTransfers stamp: 'TC&OLT 10/24/2022 14:29:24'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test12AccountsWithZeroTransfersHaveTransferNetZero stamp: 'TC&OLT 10/24/2022 14:29:24'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test13AccountsWithOneTransfersReflectsOnTransferNet stamp: 'TC&OLT 10/24/2022 14:29:24'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test14AccountsWithMultipleTransfersReflectsOnTransferNet stamp: 'TC&OLT 10/24/2022 14:29:24'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test15AccountsWithMultipleTransactionsReflectsOnTransferNet stamp: 'TC&OLT 10/24/2022 14:29:24'!
+PASSED!
+
+----SNAPSHOT----(24 October 2022 14:29:31) CuisUniversity-5481.image priorSource: 7288941!
+
+----SNAPSHOT----(24 October 2022 14:29:49) CuisUniversity-5481.image priorSource: 7291239!
+
+----STARTUP---- (24 October 2022 14:31:49) as /home/kaneda/Downloads/portfolio2/portfolio2_solucion/CuisUniversity-5481.image!
+
+
+Object subclass: #AccountVisitor
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #AccountVisitor category: 'Portfolio-Solucion' stamp: 'TC&OLT 10/24/2022 14:36:29'!
+Object subclass: #AccountVisitor
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+AccountVisitor subclass: #SummaryVisitor
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #SummaryVisitor category: 'Portfolio-Solucion' stamp: 'TC&OLT 10/24/2022 14:37:32'!
+AccountVisitor subclass: #SummaryVisitor
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+TestCase subclass: #SummaryVisitorTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #SummaryVisitorTest category: 'Portfolio-Solucion' stamp: 'TC&OLT 10/24/2022 14:37:54'!
+TestCase subclass: #SummaryVisitorTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!AccountVisitor commentStamp: '<historical>' prior: 0!
+Podríamos haber derivado la estructura polimórfica de Visitor mediante TDD (haciendo primero dos objetos 'visitor' distintos de clases distintas con interfaces distintas, uno para summary y otro para transferNet, que luego confluyeran en una misma clase abstracta con la misma interfaz), pero no tuvimos tiempo.!
+!SummaryVisitorTest methodsFor: 'no messages' stamp: 'TC&OLT 10/24/2022 15:05:39'!
+test01EmptyAccountSummaryIsBalance
+	
+	| account summaryVisitor |
+	
+	account := ReceptiveAccount new.
+	summaryVisitor := SummaryVisitor for: account.
+	
+	self assert: summaryVisitor result equals: (OrderedCollection with: 'Balance = 0').! !
+
+!testRun: #SummaryVisitorTest #test01EmptyAccountSummaryIsBalance stamp: 'TC&OLT 10/24/2022 15:06:04'!
+ERROR!
+
+!testRun: #SummaryVisitorTest #test01EmptyAccountSummaryIsBalance stamp: 'TC&OLT 10/24/2022 15:06:04'!
+ERROR!
+!SummaryVisitor class methodsFor: 'no messages' stamp: 'TC&OLT 10/24/2022 15:06:33'!
+for: anAccount
+	
+	^self new initializedWith: anAccount.! !
+!SummaryVisitor class methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/24/2022 15:06:41' prior: 50559579!
+for: anAccount
+	
+	^self new initializeWith: anAccount.! !
+
+AccountVisitor subclass: #SummaryVisitor
+	instanceVariableNames: 'account'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #SummaryVisitor category: 'Portfolio-Solucion' stamp: 'TC&OLT 10/24/2022 15:07:14'!
+AccountVisitor subclass: #SummaryVisitor
+	instanceVariableNames: 'account'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!SummaryVisitor methodsFor: 'no messages' stamp: 'TC&OLT 10/24/2022 15:07:24'!
+initializeWith: anAccount
+	
+	account := anAccount.! !
+!SummaryVisitor methodsFor: 'nil' stamp: 'TC&OLT 10/24/2022 15:08:09'!
+result
+	
+	account accept: self.! !
+!ReceptiveAccount methodsFor: 'nil' stamp: 'TC&OLT 10/24/2022 15:09:25'!
+accept: aVisitor
+	
+	aVisitor visitReceptiveAccount: self.! !
+!SummaryVisitor methodsFor: 'nil' stamp: 'TC&OLT 10/24/2022 15:09:48'!
+visitReceptiveAccount: aReceptiveAccount
+	
+	! !
+
+AccountVisitor subclass: #SummaryVisitor
+	instanceVariableNames: 'account result'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #SummaryVisitor category: 'Portfolio-Solucion' stamp: 'TC&OLT 10/24/2022 15:10:04'!
+AccountVisitor subclass: #SummaryVisitor
+	instanceVariableNames: 'account result'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!SummaryVisitor methodsFor: 'result' stamp: 'TC&OLT 10/24/2022 15:10:16' prior: 50559607!
+result
+	
+	account accept: self.
+	^result.! !
+!SummaryVisitor methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/24/2022 15:10:33' prior: 50559616!
+visitReceptiveAccount: aReceptiveAccount
+	
+	result := 0.! !
+
+!testRun: #SummaryVisitorTest #test01EmptyAccountSummaryIsBalance stamp: 'TC&OLT 10/24/2022 15:10:40'!
+FAILURE!
+
+!testRun: #SummaryVisitorTest #test01EmptyAccountSummaryIsBalance stamp: 'TC&OLT 10/24/2022 15:10:40'!
+FAILURE!
+!SummaryVisitor methodsFor: 'initialization' stamp: 'TC&OLT 10/24/2022 15:11:05' prior: 50559603!
+initializeWith: anAccount
+	
+	result := OrderedCollection new.
+	account := anAccount.! !
+!SummaryVisitor methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/24/2022 15:11:16' prior: 50559639!
+visitReceptiveAccount: aReceptiveAccount
+	
+	! !
+!SummaryVisitor methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/24/2022 15:11:25' prior: 50559657!
+visitReceptiveAccount: aReceptiveAccount
+	
+	"Do nothing."! !
+!SummaryVisitor methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/24/2022 15:12:02' prior: 50559662!
+visitReceptiveAccount: aReceptiveAccount
+	
+	result add: 'Balance = ' , aReceptiveAccount balance , '.'.! !
+
+!testRun: #SummaryVisitorTest #test01EmptyAccountSummaryIsBalance stamp: 'TC&OLT 10/24/2022 15:12:07'!
+ERROR!
+
+!testRun: #SummaryVisitorTest #test01EmptyAccountSummaryIsBalance stamp: 'TC&OLT 10/24/2022 15:12:07'!
+ERROR!
+!SummaryVisitor methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/24/2022 15:12:19' prior: 50559668!
+visitReceptiveAccount: aReceptiveAccount
+	
+	result add: 'Balance = ' , aReceptiveAccount balance asString , '.'.! !
+
+!testRun: #SummaryVisitorTest #test01EmptyAccountSummaryIsBalance stamp: 'TC&OLT 10/24/2022 15:12:23'!
+FAILURE!
+
+!testRun: #SummaryVisitorTest #test01EmptyAccountSummaryIsBalance stamp: 'TC&OLT 10/24/2022 15:12:23'!
+FAILURE!
+!SummaryVisitor methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/24/2022 15:12:40' prior: 50559682!
+visitReceptiveAccount: aReceptiveAccount
+	
+	result add: 'Balance = ' , aReceptiveAccount balance asString.! !
+
+!testRun: #SummaryVisitorTest #test01EmptyAccountSummaryIsBalance stamp: 'TC&OLT 10/24/2022 15:12:44'!
+PASSED!
+!SummaryVisitor methodsFor: 'result' stamp: 'TC&OLT 10/24/2022 15:17:02' prior: 50559634!
+result
+	
+	"account accept: self."
+	^result.! !
+!SummaryVisitor methodsFor: 'result' stamp: 'TC&OLT 10/24/2022 15:10:16' prior: 50559706!
+result
+	
+	account accept: self.
+	^result.! !
+!SummaryVisitorTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 15:20:06'!
+test02AccountWithSingleDepositSummaryIsDepositWithBalance
+	
+	| account summaryVisitor |
+	
+	account := ReceptiveAccount new.
+	
+	Deposit register: 100 on: account.
+	
+	summaryVisitor := SummaryVisitor for: account.
+	
+	self assert: summaryVisitor result equals: (OrderedCollection with: 'Depósito por 100.' with: 'Balance = 100').! !
+
+!testRun: #SummaryVisitorTest #test01EmptyAccountSummaryIsBalance stamp: 'TC&OLT 10/24/2022 15:20:28'!
+PASSED!
+
+!testRun: #SummaryVisitorTest #test02AccountWithSingleDepositSummaryIsDepositWithBalance stamp: 'TC&OLT 10/24/2022 15:20:28'!
+FAILURE!
+
+!testRun: #SummaryVisitorTest #test02AccountWithSingleDepositSummaryIsDepositWithBalance stamp: 'TC&OLT 10/24/2022 15:20:28'!
+FAILURE!
+
+!testRun: #SummaryVisitorTest #test02AccountWithSingleDepositSummaryIsDepositWithBalance stamp: 'TC&OLT 10/24/2022 15:20:45'!
+FAILURE!
+
+!testRun: #SummaryVisitorTest #test02AccountWithSingleDepositSummaryIsDepositWithBalance stamp: 'TC&OLT 10/24/2022 15:20:45'!
+FAILURE!
+!SummaryVisitorTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 15:21:09' prior: 50559715!
+test02AccountWithSingleDepositSummaryIsDepositWithBalance
+	
+	| account summaryVisitor |
+	
+	account := ReceptiveAccount new.
+	
+	Deposit register: 100 on: account.
+	
+	summaryVisitor := SummaryVisitor for: account.
+	
+	self assert: (OrderedCollection with: 'Depósito por 100.' with: 'Balance = 100') equals: summaryVisitor result.! !
+
+!testRun: #SummaryVisitorTest #test02AccountWithSingleDepositSummaryIsDepositWithBalance stamp: 'TC&OLT 10/24/2022 15:21:12'!
+FAILURE!
+
+!testRun: #SummaryVisitorTest #test02AccountWithSingleDepositSummaryIsDepositWithBalance stamp: 'TC&OLT 10/24/2022 15:21:12'!
+FAILURE!
+!SummaryVisitorTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 15:21:32' prior: 50559561!
+test01EmptyAccountSummaryIsBalance
+	
+	| account summaryVisitor |
+	
+	account := ReceptiveAccount new.
+	summaryVisitor := SummaryVisitor for: account.
+	
+	self assert: (OrderedCollection with: 'Balance = 0') equals: summaryVisitor result.! !
+!SummaryVisitor methodsFor: 'visit' stamp: 'TC&OLT 10/24/2022 15:23:11' prior: 50559696!
+visitReceptiveAccount: aReceptiveAccount
+	
+	(aReceptiveAccount transactions first) accept: self.
+	
+	result add: 'Balance = ' , aReceptiveAccount balance asString.! !
+
+!testRun: #SummaryVisitorTest #test02AccountWithSingleDepositSummaryIsDepositWithBalance stamp: 'TC&OLT 10/24/2022 15:23:43'!
+ERROR!
+
+!testRun: #SummaryVisitorTest #test02AccountWithSingleDepositSummaryIsDepositWithBalance stamp: 'TC&OLT 10/24/2022 15:23:43'!
+ERROR!
+!Deposit methodsFor: 'nil' stamp: 'TC&OLT 10/24/2022 15:24:16'!
+accept: aVisitor
+	
+	aVisitor visitDeposit: self.! !
+!SummaryVisitor methodsFor: 'visit' stamp: 'TC&OLT 10/24/2022 15:25:24'!
+visitDeposit: aDeposit
+	
+	result add: 'Depósito por ' , aDeposit value , '.'.! !
+!SummaryVisitor methodsFor: 'visit' stamp: 'TC&OLT 10/24/2022 15:25:56' prior: 50559802!
+visitDeposit: aDeposit
+	
+	result add: 'Depósito por ' , aDeposit value asString , '.'.! !
+
+!testRun: #SummaryVisitorTest #test01EmptyAccountSummaryIsBalance stamp: 'TC&OLT 10/24/2022 15:26:04'!
+ERROR!
+
+!testRun: #SummaryVisitorTest #test02AccountWithSingleDepositSummaryIsDepositWithBalance stamp: 'TC&OLT 10/24/2022 15:26:04'!
+PASSED!
+
+!testRun: #SummaryVisitorTest #test01EmptyAccountSummaryIsBalance stamp: 'TC&OLT 10/24/2022 15:26:04'!
+ERROR!
+!SummaryVisitor methodsFor: 'visit' stamp: 'TC&OLT 10/24/2022 15:26:51' prior: 50559782!
+visitReceptiveAccount: aReceptiveAccount
+	
+	aReceptiveAccount transactions size > 0 ifTrue: [(aReceptiveAccount transactions first) accept: self.].
+	
+	result add: 'Balance = ' , aReceptiveAccount balance asString.! !
+
+!testRun: #SummaryVisitorTest #test01EmptyAccountSummaryIsBalance stamp: 'TC&OLT 10/24/2022 15:26:57'!
+PASSED!
+
+!testRun: #SummaryVisitorTest #test02AccountWithSingleDepositSummaryIsDepositWithBalance stamp: 'TC&OLT 10/24/2022 15:26:57'!
+PASSED!
+!SummaryVisitorTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 15:28:01'!
+test03AccountWithDepositandWithdrawSummaryIsDepositAndWithdrawWithBalance
+	
+	| account summaryVisitor |
+	
+	account := ReceptiveAccount new.
+	
+	Deposit register: 100 on: account.
+	Withdraw register: 100 on: account.
+	
+	summaryVisitor := SummaryVisitor for: account.
+	
+	self assert: (OrderedCollection with: 'Depósito por 100.' with: 'Extracción por 100.' with: 'Balance = 0') equals: summaryVisitor result.! !
+
+!testRun: #SummaryVisitorTest #test03AccountWithDepositandWithdrawSummaryIsDepositAndWithdrawWithBalance stamp: 'TC&OLT 10/24/2022 15:28:08'!
+FAILURE!
+
+!testRun: #SummaryVisitorTest #test03AccountWithDepositandWithdrawSummaryIsDepositAndWithdrawWithBalance stamp: 'TC&OLT 10/24/2022 15:28:08'!
+FAILURE!
+!SummaryVisitor methodsFor: 'visit' stamp: 'TC&OLT 10/24/2022 15:30:16' prior: 50559825!
+visitReceptiveAccount: aReceptiveAccount
+	
+	aReceptiveAccount transactions do: [
+		:aTransaction |
+		aTransaction accept: self.
+	].
+	
+	result add: 'Balance = ' , aReceptiveAccount balance asString.! !
+
+!testRun: #SummaryVisitorTest #test01EmptyAccountSummaryIsBalance stamp: 'TC&OLT 10/24/2022 15:30:18'!
+PASSED!
+
+!testRun: #SummaryVisitorTest #test02AccountWithSingleDepositSummaryIsDepositWithBalance stamp: 'TC&OLT 10/24/2022 15:30:18'!
+PASSED!
+
+!testRun: #SummaryVisitorTest #test03AccountWithDepositandWithdrawSummaryIsDepositAndWithdrawWithBalance stamp: 'TC&OLT 10/24/2022 15:30:18'!
+ERROR!
+
+!testRun: #SummaryVisitorTest #test03AccountWithDepositandWithdrawSummaryIsDepositAndWithdrawWithBalance stamp: 'TC&OLT 10/24/2022 15:30:18'!
+ERROR!
+!Withdraw methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/24/2022 15:32:10'!
+accept: aVisitor
+	
+	aVisitor visitWithdraw: self.! !
+!SummaryVisitor methodsFor: 'visit' stamp: 'TC&OLT 10/24/2022 15:32:39'!
+visitWithdraw: aWithdraw
+	
+	result add: 'Extracción por ' , aWithdraw value asString , '.'.! !
+
+!testRun: #SummaryVisitorTest #test01EmptyAccountSummaryIsBalance stamp: 'TC&OLT 10/24/2022 15:32:43'!
+PASSED!
+
+!testRun: #SummaryVisitorTest #test02AccountWithSingleDepositSummaryIsDepositWithBalance stamp: 'TC&OLT 10/24/2022 15:32:43'!
+PASSED!
+
+!testRun: #SummaryVisitorTest #test03AccountWithDepositandWithdrawSummaryIsDepositAndWithdrawWithBalance stamp: 'TC&OLT 10/24/2022 15:32:43'!
+PASSED!
+!SummaryVisitorTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 15:37:46'!
+test04AccountsWithTransferSummaryHasTransfers
+	
+	| sourceAccount destinationAccount sourceAccountSummaryVisitor destinationAccountSummaryVisitor |
+	
+	sourceAccount := ReceptiveAccount new.
+	destinationAccount := ReceptiveAccount new.
+		
+	Deposit register: 100 on: sourceAccount.
+	Withdraw register: 50 on: sourceAccount.
+	
+	Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+	sourceAccountSummaryVisitor := SummaryVisitor for: sourceAccount.
+	
+	destinationAccountSummaryVisitor  := SummaryVisitor for: destinationAccount.
+	
+	self assert: (OrderedCollection with: 'Depósito por 100.' with: 'Extracción por 50.' with: 'Salida por transferencia de 100.' with: 'Balance = -50') equals: sourceAccountSummaryVisitor result.
+	self assert: (OrderedCollection with: 'Entrada por transferencia de 100.' with: 'Balance = 100') equals: destinationAccountSummaryVisitor result.! !
+
+!testRun: #SummaryVisitorTest #test04AccountsWithTransferSummaryHasTransfers stamp: 'TC&OLT 10/24/2022 15:38:17'!
+ERROR!
+
+!testRun: #SummaryVisitorTest #test04AccountsWithTransferSummaryHasTransfers stamp: 'TC&OLT 10/24/2022 15:38:17'!
+ERROR!
+
+!testRun: #SummaryVisitorTest #test01EmptyAccountSummaryIsBalance stamp: 'TC&OLT 10/24/2022 15:38:46'!
+PASSED!
+
+!testRun: #SummaryVisitorTest #test02AccountWithSingleDepositSummaryIsDepositWithBalance stamp: 'TC&OLT 10/24/2022 15:38:46'!
+PASSED!
+
+!testRun: #SummaryVisitorTest #test03AccountWithDepositandWithdrawSummaryIsDepositAndWithdrawWithBalance stamp: 'TC&OLT 10/24/2022 15:38:46'!
+PASSED!
+
+!testRun: #SummaryVisitorTest #test04AccountsWithTransferSummaryHasTransfers stamp: 'TC&OLT 10/24/2022 15:38:46'!
+ERROR!
+
+!testRun: #SummaryVisitorTest #test04AccountsWithTransferSummaryHasTransfers stamp: 'TC&OLT 10/24/2022 15:38:46'!
+ERROR!
+!WithdrawFromTransfer methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/24/2022 15:39:12'!
+accept: aVisitor
+	
+	aVisitor visitWithdrawFromTransfer: self.! !
+!SummaryVisitor methodsFor: 'visit' stamp: 'TC&OLT 10/24/2022 15:40:03'!
+visitWithdrawFromTransfer: aWithdrawFromTransfer
+	
+	result add: 'Salida por transferencia ' , aWithdrawFromTransfer value asString , '.'.! !
+
+!testRun: #SummaryVisitorTest #test01EmptyAccountSummaryIsBalance stamp: 'TC&OLT 10/24/2022 15:40:15'!
+PASSED!
+
+!testRun: #SummaryVisitorTest #test02AccountWithSingleDepositSummaryIsDepositWithBalance stamp: 'TC&OLT 10/24/2022 15:40:15'!
+PASSED!
+
+!testRun: #SummaryVisitorTest #test03AccountWithDepositandWithdrawSummaryIsDepositAndWithdrawWithBalance stamp: 'TC&OLT 10/24/2022 15:40:15'!
+PASSED!
+
+!testRun: #SummaryVisitorTest #test04AccountsWithTransferSummaryHasTransfers stamp: 'TC&OLT 10/24/2022 15:40:15'!
+FAILURE!
+
+!testRun: #SummaryVisitorTest #test04AccountsWithTransferSummaryHasTransfers stamp: 'TC&OLT 10/24/2022 15:40:15'!
+FAILURE!
+
+!testRun: #SummaryVisitorTest #test04AccountsWithTransferSummaryHasTransfers stamp: 'TC&OLT 10/24/2022 15:40:49'!
+FAILURE!
+
+!testRun: #SummaryVisitorTest #test04AccountsWithTransferSummaryHasTransfers stamp: 'TC&OLT 10/24/2022 15:40:49'!
+FAILURE!
+!SummaryVisitor methodsFor: 'visit' stamp: 'TC&OLT 10/24/2022 15:42:05' prior: 50559980!
+visitWithdrawFromTransfer: aWithdrawFromTransfer
+	
+	result add: 'Salida por transferencia de ' , aWithdrawFromTransfer value asString , '.'.! !
+
+!testRun: #SummaryVisitorTest #test01EmptyAccountSummaryIsBalance stamp: 'TC&OLT 10/24/2022 15:42:08'!
+PASSED!
+
+!testRun: #SummaryVisitorTest #test02AccountWithSingleDepositSummaryIsDepositWithBalance stamp: 'TC&OLT 10/24/2022 15:42:08'!
+PASSED!
+
+!testRun: #SummaryVisitorTest #test03AccountWithDepositandWithdrawSummaryIsDepositAndWithdrawWithBalance stamp: 'TC&OLT 10/24/2022 15:42:08'!
+PASSED!
+
+!testRun: #SummaryVisitorTest #test04AccountsWithTransferSummaryHasTransfers stamp: 'TC&OLT 10/24/2022 15:42:08'!
+ERROR!
+
+!testRun: #SummaryVisitorTest #test04AccountsWithTransferSummaryHasTransfers stamp: 'TC&OLT 10/24/2022 15:42:08'!
+ERROR!
+!DepositFromTransfer methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/24/2022 15:42:30'!
+accept: aVisitor
+	
+	aVisitor visitDepositFromTransfer: self.! !
+!SummaryVisitor methodsFor: 'visit' stamp: 'TC&OLT 10/24/2022 15:43:04'!
+visitDepositFromTransfer: aDepositFromTransfer
+	
+	result add: 'Entrada por transferencia de ' , aDepositFromTransfer value asString , '.'.! !
+
+!testRun: #SummaryVisitorTest #test01EmptyAccountSummaryIsBalance stamp: 'TC&OLT 10/24/2022 15:43:09'!
+PASSED!
+
+!testRun: #SummaryVisitorTest #test02AccountWithSingleDepositSummaryIsDepositWithBalance stamp: 'TC&OLT 10/24/2022 15:43:09'!
+PASSED!
+
+!testRun: #SummaryVisitorTest #test03AccountWithDepositandWithdrawSummaryIsDepositAndWithdrawWithBalance stamp: 'TC&OLT 10/24/2022 15:43:09'!
+PASSED!
+
+!testRun: #SummaryVisitorTest #test04AccountsWithTransferSummaryHasTransfers stamp: 'TC&OLT 10/24/2022 15:43:09'!
+PASSED!
+!SummaryVisitorTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 16:04:55' prior: 50559916!
+test04AccountsWithTransferSummaryHasTransfers
+	
+	| simplePortfolioAccount simplePortfolio composedPortfolioAccount composedPortfolio composedPortfolioTransactions summaryVisitor |
+	
+	simplePortfolioAccount := ReceptiveAccount new.
+	Deposit register: 100 on: simplePortfolioAccount.
+	simplePortfolio := Portfolio with: simplePortfolioAccount.
+	
+	composedPortfolioAccount := ReceptiveAccount new.
+	Withdraw register: 50 on: composedPortfolioAccount.
+	composedPortfolio := Portfolio with: simplePortfolio with: composedPortfolioAccount.! !
+!SummaryVisitorTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 16:08:16' prior: 50560073!
+test04AccountsWithTransferSummaryHasTransfers
+	
+	| simplePortfolioAccount simplePortfolio composedPortfolioAccount composedPortfolio composedPortfolioTransactions summaryVisitor |
+	
+	simplePortfolioAccount := ReceptiveAccount new.
+	Deposit register: 100 on: simplePortfolioAccount.
+	simplePortfolio := Portfolio with: simplePortfolioAccount.
+	
+	composedPortfolioAccount := ReceptiveAccount new.
+	Withdraw register: 50 on: composedPortfolioAccount.
+	Transfer register: 50 from: simplePortfolioAccount to: composedPortfolioAccount.
+	composedPortfolio := Portfolio with: simplePortfolio with: composedPortfolioAccount.
+	
+	summaryVisitor := SummaryVisitor for: composedPortfolioAccount.
+	
+	self assert: (OrderedCollection with: '') equals: summaryVisitor result.! !
+!SummaryVisitorTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 16:08:27' prior: 50560093!
+test04AccountsWithTransferSummaryHasTransfers
+	
+	| simplePortfolioAccount simplePortfolio composedPortfolioAccount composedPortfolio summaryVisitor |
+	
+	simplePortfolioAccount := ReceptiveAccount new.
+	Deposit register: 100 on: simplePortfolioAccount.
+	simplePortfolio := Portfolio with: simplePortfolioAccount.
+	
+	composedPortfolioAccount := ReceptiveAccount new.
+	Withdraw register: 50 on: composedPortfolioAccount.
+	Transfer register: 50 from: simplePortfolioAccount to: composedPortfolioAccount.
+	composedPortfolio := Portfolio with: simplePortfolio with: composedPortfolioAccount.
+	
+	summaryVisitor := SummaryVisitor for: composedPortfolio.
+	
+	self assert: (OrderedCollection with: '') equals: summaryVisitor result.! !
+
+| simplePortfolioAccount simplePortfolio composedPortfolioAccount composedPortfolio summaryVisitor |
+	
+	simplePortfolioAccount := ReceptiveAccount new.
+	Deposit register: 100 on: simplePortfolioAccount.
+	simplePortfolio := Portfolio with: simplePortfolioAccount.
+	
+	composedPortfolioAccount := ReceptiveAccount new.
+	Withdraw register: 50 on: composedPortfolioAccount.
+	Transfer register: 50 from: simplePortfolioAccount to: composedPortfolioAccount.
+	composedPortfolio := Portfolio with: simplePortfolio with: composedPortfolioAccount.
+	
+	summaryVisitor := SummaryVisitor for: composedPortfolio.
+	
+	composedPortfolio transactions.!
+
+| simplePortfolioAccount simplePortfolio composedPortfolioAccount composedPortfolio summaryVisitor |
+	
+	simplePortfolioAccount := ReceptiveAccount new.
+	Deposit register: 100 on: simplePortfolioAccount.
+	simplePortfolio := Portfolio with: simplePortfolioAccount.
+	
+	composedPortfolioAccount := ReceptiveAccount new.
+	Withdraw register: 50 on: composedPortfolioAccount.
+	Transfer register: 50 from: simplePortfolioAccount to: composedPortfolioAccount.
+	composedPortfolio := Portfolio with: simplePortfolio with: composedPortfolioAccount.
+	
+	summaryVisitor := SummaryVisitor for: composedPortfolio.
+	
+	composedPortfolio transactions.!
+!SummaryVisitorTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 16:13:11' prior: 50560120!
+test04AccountsWithTransferSummaryHasTransfers
+	
+	| simplePortfolioAccount simplePortfolio composedPortfolioAccount composedPortfolio summaryVisitor |
+	
+	simplePortfolioAccount := ReceptiveAccount new.
+	Deposit register: 100 on: simplePortfolioAccount.
+	simplePortfolio := Portfolio with: simplePortfolioAccount.
+	
+	composedPortfolioAccount := ReceptiveAccount new.
+	Withdraw register: 50 on: composedPortfolioAccount.
+	Transfer register: 50 from: simplePortfolioAccount to: composedPortfolioAccount.
+	composedPortfolio := Portfolio with: simplePortfolio with: composedPortfolioAccount.
+	
+	summaryVisitor := SummaryVisitor for: composedPortfolio.
+	
+	composedPortfolio transactions.
+	
+	self assert: (OrderedCollection with: '') equals: summaryVisitor result.! !
+
+| simplePortfolioAccount simplePortfolio composedPortfolioAccount composedPortfolio summaryVisitor |
+	
+	simplePortfolioAccount := ReceptiveAccount new.
+	Deposit register: 100 on: simplePortfolioAccount.
+	simplePortfolio := Portfolio with: simplePortfolioAccount.
+	
+	composedPortfolioAccount := ReceptiveAccount new.
+	Withdraw register: 50 on: composedPortfolioAccount.
+	Transfer register: 50 from: simplePortfolioAccount to: composedPortfolioAccount.
+	composedPortfolio := Portfolio with: simplePortfolio with: composedPortfolioAccount.
+	
+	summaryVisitor := SummaryVisitor for: composedPortfolio.
+	
+	composedPortfolio transactions.!
+!SummaryVisitorTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 16:14:08' prior: 50560186!
+test04AccountsWithTransferSummaryHasTransfers
+	
+	| simplePortfolioAccount simplePortfolio composedPortfolioAccount composedPortfolio summaryVisitor |
+	
+	simplePortfolioAccount := ReceptiveAccount new.
+	Deposit register: 100 on: simplePortfolioAccount.
+	simplePortfolio := Portfolio with: simplePortfolioAccount.
+	
+	composedPortfolioAccount := ReceptiveAccount new.
+	Withdraw register: 50 on: composedPortfolioAccount.
+	Transfer register: 50 from: simplePortfolioAccount to: composedPortfolioAccount.
+	composedPortfolio := Portfolio with: simplePortfolio with: composedPortfolioAccount.
+	
+	composedPortfolio transactions.
+	
+	summaryVisitor := SummaryVisitor for: composedPortfolio.
+	
+	self assert: (OrderedCollection with: '') equals: summaryVisitor result.! !
+
+simplePortfolioAccount := ReceptiveAccount new.
+Deposit register: 100 on: simplePortfolioAccount.
+simplePortfolio := Portfolio with: simplePortfolioAccount.
+
+composedPortfolioAccount := ReceptiveAccount new.
+Withdraw register: 50 on: composedPortfolioAccount.
+Transfer register: 50 from: simplePortfolioAccount to: composedPortfolioAccount.
+composedPortfolio := Portfolio with: simplePortfolio with: composedPortfolioAccount.
+
+composedPortfolio transactions.!
+
+composedPortfolio transactions.!
+
+composedPortfolio transactions.!
+!SummaryVisitorTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 16:18:05' prior: 50560233!
+test04AccountsWithTransferSummaryHasTransfers
+	
+	| simplePortfolioAccount simplePortfolio composedPortfolioAccount composedPortfolio summaryVisitor |
+	
+	simplePortfolioAccount := ReceptiveAccount new.
+	Deposit register: 100 on: simplePortfolioAccount.
+	simplePortfolio := Portfolio with: simplePortfolioAccount.
+	
+	composedPortfolioAccount := ReceptiveAccount new.
+	Withdraw register: 50 on: composedPortfolioAccount.
+	Transfer register: 50 from: simplePortfolioAccount to: composedPortfolioAccount.
+	composedPortfolio := Portfolio with: simplePortfolio with: composedPortfolioAccount.
+	
+	composedPortfolio transactions.
+	
+	summaryVisitor := SummaryVisitor for: composedPortfolio.
+	
+	self assert: (OrderedCollection with: 'Depósito por 100.' with: 'Salida por transferencia de 50.' with: 'Extracción por 50.' with: 'Entrada por transferencia de 50.' with: 'Balance  = 50') equals: summaryVisitor result.! !
+
+!testRun: #SummaryVisitorTest #test04AccountsWithTransferSummaryHasTransfers stamp: 'TC&OLT 10/24/2022 16:18:07'!
+ERROR!
+
+!testRun: #SummaryVisitorTest #test04AccountsWithTransferSummaryHasTransfers stamp: 'TC&OLT 10/24/2022 16:18:07'!
+ERROR!
+!Portfolio methodsFor: 'nil' stamp: 'TC&OLT 10/24/2022 16:18:28'!
+accept: aVisitor
+	
+	aVisitor visitPortfolio: self.! !
+!SummaryVisitor methodsFor: 'visit' stamp: 'TC&OLT 10/24/2022 16:18:57'!
+visitPortfolio: aPortfolio
+	
+	aPortfolio transactions do: [
+		:aTransaction |
+		aTransaction accept: self.
+	].
+	
+	result add: 'Balance = ' , aPortfolio balance asString.! !
+
+!testRun: #SummaryVisitorTest #test01EmptyAccountSummaryIsBalance stamp: 'TC&OLT 10/24/2022 16:19:02'!
+PASSED!
+
+!testRun: #SummaryVisitorTest #test02AccountWithSingleDepositSummaryIsDepositWithBalance stamp: 'TC&OLT 10/24/2022 16:19:02'!
+PASSED!
+
+!testRun: #SummaryVisitorTest #test03AccountWithDepositandWithdrawSummaryIsDepositAndWithdrawWithBalance stamp: 'TC&OLT 10/24/2022 16:19:02'!
+PASSED!
+
+!testRun: #SummaryVisitorTest #test04AccountsWithTransferSummaryHasTransfers stamp: 'TC&OLT 10/24/2022 16:19:02'!
+FAILURE!
+
+!testRun: #SummaryVisitorTest #test04AccountsWithTransferSummaryHasTransfers stamp: 'TC&OLT 10/24/2022 16:19:02'!
+FAILURE!
+!SummaryVisitorTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 16:20:47' prior: 50560277!
+test04AccountsWithTransferSummaryHasTransfers
+	
+	| simplePortfolioAccount simplePortfolio composedPortfolioAccount composedPortfolio summaryVisitor |
+	
+	simplePortfolioAccount := ReceptiveAccount new.
+	Deposit register: 100 on: simplePortfolioAccount.
+	simplePortfolio := Portfolio with: simplePortfolioAccount.
+	
+	composedPortfolioAccount := ReceptiveAccount new.
+	Withdraw register: 50 on: composedPortfolioAccount.
+	Transfer register: 50 from: simplePortfolioAccount to: composedPortfolioAccount.
+	composedPortfolio := Portfolio with: simplePortfolio with: composedPortfolioAccount.
+	
+	summaryVisitor := SummaryVisitor for: composedPortfolio.
+	
+	self assert: (OrderedCollection with: 'Depósito por 100.' with: 'Salida por transferencia de 50.' with: 'Extracción por 50.' with: 'Entrada por transferencia de 50.' with: 'Balance  = 50') equals: summaryVisitor result.! !
+
+!testRun: #SummaryVisitorTest #test04AccountsWithTransferSummaryHasTransfers stamp: 'TC&OLT 10/24/2022 16:20:50'!
+FAILURE!
+
+!testRun: #SummaryVisitorTest #test04AccountsWithTransferSummaryHasTransfers stamp: 'TC&OLT 10/24/2022 16:20:50'!
+FAILURE!
+
+aPortfolio balance!
+
+aPortfolio transactions!
+
+!testRun: #TransferTest #test4TransferLegsCanNavigateBackToTransfer stamp: 'TC&OLT 10/24/2022 16:23:18'!
+PASSED!
+
+summaryVisitor result!
+!SummaryVisitorTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 16:26:20' prior: 50560349!
+test04AccountsWithTransferSummaryHasTransfers
+	
+	| simplePortfolioAccount simplePortfolio composedPortfolioAccount composedPortfolio summaryVisitor |
+	
+	simplePortfolioAccount := ReceptiveAccount new.
+	Deposit register: 100 on: simplePortfolioAccount.
+	simplePortfolio := Portfolio with: simplePortfolioAccount.
+	
+	composedPortfolioAccount := ReceptiveAccount new.
+	Withdraw register: 50 on: composedPortfolioAccount.
+	Transfer register: 50 from: simplePortfolioAccount to: composedPortfolioAccount.
+	composedPortfolio := Portfolio with: simplePortfolio with: composedPortfolioAccount.
+	
+	summaryVisitor := SummaryVisitor for: composedPortfolio.
+	
+	self assert: (OrderedCollection with: 'Depósito por 100.' with: 'Salida por transferencia de 50.' with: 'Extracción por 50.' with: 'Entrada por transferencia de 50.' with: 'Balance = 50') equals: summaryVisitor result.! !
+
+!testRun: #SummaryVisitorTest #test04AccountsWithTransferSummaryHasTransfers stamp: 'TC&OLT 10/24/2022 16:26:24'!
+PASSED!
+Podríamos haber derivado la estructura polimórfica de Visitor mediante TDD (haciendo primero dos objetos 'visitor' distintos de clases distintas con interfaces distintas, uno para summary y otro para transferNet, que luego confluyeran en una misma clase abstracta con la misma interfaz), pero no tuvimos tiempo.!
+
+----SNAPSHOT----(24 October 2022 16:27:07) CuisUniversity-5481.image priorSource: 7291331!
+
+AccountVisitor subclass: #TransferNetVisitor
+	instanceVariableNames: 'account result'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferNetVisitor category: 'Portfolio-Solucion' stamp: 'TC&OLT 10/24/2022 16:28:27'!
+AccountVisitor subclass: #TransferNetVisitor
+	instanceVariableNames: 'account result'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+TestCase subclass: #TransferNetVisitorTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferNetVisitorTest category: 'Portfolio-Solucion' stamp: 'TC&OLT 10/24/2022 16:29:09'!
+TestCase subclass: #TransferNetVisitorTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 16:29:45' prior: 50558809!
+test12AccountsWithZeroTransfersHaveTransferNetZero
+	
+	| account |
+	
+	account := ReceptiveAccount new.
+	
+	self assert: account transferNet equals: 0.! !
+
+	| account transferNetVisitor |!
+!TransferNetVisitorTest methodsFor: 'no messages' stamp: 'TC&OLT 10/24/2022 16:31:48'!
+test01AccountsWithZeroTransfersHaveTransferNetZero
+	
+	| account transferNetVisitor |
+	
+	account := ReceptiveAccount new.
+	
+	transferNetVisitor := TransferNetVisitor for: account.
+	
+	self assert: 0 equals: transferNetVisitor result.! !
+
+!testRun: #TransferNetVisitorTest #test01AccountsWithZeroTransfersHaveTransferNetZero stamp: 'TC&OLT 10/24/2022 16:32:03'!
+ERROR!
+
+!testRun: #TransferNetVisitorTest #test01AccountsWithZeroTransfersHaveTransferNetZero stamp: 'TC&OLT 10/24/2022 16:32:03'!
+ERROR!
+!TransferNetVisitor class methodsFor: 'no messages' stamp: 'TC&OLT 10/24/2022 16:32:16'!
+for: anAccount
+	
+	^self new initializeWith: anAccount.! !
+!AccountVisitor methodsFor: 'no messages' stamp: 'TC&OLT 10/24/2022 16:32:59'!
+initializeWith: anAccount
+	
+	self subclassResponsibility.! !
+!AccountVisitor methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/24/2022 16:33:10'!
+result
+	
+	self subclassResponsibility.! !
+!AccountVisitor methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/24/2022 16:33:28'!
+visitDeposit: aDeposit
+	
+	self subclassResponsibility.! !
+!AccountVisitor methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/24/2022 16:34:01'!
+visitDepositFromTransfer: aDepositFromTransfer
+	
+	self subclassResponsibility.! !
+!AccountVisitor methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/24/2022 16:34:15'!
+visitPortfolio: aPortfolio
+	
+	self subclassResponsibility.! !
+!AccountVisitor methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/24/2022 16:34:29'!
+visitReceptiveAccount: aReceptiveAccount
+	
+	self subclassResponsibility.! !
+!AccountVisitor methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/24/2022 16:34:39'!
+visitWithdraw: aWithdraw
+	
+	self subclassResponsibility.! !
+!AccountVisitor methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/24/2022 16:34:52'!
+visitWithdrawFromTransfer: aWithdrawFromTransfer
+	
+	self subclassResponsibility.! !
+!TransferNetVisitor methodsFor: 'no messages' stamp: 'TC&OLT 10/24/2022 16:36:24' overrides: 50560490!
+initializeWith: anAccount
+	
+	result := OrderedCollection new.
+	account := anAccount.! !
+!TransferNetVisitor methodsFor: 'nil' stamp: 'TC&OLT 10/24/2022 16:37:08' overrides: 50560495!
+result
+	
+	account accept: self.
+	^result.! !
+!TransferNetVisitor methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/24/2022 16:37:18' prior: 50560539 overrides: 50560495!
+result
+	
+	^result.! !
+
+!testRun: #TransferNetVisitorTest #test01AccountsWithZeroTransfersHaveTransferNetZero stamp: 'TC&OLT 10/24/2022 16:37:23'!
+FAILURE!
+
+!testRun: #TransferNetVisitorTest #test01AccountsWithZeroTransfersHaveTransferNetZero stamp: 'TC&OLT 10/24/2022 16:37:23'!
+FAILURE!
+!TransferNetVisitor methodsFor: 'initialization' stamp: 'TC&OLT 10/24/2022 16:37:36' prior: 50560533 overrides: 50560490!
+initializeWith: anAccount
+	
+	result := 0.
+	account := anAccount.! !
+
+!testRun: #TransferNetVisitorTest #test01AccountsWithZeroTransfersHaveTransferNetZero stamp: 'TC&OLT 10/24/2022 16:37:39'!
+PASSED!
+!TransferNetVisitorTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 16:38:47'!
+test02SingleTransferBetweenAccountsReflectsOnTransferNet
+	
+	| sourceAccount destinationAccount|
+	
+	sourceAccount := ReceptiveAccount new.
+	destinationAccount := ReceptiveAccount new.
+	
+	Transfer register: 100 from: sourceAccount to: destinationAccount.
+		
+	self assert: sourceAccount transferNet equals: -100.
+	self assert: destinationAccount transferNet equals: 100.! !
+!TransferNetVisitorTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 16:40:27' prior: 50560567!
+test02SingleTransferBetweenAccountsReflectsOnTransferNet
+	
+	| sourceAccount destinationAccount transferNetVisitorSourceAccount transferNetVisitorDestinationAccount |
+	
+	sourceAccount := ReceptiveAccount new.
+	destinationAccount := ReceptiveAccount new.
+	
+	Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+	transferNetVisitorSourceAccount := TransferNetVisitor for: sourceAccount.
+	
+	transferNetVisitorDestinationAccount := TransferNetVisitor for: destinationAccount.
+	
+	self assert: transferNetVisitorSourceAccount result equals: -100.
+	self assert: transferNetVisitorDestinationAccount result equals: 100.! !
+!TransferNetVisitorTest methodsFor: 'tests' stamp: 'TC&OLT 10/24/2022 16:40:52' prior: 50560582!
+test02SingleTransferBetweenAccountsReflectsOnTransferNet
+	
+	| sourceAccount destinationAccount transferNetVisitorSourceAccount transferNetVisitorDestinationAccount |
+	
+	sourceAccount := ReceptiveAccount new.
+	destinationAccount := ReceptiveAccount new.
+	
+	Transfer register: 100 from: sourceAccount to: destinationAccount.
+	
+	transferNetVisitorSourceAccount := TransferNetVisitor for: sourceAccount.
+	
+	transferNetVisitorDestinationAccount := TransferNetVisitor for: destinationAccount.
+	
+	self assert: -100 equals: transferNetVisitorSourceAccount result.
+	self assert: 100 equals: transferNetVisitorDestinationAccount result.! !
+
+!testRun: #TransferNetVisitorTest #test01AccountsWithZeroTransfersHaveTransferNetZero stamp: 'TC&OLT 10/24/2022 16:41:04'!
+PASSED!
+
+!testRun: #TransferNetVisitorTest #test02SingleTransferBetweenAccountsReflectsOnTransferNet stamp: 'TC&OLT 10/24/2022 16:41:04'!
+FAILURE!
+
+!testRun: #TransferNetVisitorTest #test02SingleTransferBetweenAccountsReflectsOnTransferNet stamp: 'TC&OLT 10/24/2022 16:41:04'!
+FAILURE!
+!TransferNetVisitor methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/24/2022 16:42:06' prior: 50560545 overrides: 50560495!
+result
+	
+	account accept: self.
+	^result.! !
+
+!testRun: #TransferNetVisitorTest #test01AccountsWithZeroTransfersHaveTransferNetZero stamp: 'TC&OLT 10/24/2022 16:42:13'!
+ERROR!
+
+!testRun: #TransferNetVisitorTest #test02SingleTransferBetweenAccountsReflectsOnTransferNet stamp: 'TC&OLT 10/24/2022 16:42:13'!
+ERROR!
+
+!testRun: #TransferNetVisitorTest #test02SingleTransferBetweenAccountsReflectsOnTransferNet stamp: 'TC&OLT 10/24/2022 16:42:18'!
+ERROR!
+
+!testRun: #TransferNetVisitorTest #test02SingleTransferBetweenAccountsReflectsOnTransferNet stamp: 'TC&OLT 10/24/2022 16:42:18'!
+ERROR!
+
+!testRun: #TransferNetVisitorTest #test02SingleTransferBetweenAccountsReflectsOnTransferNet stamp: 'TC&OLT 10/24/2022 16:42:29'!
+ERROR!
+
+!testRun: #TransferNetVisitorTest #test02SingleTransferBetweenAccountsReflectsOnTransferNet stamp: 'TC&OLT 10/24/2022 16:42:29'!
+ERROR!
+!TransferNetVisitor methodsFor: 'nil' stamp: 'TC&OLT 10/24/2022 16:43:16' overrides: 50560516!
+visitReceptiveAccount: aReceptiveAccount
+	
+	! !
+Podríamos haber derivado la estructura polimórfica de Visitor mediante TDD (haciendo primero dos objetos 'visitor' distintos de clases distintas con interfaces distintas, uno para summary y otro para transferNet, que luego confluyeran en una misma clase abstracta con la misma interfaz), pero no tuvimos tiempo.!
+
+----SNAPSHOT----(24 October 2022 16:43:45) CuisUniversity-5481.image priorSource: 7320833!
