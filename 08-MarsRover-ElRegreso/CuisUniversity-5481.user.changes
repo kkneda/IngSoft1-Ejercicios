@@ -1,0 +1,5340 @@
+
+
+----QUIT----(11 September 2022 19:10:09) CuisUniversity-5481.image priorSource: 2810882!
+
+----STARTUP---- (11 September 2022 19:10:10) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5481.image!
+
+
+----QUIT----(11 September 2022 19:10:10) CuisUniversity-5481.image priorSource: 7059465!
+
+----STARTUP---- (27 October 2022 07:54:36) as /home/kaneda/Downloads/2022-2c-main/linux64/CuisUniversity-5481.image!
+
+
+----End fileIn of /home/kaneda/Downloads/2022-2c-main/linux64/MarsRover-WithHeading.st----!
+
+----End fileIn of /home/kaneda/Downloads/2022-2c-main/linux64/Packages/TerseGuide.pck.st----!
+
+TestCase subclass: #MarsRoverLogTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #MarsRoverLogTest category: 'MarsRover-WithHeading' stamp: 'TC&OLT 10/27/2022 07:55:25'!
+TestCase subclass: #MarsRoverLogTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!MarsRoverLogTest methodsFor: 'no messages' stamp: 'TC&OLT 10/27/2022 07:58:31'!
+test17PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := ReadWriteStream on: String new.
+	
+	marsRover logPositionOn: log.
+	
+	marsRover process: ''.
+	
+	self assert: log atEnd.! !
+!MarsRoverLogTest methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/27/2022 07:58:42'!
+test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := ReadWriteStream on: String new.
+	
+	marsRover logPositionOn: log.
+	
+	marsRover process: ''.
+	
+	self assert: log atEnd.! !
+
+!methodRemoval: MarsRoverLogTest #test17PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 07:58:51'!
+test17PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := ReadWriteStream on: String new.
+	
+	marsRover logPositionOn: log.
+	
+	marsRover process: ''.
+	
+	self assert: log atEnd.!
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 08:00:40'!
+ERROR!
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 08:00:40'!
+ERROR!
+
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head positionLoggers'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #MarsRover category: 'MarsRover-WithHeading' stamp: 'TC&OLT 10/27/2022 08:01:37'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head positionLoggers'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!MarsRover methodsFor: 'nil' stamp: 'TC&OLT 10/27/2022 08:02:09'!
+logPositionOn: aLogger
+	
+	positionLoggers add: aLogger.! !
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 08:02:30'!
+ERROR!
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 08:02:30'!
+ERROR!
+!MarsRover methodsFor: 'initialization' stamp: 'TC&OLT 10/27/2022 08:02:55' prior: 50552462!
+initializeAt: aPosition heading: aHeadingType
+
+	position := aPosition.
+	head := aHeadingType for: self.
+	positionLoggers := OrderedCollection new.! !
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 08:02:59'!
+PASSED!
+
+ios _ ReadWriteStream on: String new.!
+
+ios nextPutAll: 'Chris'.!
+
+ios nextPutAll: 'Chris'.!
+
+ios nextPutAll: 'Chris'.!
+
+ios nextPutAll: 'Chris'.!
+
+ios atEnd.!
+
+ios position: 6.!
+
+ ios contents!
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'TC&OLT 10/27/2022 08:07:59'!
+test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := ReadWriteStream on: String new.
+	
+	marsRover logPositionOn: log.
+	
+	marsRover process: 'f'.
+	
+	self assert: '1@2' equals: log contents.
+	self assert: log atEnd.! !
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC&OLT 10/27/2022 08:08:04'!
+FAILURE!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC&OLT 10/27/2022 08:08:04'!
+FAILURE!
+!MarsRover methodsFor: 'moving' stamp: 'TC&OLT 10/27/2022 08:08:43' prior: 50552522!
+moveForward
+	
+	head moveForward.
+	self updatePositionLoggers.! !
+!MarsRover methodsFor: 'logging' stamp: 'TC&OLT 10/27/2022 08:09:51'!
+updatePositionLoggers
+	
+	positionLoggers do: [
+		:log |
+		log nextPutAll: ''.
+	].! !
+!MarsRover methodsFor: 'moving' stamp: 'TC&OLT 10/27/2022 08:10:06' prior: 50555806!
+moveForward
+	
+	head moveForward.
+	self updatePositionLoggers.! !
+!MarsRover methodsFor: 'logging' stamp: 'TC&OLT 10/27/2022 08:10:24' prior: 50555811!
+updatePositionLoggers
+	
+	positionLoggers do: [
+		:log |
+		log nextPutAll: position asString.
+	].! !
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 08:10:32'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC&OLT 10/27/2022 08:10:32'!
+PASSED!
+!Behavior method!
+at: aPosition heading: aHeadingType
+	#_coverageTracker979284_ markAsExecuted.
+	^ #_coverageTracker979284_
+		coverAll:
+			{50 to: 62. 74 to: 81}
+		evaluating: [
+			(#_coverageTracker979284_
+				coverAll:
+					{46 to: 48}
+				evaluating: [
+					(#_coverageTracker979284_
+						coverAll:
+							{41 to: 44}
+						byLiteralOrPseudoVariable: self) new ])
+				initializeAt:
+					(#_coverageTracker979284_
+						cover: (64 to: 72)
+						declaredAt: (5 to: 13)
+						by: aPosition)
+				heading:
+					(#_coverageTracker979284_
+						cover: (83 to: 94)
+						declaredAt: (24 to: 35)
+						by: aHeadingType) ].! !
+!Behavior method!
+initializeAt: aPosition heading: aHeadingType
+	#_coverageTracker978916_ markAsExecuted.
+	#_coverageTracker978916_
+		cover: (49 to: 56)
+		declaredAt: (49 to: 56)
+		by:
+			(position _ #_coverageTracker978916_
+				cover: (61 to: 69)
+				declaredAt: (15 to: 23)
+				by: aPosition).
+	#_coverageTracker978916_
+		cover: (73 to: 76)
+		declaredAt: (73 to: 76)
+		by:
+			(head _ #_coverageTracker978916_
+				coverAll:
+					{94 to: 97}
+				evaluating: [
+					(#_coverageTracker978916_
+						cover: (81 to: 92)
+						declaredAt: (34 to: 45)
+						by: aHeadingType) for:
+						(#_coverageTracker978916_
+							coverAll:
+								{99 to: 102}
+							byLiteralOrPseudoVariable: self) ]).
+	#_coverageTracker978916_
+		cover: (106 to: 120)
+		declaredAt: (106 to: 120)
+		by:
+			(positionLoggers _ #_coverageTracker978916_
+				coverAll:
+					{143 to: 145}
+				evaluating: [
+					(#_coverageTracker978916_
+						coverAll:
+							{125 to: 141}
+						by: OrderedCollection) new ]).! !
+!Behavior method!
+for: aMarsRover
+	#_coverageTracker979530_ markAsExecuted.
+	^ #_coverageTracker979530_
+		coverAll:
+			{31 to: 44}
+		evaluating: [
+			(#_coverageTracker979530_
+				coverAll:
+					{27 to: 29}
+				evaluating: [
+					(#_coverageTracker979530_
+						coverAll:
+							{22 to: 25}
+						byLiteralOrPseudoVariable: self) new ]) initializeFor:
+				(#_coverageTracker979530_
+					cover: (46 to: 55)
+					declaredAt: (6 to: 15)
+					by: aMarsRover) ].! !
+!Behavior method!
+initializeFor: aMarsRover
+	#_coverageTracker978768_ markAsExecuted.
+	#_coverageTracker978768_
+		cover: (31 to: 39)
+		declaredAt: (31 to: 39)
+		by:
+			(marsRover _ #_coverageTracker978768_
+				cover: (44 to: 53)
+				declaredAt: (16 to: 25)
+				by: aMarsRover).! !
+!Behavior method!
+logPositionOn: aLogger
+	#_coverageTracker979107_ markAsExecuted.
+	#_coverageTracker979107_
+		coverAll:
+			{43 to: 46}
+		evaluating: [
+			(#_coverageTracker979107_
+				cover: (27 to: 41)
+				declaredAt: (27 to: 41)
+				by: positionLoggers) add:
+				(#_coverageTracker979107_
+					cover: (48 to: 54)
+					declaredAt: (16 to: 22)
+					by: aLogger) ].! !
+!Behavior method!
+process: aSequenceOfCommands
+	#_coverageTracker978623_ markAsExecuted.
+	#_coverageTracker978623_
+		coverAll:
+			{52 to: 54}
+		evaluating: [
+			(#_coverageTracker978623_
+				cover: (32 to: 50)
+				declaredAt: (10 to: 28)
+				by: aSequenceOfCommands) do: [ :aCommand |
+				#_coverageTracker978623_
+					coverAll:
+						{74 to: 88}
+					evaluating: [
+						(#_coverageTracker978623_
+							coverAll:
+								{69 to: 72}
+							byLiteralOrPseudoVariable: self) processCommand:
+							(#_coverageTracker978623_
+								cover: (90 to: 97)
+								declaredAt: (58 to: 65)
+								by: aCommand) ]]].! !
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 08:10:56'!
+PASSED!
+!Behavior method!
+processCommand: aCommand
+	#_coverageTracker978564_ markAsExecuted.
+	#_coverageTracker978564_
+		coverAll:
+			{62 to: 68}
+		evaluating: [
+			(#_coverageTracker978564_
+				coverAll:
+					{34 to: 50}
+				evaluating: [
+					(#_coverageTracker978564_
+						coverAll:
+							{29 to: 32}
+						byLiteralOrPseudoVariable: self) isForwardCommand:
+						(#_coverageTracker978564_
+							cover: (52 to: 59)
+							declaredAt: (17 to: 24)
+							by: aCommand) ]) ifTrue: [ ^ #_coverageTracker978564_
+					coverAll:
+						{79 to: 89}
+					evaluating: [
+						(#_coverageTracker978564_
+							coverAll:
+								{74 to: 77}
+							byLiteralOrPseudoVariable: self) moveForward ]]].
+	#_coverageTracker978564_
+		coverAll:
+			{130 to: 136}
+		evaluating: [
+			(#_coverageTracker978564_
+				coverAll:
+					{101 to: 118}
+				evaluating: [
+					(#_coverageTracker978564_
+						coverAll:
+							{96 to: 99}
+						byLiteralOrPseudoVariable: self) isBackwardCommand:
+						(#_coverageTracker978564_
+							cover: (120 to: 127)
+							declaredAt: (17 to: 24)
+							by: aCommand) ]) ifTrue: [ ^ #_coverageTracker978564_
+					coverAll:
+						{147 to: 158}
+					evaluating: [
+						(#_coverageTracker978564_
+							coverAll:
+								{142 to: 145}
+							byLiteralOrPseudoVariable: self) moveBackward ]]].
+	#_coverageTracker978564_
+		coverAll:
+			{202 to: 208}
+		evaluating: [
+			(#_coverageTracker978564_
+				coverAll:
+					{170 to: 190}
+				evaluating: [
+					(#_coverageTracker978564_
+						coverAll:
+							{165 to: 168}
+						byLiteralOrPseudoVariable: self) isRotateRightCommand:
+						(#_coverageTracker978564_
+							cover: (192 to: 199)
+							declaredAt: (17 to: 24)
+							by: aCommand) ]) ifTrue: [ ^ #_coverageTracker978564_
+					coverAll:
+						{219 to: 229}
+					evaluating: [
+						(#_coverageTracker978564_
+							coverAll:
+								{214 to: 217}
+							byLiteralOrPseudoVariable: self) rotateRight ]]].
+	#_coverageTracker978564_
+		coverAll:
+			{272 to: 278}
+		evaluating: [
+			(#_coverageTracker978564_
+				coverAll:
+					{241 to: 260}
+				evaluating: [
+					(#_coverageTracker978564_
+						coverAll:
+							{236 to: 239}
+						byLiteralOrPseudoVariable: self) isRotateLeftCommand:
+						(#_coverageTracker978564_
+							cover: (262 to: 269)
+							declaredAt: (17 to: 24)
+							by: aCommand) ]) ifTrue: [ ^ #_coverageTracker978564_
+					coverAll:
+						{289 to: 298}
+					evaluating: [
+						(#_coverageTracker978564_
+							coverAll:
+								{284 to: 287}
+							byLiteralOrPseudoVariable: self) rotateLeft ]]].
+	#_coverageTracker978564_
+		coverAll:
+			{310 to: 329}
+		evaluating: [
+			(#_coverageTracker978564_
+				coverAll:
+					{305 to: 308}
+				byLiteralOrPseudoVariable: self) signalInvalidCommand ].! !
+!Behavior method!
+isForwardCommand: aCommand
+	#_coverageTracker979070_ markAsExecuted.
+	^ #_coverageTracker979070_
+		coverAll:
+			{40 to: 40}
+		evaluating: [
+			(#_coverageTracker979070_
+				cover: (31 to: 38)
+				declaredAt: (19 to: 26)
+				by: aCommand) =
+				(#_coverageTracker979070_
+					coverAll:
+						{42 to: 43}
+					byLiteralOrPseudoVariable: $f) ].! !
+!Behavior method!
+moveForward
+	#_coverageTracker978488_ markAsExecuted.
+	#_coverageTracker978488_
+		coverAll:
+			{21 to: 31}
+		evaluating: [
+			(#_coverageTracker978488_
+				cover: (16 to: 19)
+				declaredAt: (16 to: 19)
+				by: head) moveForward ].
+	#_coverageTracker978488_
+		coverAll:
+			{40 to: 60}
+		evaluating: [
+			(#_coverageTracker978488_
+				coverAll:
+					{35 to: 38}
+				byLiteralOrPseudoVariable: self) updatePositionLoggers ].! !
+!Behavior method!
+moveForward
+	#_coverageTracker979051_ markAsExecuted.
+	^ #_coverageTracker979051_
+		coverAll:
+			{27 to: 35}
+		evaluating: [
+			(#_coverageTracker979051_
+				cover: (17 to: 25)
+				declaredAt: (17 to: 25)
+				by: marsRover) moveNorth ].! !
+!Behavior method!
+moveNorth
+	#_coverageTracker979601_ markAsExecuted.
+	#_coverageTracker979601_
+		cover: (26 to: 33)
+		declaredAt: (14 to: 21)
+		by:
+			(position _ #_coverageTracker979601_
+				coverAll:
+					{35 to: 35}
+				evaluating: [
+					(#_coverageTracker979601_
+						cover: (14 to: 21)
+						declaredAt: (14 to: 21)
+						by: position) +
+						(#_coverageTracker979601_
+							coverAll:
+								{39 to: 39}
+							evaluating: [
+								(#_coverageTracker979601_
+									coverAll:
+										{38 to: 38}
+									byLiteralOrPseudoVariable: 0) @
+									(#_coverageTracker979601_
+										coverAll:
+											{40 to: 40}
+										byLiteralOrPseudoVariable: 1) ]) ]).! !
+!Behavior method!
+updatePositionLoggers
+	#_coverageTracker979622_ markAsExecuted.
+	#_coverageTracker979622_
+		coverAll:
+			{42 to: 44}
+		evaluating: [
+			(#_coverageTracker979622_
+				cover: (26 to: 40)
+				declaredAt: (26 to: 40)
+				by: positionLoggers) do: [ :log |
+				#_coverageTracker979622_
+					coverAll:
+						{63 to: 73}
+					evaluating: [
+						(#_coverageTracker979622_
+							cover: (59 to: 61)
+							declaredAt: (51 to: 53)
+							by: log) nextPutAll:
+							(#_coverageTracker979622_
+								coverAll:
+									{84 to: 91}
+								evaluating: [
+									(#_coverageTracker979622_
+										cover: (75 to: 82)
+										declaredAt: (75 to: 82)
+										by: position) asString ]) ]]].! !
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC&OLT 10/27/2022 08:10:56'!
+PASSED!
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'TC&OLT 10/27/2022 08:22:02'!
+test03PositionLoggerLogsPositionAfterMovingForwardAndBackwardsHeadingNorth
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := ReadWriteStream on: String new.
+	
+	marsRover logPositionOn: log.
+	
+	marsRover process: 'ffb'.
+	
+	self assert: '1@21@31@2' equals: log contents.
+	self assert: log atEnd.! !
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 08:22:05'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC&OLT 10/27/2022 08:22:05'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardAndBackwardsHeadingNorth stamp: 'TC&OLT 10/27/2022 08:22:05'!
+FAILURE!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardAndBackwardsHeadingNorth stamp: 'TC&OLT 10/27/2022 08:22:05'!
+FAILURE!
+!MarsRover methodsFor: 'moving' stamp: 'TC&OLT 10/27/2022 08:22:25' prior: 50552514!
+moveBackward
+	
+	head moveBackward.
+	self updatePositionLoggers.! !
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardAndBackwardsHeadingNorth stamp: 'TC&OLT 10/27/2022 08:22:34'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 08:22:37'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC&OLT 10/27/2022 08:22:37'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardAndBackwardsHeadingNorth stamp: 'TC&OLT 10/27/2022 08:22:37'!
+PASSED!
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'TC&OLT 10/27/2022 08:24:58'!
+test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := ReadWriteStream on: String new.
+	
+	marsRover logHeadingOn: log.
+	
+	marsRover process: ''.
+	
+	self assert: '' equals: log contents.
+	self assert: log atEnd.! !
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 08:25:34'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC&OLT 10/27/2022 08:25:34'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardAndBackwardsHeadingNorth stamp: 'TC&OLT 10/27/2022 08:25:34'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 08:25:34'!
+ERROR!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 08:25:34'!
+ERROR!
+
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head positionLoggers headingLoggers'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #MarsRover category: 'MarsRover-WithHeading' stamp: 'TC&OLT 10/27/2022 08:26:03'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head positionLoggers headingLoggers'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!MarsRover methodsFor: 'logging' stamp: 'TC&OLT 10/27/2022 08:26:18'!
+logHeadingOn: aLogger
+	
+	headingLoggers add: aLogger.! !
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 08:26:25'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC&OLT 10/27/2022 08:26:25'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardAndBackwardsHeadingNorth stamp: 'TC&OLT 10/27/2022 08:26:25'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 08:26:25'!
+ERROR!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 08:26:25'!
+ERROR!
+!MarsRover methodsFor: 'initialization' stamp: 'TC&OLT 10/27/2022 08:26:42' prior: 50555766!
+initializeAt: aPosition heading: aHeadingType
+
+	position := aPosition.
+	head := aHeadingType for: self.
+	positionLoggers := OrderedCollection new.
+	headingLoggers := OrderedCollection new.! !
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 08:26:46'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC&OLT 10/27/2022 08:26:46'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardAndBackwardsHeadingNorth stamp: 'TC&OLT 10/27/2022 08:26:46'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 08:26:46'!
+PASSED!
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'TC&OLT 10/27/2022 08:30:50'!
+test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := ReadWriteStream on: String new.
+	
+	marsRover logHeadingOn: log.
+	
+	marsRover process: 'r'.
+	
+	self assert: 'East' equals: log contents.
+	self assert: log atEnd.! !
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 08:30:53'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC&OLT 10/27/2022 08:30:53'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardAndBackwardsHeadingNorth stamp: 'TC&OLT 10/27/2022 08:30:53'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 08:30:53'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'TC&OLT 10/27/2022 08:30:53'!
+FAILURE!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'TC&OLT 10/27/2022 08:30:53'!
+FAILURE!
+!MarsRover methodsFor: 'heading' stamp: 'TC&OLT 10/27/2022 08:31:20' prior: 50552488!
+rotateRight
+	
+	head rotateRight.
+	self updateHeadingLoggers.! !
+!MarsRover methodsFor: 'logging' stamp: 'TC&OLT 10/27/2022 08:32:58'!
+updateHeadingLoggers
+	
+	positionLoggers do: [
+		:log |
+		log nextPutAll: head class asString.
+	].! !
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'TC&OLT 10/27/2022 08:33:05'!
+FAILURE!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'TC&OLT 10/27/2022 08:33:05'!
+FAILURE!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'TC&OLT 10/27/2022 08:33:16'!
+FAILURE!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'TC&OLT 10/27/2022 08:33:16'!
+FAILURE!
+
+s := String new.
+!
+
+s class.!
+
+s class asString.!
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'TC&OLT 10/27/2022 08:35:25' prior: 50556275!
+test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := ReadWriteStream on: String new.
+	
+	marsRover logHeadingOn: log.
+	
+	marsRover process: 'r'.
+	
+	self assert: 'MarsRoverHeadingEast' equals: log contents.
+	self assert: log atEnd.! !
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'TC&OLT 10/27/2022 08:35:27'!
+FAILURE!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'TC&OLT 10/27/2022 08:35:27'!
+FAILURE!
+!MarsRover methodsFor: 'logging' stamp: 'TC&OLT 10/27/2022 08:35:54' prior: 50556320!
+updateHeadingLoggers
+	
+	headingLoggers do: [
+		:log |
+		log nextPutAll: head class asString.
+	].! !
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'TC&OLT 10/27/2022 08:35:59'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 08:36:02'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC&OLT 10/27/2022 08:36:02'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardAndBackwardsHeadingNorth stamp: 'TC&OLT 10/27/2022 08:36:02'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 08:36:02'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'TC&OLT 10/27/2022 08:36:02'!
+PASSED!
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'TC&OLT 10/27/2022 08:36:40'!
+test06HeadingLoggerLogsHeadingAfterRotatingRightAndLeftHeadingNorth
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := ReadWriteStream on: String new.
+	
+	marsRover logHeadingOn: log.
+	
+	marsRover process: 'rrl'.
+	
+	self assert: 'MarsRoverHeadingEastMarsRoverHeadingSouthMarsRoverHeadingEast' equals: log contents.
+	self assert: log atEnd.! !
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 08:36:44'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC&OLT 10/27/2022 08:36:44'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardAndBackwardsHeadingNorth stamp: 'TC&OLT 10/27/2022 08:36:44'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 08:36:44'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'TC&OLT 10/27/2022 08:36:44'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test06HeadingLoggerLogsHeadingAfterRotatingRightAndLeftHeadingNorth stamp: 'TC&OLT 10/27/2022 08:36:44'!
+FAILURE!
+
+!testRun: #MarsRoverLogTest #test06HeadingLoggerLogsHeadingAfterRotatingRightAndLeftHeadingNorth stamp: 'TC&OLT 10/27/2022 08:36:44'!
+FAILURE!
+!MarsRover methodsFor: 'heading' stamp: 'TC&OLT 10/27/2022 08:37:00' prior: 50552484!
+rotateLeft
+	
+	head rotateLeft.
+	self updateHeadingLoggers.! !
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 08:37:06'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC&OLT 10/27/2022 08:37:06'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardAndBackwardsHeadingNorth stamp: 'TC&OLT 10/27/2022 08:37:06'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 08:37:06'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'TC&OLT 10/27/2022 08:37:06'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test06HeadingLoggerLogsHeadingAfterRotatingRightAndLeftHeadingNorth stamp: 'TC&OLT 10/27/2022 08:37:06'!
+PASSED!
+
+TestCase subclass: #MarsRoverWindowTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #MarsRoverWindowTest category: 'MarsRover-WithHeading' stamp: 'TC&OLT 10/27/2022 08:44:49'!
+TestCase subclass: #MarsRoverWindowTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #MarsRoverWindowTest stamp: 'TC&OLT 10/27/2022 09:12:52'!
+TestCase subclass: #MarsRoverWindowTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+----SNAPSHOT----(27 October 2022 09:13:19) CuisUniversity-5481.image priorSource: 7059698!
+
+----SNAPSHOT----(27 October 2022 09:13:27) CuisUniversity-5481.image priorSource: 7195048!
+
+----STARTUP---- (27 October 2022 09:17:20) as /media/elage3/7e7b8103-5bbe-454e-bc02-f2be1a6d15c7/home/elage/Desktop/Ciencias_de_la_Computacion/ISW1/Ejercicios/marsRoverElRegreso/solucion_octavio_kaneda/linux64/CuisUniversity-5481.image!
+
+
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := ReadWriteStream on: String new.
+	
+	marsRover logHeadingOn: log.
+	marsRover logPositionOn: log.
+	
+	marsRover process: 'rlffbrl'.!
+
+	log contents!
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'OLT&TC 10/27/2022 09:37:33'!
+test07WindowLoggerLogsNothingAfterProcessingEmptyCommandSequence
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := ReadWriteStream on: String new.
+	
+	marsRover windowLogPositionOn: log.
+	
+	marsRover process: ''.
+	
+	self assert: '' equals: log contents.
+	self assert: log atEnd.! !
+
+!testRun: #MarsRoverLogTest #test07WindowLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 09:37:42'!
+ERROR!
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'OLT&TC 10/27/2022 09:38:02'!
+windowLogPositionOn: aReadWriteStream 
+	self shouldBeImplemented.! !
+
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head positionLoggers headingLoggers windowPositionLoggers'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #MarsRover category: 'MarsRover-WithHeading' stamp: 'OLT&TC 10/27/2022 09:38:22'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head positionLoggers headingLoggers windowPositionLoggers'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!MarsRover methodsFor: 'initialization' stamp: 'OLT&TC 10/27/2022 09:39:27' prior: 50556248!
+initializeAt: aPosition heading: aHeadingType
+
+	position := aPosition.
+	head := aHeadingType for: self.
+	positionLoggers := OrderedCollection new.
+	headingLoggers := OrderedCollection new.
+	windowPositionLoggers := OrderedCollection new.! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'OLT&TC 10/27/2022 09:40:08' prior: 50556534!
+windowLogPositionOn: aWindowLogger
+
+	windowPositionLoggers add: aWindowLogger.! !
+
+!testRun: #MarsRoverLogTest #test07WindowLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 09:40:27'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 09:40:28'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'OLT&TC 10/27/2022 09:40:28'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardAndBackwardsHeadingNorth stamp: 'OLT&TC 10/27/2022 09:40:28'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 09:40:28'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'OLT&TC 10/27/2022 09:40:28'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test06HeadingLoggerLogsHeadingAfterRotatingRightAndLeftHeadingNorth stamp: 'OLT&TC 10/27/2022 09:40:28'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test07WindowLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 09:40:28'!
+PASSED!
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'OLT&TC 10/27/2022 09:42:00'!
+test08WindowPositionLoggerLogsCurrentPositionAfterMovingForwardHeadingNorth
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := ReadWriteStream on: String new.
+	
+	marsRover windowLogPositionOn: log.
+	
+	marsRover process: 'f'.
+	
+	self assert: '1@2' equals: log contents.
+	self assert: log atEnd.! !
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'OLT&TC 10/27/2022 09:42:22'!
+test07WindowPositionLoggerLogsNothingAfterProcessingEmptyCommandSequence
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := ReadWriteStream on: String new.
+	
+	marsRover windowLogPositionOn: log.
+	
+	marsRover process: ''.
+	
+	self assert: '' equals: log contents.
+	self assert: log atEnd.! !
+
+!methodRemoval: MarsRoverLogTest #test07WindowLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 09:42:22'!
+test07WindowLoggerLogsNothingAfterProcessingEmptyCommandSequence
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := ReadWriteStream on: String new.
+	
+	marsRover windowLogPositionOn: log.
+	
+	marsRover process: ''.
+	
+	self assert: '' equals: log contents.
+	self assert: log atEnd.!
+
+!testRun: #MarsRoverLogTest #test08WindowPositionLoggerLogsCurrentPositionAfterMovingForwardHeadingNorth stamp: 'OLT&TC 10/27/2022 09:42:24'!
+FAILURE!
+
+!testRun: #MarsRoverLogTest #test08WindowPositionLoggerLogsCurrentPositionAfterMovingForwardHeadingNorth stamp: 'OLT&TC 10/27/2022 09:42:25'!
+FAILURE!
+!MarsRover methodsFor: 'moving' stamp: 'OLT&TC 10/27/2022 09:43:16' prior: 50555817!
+moveForward
+	
+	head moveForward.
+	self updatePositionLoggers.
+	self updateWindowPositionLoggers.! !
+
+ios _ ReadWriteStream on: String new.!
+
+ios nextPutAll: 'Caneda'.!
+
+ios!
+
+ios flush!
+
+ios resetContents!
+
+ios _ ReadWriteStream on: String new.
+ios nextPutAll: 'Caneda'.!
+
+ios _ ReadWriteStream on: String new.
+ios nextPutAll: 'Caneda'.!
+
+ios!
+
+ios contents !
+
+ios resetContents 
+ios contents!
+
+ios resetContents!
+
+ios contents!
+!MarsRover methodsFor: 'logging' stamp: 'OLT&TC 10/27/2022 09:57:33'!
+updateWindowPositionLoggers
+	
+	windowPositionLoggers do: [
+		:log |
+		log resetContents.
+		log nextPutAll: position asString.
+	].! !
+
+!testRun: #MarsRoverLogTest #test08WindowPositionLoggerLogsCurrentPositionAfterMovingForwardHeadingNorth stamp: 'OLT&TC 10/27/2022 09:57:51'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 09:57:54'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'OLT&TC 10/27/2022 09:57:54'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardAndBackwardsHeadingNorth stamp: 'OLT&TC 10/27/2022 09:57:54'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 09:57:54'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'OLT&TC 10/27/2022 09:57:54'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test06HeadingLoggerLogsHeadingAfterRotatingRightAndLeftHeadingNorth stamp: 'OLT&TC 10/27/2022 09:57:54'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test07WindowPositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 09:57:54'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test08WindowPositionLoggerLogsCurrentPositionAfterMovingForwardHeadingNorth stamp: 'OLT&TC 10/27/2022 09:57:54'!
+PASSED!
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'OLT&TC 10/27/2022 10:00:32'!
+test09WindowPositionLoggerLogsCurrentPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := ReadWriteStream on: String new.
+	
+	marsRover windowLogPositionOn: log.
+	
+	marsRover process: 'ffb'.
+	
+	self assert: '1@2' equals: log contents.
+	self assert: log atEnd.! !
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'OLT&TC 10/27/2022 10:00:57'!
+test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := ReadWriteStream on: String new.
+	
+	marsRover logPositionOn: log.
+	
+	marsRover process: 'ffb'.
+	
+	self assert: '1@21@31@2' equals: log contents.
+	self assert: log atEnd.! !
+
+!methodRemoval: MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardAndBackwardsHeadingNorth stamp: 'OLT&TC 10/27/2022 10:00:57'!
+test03PositionLoggerLogsPositionAfterMovingForwardAndBackwardsHeadingNorth
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := ReadWriteStream on: String new.
+	
+	marsRover logPositionOn: log.
+	
+	marsRover process: 'ffb'.
+	
+	self assert: '1@21@31@2' equals: log contents.
+	self assert: log atEnd.!
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'OLT&TC 10/27/2022 10:01:50'!
+test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := ReadWriteStream on: String new.
+	
+	marsRover logHeadingOn: log.
+	
+	marsRover process: 'rrl'.
+	
+	self assert: 'MarsRoverHeadingEastMarsRoverHeadingSouthMarsRoverHeadingEast' equals: log contents.
+	self assert: log atEnd.! !
+
+!methodRemoval: MarsRoverLogTest #test06HeadingLoggerLogsHeadingAfterRotatingRightAndLeftHeadingNorth stamp: 'OLT&TC 10/27/2022 10:01:50'!
+test06HeadingLoggerLogsHeadingAfterRotatingRightAndLeftHeadingNorth
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := ReadWriteStream on: String new.
+	
+	marsRover logHeadingOn: log.
+	
+	marsRover process: 'rrl'.
+	
+	self assert: 'MarsRoverHeadingEastMarsRoverHeadingSouthMarsRoverHeadingEast' equals: log contents.
+	self assert: log atEnd.!
+
+!testRun: #MarsRoverLogTest #test09WindowPositionLoggerLogsCurrentPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'OLT&TC 10/27/2022 10:02:56'!
+FAILURE!
+
+!testRun: #MarsRoverLogTest #test09WindowPositionLoggerLogsCurrentPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'OLT&TC 10/27/2022 10:02:56'!
+FAILURE!
+!MarsRover methodsFor: 'moving' stamp: 'OLT&TC 10/27/2022 10:03:22' prior: 50556149!
+moveBackward
+	
+	head moveBackward.
+	self updatePositionLoggers.
+	self updateWindowPositionLoggers .! !
+!MarsRover methodsFor: 'moving' stamp: 'OLT&TC 10/27/2022 10:03:26' prior: 50556808!
+moveBackward
+	
+	head moveBackward.
+	self updatePositionLoggers.
+	self updateWindowPositionLoggers.! !
+
+!testRun: #MarsRoverLogTest #test09WindowPositionLoggerLogsCurrentPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'OLT&TC 10/27/2022 10:03:32'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 10:03:36'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'OLT&TC 10/27/2022 10:03:36'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'OLT&TC 10/27/2022 10:03:36'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 10:03:36'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'OLT&TC 10/27/2022 10:03:36'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'OLT&TC 10/27/2022 10:03:36'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test07WindowPositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 10:03:36'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test08WindowPositionLoggerLogsCurrentPositionAfterMovingForwardHeadingNorth stamp: 'OLT&TC 10/27/2022 10:03:36'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test09WindowPositionLoggerLogsCurrentPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'OLT&TC 10/27/2022 10:03:36'!
+PASSED!
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'OLT&TC 10/27/2022 10:04:34'!
+test07WindowHeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := ReadWriteStream on: String new.
+	
+	marsRover windowLogHeadingOn: log.
+	
+	marsRover process: ''.
+	
+	self assert: '' equals: log contents.
+	self assert: log atEnd.! !
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'OLT&TC 10/27/2022 10:04:49'!
+test10WindowHeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := ReadWriteStream on: String new.
+	
+	marsRover windowLogHeadingOn: log.
+	
+	marsRover process: ''.
+	
+	self assert: '' equals: log contents.
+	self assert: log atEnd.! !
+
+!methodRemoval: MarsRoverLogTest #test07WindowHeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 10:04:49'!
+test07WindowHeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := ReadWriteStream on: String new.
+	
+	marsRover windowLogHeadingOn: log.
+	
+	marsRover process: ''.
+	
+	self assert: '' equals: log contents.
+	self assert: log atEnd.!
+
+!testRun: #MarsRoverLogTest #test10WindowHeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 10:05:01'!
+ERROR!
+
+!testRun: #MarsRoverLogTest #test10WindowHeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 10:05:01'!
+ERROR!
+
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head positionLoggers headingLoggers windowPositionLoggers windowHeadingLogger'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #MarsRover category: 'MarsRover-WithHeading' stamp: 'OLT&TC 10/27/2022 10:05:24'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head positionLoggers headingLoggers windowPositionLoggers windowHeadingLogger'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!MarsRover methodsFor: 'logging' stamp: 'OLT&TC 10/27/2022 10:07:05'!
+windowLogHeadingOn: aWindowHeadingLogger
+
+	windowHeadingLogger add: aWindowHeadingLogger.! !
+
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head positionLoggers headingLoggers windowPositionLoggers windowHeadingLoggers'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #MarsRover category: 'MarsRover-WithHeading' stamp: 'OLT&TC 10/27/2022 10:07:11'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head positionLoggers headingLoggers windowPositionLoggers windowHeadingLoggers'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!MarsRover methodsFor: 'logging' stamp: 'OLT&TC 10/27/2022 10:07:20' prior: 50556934!
+windowLogHeadingOn: aWindowHeadingLogger
+
+	windowHeadingLoggers add: aWindowHeadingLogger.! !
+!MarsRover methodsFor: 'logging' stamp: 'OLT&TC 10/27/2022 10:07:30' prior: 50556566!
+windowLogPositionOn: aWindowPositionLogger
+
+	windowPositionLoggers add: aWindowPositionLogger.! !
+
+!testRun: #MarsRoverLogTest #test10WindowHeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 10:07:41'!
+ERROR!
+
+!testRun: #MarsRoverLogTest #test10WindowHeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 10:07:41'!
+ERROR!
+!MarsRover methodsFor: 'initialization' stamp: 'OLT&TC 10/27/2022 10:08:04' prior: 50556555!
+initializeAt: aPosition heading: aHeadingType
+
+	position := aPosition.
+	head := aHeadingType for: self.
+	positionLoggers := OrderedCollection new.
+	headingLoggers := OrderedCollection new.
+	windowPositionLoggers := OrderedCollection new.
+	windowHeadingLoggers := OrderedCollection new.! !
+
+!testRun: #MarsRoverLogTest #test10WindowHeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 10:08:09'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 10:08:12'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'OLT&TC 10/27/2022 10:08:12'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'OLT&TC 10/27/2022 10:08:12'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 10:08:12'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'OLT&TC 10/27/2022 10:08:12'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'OLT&TC 10/27/2022 10:08:12'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test07WindowPositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 10:08:12'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test08WindowPositionLoggerLogsCurrentPositionAfterMovingForwardHeadingNorth stamp: 'OLT&TC 10/27/2022 10:08:12'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test09WindowPositionLoggerLogsCurrentPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'OLT&TC 10/27/2022 10:08:12'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test10WindowHeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 10:08:12'!
+PASSED!
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'OLT&TC 10/27/2022 10:09:42'!
+test11WindowHeadingLoggerLogsCurrentHeadingAfterRotatingRightHeadingNorth
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := ReadWriteStream on: String new.
+	
+	marsRover windowLogHeadingOn: log.
+	
+	marsRover process: 'r'.
+	
+	self assert: 'MarsRoverHeadingEast' equals: log contents.
+	self assert: log atEnd.! !
+
+!testRun: #MarsRoverLogTest #test11WindowHeadingLoggerLogsCurrentHeadingAfterRotatingRightHeadingNorth stamp: 'OLT&TC 10/27/2022 10:09:44'!
+FAILURE!
+!MarsRover methodsFor: 'heading' stamp: 'OLT&TC 10/27/2022 10:10:24' prior: 50556315!
+rotateRight
+	
+	head rotateRight.
+	self updateHeadingLoggers.
+	self updateWindowHeadingLoggers.! !
+!MarsRover methodsFor: 'logging' stamp: 'OLT&TC 10/27/2022 10:11:18'!
+updateWindowHeadingLoggers
+	
+	windowHeadingLoggers do: [
+		:log |
+		log resetContents.
+		log nextPutAll: head class asString.
+	].! !
+
+!testRun: #MarsRoverLogTest #test11WindowHeadingLoggerLogsCurrentHeadingAfterRotatingRightHeadingNorth stamp: 'OLT&TC 10/27/2022 10:12:00'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 10:12:02'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'OLT&TC 10/27/2022 10:12:02'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'OLT&TC 10/27/2022 10:12:02'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 10:12:02'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'OLT&TC 10/27/2022 10:12:03'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'OLT&TC 10/27/2022 10:12:03'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test07WindowPositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 10:12:03'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test08WindowPositionLoggerLogsCurrentPositionAfterMovingForwardHeadingNorth stamp: 'OLT&TC 10/27/2022 10:12:03'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test09WindowPositionLoggerLogsCurrentPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'OLT&TC 10/27/2022 10:12:03'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test10WindowHeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 10:12:03'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test11WindowHeadingLoggerLogsCurrentHeadingAfterRotatingRightHeadingNorth stamp: 'OLT&TC 10/27/2022 10:12:03'!
+PASSED!
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'OLT&TC 10/27/2022 10:13:18'!
+test12WindowHeadingLoggerLogsCurrentHeadingAfterRotatingRightTwiceAndLeftHeadingNorth
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := ReadWriteStream on: String new.
+	
+	marsRover windowLogHeadingOn: log.
+	
+	marsRover process: 'rrl'.
+	
+	self assert: 'MarsRoverHeadingEast' equals: log contents.
+	self assert: log atEnd.! !
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'OLT&TC 10/27/2022 10:14:41'!
+test09WindowPositionLoggerLogsCurrentPositionAfterMovingForwardThriceAndBackwardsHeadingNorth
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := ReadWriteStream on: String new.
+	
+	marsRover windowLogPositionOn: log.
+	
+	marsRover process: 'fffb'.
+	
+	self assert: '1@3' equals: log contents.
+	self assert: log atEnd.! !
+
+!methodRemoval: MarsRoverLogTest #test09WindowPositionLoggerLogsCurrentPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'OLT&TC 10/27/2022 10:14:53'!
+test09WindowPositionLoggerLogsCurrentPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := ReadWriteStream on: String new.
+	
+	marsRover windowLogPositionOn: log.
+	
+	marsRover process: 'ffb'.
+	
+	self assert: '1@2' equals: log contents.
+	self assert: log atEnd.!
+
+!testRun: #MarsRoverLogTest #test09WindowPositionLoggerLogsCurrentPositionAfterMovingForwardThriceAndBackwardsHeadingNorth stamp: 'OLT&TC 10/27/2022 10:15:20'!
+PASSED!
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'OLT&TC 10/27/2022 10:16:05'!
+test12WindowHeadingLoggerLogsCurrentHeadingAfterRotatingRightThriceAndLeftHeadingNorth
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := ReadWriteStream on: String new.
+	
+	marsRover windowLogHeadingOn: log.
+	
+	marsRover process: 'rrrl'.
+	
+	self assert: 'MarsRoverHeadingSouth' equals: log contents.
+	self assert: log atEnd.! !
+
+!methodRemoval: MarsRoverLogTest #test12WindowHeadingLoggerLogsCurrentHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'OLT&TC 10/27/2022 10:16:08'!
+test12WindowHeadingLoggerLogsCurrentHeadingAfterRotatingRightTwiceAndLeftHeadingNorth
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := ReadWriteStream on: String new.
+	
+	marsRover windowLogHeadingOn: log.
+	
+	marsRover process: 'rrl'.
+	
+	self assert: 'MarsRoverHeadingEast' equals: log contents.
+	self assert: log atEnd.!
+
+!testRun: #MarsRoverLogTest #test12WindowHeadingLoggerLogsCurrentHeadingAfterRotatingRightThriceAndLeftHeadingNorth stamp: 'OLT&TC 10/27/2022 10:16:11'!
+FAILURE!
+
+!testRun: #MarsRoverLogTest #test12WindowHeadingLoggerLogsCurrentHeadingAfterRotatingRightThriceAndLeftHeadingNorth stamp: 'OLT&TC 10/27/2022 10:16:11'!
+FAILURE!
+!MarsRover methodsFor: 'heading' stamp: 'OLT&TC 10/27/2022 10:16:27' prior: 50556445!
+rotateLeft
+	
+	head rotateLeft.
+	self updateHeadingLoggers.
+	self updateWindowHeadingLoggers.! !
+
+!testRun: #MarsRoverLogTest #test12WindowHeadingLoggerLogsCurrentHeadingAfterRotatingRightThriceAndLeftHeadingNorth stamp: 'OLT&TC 10/27/2022 10:16:31'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 10:16:33'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'OLT&TC 10/27/2022 10:16:33'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'OLT&TC 10/27/2022 10:16:33'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 10:16:34'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'OLT&TC 10/27/2022 10:16:34'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'OLT&TC 10/27/2022 10:16:34'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test07WindowPositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 10:16:34'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test08WindowPositionLoggerLogsCurrentPositionAfterMovingForwardHeadingNorth stamp: 'OLT&TC 10/27/2022 10:16:34'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test09WindowPositionLoggerLogsCurrentPositionAfterMovingForwardThriceAndBackwardsHeadingNorth stamp: 'OLT&TC 10/27/2022 10:16:34'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test10WindowHeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 10:16:34'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test11WindowHeadingLoggerLogsCurrentHeadingAfterRotatingRightHeadingNorth stamp: 'OLT&TC 10/27/2022 10:16:34'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test12WindowHeadingLoggerLogsCurrentHeadingAfterRotatingRightThriceAndLeftHeadingNorth stamp: 'OLT&TC 10/27/2022 10:16:34'!
+PASSED!
+
+----SNAPSHOT----(27 October 2022 10:16:42) CuisUniversity-5481.image priorSource: 7195140!
+!MarsRoverLogTest methodsFor: 'tests - closures' stamp: 'OLT&TC 10/27/2022 10:33:24'!
+test01
+
+	! !
+
+!methodRemoval: MarsRoverLogTest #test01 stamp: 'OLT&TC 10/27/2022 10:38:13'!
+test01
+
+	!
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'OLT&TC 10/27/2022 10:41:50' prior: 50555705!
+test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := ReadWriteStream on: String new.
+	
+	"marsRover logPositionOn: log."
+	marsRover logPositionWith: [:aPosition | log nextPutAll: aPosition].
+	
+	marsRover process: ''.
+	
+	self assert: log atEnd.! !
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 10:42:49'!
+ERROR!
+
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head positionLoggers headingLoggers windowPositionLoggers windowHeadingLoggers positionUpdaters'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #MarsRover category: 'MarsRover-WithHeading' stamp: 'OLT&TC 10/27/2022 10:44:27'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head positionLoggers headingLoggers windowPositionLoggers windowHeadingLoggers positionUpdaters'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!MarsRover methodsFor: 'initialization' stamp: 'OLT&TC 10/27/2022 10:44:47' prior: 50556979!
+initializeAt: aPosition heading: aHeadingType
+
+	position := aPosition.
+	head := aHeadingType for: self.
+	positionLoggers := OrderedCollection new.
+	headingLoggers := OrderedCollection new.
+	windowPositionLoggers := OrderedCollection new.
+	windowHeadingLoggers := OrderedCollection new.
+	positionUpdaters := OrderedCollection new.! !
+!MarsRover methodsFor: 'logging' stamp: 'OLT&TC 10/27/2022 10:47:35'!
+logPositionWith: aPositionUpdatingBlock
+
+	positionUpdaters add: aPositionUpdatingBlock 	! !
+!MarsRover methodsFor: 'logging' stamp: 'OLT&TC 10/27/2022 10:47:47' prior: 50557348!
+logPositionWith: aPositionUpdatingBlock
+
+	positionUpdaters add: aPositionUpdatingBlock.! !
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 10:48:23'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 10:48:25'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'OLT&TC 10/27/2022 10:48:25'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'OLT&TC 10/27/2022 10:48:25'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 10:48:25'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'OLT&TC 10/27/2022 10:48:25'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'OLT&TC 10/27/2022 10:48:25'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test07WindowPositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 10:48:25'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test08WindowPositionLoggerLogsCurrentPositionAfterMovingForwardHeadingNorth stamp: 'OLT&TC 10/27/2022 10:48:25'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test09WindowPositionLoggerLogsCurrentPositionAfterMovingForwardThriceAndBackwardsHeadingNorth stamp: 'OLT&TC 10/27/2022 10:48:25'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test10WindowHeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 10:48:25'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test11WindowHeadingLoggerLogsCurrentHeadingAfterRotatingRightHeadingNorth stamp: 'OLT&TC 10/27/2022 10:48:25'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test12WindowHeadingLoggerLogsCurrentHeadingAfterRotatingRightThriceAndLeftHeadingNorth stamp: 'OLT&TC 10/27/2022 10:48:25'!
+PASSED!
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'OLT&TC 10/27/2022 10:49:16' prior: 50555784!
+test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := ReadWriteStream on: String new.
+	
+	"marsRover logPositionOn: log."
+	marsRover logPositionWith: [:aPosition | log nextPutAll: aPosition].
+	
+	marsRover process: 'f'.
+	
+	self assert: '1@2' equals: log contents.
+	self assert: log atEnd.! !
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'OLT&TC 10/27/2022 10:49:21'!
+FAILURE!
+!MarsRover methodsFor: 'moving' stamp: 'OLT&TC 10/27/2022 10:53:21' prior: 50556659!
+moveForward
+	
+	head moveForward.
+	self updatePositionLoggers.
+	self updateWindowPositionLoggers.
+	self runPositionUpdaters.! !
+!MarsRover methodsFor: 'updating' stamp: 'OLT&TC 10/27/2022 10:55:59'!
+runPositionUpdaters
+	
+	! !
+!MarsRover methodsFor: 'updating' stamp: 'OLT&TC 10/27/2022 10:58:55' prior: 50557447!
+runPositionUpdaters
+	
+	positionUpdaters do: [
+		:aPositionUpdater |
+		aPositionUpdater value: position.
+	].! !
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'OLT&TC 10/27/2022 10:59:30'!
+ERROR!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'OLT&TC 10/27/2022 11:00:17'!
+ERROR!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'OLT&TC 10/27/2022 11:01:45'!
+ERROR!
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'OLT&TC 10/27/2022 11:03:36' prior: 50557420!
+test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := ReadWriteStream on: String new.
+	
+	"marsRover logPositionOn: log."
+	marsRover logPositionWith: [:aPosition | log nextPutAll: aPosition asString].
+	
+	marsRover process: 'f'.
+	
+	self assert: '1@2' equals: log contents.
+	self assert: log atEnd.! !
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'OLT&TC 10/27/2022 11:03:43' prior: 50557298!
+test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := ReadWriteStream on: String new.
+	
+	"marsRover logPositionOn: log."
+	marsRover logPositionWith: [:aPosition | log nextPutAll: aPosition asString].
+	
+	marsRover process: ''.
+	
+	self assert: log atEnd.! !
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'OLT&TC 10/27/2022 11:04:05'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 11:04:05'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'OLT&TC 10/27/2022 11:04:05'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'OLT&TC 10/27/2022 11:04:05'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 11:04:05'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'OLT&TC 10/27/2022 11:04:05'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'OLT&TC 10/27/2022 11:04:05'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test07WindowPositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 11:04:05'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test08WindowPositionLoggerLogsCurrentPositionAfterMovingForwardHeadingNorth stamp: 'OLT&TC 10/27/2022 11:04:05'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test09WindowPositionLoggerLogsCurrentPositionAfterMovingForwardThriceAndBackwardsHeadingNorth stamp: 'OLT&TC 10/27/2022 11:04:05'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test10WindowHeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 11:04:05'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test11WindowHeadingLoggerLogsCurrentHeadingAfterRotatingRightHeadingNorth stamp: 'OLT&TC 10/27/2022 11:04:05'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test12WindowHeadingLoggerLogsCurrentHeadingAfterRotatingRightThriceAndLeftHeadingNorth stamp: 'OLT&TC 10/27/2022 11:04:05'!
+PASSED!
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'OLT&TC 10/27/2022 11:04:47' prior: 50556737!
+test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := ReadWriteStream on: String new.
+	
+	"marsRover logPositionOn: log."
+	
+	marsRover logPositionWith: [:aPosition | log nextPutAll: aPosition asString].
+	
+	marsRover process: 'ffb'.
+	
+	self assert: '1@21@31@2' equals: log contents.
+	self assert: log atEnd.! !
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'OLT&TC 10/27/2022 11:04:50'!
+FAILURE!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'OLT&TC 10/27/2022 11:04:50'!
+FAILURE!
+!MarsRover methodsFor: 'moving' stamp: 'OLT&TC 10/27/2022 11:05:21' prior: 50556814!
+moveBackward
+	
+	head moveBackward.
+	self updatePositionLoggers.
+	self updateWindowPositionLoggers.
+	self runPositionUpdaters.! !
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'OLT&TC 10/27/2022 11:09:40'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 11:09:45'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'OLT&TC 10/27/2022 11:09:45'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'OLT&TC 10/27/2022 11:09:45'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 11:09:45'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'OLT&TC 10/27/2022 11:09:45'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'OLT&TC 10/27/2022 11:09:45'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test07WindowPositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 11:09:45'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test08WindowPositionLoggerLogsCurrentPositionAfterMovingForwardHeadingNorth stamp: 'OLT&TC 10/27/2022 11:09:45'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test09WindowPositionLoggerLogsCurrentPositionAfterMovingForwardThriceAndBackwardsHeadingNorth stamp: 'OLT&TC 10/27/2022 11:09:45'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test10WindowHeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 11:09:45'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test11WindowHeadingLoggerLogsCurrentHeadingAfterRotatingRightHeadingNorth stamp: 'OLT&TC 10/27/2022 11:09:45'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test12WindowHeadingLoggerLogsCurrentHeadingAfterRotatingRightThriceAndLeftHeadingNorth stamp: 'OLT&TC 10/27/2022 11:09:45'!
+PASSED!
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'OLT&TC 10/27/2022 11:11:01' prior: 50556172!
+test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := ReadWriteStream on: String new.
+	
+	"marsRover logHeadingOn: log."
+	
+	marsRover logHeadingWith: [:aHeading | log nextPutAll: aHeading class asString].
+
+	
+	marsRover process: ''.
+	
+	self assert: '' equals: log contents.
+	self assert: log atEnd.! !
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 11:11:04'!
+ERROR!
+
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head positionLoggers headingLoggers windowPositionLoggers windowHeadingLoggers positionUpdaters headingUpdaters'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #MarsRover category: 'MarsRover-WithHeading' stamp: 'OLT&TC 10/27/2022 11:11:17'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head positionLoggers headingLoggers windowPositionLoggers windowHeadingLoggers positionUpdaters headingUpdaters'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!MarsRover methodsFor: 'initialization' stamp: 'OLT&TC 10/27/2022 11:11:34' prior: 50557335!
+initializeAt: aPosition heading: aHeadingType
+
+	position := aPosition.
+	head := aHeadingType for: self.
+	positionLoggers := OrderedCollection new.
+	headingLoggers := OrderedCollection new.
+	windowPositionLoggers := OrderedCollection new.
+	windowHeadingLoggers := OrderedCollection new.
+	positionUpdaters := OrderedCollection new.
+	headingUpdaters := OrderedCollection new.! !
+!MarsRover methodsFor: 'logging' stamp: 'OLT&TC 10/27/2022 11:12:49'!
+logHeadingWith: aHeadingUpdatingBlock
+
+	headingUpdaters add: aHeadingUpdatingBlock.! !
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 11:12:56'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 11:12:58'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'OLT&TC 10/27/2022 11:12:58'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'OLT&TC 10/27/2022 11:12:58'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 11:12:58'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'OLT&TC 10/27/2022 11:12:58'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'OLT&TC 10/27/2022 11:12:58'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test07WindowPositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 11:12:58'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test08WindowPositionLoggerLogsCurrentPositionAfterMovingForwardHeadingNorth stamp: 'OLT&TC 10/27/2022 11:12:58'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test09WindowPositionLoggerLogsCurrentPositionAfterMovingForwardThriceAndBackwardsHeadingNorth stamp: 'OLT&TC 10/27/2022 11:12:58'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test10WindowHeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 11:12:58'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test11WindowHeadingLoggerLogsCurrentHeadingAfterRotatingRightHeadingNorth stamp: 'OLT&TC 10/27/2022 11:12:58'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test12WindowHeadingLoggerLogsCurrentHeadingAfterRotatingRightThriceAndLeftHeadingNorth stamp: 'OLT&TC 10/27/2022 11:12:58'!
+PASSED!
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'OLT&TC 10/27/2022 11:13:13' prior: 50556345!
+test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := ReadWriteStream on: String new.
+	
+	"marsRover logHeadingOn: log."
+	
+	marsRover logHeadingWith: [:aHeading | log nextPutAll: aHeading class asString].
+
+	
+	marsRover process: 'r'.
+	
+	self assert: 'MarsRoverHeadingEast' equals: log contents.
+	self assert: log atEnd.! !
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'OLT&TC 10/27/2022 11:13:15'!
+FAILURE!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'OLT&TC 10/27/2022 11:13:15'!
+FAILURE!
+!MarsRover methodsFor: 'heading' stamp: 'OLT&TC 10/27/2022 11:14:21' prior: 50557061!
+rotateRight
+	
+	head rotateRight.
+	self updateHeadingLoggers.
+	self updateWindowHeadingLoggers.
+	self runHeadingUpdaters.! !
+!MarsRover methodsFor: 'updating' stamp: 'OLT&TC 10/27/2022 11:14:50'!
+runHeadingUpdaters
+	
+	headingUpdaters do: [
+		:aHeadingUpdater |
+		aHeadingUpdater value: head.
+	].! !
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'OLT&TC 10/27/2022 11:14:55'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 11:14:57'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'OLT&TC 10/27/2022 11:14:57'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'OLT&TC 10/27/2022 11:14:57'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 11:14:57'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'OLT&TC 10/27/2022 11:14:57'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'OLT&TC 10/27/2022 11:14:57'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test07WindowPositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 11:14:57'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test08WindowPositionLoggerLogsCurrentPositionAfterMovingForwardHeadingNorth stamp: 'OLT&TC 10/27/2022 11:14:57'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test09WindowPositionLoggerLogsCurrentPositionAfterMovingForwardThriceAndBackwardsHeadingNorth stamp: 'OLT&TC 10/27/2022 11:14:57'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test10WindowHeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 11:14:57'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test11WindowHeadingLoggerLogsCurrentHeadingAfterRotatingRightHeadingNorth stamp: 'OLT&TC 10/27/2022 11:14:57'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test12WindowHeadingLoggerLogsCurrentHeadingAfterRotatingRightThriceAndLeftHeadingNorth stamp: 'OLT&TC 10/27/2022 11:14:57'!
+PASSED!
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'OLT&TC 10/27/2022 11:15:13' prior: 50556766!
+test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := ReadWriteStream on: String new.
+	
+	"marsRover logHeadingOn: log."
+	
+	marsRover logHeadingWith: [:aHeading | log nextPutAll: aHeading class asString].
+
+	
+	marsRover process: 'rrl'.
+	
+	self assert: 'MarsRoverHeadingEastMarsRoverHeadingSouthMarsRoverHeadingEast' equals: log contents.
+	self assert: log atEnd.! !
+
+!testRun: #MarsRoverLogTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'OLT&TC 10/27/2022 11:15:15'!
+FAILURE!
+!MarsRover methodsFor: 'heading' stamp: 'OLT&TC 10/27/2022 11:15:41' prior: 50557221!
+rotateLeft
+	
+	head rotateLeft.
+	self updateHeadingLoggers.
+	self updateWindowHeadingLoggers.
+	self runHeadingUpdaters.! !
+
+!testRun: #MarsRoverLogTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'OLT&TC 10/27/2022 11:15:46'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 11:15:48'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'OLT&TC 10/27/2022 11:15:48'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'OLT&TC 10/27/2022 11:15:48'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 11:15:48'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'OLT&TC 10/27/2022 11:15:48'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'OLT&TC 10/27/2022 11:15:48'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test07WindowPositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 11:15:48'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test08WindowPositionLoggerLogsCurrentPositionAfterMovingForwardHeadingNorth stamp: 'OLT&TC 10/27/2022 11:15:48'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test09WindowPositionLoggerLogsCurrentPositionAfterMovingForwardThriceAndBackwardsHeadingNorth stamp: 'OLT&TC 10/27/2022 11:15:48'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test10WindowHeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 11:15:48'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test11WindowHeadingLoggerLogsCurrentHeadingAfterRotatingRightHeadingNorth stamp: 'OLT&TC 10/27/2022 11:15:48'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test12WindowHeadingLoggerLogsCurrentHeadingAfterRotatingRightThriceAndLeftHeadingNorth stamp: 'OLT&TC 10/27/2022 11:15:48'!
+PASSED!
+
+----SNAPSHOT----(27 October 2022 11:18:30) CuisUniversity-5481.image priorSource: 7220379!
+
+!methodRemoval: MarsRoverLogTest #test07WindowPositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 11:18:52'!
+test07WindowPositionLoggerLogsNothingAfterProcessingEmptyCommandSequence
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := ReadWriteStream on: String new.
+	
+	marsRover windowLogPositionOn: log.
+	
+	marsRover process: ''.
+	
+	self assert: '' equals: log contents.
+	self assert: log atEnd.!
+
+!methodRemoval: MarsRoverLogTest #test08WindowPositionLoggerLogsCurrentPositionAfterMovingForwardHeadingNorth stamp: 'OLT&TC 10/27/2022 11:18:53'!
+test08WindowPositionLoggerLogsCurrentPositionAfterMovingForwardHeadingNorth
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := ReadWriteStream on: String new.
+	
+	marsRover windowLogPositionOn: log.
+	
+	marsRover process: 'f'.
+	
+	self assert: '1@2' equals: log contents.
+	self assert: log atEnd.!
+
+!methodRemoval: MarsRoverLogTest #test09WindowPositionLoggerLogsCurrentPositionAfterMovingForwardThriceAndBackwardsHeadingNorth stamp: 'OLT&TC 10/27/2022 11:18:55'!
+test09WindowPositionLoggerLogsCurrentPositionAfterMovingForwardThriceAndBackwardsHeadingNorth
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := ReadWriteStream on: String new.
+	
+	marsRover windowLogPositionOn: log.
+	
+	marsRover process: 'fffb'.
+	
+	self assert: '1@3' equals: log contents.
+	self assert: log atEnd.!
+
+!methodRemoval: MarsRoverLogTest #test10WindowHeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 11:18:56'!
+test10WindowHeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := ReadWriteStream on: String new.
+	
+	marsRover windowLogHeadingOn: log.
+	
+	marsRover process: ''.
+	
+	self assert: '' equals: log contents.
+	self assert: log atEnd.!
+
+!methodRemoval: MarsRoverLogTest #test11WindowHeadingLoggerLogsCurrentHeadingAfterRotatingRightHeadingNorth stamp: 'OLT&TC 10/27/2022 11:18:57'!
+test11WindowHeadingLoggerLogsCurrentHeadingAfterRotatingRightHeadingNorth
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := ReadWriteStream on: String new.
+	
+	marsRover windowLogHeadingOn: log.
+	
+	marsRover process: 'r'.
+	
+	self assert: 'MarsRoverHeadingEast' equals: log contents.
+	self assert: log atEnd.!
+
+!methodRemoval: MarsRoverLogTest #test12WindowHeadingLoggerLogsCurrentHeadingAfterRotatingRightThriceAndLeftHeadingNorth stamp: 'OLT&TC 10/27/2022 11:18:58'!
+test12WindowHeadingLoggerLogsCurrentHeadingAfterRotatingRightThriceAndLeftHeadingNorth
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := ReadWriteStream on: String new.
+	
+	marsRover windowLogHeadingOn: log.
+	
+	marsRover process: 'rrrl'.
+	
+	self assert: 'MarsRoverHeadingSouth' equals: log contents.
+	self assert: log atEnd.!
+
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head positionUpdaters headingUpdaters'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #MarsRover category: 'MarsRover-WithHeading' stamp: 'OLT&TC 10/27/2022 11:19:17'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head positionUpdaters headingUpdaters'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!MarsRover methodsFor: 'heading' stamp: 'OLT&TC 10/27/2022 11:19:28' prior: 50557801!
+rotateRight
+	
+	head rotateRight.
+	self runHeadingUpdaters.! !
+!MarsRover methodsFor: 'heading' stamp: 'OLT&TC 10/27/2022 11:19:33' prior: 50557898!
+rotateLeft
+	
+	head rotateLeft.
+	self runHeadingUpdaters.! !
+!MarsRover methodsFor: 'moving' stamp: 'OLT&TC 10/27/2022 11:19:46' prior: 50557440!
+moveForward
+	
+	head moveForward.
+	self runPositionUpdaters.! !
+!MarsRover methodsFor: 'moving' stamp: 'OLT&TC 10/27/2022 11:19:51' prior: 50557588!
+moveBackward
+	
+	head moveBackward.
+	self runPositionUpdaters.! !
+!MarsRover methodsFor: 'initialization' stamp: 'OLT&TC 10/27/2022 11:20:03' prior: 50557696!
+initializeAt: aPosition heading: aHeadingType
+
+	position := aPosition.
+	head := aHeadingType for: self.
+	positionUpdaters := OrderedCollection new.
+	headingUpdaters := OrderedCollection new.! !
+
+!methodRemoval: MarsRover #logHeadingOn: stamp: 'OLT&TC 10/27/2022 11:20:39'!
+logHeadingOn: aLogger
+	
+	headingLoggers add: aLogger.!
+
+!methodRemoval: MarsRover #logPositionOn: stamp: 'OLT&TC 10/27/2022 11:20:39'!
+logPositionOn: aLogger
+	
+	positionLoggers add: aLogger.!
+
+!methodRemoval: MarsRover #updateHeadingLoggers stamp: 'OLT&TC 10/27/2022 11:20:39'!
+updateHeadingLoggers
+	
+	headingLoggers do: [
+		:log |
+		log nextPutAll: head class asString.
+	].!
+
+!methodRemoval: MarsRover #updatePositionLoggers stamp: 'OLT&TC 10/27/2022 11:20:39'!
+updatePositionLoggers
+	
+	positionLoggers do: [
+		:log |
+		log nextPutAll: position asString.
+	].!
+
+!methodRemoval: MarsRover #updateWindowHeadingLoggers stamp: 'OLT&TC 10/27/2022 11:20:39'!
+updateWindowHeadingLoggers
+	
+	windowHeadingLoggers do: [
+		:log |
+		log resetContents.
+		log nextPutAll: head class asString.
+	].!
+
+!methodRemoval: MarsRover #updateWindowPositionLoggers stamp: 'OLT&TC 10/27/2022 11:20:39'!
+updateWindowPositionLoggers
+	
+	windowPositionLoggers do: [
+		:log |
+		log resetContents.
+		log nextPutAll: position asString.
+	].!
+
+!methodRemoval: MarsRover #windowLogHeadingOn: stamp: 'OLT&TC 10/27/2022 11:20:39'!
+windowLogHeadingOn: aWindowHeadingLogger
+
+	windowHeadingLoggers add: aWindowHeadingLogger.!
+
+!methodRemoval: MarsRover #windowLogPositionOn: stamp: 'OLT&TC 10/27/2022 11:20:39'!
+windowLogPositionOn: aWindowPositionLogger
+
+	windowPositionLoggers add: aWindowPositionLogger.!
+
+----SNAPSHOT----(27 October 2022 11:25:54) CuisUniversity-5481.image priorSource: 7242055!
+!MarsRover methodsFor: 'nil' stamp: 'OLT&TC 10/27/2022 11:31:50'!
+logWith: aHeadingUpdatingBlock anUpdater: anInstanceVariableUpdater
+
+	anInstanceVariableUpdater add: aHeadingUpdatingBlock.! !
+!MarsRover methodsFor: 'logging' stamp: 'OLT&TC 10/27/2022 11:34:09'!
+runInstanceVariableUpdaters: instanceVariableUpdaters of: anInstanceVariable
+	
+	instanceVariableUpdaters do: [
+		:anInstanceVariableUpdater |
+		anInstanceVariableUpdater value: anInstanceVariable.
+	].! !
+!MarsRover methodsFor: 'logging' stamp: 'OLT&TC 10/27/2022 11:35:13' prior: 50558154!
+logWith: anInstanceVariableUpdatingBlock anUpdater: anInstanceVariableUpdater
+
+	anInstanceVariableUpdater add: anInstanceVariableUpdatingBlock.! !
+
+!methodRemoval: MarsRover #logWith:anUpdater: stamp: 'OLT&TC 10/27/2022 11:37:02'!
+logWith: anInstanceVariableUpdatingBlock anUpdater: anInstanceVariableUpdater
+
+	anInstanceVariableUpdater add: anInstanceVariableUpdatingBlock.!
+
+!methodRemoval: MarsRover #runInstanceVariableUpdaters:of: stamp: 'OLT&TC 10/27/2022 11:37:18'!
+runInstanceVariableUpdaters: instanceVariableUpdaters of: anInstanceVariable
+	
+	instanceVariableUpdaters do: [
+		:anInstanceVariableUpdater |
+		anInstanceVariableUpdater value: anInstanceVariable.
+	].!
+
+!classDefinition: #MarsRoverLog category: 'MarsRover-WithHeading' stamp: 'OLT&TC 10/27/2022 12:05:52'!
+Object subclass: #MarsRoverLog
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'OLT&TC 10/27/2022 12:05:35' prior: 50557487!
+test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence
+	
+	| marsRover log logStream|
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	"log := ReadWriteStream on: String new.
+	
+	marsRover logPositionWith: [:aPosition | log nextPutAll: aPosition asString]."
+	
+	log:= MarsRoverLog.
+	
+	marsRover recordPositionChangesOn: log.
+		
+	marsRover process: ''.
+	
+	logStream := log readStream.
+	
+	self assert: logStream atEnd.! !
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 12:06:02'!
+ERROR!
+
+Object subclass: #MarsRoverLog
+	instanceVariableNames: 'logStream'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #MarsRoverLog category: 'MarsRover-WithHeading' stamp: 'OLT&TC 10/27/2022 12:06:23'!
+Object subclass: #MarsRoverLog
+	instanceVariableNames: 'logStream'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+Object subclass: #MarsRoverLog
+	instanceVariableNames: 'stream'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #MarsRoverLog category: 'MarsRover-WithHeading' stamp: 'OLT&TC 10/27/2022 12:06:31'!
+Object subclass: #MarsRoverLog
+	instanceVariableNames: 'stream'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'OLT&TC 10/27/2022 12:06:48' prior: 50558203!
+test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence
+	
+	| marsRover log logStream|
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	"log := ReadWriteStream on: String new.
+	
+	marsRover logPositionWith: [:aPosition | log nextPutAll: aPosition asString]."
+	
+	log:= MarsRoverLog new.
+	
+	marsRover recordPositionChangesOn: log.
+		
+	marsRover process: ''.
+	
+	logStream := log readStream.
+	
+	self assert: logStream atEnd.! !
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'OLT&TC 10/27/2022 12:06:55' prior: 50558250!
+test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence
+	
+	| marsRover log logStream|
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	"log := ReadWriteStream on: String new.
+	
+	marsRover logPositionWith: [:aPosition | log nextPutAll: aPosition asString]."
+	
+	log := MarsRoverLog new.
+	
+	marsRover recordPositionChangesOn: log.
+		
+	marsRover process: ''.
+	
+	logStream := log readStream.
+	
+	self assert: logStream atEnd.! !
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 12:06:57'!
+ERROR!
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 12:07:07'!
+ERROR!
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 12:07:15'!
+ERROR!
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 12:07:39'!
+ERROR!
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'OLT&TC 10/27/2022 12:07:45'!
+recordPositionChangesOn: aMarsRoverLog 
+	self shouldBeImplemented.! !
+!MarsRoverLog methodsFor: 'initialization' stamp: 'OLT&TC 10/27/2022 12:09:14' overrides: 16920235!
+initialize
+	
+	stream := WriteStream on: String new.! !
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 12:09:32'!
+ERROR!
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 12:09:32'!
+ERROR!
+!MarsRover methodsFor: 'error handling' stamp: 'OLT&TC 10/27/2022 12:09:34' overrides: 16902107!
+error: aString 
+	self shouldBeImplemented.! !
+
+!methodRemoval: MarsRover #error: stamp: 'OLT&TC 10/27/2022 12:10:00'!
+error: aString 
+	self shouldBeImplemented.!
+
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head positionUpdaters headingUpdaters'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #MarsRover category: 'MarsRover-WithHeading' stamp: 'OLT&TC 10/27/2022 12:10:31'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head positionUpdaters headingUpdaters'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head positionUpdaters headingUpdaters positionRecorder'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #MarsRover category: 'MarsRover-WithHeading' stamp: 'OLT&TC 10/27/2022 12:12:02'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head positionUpdaters headingUpdaters positionRecorder'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!MarsRover methodsFor: 'initialization' stamp: 'OLT&TC 10/27/2022 12:12:17' prior: 50558097!
+initializeAt: aPosition heading: aHeadingType
+
+	position := aPosition.
+	head := aHeadingType for: self.
+	positionUpdaters := OrderedCollection new.
+	headingUpdaters := OrderedCollection new.
+	positionRecorder := OrderedCollection new.! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'OLT&TC 10/27/2022 12:12:47' prior: 50558302!
+recordPositionChangesOn: aMarsRoverRecorder 
+
+	positionRecorder add: aMarsRoverRecorder.! !
+!MarsRoverLog methodsFor: 'nil' stamp: 'OLT&TC 10/27/2022 12:14:17'!
+readStream
+	
+	^ ReadStream on: stream contents.! !
+!MarsRoverLog methodsFor: 'as yet unclassified' stamp: 'OLT&TC 10/27/2022 12:14:27' prior: 50558378!
+readStream
+	
+	^ ReadStream on: stream contents.! !
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 12:14:58'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'OLT&TC 10/27/2022 12:16:17'!
+PASSED!
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'OLT&TC 10/27/2022 12:18:56' prior: 50557471!
+test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	"
+	log := ReadWriteStream on: String new.
+	
+	marsRover logPositionWith: [:aPosition | log nextPutAll: aPosition asString]."
+	
+	log := MarsRoverLog new.
+	
+	marsRover recordPositionChangesOn: log.
+	
+	marsRover process: 'f'.
+	
+	self assert: '1@2' equals: log contents.
+	self assert: log atEnd.! !
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'OLT&TC 10/27/2022 12:19:23' prior: 50558397!
+test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth
+	
+	| marsRover log logStream|
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	"
+	log := ReadWriteStream on: String new.
+	
+	marsRover logPositionWith: [:aPosition | log nextPutAll: aPosition asString]."
+	
+	log := MarsRoverLog new.
+	
+	marsRover recordPositionChangesOn: log.
+	
+	marsRover process: 'f'.
+	
+	logStream := log readStream.
+	
+	self assert: '1@2' equals: log contents.
+	self assert: log atEnd.! !
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'OLT&TC 10/27/2022 12:21:21' prior: 50558414!
+test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth
+	
+	| marsRover log logStream|
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	"
+	log := ReadWriteStream on: String new.
+	
+	marsRover logPositionWith: [:aPosition | log nextPutAll: aPosition asString]."
+	
+	log := MarsRoverLog new.
+	
+	marsRover recordPositionChangesOn: log.
+	
+	marsRover process: 'f'.
+	
+	logStream := log readStream.
+	
+	self assert: '1@2' equals: logStream nextLine.
+	self assert: log atEnd.! !
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'OLT&TC 10/27/2022 12:21:22'!
+FAILURE!
+!MarsRover methodsFor: 'moving' stamp: 'OLT&TC 10/27/2022 12:22:12' prior: 50558087!
+moveForward
+	
+	head moveForward.
+	self runPositionUpdaters.
+	self informPositionRecorders.! !
+
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head positionUpdaters headingUpdaters positionRecorders'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #MarsRover category: 'MarsRover-WithHeading' stamp: 'OLT&TC 10/27/2022 12:23:01'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head positionUpdaters headingUpdaters positionRecorders'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!MarsRover methodsFor: 'initialization' stamp: 'OLT&TC 10/27/2022 12:23:11' prior: 50558361!
+initializeAt: aPosition heading: aHeadingType
+
+	position := aPosition.
+	head := aHeadingType for: self.
+	positionUpdaters := OrderedCollection new.
+	headingUpdaters := OrderedCollection new.
+	positionRecorders := OrderedCollection new.! !
+!MarsRover methodsFor: 'logging' stamp: 'OLT&TC 10/27/2022 12:24:38'!
+informPositionRecorders
+	
+	positionRecorders do: [
+		:aPositionRecorder |
+			
+	]! !
+!MarsRover methodsFor: 'logging' stamp: 'OLT&TC 10/27/2022 12:26:07' prior: 50558488!
+informPositionRecorders
+	
+	positionRecorders do: [
+		:aPositionRecorder |
+		aPositionRecorder informOfChangeOn: position.
+	].! !
+!MarsRoverLog methodsFor: 'nil' stamp: 'OLT&TC 10/27/2022 12:26:30'!
+informOfChangeOn: x
+! !
+!MarsRoverLog methodsFor: 'as yet unclassified' stamp: 'OLT&TC 10/27/2022 12:30:17' prior: 50558501!
+informOfChangeOn: aChengedPosition
+
+	stream nextPutAll: aChengedPosition asString.
+	stream newLine.
+! !
+
+!classDefinition: #MarsRoverLog category: 'MarsRover-WithHeading' stamp: 'OLT&TC 10/27/2022 12:30:45'!
+Object subclass: #MarsRoverLog
+	instanceVariableNames: 'changesStream'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!MarsRoverLog methodsFor: 'as yet unclassified' stamp: 'OLT&TC 10/27/2022 12:30:45' prior: 50558383!
+readStream
+	
+	^ ReadStream on: changesStream contents.! !
+!MarsRoverLog methodsFor: 'as yet unclassified' stamp: 'OLT&TC 10/27/2022 12:30:45' prior: 50558308 overrides: 16920235!
+initialize
+	
+	changesStream := WriteStream on: String new.! !
+!MarsRoverLog methodsFor: 'as yet unclassified' stamp: 'OLT&TC 10/27/2022 12:30:45' prior: 50558505!
+informOfChangeOn: aChengedPosition
+
+	changesStream nextPutAll: aChengedPosition asString.
+	changesStream newLine.
+! !
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'OLT&TC 10/27/2022 12:31:15'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 12:31:17'!
+ERROR!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'OLT&TC 10/27/2022 12:31:17'!
+ERROR!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'OLT&TC 10/27/2022 12:31:17'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 12:31:17'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'OLT&TC 10/27/2022 12:31:17'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'OLT&TC 10/27/2022 12:31:17'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 12:31:27'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 12:31:29'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 12:31:31'!
+ERROR!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'OLT&TC 10/27/2022 12:31:31'!
+ERROR!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'OLT&TC 10/27/2022 12:31:31'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 12:31:31'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'OLT&TC 10/27/2022 12:31:31'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'OLT&TC 10/27/2022 12:31:31'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 12:31:49'!
+ERROR!
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 12:31:49'!
+ERROR!
+!MarsRover methodsFor: 'logging' stamp: 'OLT&TC 10/27/2022 12:32:44' prior: 50558372!
+recordPositionChangesOn: aMarsRoverRecorder 
+
+	positionRecorders add: aMarsRoverRecorder.! !
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 12:33:04'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'OLT&TC 10/27/2022 12:33:04'!
+ERROR!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'OLT&TC 10/27/2022 12:33:04'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 12:33:04'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'OLT&TC 10/27/2022 12:33:04'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'OLT&TC 10/27/2022 12:33:04'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'OLT&TC 10/27/2022 12:33:04'!
+ERROR!
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'OLT&TC 10/27/2022 12:33:25' prior: 50558433!
+test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth
+	
+	| marsRover log logStream|
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	"
+	log := ReadWriteStream on: String new.
+	
+	marsRover logPositionWith: [:aPosition | log nextPutAll: aPosition asString]."
+	
+	log := MarsRoverLog new.
+	
+	marsRover recordPositionChangesOn: log.
+	
+	marsRover process: 'f'.
+	
+	logStream := log readStream.
+	
+	self assert: '1@2' equals: logStream nextLine.
+	self assert: logStream atEnd.! !
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 12:33:40'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 12:33:42'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'OLT&TC 10/27/2022 12:33:42'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'OLT&TC 10/27/2022 12:33:42'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 12:33:42'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'OLT&TC 10/27/2022 12:33:42'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'OLT&TC 10/27/2022 12:33:42'!
+PASSED!
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'OLT&TC 10/27/2022 12:36:53' prior: 50557562!
+test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth
+	
+	| marsRover log logStream|
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	"log := ReadWriteStream on: String new.
+		
+	marsRover logPositionWith: [:aPosition | log nextPutAll: aPosition asString]."
+	
+	log := MarsRoverLog new.
+	
+	marsRover recordPositionChangesOn: log.
+	
+	marsRover process: 'ffb'.
+	
+	logStream := log readStream.
+	
+	self assert: '1@2' equals: logStream nextLine.
+	self assert: '1@3' equals: logStream nextLine.
+	self assert: '1@2' equals: logStream nextLine.
+	
+	self assert: logStream atEnd.! !
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'OLT&TC 10/27/2022 12:37:08'!
+FAILURE!
+!MarsRover methodsFor: 'moving' stamp: 'OLT&TC 10/27/2022 12:37:40' prior: 50558092!
+moveBackward
+	
+	head moveBackward.
+	self runPositionUpdaters.
+	self informPositionRecorders.! !
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'OLT&TC 10/27/2022 12:38:25'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 12:38:29'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'OLT&TC 10/27/2022 12:38:29'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'OLT&TC 10/27/2022 12:38:29'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'OLT&TC 10/27/2022 12:38:29'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'OLT&TC 10/27/2022 12:38:29'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'OLT&TC 10/27/2022 12:38:29'!
+PASSED!
+
+----SNAPSHOT----(27 October 2022 12:38:33) CuisUniversity-5481.image priorSource: 7248007!
+
+----STARTUP---- (27 October 2022 12:41:39) as /home/kaneda/Downloads/marsRover-regreso/linux64/CuisUniversity-5481.image!
+
+!MarsRoverLog methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/27/2022 12:43:39' prior: 50558532!
+informOfChangeOn: aChengedPosition
+
+	changesStream nextPutAll: aChengedPosition asString. "Estaría bueno que se ocupe alguien más de procesar el objeto que se registra."
+	changesStream newLine.
+! !
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'TC&OLT 10/27/2022 12:44:17' prior: 50557656!
+test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	"log := ReadWriteStream on: String new.
+	
+	marsRover logHeadingWith: [:aHeading | log nextPutAll: aHeading class asString]."
+
+	
+	marsRover process: ''.
+	
+	self assert: '' equals: log contents.
+	self assert: log atEnd.! !
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'TC&OLT 10/27/2022 12:45:07' prior: 50558784!
+test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence
+	
+	| marsRover log |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	"log := ReadWriteStream on: String new.
+	
+	marsRover logHeadingWith: [:aHeading | log nextPutAll: aHeading class asString]."
+	
+	log := MarsRoverLog new.
+	
+	marsRover recordHeadingChangesOn: log.
+	
+	marsRover process: ''.
+	
+	self assert: log atEnd.! !
+
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head positionUpdaters headingUpdaters positionRecorders headingRecorders'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #MarsRover category: 'MarsRover-WithHeading' stamp: 'TC&OLT 10/27/2022 12:45:34'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head positionUpdaters headingUpdaters positionRecorders headingRecorders'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!MarsRover methodsFor: 'initialization' stamp: 'TC&OLT 10/27/2022 12:45:46' prior: 50558478!
+initializeAt: aPosition heading: aHeadingType
+
+	position := aPosition.
+	head := aHeadingType for: self.
+	positionUpdaters := OrderedCollection new.
+	headingUpdaters := OrderedCollection new.
+	positionRecorders := OrderedCollection new.
+	headingRecorders := OrderedCollection new.! !
+!MarsRover methodsFor: 'logging' stamp: 'TC&OLT 10/27/2022 12:46:10'!
+recordHeadingChangesOn: aHeadingRecorder
+	
+	! !
+!MarsRover methodsFor: 'logging' stamp: 'TC&OLT 10/27/2022 12:46:41' prior: 50558844!
+recordHeadingChangesOn: aMarsRoverRecorder 
+
+	headingRecorders add: aMarsRoverRecorder.! !
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 12:46:48'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC&OLT 10/27/2022 12:46:48'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'TC&OLT 10/27/2022 12:46:48'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 12:46:48'!
+ERROR!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'TC&OLT 10/27/2022 12:46:48'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'TC&OLT 10/27/2022 12:46:48'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 12:46:48'!
+ERROR!
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'TC&OLT 10/27/2022 12:47:15' prior: 50558799!
+test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence
+	
+	| marsRover log logStream |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	"log := ReadWriteStream on: String new.
+	
+	marsRover logHeadingWith: [:aHeading | log nextPutAll: aHeading class asString]."
+	
+	log := MarsRoverLog new.
+	
+	marsRover recordHeadingChangesOn: log.
+	
+	marsRover process: ''.
+	
+	logStream := log readStream.
+	
+	self assert: log atEnd.! !
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'TC&OLT 10/27/2022 12:47:22' prior: 50558886!
+test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence
+	
+	| marsRover log logStream |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	"log := ReadWriteStream on: String new.
+	
+	marsRover logHeadingWith: [:aHeading | log nextPutAll: aHeading class asString]."
+	
+	log := MarsRoverLog new.
+	
+	marsRover recordHeadingChangesOn: log.
+	
+	marsRover process: ''.
+	
+	logStream := log readStream.
+	
+	self assert: logStream atEnd.! !
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 12:47:24'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 12:47:24'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC&OLT 10/27/2022 12:47:24'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'TC&OLT 10/27/2022 12:47:24'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 12:47:24'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'TC&OLT 10/27/2022 12:47:24'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'TC&OLT 10/27/2022 12:47:24'!
+PASSED!
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'TC&OLT 10/27/2022 12:48:23' prior: 50557776!
+test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth
+	
+	| marsRover log logStream |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := MarsRoverLog new.
+	
+	marsRover recordHeadingChangesOn: log.
+	
+	marsRover process: 'r'.
+	
+	logStream := log readStream.
+	
+	self assert: 'MarsRoverHeadingEast' equals: logStream nextLine.
+	self assert: log atEnd.! !
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 12:48:25'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC&OLT 10/27/2022 12:48:25'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'TC&OLT 10/27/2022 12:48:25'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 12:48:25'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'TC&OLT 10/27/2022 12:48:25'!
+FAILURE!
+
+!testRun: #MarsRoverLogTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'TC&OLT 10/27/2022 12:48:25'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'TC&OLT 10/27/2022 12:48:25'!
+FAILURE!
+!MarsRover methodsFor: 'heading' stamp: 'TC&OLT 10/27/2022 12:48:54' prior: 50558077!
+rotateRight
+	
+	head rotateRight.
+	self runHeadingUpdaters.
+	self informHeadingRecorders.! !
+!MarsRover methodsFor: 'logging' stamp: 'TC&OLT 10/27/2022 12:49:22'!
+informHeadingRecorders
+	
+	headingRecorders do: [
+		:aPositionRecorder |
+		aPositionRecorder informOfChangeOn: head class.
+	].! !
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 12:50:03'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC&OLT 10/27/2022 12:50:03'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'TC&OLT 10/27/2022 12:50:03'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 12:50:03'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'TC&OLT 10/27/2022 12:50:03'!
+ERROR!
+
+!testRun: #MarsRoverLogTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'TC&OLT 10/27/2022 12:50:03'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'TC&OLT 10/27/2022 12:50:03'!
+ERROR!
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 12:50:12'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC&OLT 10/27/2022 12:50:12'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'TC&OLT 10/27/2022 12:50:12'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 12:50:12'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'TC&OLT 10/27/2022 12:50:12'!
+ERROR!
+
+!testRun: #MarsRoverLogTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'TC&OLT 10/27/2022 12:50:12'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'TC&OLT 10/27/2022 12:50:12'!
+ERROR!
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'TC&OLT 10/27/2022 12:50:20' prior: 50558952!
+test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth
+	
+	| marsRover log logStream |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := MarsRoverLog new.
+	
+	marsRover recordHeadingChangesOn: log.
+	
+	marsRover process: 'r'.
+	
+	logStream := log readStream.
+	
+	self assert: 'MarsRoverHeadingEast' equals: logStream nextLine.
+	self assert: logStream atEnd.! !
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 12:50:22'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC&OLT 10/27/2022 12:50:22'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'TC&OLT 10/27/2022 12:50:22'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 12:50:22'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'TC&OLT 10/27/2022 12:50:22'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'TC&OLT 10/27/2022 12:50:22'!
+PASSED!
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'TC&OLT 10/27/2022 12:52:29' prior: 50557875!
+test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth
+	
+	| marsRover log logStream |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := MarsRoverLog new.
+	
+	marsRover recordHeadingChangesOn: log.
+	
+	marsRover process: 'rrl'.
+	
+	logStream := log readStream.
+	
+	self assert: 'MarsRoverHeading' equals: logStream nextLine. 
+	self assert: 'EastMarsRoverHeading' equals: logStream nextLine.
+	self assert: 'SouthMarsRoverHeadingEast' equals: logStream nextLine.
+	self assert: logStream atEnd.! !
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 12:52:37'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC&OLT 10/27/2022 12:52:37'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'TC&OLT 10/27/2022 12:52:37'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 12:52:37'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'TC&OLT 10/27/2022 12:52:37'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'TC&OLT 10/27/2022 12:52:37'!
+FAILURE!
+
+!testRun: #MarsRoverLogTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'TC&OLT 10/27/2022 12:52:37'!
+FAILURE!
+!MarsRover methodsFor: 'heading' stamp: 'TC&OLT 10/27/2022 12:52:48' prior: 50558082!
+rotateLeft
+	
+	head rotateLeft.
+	self runHeadingUpdaters.
+	self informHeadingRecorders.! !
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 12:52:52'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC&OLT 10/27/2022 12:52:52'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'TC&OLT 10/27/2022 12:52:52'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 12:52:52'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'TC&OLT 10/27/2022 12:52:52'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'TC&OLT 10/27/2022 12:52:52'!
+FAILURE!
+
+!testRun: #MarsRoverLogTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'TC&OLT 10/27/2022 12:52:52'!
+FAILURE!
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'TC&OLT 10/27/2022 12:53:22' prior: 50559115!
+test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth
+	
+	| marsRover log logStream |
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := MarsRoverLog new.
+	
+	marsRover recordHeadingChangesOn: log.
+	
+	marsRover process: 'rrl'.
+	
+	logStream := log readStream.
+	
+	self assert: 'MarsRoverHeadingEast' equals: logStream nextLine. 
+	self assert: 'MarsRoverHeadingSouth' equals: logStream nextLine.
+	self assert: 'MarsRoverHeadingEast' equals: logStream nextLine.
+	self assert: logStream atEnd.! !
+
+!testRun: #MarsRoverLogTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'TC&OLT 10/27/2022 12:53:25'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 12:53:28'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC&OLT 10/27/2022 12:53:28'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'TC&OLT 10/27/2022 12:53:28'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 12:53:28'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'TC&OLT 10/27/2022 12:53:28'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'TC&OLT 10/27/2022 12:53:28'!
+PASSED!
+
+!classDefinition: #MarsRoverWindow category: 'MarsRover-WithHeading' stamp: 'TC&OLT 10/27/2022 12:56:09'!
+Object subclass: #MarsRoverWindow
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'TC&OLT 10/27/2022 12:56:04'!
+test07WindowLoggerLogsNothingAfterProcessingEmptyCommandSequence
+	
+	| marsRover log logStream|
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := MarsRoverWindow new.
+	
+	marsRover recordPositionChangesOn: log.
+		
+	marsRover process: ''.
+	
+	logStream := log readStream.
+	
+	self assert: logStream atEnd.! !
+
+Object subclass: #MarsRoverWindow
+	instanceVariableNames: 'changesStream'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #MarsRoverWindow category: 'MarsRover-WithHeading' stamp: 'TC&OLT 10/27/2022 12:56:37'!
+Object subclass: #MarsRoverWindow
+	instanceVariableNames: 'changesStream'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!testRun: #MarsRoverLogTest #test07WindowLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 12:57:23'!
+ERROR!
+
+!testRun: #MarsRoverLogTest #test07WindowLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 12:57:23'!
+ERROR!
+!MarsRoverWindow methodsFor: 'nil' stamp: 'TC&OLT 10/27/2022 12:57:42'!
+readStream
+	
+	^ ReadStream on: changesStream contents.! !
+!MarsRoverWindow methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/27/2022 12:57:51' overrides: 16920235!
+initialize
+	
+	changesStream := WriteStream on: String new.! !
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 12:58:30'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC&OLT 10/27/2022 12:58:30'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'TC&OLT 10/27/2022 12:58:30'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 12:58:30'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'TC&OLT 10/27/2022 12:58:30'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'TC&OLT 10/27/2022 12:58:30'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test07WindowLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 12:58:30'!
+PASSED!
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'TC&OLT 10/27/2022 13:04:00'!
+test07WindowLoggerLogsHeadingAfterRotatingRightHeadingNorth
+	
+	| marsRover log logStream|
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := MarsRoverWindow new.
+	
+	marsRover recordPositionChangesOn: log.
+		
+	marsRover process: 'r'.
+	
+	logStream := log readStream.
+	
+	self assert: logStream atEnd.! !
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'TC&OLT 10/27/2022 13:04:11'!
+test08WindowLoggerLogsNothingAfterProcessingEmptyCommandSequence
+	
+	| marsRover log logStream|
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := MarsRoverWindow new.
+	
+	marsRover recordPositionChangesOn: log.
+		
+	marsRover process: ''.
+	
+	logStream := log readStream.
+	
+	self assert: logStream atEnd.! !
+
+!methodRemoval: MarsRoverLogTest #test07WindowLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 13:04:11'!
+test07WindowLoggerLogsNothingAfterProcessingEmptyCommandSequence
+	
+	| marsRover log logStream|
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := MarsRoverWindow new.
+	
+	marsRover recordPositionChangesOn: log.
+		
+	marsRover process: ''.
+	
+	logStream := log readStream.
+	
+	self assert: logStream atEnd.!
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'TC&OLT 10/27/2022 13:04:21'!
+test08WindowLoggerLogsHeadingAfterRotatingRightHeadingNorth
+	
+	| marsRover log logStream|
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := MarsRoverWindow new.
+	
+	marsRover recordPositionChangesOn: log.
+		
+	marsRover process: 'r'.
+	
+	logStream := log readStream.
+	
+	self assert: logStream atEnd.! !
+
+!methodRemoval: MarsRoverLogTest #test07WindowLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'TC&OLT 10/27/2022 13:04:21'!
+test07WindowLoggerLogsHeadingAfterRotatingRightHeadingNorth
+	
+	| marsRover log logStream|
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := MarsRoverWindow new.
+	
+	marsRover recordPositionChangesOn: log.
+		
+	marsRover process: 'r'.
+	
+	logStream := log readStream.
+	
+	self assert: logStream atEnd.!
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'TC&OLT 10/27/2022 13:04:27'!
+test07WindowLoggerLogsNothingAfterProcessingEmptyCommandSequence
+	
+	| marsRover log logStream|
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := MarsRoverWindow new.
+	
+	marsRover recordPositionChangesOn: log.
+		
+	marsRover process: ''.
+	
+	logStream := log readStream.
+	
+	self assert: logStream atEnd.! !
+
+!methodRemoval: MarsRoverLogTest #test08WindowLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 13:04:27'!
+test08WindowLoggerLogsNothingAfterProcessingEmptyCommandSequence
+	
+	| marsRover log logStream|
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := MarsRoverWindow new.
+	
+	marsRover recordPositionChangesOn: log.
+		
+	marsRover process: ''.
+	
+	logStream := log readStream.
+	
+	self assert: logStream atEnd.!
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 13:04:30'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC&OLT 10/27/2022 13:04:30'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'TC&OLT 10/27/2022 13:04:30'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 13:04:30'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'TC&OLT 10/27/2022 13:04:30'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'TC&OLT 10/27/2022 13:04:30'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test07WindowLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 13:04:30'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test08WindowLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'TC&OLT 10/27/2022 13:04:30'!
+PASSED!
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'TC&OLT 10/27/2022 13:06:19'!
+test08WindowLoggerLogsPositionAfterMovingForwardHeadingNorth
+	
+	| marsRover log logStream|
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := MarsRoverWindow new.
+	
+	marsRover recordPositionChangesOn: log.
+		
+	marsRover process: 'f'.
+	
+	logStream := log readStream.
+	
+	self assert: '1@2' equals: logStream nextLine.
+	self assert: logStream atEnd.! !
+
+!methodRemoval: MarsRoverLogTest #test08WindowLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'TC&OLT 10/27/2022 13:06:24'!
+test08WindowLoggerLogsHeadingAfterRotatingRightHeadingNorth
+	
+	| marsRover log logStream|
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := MarsRoverWindow new.
+	
+	marsRover recordPositionChangesOn: log.
+		
+	marsRover process: 'r'.
+	
+	logStream := log readStream.
+	
+	self assert: logStream atEnd.!
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 13:06:34'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC&OLT 10/27/2022 13:06:34'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'TC&OLT 10/27/2022 13:06:34'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 13:06:34'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'TC&OLT 10/27/2022 13:06:34'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'TC&OLT 10/27/2022 13:06:34'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test07WindowLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 13:06:34'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test08WindowLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC&OLT 10/27/2022 13:06:34'!
+ERROR!
+
+!testRun: #MarsRoverLogTest #test08WindowLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC&OLT 10/27/2022 13:06:34'!
+ERROR!
+!MarsRoverLog methodsFor: 'informing' stamp: 'TC&OLT 10/27/2022 13:09:29' prior: 50558774!
+informOfChangeOn: aChangedVariable
+
+	changesStream nextPutAll: aChangedVariable asString. "Estaría bueno que se ocupe alguien más de procesar el objeto que se registra."
+	changesStream newLine.
+! !
+!MarsRoverWindow methodsFor: 'nil' stamp: 'TC&OLT 10/27/2022 13:09:43'!
+informOfChangeOn: aChangedVariable
+
+	changesStream resetContents.
+	changesStream nextPutAll: aChangedVariable asString. "Estaría bueno que se ocupe alguien más de procesar el objeto que se registra."! !
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 13:09:57'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC&OLT 10/27/2022 13:09:57'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'TC&OLT 10/27/2022 13:09:57'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 13:09:57'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'TC&OLT 10/27/2022 13:09:57'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'TC&OLT 10/27/2022 13:09:57'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test07WindowLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 13:09:57'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test08WindowLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC&OLT 10/27/2022 13:09:57'!
+PASSED!
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'TC&OLT 10/27/2022 13:15:57' prior: 50559471!
+test08WindowLoggerLogsPositionAfterMovingForwardHeadingNorth
+	
+	| marsRover log logStream|
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := MarsRoverWindow new.
+	
+	marsRover recordPositionChangesOn: log.
+	
+	marsRover recordHeadingChangesOn: log.
+		
+	marsRover process: 'flbr'.
+	
+	logStream := log readStream.
+	
+	self assert: 'MarsRoverHeadingNorth' equals: logStream nextLine.
+	self assert: logStream atEnd.! !
+
+!testRun: #MarsRoverLogTest #test08WindowLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC&OLT 10/27/2022 13:15:58'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 13:15:58'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC&OLT 10/27/2022 13:15:58'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'TC&OLT 10/27/2022 13:15:58'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 13:15:58'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'TC&OLT 10/27/2022 13:15:58'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'TC&OLT 10/27/2022 13:15:58'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test07WindowLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 13:15:58'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test08WindowLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC&OLT 10/27/2022 13:15:58'!
+PASSED!
+
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head positionRecorders headingRecorders'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #MarsRover category: 'MarsRover-WithHeading' stamp: 'TC&OLT 10/27/2022 13:20:46'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head positionRecorders headingRecorders'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!MarsRover methodsFor: 'initialization' stamp: 'TC&OLT 10/27/2022 13:20:54' prior: 50558832!
+initializeAt: aPosition heading: aHeadingType
+
+	position := aPosition.
+	head := aHeadingType for: self.
+	positionRecorders := OrderedCollection new.
+	headingRecorders := OrderedCollection new.! !
+
+!methodRemoval: MarsRover #logHeadingWith: stamp: 'TC&OLT 10/27/2022 13:21:04'!
+logHeadingWith: aHeadingUpdatingBlock
+
+	headingUpdaters add: aHeadingUpdatingBlock.!
+
+!methodRemoval: MarsRover #logPositionWith: stamp: 'TC&OLT 10/27/2022 13:21:09'!
+logPositionWith: aPositionUpdatingBlock
+
+	positionUpdaters add: aPositionUpdatingBlock.!
+
+!testRun: #MarsRoverTest #test01DoesNotMoveWhenNoCommand stamp: 'TC&OLT 10/27/2022 13:21:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02IsAtFailsForDifferentPosition stamp: 'TC&OLT 10/27/2022 13:21:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03IsAtFailsForDifferentHeading stamp: 'TC&OLT 10/27/2022 13:21:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04IncrementsYAfterMovingForwardWhenHeadingNorth stamp: 'TC&OLT 10/27/2022 13:21:22'!
+ERROR!
+
+!testRun: #MarsRoverTest #test06DecrementsYAfterMovingBackwardsWhenHeadingNorth stamp: 'TC&OLT 10/27/2022 13:21:22'!
+ERROR!
+
+!testRun: #MarsRoverTest #test07PointToEashAfterRotatingRightWhenHeadingNorth stamp: 'TC&OLT 10/27/2022 13:21:22'!
+ERROR!
+
+!testRun: #MarsRoverTest #test08PointsToWestAfterRotatingLeftWhenPointingNorth stamp: 'TC&OLT 10/27/2022 13:21:22'!
+ERROR!
+
+!testRun: #MarsRoverTest #test09DoesNotProcessInvalidCommand stamp: 'TC&OLT 10/27/2022 13:21:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanProcessMoreThanOneCommand stamp: 'TC&OLT 10/27/2022 13:21:22'!
+ERROR!
+
+!testRun: #MarsRoverTest #test11IncrementsXAfterMovingForwareWhenHeadingEast stamp: 'TC&OLT 10/27/2022 13:21:22'!
+ERROR!
+
+!testRun: #MarsRoverTest #test12DecrementsXAfterMovingBackwardWhenHeadingEast stamp: 'TC&OLT 10/27/2022 13:21:22'!
+ERROR!
+
+!testRun: #MarsRoverTest #test13PointsToSouthAfterRotatingRightWhenHeadingEast stamp: 'TC&OLT 10/27/2022 13:21:22'!
+ERROR!
+
+!testRun: #MarsRoverTest #test14PointsToNorthAfterRotatingLeftWhenPointingEast stamp: 'TC&OLT 10/27/2022 13:21:22'!
+ERROR!
+
+!testRun: #MarsRoverTest #test15ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingSouth stamp: 'TC&OLT 10/27/2022 13:21:22'!
+ERROR!
+
+!testRun: #MarsRoverTest #test16ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingWest stamp: 'TC&OLT 10/27/2022 13:21:22'!
+ERROR!
+
+!methodRemoval: MarsRover #runHeadingUpdaters stamp: 'TC&OLT 10/27/2022 13:21:34'!
+runHeadingUpdaters
+	
+	headingUpdaters do: [
+		:aHeadingUpdater |
+		aHeadingUpdater value: head.
+	].!
+
+!methodRemoval: MarsRover #runPositionUpdaters stamp: 'TC&OLT 10/27/2022 13:21:39'!
+runPositionUpdaters
+	
+	positionUpdaters do: [
+		:aPositionUpdater |
+		aPositionUpdater value: position.
+	].!
+!MarsRover methodsFor: 'heading' stamp: 'TC&OLT 10/27/2022 13:21:44' prior: 50558998!
+rotateRight
+	
+	head rotateRight.
+	self informHeadingRecorders.! !
+!MarsRover methodsFor: 'heading' stamp: 'TC&OLT 10/27/2022 13:21:48' prior: 50559166!
+rotateLeft
+	
+	head rotateLeft.
+	self informHeadingRecorders.! !
+!MarsRover methodsFor: 'moving' stamp: 'TC&OLT 10/27/2022 13:22:01' prior: 50558729!
+moveBackward
+	
+	head moveBackward.
+	self informPositionRecorders.! !
+!MarsRover methodsFor: 'moving' stamp: 'TC&OLT 10/27/2022 13:22:04' prior: 50558456!
+moveForward
+	
+	head moveForward.
+	self informPositionRecorders.! !
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 13:23:01'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC&OLT 10/27/2022 13:23:01'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'TC&OLT 10/27/2022 13:23:01'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 13:23:01'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'TC&OLT 10/27/2022 13:23:01'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'TC&OLT 10/27/2022 13:23:01'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test07WindowLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 13:23:01'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test08WindowLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC&OLT 10/27/2022 13:23:01'!
+PASSED!
+
+Object subclass: #MarsRoverRecorder
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #MarsRoverRecorder category: 'MarsRover-WithHeading' stamp: 'TC&OLT 10/27/2022 13:23:19'!
+Object subclass: #MarsRoverRecorder
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+MarsRoverRecorder subclass: #MarsRoverWindow
+	instanceVariableNames: 'changesStream'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #MarsRoverWindow category: 'MarsRover-WithHeading' stamp: 'TC&OLT 10/27/2022 13:23:34'!
+MarsRoverRecorder subclass: #MarsRoverWindow
+	instanceVariableNames: 'changesStream'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+MarsRoverRecorder subclass: #MarsRoverLog
+	instanceVariableNames: 'changesStream'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #MarsRoverLog category: 'MarsRover-WithHeading' stamp: 'TC&OLT 10/27/2022 13:23:44'!
+MarsRoverRecorder subclass: #MarsRoverLog
+	instanceVariableNames: 'changesStream'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!MarsRoverRecorder methodsFor: 'no messages' stamp: 'TC&OLT 10/27/2022 13:24:19'!
+informOfChangeOn: aChangedVariable
+
+	self subclassResponsibility.! !
+!MarsRoverRecorder methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/27/2022 13:25:05'!
+readStream
+	
+	self subclassResponsibility.! !
+
+----SNAPSHOT----(27 October 2022 13:26:12) CuisUniversity-5481.image priorSource: 7267702!
+
+!testRun: #MarsRoverLogTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 13:26:31'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC&OLT 10/27/2022 13:26:31'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'TC&OLT 10/27/2022 13:26:31'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 13:26:31'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'TC&OLT 10/27/2022 13:26:31'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'TC&OLT 10/27/2022 13:26:31'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test07WindowLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 13:26:31'!
+PASSED!
+
+!testRun: #MarsRoverLogTest #test08WindowLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC&OLT 10/27/2022 13:26:31'!
+PASSED!
+!MarsRoverLogTest methodsFor: 'tests' stamp: 'TC&OLT 10/27/2022 13:29:44'!
+test08WindowLoggerLogsPositionAfterMovingAndRotatingMultipleTimesHeadingNorth
+	
+	| marsRover log logStream|
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := MarsRoverWindow new.
+	
+	marsRover recordPositionChangesOn: log.
+	
+	marsRover recordHeadingChangesOn: log.
+		
+	marsRover process: 'flbr'.
+	
+	logStream := log readStream.
+	
+	self assert: 'MarsRoverHeadingNorth' equals: logStream nextLine.
+	self assert: logStream atEnd.! !
+
+!methodRemoval: MarsRoverLogTest #test08WindowLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC&OLT 10/27/2022 13:29:44'!
+test08WindowLoggerLogsPositionAfterMovingForwardHeadingNorth
+	
+	| marsRover log logStream|
+	
+	marsRover := MarsRover at: 1@1 heading: MarsRoverHeadingNorth.
+	
+	log := MarsRoverWindow new.
+	
+	marsRover recordPositionChangesOn: log.
+	
+	marsRover recordHeadingChangesOn: log.
+		
+	marsRover process: 'flbr'.
+	
+	logStream := log readStream.
+	
+	self assert: 'MarsRoverHeadingNorth' equals: logStream nextLine.
+	self assert: logStream atEnd.!
+
+!classRenamed: #MarsRoverLogTest as: #MarsRoverRecorderTest stamp: 'TC&OLT 10/27/2022 13:56:25'!
+Smalltalk renameClassNamed: #MarsRoverLogTest as: #MarsRoverRecorderTest!
+!Behavior method!
+at: aPosition heading: aHeadingType
+	#_coverageTracker4493780_ markAsExecuted.
+	^ #_coverageTracker4493780_
+		coverAll:
+			{50 to: 62. 74 to: 81}
+		evaluating: [
+			(#_coverageTracker4493780_
+				coverAll:
+					{46 to: 48}
+				evaluating: [
+					(#_coverageTracker4493780_
+						coverAll:
+							{41 to: 44}
+						byLiteralOrPseudoVariable: self) new ])
+				initializeAt:
+					(#_coverageTracker4493780_
+						cover: (64 to: 72)
+						declaredAt: (5 to: 13)
+						by: aPosition)
+				heading:
+					(#_coverageTracker4493780_
+						cover: (83 to: 94)
+						declaredAt: (24 to: 35)
+						by: aHeadingType) ].! !
+!Behavior method!
+initializeAt: aPosition heading: aHeadingType
+	#_coverageTracker4492833_ markAsExecuted.
+	#_coverageTracker4492833_
+		cover: (49 to: 56)
+		declaredAt: (49 to: 56)
+		by:
+			(position _ #_coverageTracker4492833_
+				cover: (61 to: 69)
+				declaredAt: (15 to: 23)
+				by: aPosition).
+	#_coverageTracker4492833_
+		cover: (73 to: 76)
+		declaredAt: (73 to: 76)
+		by:
+			(head _ #_coverageTracker4492833_
+				coverAll:
+					{94 to: 97}
+				evaluating: [
+					(#_coverageTracker4492833_
+						cover: (81 to: 92)
+						declaredAt: (34 to: 45)
+						by: aHeadingType) for:
+						(#_coverageTracker4492833_
+							coverAll:
+								{99 to: 102}
+							byLiteralOrPseudoVariable: self) ]).
+	#_coverageTracker4492833_
+		cover: (106 to: 122)
+		declaredAt: (106 to: 122)
+		by:
+			(positionRecorders _ #_coverageTracker4492833_
+				coverAll:
+					{145 to: 147}
+				evaluating: [
+					(#_coverageTracker4492833_
+						coverAll:
+							{127 to: 143}
+						by: OrderedCollection) new ]).
+	#_coverageTracker4492833_
+		cover: (151 to: 166)
+		declaredAt: (151 to: 166)
+		by:
+			(headingRecorders _ #_coverageTracker4492833_
+				coverAll:
+					{189 to: 191}
+				evaluating: [
+					(#_coverageTracker4492833_
+						coverAll:
+							{171 to: 187}
+						by: OrderedCollection) new ]).! !
+!Behavior method!
+for: aMarsRover
+	#_coverageTracker4493917_ markAsExecuted.
+	^ #_coverageTracker4493917_
+		coverAll:
+			{31 to: 44}
+		evaluating: [
+			(#_coverageTracker4493917_
+				coverAll:
+					{27 to: 29}
+				evaluating: [
+					(#_coverageTracker4493917_
+						coverAll:
+							{22 to: 25}
+						byLiteralOrPseudoVariable: self) new ]) initializeFor:
+				(#_coverageTracker4493917_
+					cover: (46 to: 55)
+					declaredAt: (6 to: 15)
+					by: aMarsRover) ].! !
+!Behavior method!
+initializeFor: aMarsRover
+	#_coverageTracker4492932_ markAsExecuted.
+	#_coverageTracker4492932_
+		cover: (31 to: 39)
+		declaredAt: (31 to: 39)
+		by:
+			(marsRover _ #_coverageTracker4492932_
+				cover: (44 to: 53)
+				declaredAt: (16 to: 25)
+				by: aMarsRover).! !
+!Behavior method!
+initialize
+	#_coverageTracker4493371_ markAsExecuted.
+	#_coverageTracker4493371_
+		cover: (15 to: 27)
+		declaredAt: (15 to: 27)
+		by:
+			(changesStream _ #_coverageTracker4493371_
+				coverAll:
+					{44 to: 46}
+				evaluating: [
+					(#_coverageTracker4493371_
+						coverAll:
+							{32 to: 42}
+						by: WriteStream) on:
+						(#_coverageTracker4493371_
+							coverAll:
+								{55 to: 57}
+							evaluating: [
+								(#_coverageTracker4493371_
+									coverAll:
+										{48 to: 53}
+									by: String) new ]) ]).! !
+!Behavior method!
+recordPositionChangesOn: aMarsRoverRecorder
+	#_coverageTracker4492663_ markAsExecuted.
+	#_coverageTracker4492663_
+		coverAll:
+			{66 to: 69}
+		evaluating: [
+			(#_coverageTracker4492663_
+				cover: (48 to: 64)
+				declaredAt: (48 to: 64)
+				by: positionRecorders) add:
+				(#_coverageTracker4492663_
+					cover: (71 to: 88)
+					declaredAt: (26 to: 43)
+					by: aMarsRoverRecorder) ].! !
+!Behavior method!
+process: aSequenceOfCommands
+	#_coverageTracker4493649_ markAsExecuted.
+	#_coverageTracker4493649_
+		coverAll:
+			{52 to: 54}
+		evaluating: [
+			(#_coverageTracker4493649_
+				cover: (32 to: 50)
+				declaredAt: (10 to: 28)
+				by: aSequenceOfCommands) do: [ :aCommand |
+				#_coverageTracker4493649_
+					coverAll:
+						{74 to: 88}
+					evaluating: [
+						(#_coverageTracker4493649_
+							coverAll:
+								{69 to: 72}
+							byLiteralOrPseudoVariable: self) processCommand:
+							(#_coverageTracker4493649_
+								cover: (90 to: 97)
+								declaredAt: (58 to: 65)
+								by: aCommand) ]]].! !
+!Behavior method!
+readStream
+	#_coverageTracker4492648_ markAsExecuted.
+	^ #_coverageTracker4492648_
+		coverAll:
+			{28 to: 30}
+		evaluating: [
+			(#_coverageTracker4492648_
+				coverAll:
+					{17 to: 26}
+				by: ReadStream) on:
+				(#_coverageTracker4492648_
+					coverAll:
+						{46 to: 53}
+					evaluating: [
+						(#_coverageTracker4492648_
+							cover: (32 to: 44)
+							declaredAt: (32 to: 44)
+							by: changesStream) contents ]) ].! !
+
+!testRun: #MarsRoverRecorderTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 13:56:33'!
+PASSED!
+!Behavior method!
+processCommand: aCommand
+	#_coverageTracker4493689_ markAsExecuted.
+	#_coverageTracker4493689_
+		coverAll:
+			{62 to: 68}
+		evaluating: [
+			(#_coverageTracker4493689_
+				coverAll:
+					{34 to: 50}
+				evaluating: [
+					(#_coverageTracker4493689_
+						coverAll:
+							{29 to: 32}
+						byLiteralOrPseudoVariable: self) isForwardCommand:
+						(#_coverageTracker4493689_
+							cover: (52 to: 59)
+							declaredAt: (17 to: 24)
+							by: aCommand) ]) ifTrue: [ ^ #_coverageTracker4493689_
+					coverAll:
+						{79 to: 89}
+					evaluating: [
+						(#_coverageTracker4493689_
+							coverAll:
+								{74 to: 77}
+							byLiteralOrPseudoVariable: self) moveForward ]]].
+	#_coverageTracker4493689_
+		coverAll:
+			{130 to: 136}
+		evaluating: [
+			(#_coverageTracker4493689_
+				coverAll:
+					{101 to: 118}
+				evaluating: [
+					(#_coverageTracker4493689_
+						coverAll:
+							{96 to: 99}
+						byLiteralOrPseudoVariable: self) isBackwardCommand:
+						(#_coverageTracker4493689_
+							cover: (120 to: 127)
+							declaredAt: (17 to: 24)
+							by: aCommand) ]) ifTrue: [ ^ #_coverageTracker4493689_
+					coverAll:
+						{147 to: 158}
+					evaluating: [
+						(#_coverageTracker4493689_
+							coverAll:
+								{142 to: 145}
+							byLiteralOrPseudoVariable: self) moveBackward ]]].
+	#_coverageTracker4493689_
+		coverAll:
+			{202 to: 208}
+		evaluating: [
+			(#_coverageTracker4493689_
+				coverAll:
+					{170 to: 190}
+				evaluating: [
+					(#_coverageTracker4493689_
+						coverAll:
+							{165 to: 168}
+						byLiteralOrPseudoVariable: self) isRotateRightCommand:
+						(#_coverageTracker4493689_
+							cover: (192 to: 199)
+							declaredAt: (17 to: 24)
+							by: aCommand) ]) ifTrue: [ ^ #_coverageTracker4493689_
+					coverAll:
+						{219 to: 229}
+					evaluating: [
+						(#_coverageTracker4493689_
+							coverAll:
+								{214 to: 217}
+							byLiteralOrPseudoVariable: self) rotateRight ]]].
+	#_coverageTracker4493689_
+		coverAll:
+			{272 to: 278}
+		evaluating: [
+			(#_coverageTracker4493689_
+				coverAll:
+					{241 to: 260}
+				evaluating: [
+					(#_coverageTracker4493689_
+						coverAll:
+							{236 to: 239}
+						byLiteralOrPseudoVariable: self) isRotateLeftCommand:
+						(#_coverageTracker4493689_
+							cover: (262 to: 269)
+							declaredAt: (17 to: 24)
+							by: aCommand) ]) ifTrue: [ ^ #_coverageTracker4493689_
+					coverAll:
+						{289 to: 298}
+					evaluating: [
+						(#_coverageTracker4493689_
+							coverAll:
+								{284 to: 287}
+							byLiteralOrPseudoVariable: self) rotateLeft ]]].
+	#_coverageTracker4493689_
+		coverAll:
+			{310 to: 329}
+		evaluating: [
+			(#_coverageTracker4493689_
+				coverAll:
+					{305 to: 308}
+				byLiteralOrPseudoVariable: self) signalInvalidCommand ].! !
+!Behavior method!
+isForwardCommand: aCommand
+	#_coverageTracker4493985_ markAsExecuted.
+	^ #_coverageTracker4493985_
+		coverAll:
+			{40 to: 40}
+		evaluating: [
+			(#_coverageTracker4493985_
+				cover: (31 to: 38)
+				declaredAt: (19 to: 26)
+				by: aCommand) =
+				(#_coverageTracker4493985_
+					coverAll:
+						{42 to: 43}
+					byLiteralOrPseudoVariable: $f) ].! !
+!Behavior method!
+moveForward
+	#_coverageTracker4493923_ markAsExecuted.
+	#_coverageTracker4493923_
+		coverAll:
+			{21 to: 31}
+		evaluating: [
+			(#_coverageTracker4493923_
+				cover: (16 to: 19)
+				declaredAt: (16 to: 19)
+				by: head) moveForward ].
+	#_coverageTracker4493923_
+		coverAll:
+			{40 to: 62}
+		evaluating: [
+			(#_coverageTracker4493923_
+				coverAll:
+					{35 to: 38}
+				byLiteralOrPseudoVariable: self) informPositionRecorders ].! !
+!Behavior method!
+moveForward
+	#_coverageTracker4493441_ markAsExecuted.
+	^ #_coverageTracker4493441_
+		coverAll:
+			{27 to: 35}
+		evaluating: [
+			(#_coverageTracker4493441_
+				cover: (17 to: 25)
+				declaredAt: (17 to: 25)
+				by: marsRover) moveNorth ].! !
+!Behavior method!
+moveNorth
+	#_coverageTracker4493641_ markAsExecuted.
+	#_coverageTracker4493641_
+		cover: (26 to: 33)
+		declaredAt: (14 to: 21)
+		by:
+			(position _ #_coverageTracker4493641_
+				coverAll:
+					{35 to: 35}
+				evaluating: [
+					(#_coverageTracker4493641_
+						cover: (14 to: 21)
+						declaredAt: (14 to: 21)
+						by: position) +
+						(#_coverageTracker4493641_
+							coverAll:
+								{39 to: 39}
+							evaluating: [
+								(#_coverageTracker4493641_
+									coverAll:
+										{38 to: 38}
+									byLiteralOrPseudoVariable: 0) @
+									(#_coverageTracker4493641_
+										coverAll:
+											{40 to: 40}
+										byLiteralOrPseudoVariable: 1) ]) ]).! !
+!Behavior method!
+informPositionRecorders
+	#_coverageTracker4492812_ markAsExecuted.
+	#_coverageTracker4492812_
+		coverAll:
+			{46 to: 48}
+		evaluating: [
+			(#_coverageTracker4492812_
+				cover: (28 to: 44)
+				declaredAt: (28 to: 44)
+				by: positionRecorders) do: [ :aPositionRecorder |
+				#_coverageTracker4492812_
+					coverAll:
+						{95 to: 111}
+					evaluating: [
+						(#_coverageTracker4492812_
+							cover: (77 to: 93)
+							declaredAt: (55 to: 71)
+							by: aPositionRecorder) informOfChangeOn:
+							(#_coverageTracker4492812_
+								cover: (113 to: 120)
+								declaredAt: (113 to: 120)
+								by: position) ]]].! !
+!Behavior method!
+informOfChangeOn: aChangedVariable
+	#_coverageTracker4492778_ markAsExecuted.
+	#_coverageTracker4492778_
+		coverAll:
+			{52 to: 62}
+		evaluating: [
+			(#_coverageTracker4492778_
+				cover: (38 to: 50)
+				declaredAt: (38 to: 50)
+				by: changesStream) nextPutAll:
+				(#_coverageTracker4492778_
+					coverAll:
+						{81 to: 88}
+					evaluating: [
+						(#_coverageTracker4492778_
+							cover: (64 to: 79)
+							declaredAt: (19 to: 34)
+							by: aChangedVariable) asString ])
+			"Estaría bueno que se ocupe alguien más de procesar el objeto que se registra." ].
+	#_coverageTracker4492778_
+		coverAll:
+			{186 to: 192}
+		evaluating: [
+			(#_coverageTracker4492778_
+				cover: (172 to: 184)
+				declaredAt: (38 to: 50)
+				by: changesStream) newLine ].! !
+
+!testRun: #MarsRoverRecorderTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC&OLT 10/27/2022 13:56:33'!
+PASSED!
+!Behavior method!
+isBackwardCommand: aCommand
+	#_coverageTracker4492958_ markAsExecuted.
+	^ #_coverageTracker4492958_
+		coverAll:
+			{41 to: 41}
+		evaluating: [
+			(#_coverageTracker4492958_
+				cover: (32 to: 39)
+				declaredAt: (20 to: 27)
+				by: aCommand) =
+				(#_coverageTracker4492958_
+					coverAll:
+						{43 to: 44}
+					byLiteralOrPseudoVariable: $b) ].! !
+!Behavior method!
+moveBackward
+	#_coverageTracker4494054_ markAsExecuted.
+	#_coverageTracker4494054_
+		coverAll:
+			{22 to: 33}
+		evaluating: [
+			(#_coverageTracker4494054_
+				cover: (17 to: 20)
+				declaredAt: (17 to: 20)
+				by: head) moveBackward ].
+	#_coverageTracker4494054_
+		coverAll:
+			{42 to: 64}
+		evaluating: [
+			(#_coverageTracker4494054_
+				coverAll:
+					{37 to: 40}
+				byLiteralOrPseudoVariable: self) informPositionRecorders ].! !
+!Behavior method!
+moveBackward
+	#_coverageTracker4493215_ markAsExecuted.
+	^ #_coverageTracker4493215_
+		coverAll:
+			{28 to: 36}
+		evaluating: [
+			(#_coverageTracker4493215_
+				cover: (18 to: 26)
+				declaredAt: (18 to: 26)
+				by: marsRover) moveSouth ].! !
+!Behavior method!
+moveSouth
+	#_coverageTracker4493757_ markAsExecuted.
+	#_coverageTracker4493757_
+		cover: (26 to: 33)
+		declaredAt: (14 to: 21)
+		by:
+			(position _ #_coverageTracker4493757_
+				coverAll:
+					{35 to: 35}
+				evaluating: [
+					(#_coverageTracker4493757_
+						cover: (14 to: 21)
+						declaredAt: (14 to: 21)
+						by: position) +
+						(#_coverageTracker4493757_
+							coverAll:
+								{39 to: 39}
+							evaluating: [
+								(#_coverageTracker4493757_
+									coverAll:
+										{38 to: 38}
+									byLiteralOrPseudoVariable: 0) @
+									(#_coverageTracker4493757_
+										coverAll:
+											{40 to: 41}
+										byLiteralOrPseudoVariable: -1) ]) ]).! !
+
+!testRun: #MarsRoverRecorderTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'TC&OLT 10/27/2022 13:56:33'!
+PASSED!
+!Behavior method!
+recordHeadingChangesOn: aMarsRoverRecorder
+	#_coverageTracker4492928_ markAsExecuted.
+	#_coverageTracker4492928_
+		coverAll:
+			{64 to: 67}
+		evaluating: [
+			(#_coverageTracker4492928_
+				cover: (47 to: 62)
+				declaredAt: (47 to: 62)
+				by: headingRecorders) add:
+				(#_coverageTracker4492928_
+					cover: (69 to: 86)
+					declaredAt: (25 to: 42)
+					by: aMarsRoverRecorder) ].! !
+
+!testRun: #MarsRoverRecorderTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 13:56:33'!
+PASSED!
+!Behavior method!
+isRotateRightCommand: aCommand
+	#_coverageTracker4493389_ markAsExecuted.
+	^ #_coverageTracker4493389_
+		coverAll:
+			{44 to: 44}
+		evaluating: [
+			(#_coverageTracker4493389_
+				cover: (35 to: 42)
+				declaredAt: (23 to: 30)
+				by: aCommand) =
+				(#_coverageTracker4493389_
+					coverAll:
+						{46 to: 47}
+					byLiteralOrPseudoVariable: $r) ].! !
+!Behavior method!
+rotateRight
+	#_coverageTracker4493115_ markAsExecuted.
+	#_coverageTracker4493115_
+		coverAll:
+			{21 to: 31}
+		evaluating: [
+			(#_coverageTracker4493115_
+				cover: (16 to: 19)
+				declaredAt: (16 to: 19)
+				by: head) rotateRight ].
+	#_coverageTracker4493115_
+		coverAll:
+			{40 to: 61}
+		evaluating: [
+			(#_coverageTracker4493115_
+				coverAll:
+					{35 to: 38}
+				byLiteralOrPseudoVariable: self) informHeadingRecorders ].! !
+!Behavior method!
+rotateRight
+	#_coverageTracker4494067_ markAsExecuted.
+	^ #_coverageTracker4494067_
+		coverAll:
+			{27 to: 34}
+		evaluating: [
+			(#_coverageTracker4494067_
+				cover: (17 to: 25)
+				declaredAt: (17 to: 25)
+				by: marsRover) headEast ].! !
+!Behavior method!
+headEast
+	#_coverageTracker4493668_ markAsExecuted.
+	#_coverageTracker4493668_
+		cover: (13 to: 16)
+		declaredAt: (13 to: 16)
+		by:
+			(head _ #_coverageTracker4493668_
+				coverAll:
+					{42 to: 45}
+				evaluating: [
+					(#_coverageTracker4493668_
+						coverAll:
+							{21 to: 40}
+						by: MarsRoverHeadingEast) for:
+						(#_coverageTracker4493668_
+							coverAll:
+								{47 to: 50}
+							byLiteralOrPseudoVariable: self) ]).! !
+!Behavior method!
+informHeadingRecorders
+	#_coverageTracker4492990_ markAsExecuted.
+	#_coverageTracker4492990_
+		coverAll:
+			{44 to: 46}
+		evaluating: [
+			(#_coverageTracker4492990_
+				cover: (27 to: 42)
+				declaredAt: (27 to: 42)
+				by: headingRecorders) do: [ :aPositionRecorder |
+				#_coverageTracker4492990_
+					coverAll:
+						{93 to: 109}
+					evaluating: [
+						(#_coverageTracker4492990_
+							cover: (75 to: 91)
+							declaredAt: (53 to: 69)
+							by: aPositionRecorder) informOfChangeOn:
+							(#_coverageTracker4492990_
+								coverAll:
+									{116 to: 120}
+								evaluating: [
+									(#_coverageTracker4492990_
+										cover: (111 to: 114)
+										declaredAt: (111 to: 114)
+										by: head) class ]) ]]].! !
+
+!testRun: #MarsRoverRecorderTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'TC&OLT 10/27/2022 13:56:33'!
+PASSED!
+!Behavior method!
+rotateRight
+	#_coverageTracker4494061_ markAsExecuted.
+	^ #_coverageTracker4494061_
+		coverAll:
+			{27 to: 35}
+		evaluating: [
+			(#_coverageTracker4494061_
+				cover: (17 to: 25)
+				declaredAt: (17 to: 25)
+				by: marsRover) headSouth ].! !
+!Behavior method!
+headSouth
+	#_coverageTracker4493788_ markAsExecuted.
+	#_coverageTracker4493788_
+		cover: (14 to: 17)
+		declaredAt: (14 to: 17)
+		by:
+			(head _ #_coverageTracker4493788_
+				coverAll:
+					{44 to: 47}
+				evaluating: [
+					(#_coverageTracker4493788_
+						coverAll:
+							{22 to: 42}
+						by: MarsRoverHeadingSouth) for:
+						(#_coverageTracker4493788_
+							coverAll:
+								{49 to: 52}
+							byLiteralOrPseudoVariable: self) ]).! !
+!Behavior method!
+isRotateLeftCommand: aCommand
+	#_coverageTracker4493099_ markAsExecuted.
+	^ #_coverageTracker4493099_
+		coverAll:
+			{43 to: 43}
+		evaluating: [
+			(#_coverageTracker4493099_
+				cover: (34 to: 41)
+				declaredAt: (22 to: 29)
+				by: aCommand) =
+				(#_coverageTracker4493099_
+					coverAll:
+						{45 to: 46}
+					byLiteralOrPseudoVariable: $l) ].! !
+!Behavior method!
+rotateLeft
+	#_coverageTracker4493978_ markAsExecuted.
+	#_coverageTracker4493978_
+		coverAll:
+			{20 to: 29}
+		evaluating: [
+			(#_coverageTracker4493978_
+				cover: (15 to: 18)
+				declaredAt: (15 to: 18)
+				by: head) rotateLeft ].
+	#_coverageTracker4493978_
+		coverAll:
+			{38 to: 59}
+		evaluating: [
+			(#_coverageTracker4493978_
+				coverAll:
+					{33 to: 36}
+				byLiteralOrPseudoVariable: self) informHeadingRecorders ].! !
+!Behavior method!
+rotateLeft
+	#_coverageTracker4493622_ markAsExecuted.
+	^ #_coverageTracker4493622_
+		coverAll:
+			{26 to: 33}
+		evaluating: [
+			(#_coverageTracker4493622_
+				cover: (16 to: 24)
+				declaredAt: (16 to: 24)
+				by: marsRover) headEast ].! !
+
+!testRun: #MarsRoverRecorderTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'TC&OLT 10/27/2022 13:56:33'!
+PASSED!
+!Behavior method!
+initialize
+	#_coverageTracker4493541_ markAsExecuted.
+	#_coverageTracker4493541_
+		cover: (15 to: 27)
+		declaredAt: (15 to: 27)
+		by:
+			(changesStream _ #_coverageTracker4493541_
+				coverAll:
+					{44 to: 46}
+				evaluating: [
+					(#_coverageTracker4493541_
+						coverAll:
+							{32 to: 42}
+						by: WriteStream) on:
+						(#_coverageTracker4493541_
+							coverAll:
+								{55 to: 57}
+							evaluating: [
+								(#_coverageTracker4493541_
+									coverAll:
+										{48 to: 53}
+									by: String) new ]) ]).! !
+!Behavior method!
+readStream
+	#_coverageTracker4492962_ markAsExecuted.
+	^ #_coverageTracker4492962_
+		coverAll:
+			{28 to: 30}
+		evaluating: [
+			(#_coverageTracker4492962_
+				coverAll:
+					{17 to: 26}
+				by: ReadStream) on:
+				(#_coverageTracker4492962_
+					coverAll:
+						{46 to: 53}
+					evaluating: [
+						(#_coverageTracker4492962_
+							cover: (32 to: 44)
+							declaredAt: (32 to: 44)
+							by: changesStream) contents ]) ].! !
+
+!testRun: #MarsRoverRecorderTest #test07WindowLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC&OLT 10/27/2022 13:56:33'!
+PASSED!
+!Behavior method!
+informOfChangeOn: aChangedVariable
+	#_coverageTracker4493605_ markAsExecuted.
+	#_coverageTracker4493605_
+		coverAll:
+			{52 to: 64}
+		evaluating: [
+			(#_coverageTracker4493605_
+				cover: (38 to: 50)
+				declaredAt: (38 to: 50)
+				by: changesStream) resetContents ].
+	#_coverageTracker4493605_
+		coverAll:
+			{82 to: 92}
+		evaluating: [
+			(#_coverageTracker4493605_
+				cover: (68 to: 80)
+				declaredAt: (38 to: 50)
+				by: changesStream) nextPutAll:
+				(#_coverageTracker4493605_
+					coverAll:
+						{111 to: 118}
+					evaluating: [
+						(#_coverageTracker4493605_
+							cover: (94 to: 109)
+							declaredAt: (19 to: 34)
+							by: aChangedVariable) asString ]) ].! !
+!Behavior method!
+rotateLeft
+	#_coverageTracker4494065_ markAsExecuted.
+	^ #_coverageTracker4494065_
+		coverAll:
+			{26 to: 33}
+		evaluating: [
+			(#_coverageTracker4494065_
+				cover: (16 to: 24)
+				declaredAt: (16 to: 24)
+				by: marsRover) headWest ].! !
+!Behavior method!
+headWest
+	#_coverageTracker4492867_ markAsExecuted.
+	#_coverageTracker4492867_
+		cover: (13 to: 16)
+		declaredAt: (13 to: 16)
+		by:
+			(head _ #_coverageTracker4492867_
+				coverAll:
+					{42 to: 45}
+				evaluating: [
+					(#_coverageTracker4492867_
+						coverAll:
+							{21 to: 40}
+						by: MarsRoverHeadingWest) for:
+						(#_coverageTracker4492867_
+							coverAll:
+								{47 to: 50}
+							byLiteralOrPseudoVariable: self) ]).! !
+!Behavior method!
+moveBackward
+	#_coverageTracker4493025_ markAsExecuted.
+	^ #_coverageTracker4493025_
+		coverAll:
+			{27 to: 34}
+		evaluating: [
+			(#_coverageTracker4493025_
+				cover: (17 to: 25)
+				declaredAt: (17 to: 25)
+				by: marsRover) moveEast ].! !
+!Behavior method!
+moveEast
+	#_coverageTracker4493830_ markAsExecuted.
+	#_coverageTracker4493830_
+		cover: (25 to: 32)
+		declaredAt: (13 to: 20)
+		by:
+			(position _ #_coverageTracker4493830_
+				coverAll:
+					{34 to: 34}
+				evaluating: [
+					(#_coverageTracker4493830_
+						cover: (13 to: 20)
+						declaredAt: (13 to: 20)
+						by: position) +
+						(#_coverageTracker4493830_
+							coverAll:
+								{38 to: 38}
+							evaluating: [
+								(#_coverageTracker4493830_
+									coverAll:
+										{37 to: 37}
+									byLiteralOrPseudoVariable: 1) @
+									(#_coverageTracker4493830_
+										coverAll:
+											{39 to: 39}
+										byLiteralOrPseudoVariable: 0) ]) ]).! !
+!Behavior method!
+rotateRight
+	#_coverageTracker4493021_ markAsExecuted.
+	^ #_coverageTracker4493021_
+		coverAll:
+			{27 to: 35}
+		evaluating: [
+			(#_coverageTracker4493021_
+				cover: (17 to: 25)
+				declaredAt: (17 to: 25)
+				by: marsRover) headNorth ].! !
+!Behavior method!
+headNorth
+	#_coverageTracker4492772_ markAsExecuted.
+	#_coverageTracker4492772_
+		cover: (14 to: 17)
+		declaredAt: (14 to: 17)
+		by:
+			(head _ #_coverageTracker4492772_
+				coverAll:
+					{44 to: 47}
+				evaluating: [
+					(#_coverageTracker4492772_
+						coverAll:
+							{22 to: 42}
+						by: MarsRoverHeadingNorth) for:
+						(#_coverageTracker4492772_
+							coverAll:
+								{49 to: 52}
+							byLiteralOrPseudoVariable: self) ]).! !
+
+!testRun: #MarsRoverRecorderTest #test08WindowLoggerLogsPositionAfterMovingAndRotatingMultipleTimesHeadingNorth stamp: 'TC&OLT 10/27/2022 13:56:33'!
+PASSED!
+
+Object subclass: #RecordableObject
+	instanceVariableNames: 'recorders'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #RecordableObject category: 'MarsRover-WithHeading' stamp: 'TC&OLT 10/27/2022 13:58:42'!
+Object subclass: #RecordableObject
+	instanceVariableNames: 'recorders'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #RecordableObject stamp: 'TC&OLT 10/27/2022 14:07:36'!
+Object subclass: #RecordableObject
+	instanceVariableNames: 'recorders'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+----SNAPSHOT----(27 October 2022 14:07:55) CuisUniversity-5481.image priorSource: 7302637!
+
+----STARTUP---- (27 October 2022 14:09:01) as /home/kaneda/Downloads/marsRover-regreso/linux64-marsRoverRegreso-conWrapper/CuisUniversity-5481.image!
+
+
+Object subclass: #RecordableObject
+	instanceVariableNames: 'position head positionRecorders headingRecorders'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #RecordableObject category: 'MarsRover-WithHeading' stamp: 'TC 10/27/2022 14:09:19'!
+Object subclass: #RecordableObject
+	instanceVariableNames: 'position head positionRecorders headingRecorders'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+Object subclass: #RecordableObject
+	instanceVariableNames: 'value recorders'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #RecordableObject category: 'MarsRover-WithHeading' stamp: 'TC 10/27/2022 14:09:57'!
+Object subclass: #RecordableObject
+	instanceVariableNames: 'value recorders'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!RecordableObject methodsFor: 'no messages' stamp: 'TC 10/27/2022 14:10:02' overrides: 16902254!
+value
+	
+	^value.! !
+!RecordableObject methodsFor: 'as yet unclassified' stamp: 'TC 10/27/2022 14:10:16'!
+changeValueTo: aNewValue
+	
+	value := aNewValue.! !
+!RecordableObject methodsFor: 'nil' stamp: 'TC 10/27/2022 14:10:48'!
+addRecorder: aRecorderForTheValue
+	
+	recorders add: aRecorderForTheValue.! !
+!RecordableObject methodsFor: 'as yet unclassified' stamp: 'TC 10/27/2022 14:11:30' prior: 50560708!
+changeValueTo: aNewValue
+	
+	value := aNewValue.
+	recorders do: [ 
+		:aRecorder |
+		"" 
+	]! !
+!RecordableObject methodsFor: 'as yet unclassified' stamp: 'TC 10/27/2022 14:15:59' prior: 50560718!
+changeValueTo: aNewValue
+	
+	value := aNewValue.
+	recorders do: [ 
+		:aRecorder |
+		aRecorder informOfChangeOn: aNewValue.
+	]! !
+
+!testRun: #MarsRoverRecorderTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC 10/27/2022 14:19:04'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC 10/27/2022 14:19:04'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'TC 10/27/2022 14:19:04'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC 10/27/2022 14:19:04'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'TC 10/27/2022 14:19:04'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'TC 10/27/2022 14:19:04'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test07WindowLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC 10/27/2022 14:19:04'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test08WindowLoggerLogsPositionAfterMovingAndRotatingMultipleTimesHeadingNorth stamp: 'TC 10/27/2022 14:19:04'!
+PASSED!
+!RecordableObject methodsFor: 'as yet unclassified' stamp: 'TC 10/27/2022 14:47:41' prior: 50560712!
+addRecorder: aRecorderExecutionBlock
+	
+	recorders add: aRecorderExecutionBlock.! !
+
+Object subclass: #RecordableObject
+	instanceVariableNames: 'value recordingBlocks'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #RecordableObject category: 'MarsRover-WithHeading' stamp: 'TC 10/27/2022 14:48:55'!
+Object subclass: #RecordableObject
+	instanceVariableNames: 'value recordingBlocks'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!RecordableObject methodsFor: 'as yet unclassified' stamp: 'TC 10/27/2022 14:49:00' prior: 50560769!
+addRecorder: aRecorderExecutionBlock
+	
+	recordingBlocks add: aRecorderExecutionBlock.! !
+!RecordableObject methodsFor: 'as yet unclassified' stamp: 'TC 10/27/2022 14:49:45' prior: 50560725!
+changeValueTo: aNewValue
+	
+	value := aNewValue.
+	recordingBlocks do: [ 
+		:aRecordingBlock |
+		aRecordingBlock value: value.
+	]! !
+!RecordableObject methodsFor: 'as yet unclassified' stamp: 'TC 10/27/2022 14:50:20' overrides: 50337880!
+doesNotUnderstand: aMessage
+	
+	^aMessage sendTo: value.! !
+!RecordableObject methodsFor: 'as yet unclassified' stamp: 'TC 10/27/2022 14:50:28' prior: 50560795!
+changeValueTo: aNewValue
+	
+	value := aNewValue.
+	
+	recordingBlocks do: [ 
+		:aRecordingBlock |
+		aRecordingBlock value: value.
+	]! !
+
+!testRun: #MarsRoverRecorderTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC 10/27/2022 14:52:15'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC 10/27/2022 14:52:15'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'TC 10/27/2022 14:52:15'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC 10/27/2022 14:52:15'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'TC 10/27/2022 14:52:15'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'TC 10/27/2022 14:52:15'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test07WindowLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC 10/27/2022 14:52:16'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test08WindowLoggerLogsPositionAfterMovingAndRotatingMultipleTimesHeadingNorth stamp: 'TC 10/27/2022 14:52:16'!
+PASSED!
+!RecordableObject methodsFor: 'recording' stamp: 'TC 10/27/2022 14:52:53'!
+addRecordingBlock: aRecorderExecutionBlock
+	
+	recordingBlocks add: aRecorderExecutionBlock.! !
+
+!methodRemoval: RecordableObject #addRecorder: stamp: 'TC 10/27/2022 14:52:57'!
+addRecorder: aRecorderExecutionBlock
+	
+	recordingBlocks add: aRecorderExecutionBlock.!
+!MarsRover methodsFor: 'recorder adding' stamp: 'TC 10/27/2022 14:53:58' prior: 50558849!
+recordHeadingChangesOn: aHeadRecorder 
+	
+	head addRecordingBlock: [ :headValue | aHeadRecorder informOfChangeOn: headValue class asString.].
+	"headingRecorders add: aMarsRoverRecorder."! !
+!MarsRover methodsFor: 'recorder adding' stamp: 'TC 10/27/2022 14:55:22' prior: 50558615!
+recordPositionChangesOn: aPositionRecorder 
+
+	position addRecordingBlock: [ :positionValue | aPositionRecorder informOfChangeOn: positionValue asString. ].
+	"positionRecorders add: aMarsRoverRecorder."! !
+!RecordableObject methodsFor: 'nil' stamp: 'TC 10/27/2022 14:56:24'!
+initializeWith: aValue
+	
+	value := aValue.
+	recordingBlocks := OrderedCollection new.! !
+!MarsRover methodsFor: 'initialization' stamp: 'TC 10/27/2022 14:58:58' prior: 50559666!
+initializeAt: aPosition heading: aHeadingType
+	
+	position := RecordableObject with: aPosition.
+	head := RecordableObject with: (aHeadingType for: self).
+	positionRecorders := OrderedCollection new.
+	headingRecorders := OrderedCollection new.! !
+!RecordableObject class methodsFor: 'no messages' stamp: 'TC 10/27/2022 14:59:50'!
+with: aValue
+	
+	^self new initializeWith: aValue.! !
+!MarsRover methodsFor: 'heading' stamp: 'TC 10/27/2022 15:00:40' prior: 50552468!
+headEast
+	
+	"head := MarsRoverHeadingEast for: self"
+	head changeValueTo: (MarsRoverHeadingEast for: self).! !
+!MarsRover methodsFor: 'heading' stamp: 'TC 10/27/2022 15:00:52' prior: 50552472!
+headNorth
+	
+	"head := MarsRoverHeadingNorth for: self "
+	head changeValueTo: (MarsRoverHeadingNorth for: self).! !
+!MarsRover methodsFor: 'heading' stamp: 'TC 10/27/2022 15:01:00' prior: 50552476!
+headSouth
+	
+	"head := MarsRoverHeadingSouth for: self"
+	head changeValueTo: (MarsRoverHeadingSouth for: self).! !
+!MarsRover methodsFor: 'heading' stamp: 'TC 10/27/2022 15:01:11' prior: 50552480!
+headWest
+	
+	"head := MarsRoverHeadingWest for: self"
+	head changeValueTo: (MarsRoverHeadingWest for: self).! !
+!MarsRover methodsFor: 'heading' stamp: 'TC 10/27/2022 15:02:08' prior: 50559759!
+rotateLeft
+	
+	head rotateLeft.
+	"self informHeadingRecorders."! !
+!MarsRover methodsFor: 'heading' stamp: 'TC 10/27/2022 15:02:11' prior: 50559754!
+rotateRight
+	
+	head rotateRight.
+	"self informHeadingRecorders."! !
+!MarsRover methodsFor: 'moving' stamp: 'TC 10/27/2022 15:02:17' prior: 50559764!
+moveBackward
+	
+	head moveBackward.
+	"self informPositionRecorders."! !
+!MarsRover methodsFor: 'moving' stamp: 'TC 10/27/2022 15:02:44' prior: 50552518!
+moveEast
+	
+	"position := position + (1@0)"
+	position changeValueTo: (position + (1@0)).! !
+!MarsRover methodsFor: 'moving' stamp: 'TC 10/27/2022 15:02:57' prior: 50552526!
+moveNorth
+	
+	"position := position + (0@1)"
+	position changeValueTo: (position + (0@1)).! !
+!MarsRover methodsFor: 'moving' stamp: 'TC 10/27/2022 15:03:07' prior: 50552530!
+moveSouth
+	
+	"position := position + (0@-1)"
+	position changeValueTo: (position + (0@-1)).! !
+!MarsRover methodsFor: 'moving' stamp: 'TC 10/27/2022 15:03:14' prior: 50552534!
+moveWest
+	
+	"position := position + (-1@0)"
+	position changeValueTo: (position + (-1@0)).! !
+
+!testRun: #MarsRoverRecorderTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC 10/27/2022 15:04:00'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC 10/27/2022 15:04:00'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'TC 10/27/2022 15:04:00'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC 10/27/2022 15:04:00'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'TC 10/27/2022 15:04:00'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'TC 10/27/2022 15:04:00'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test07WindowLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC 10/27/2022 15:04:00'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test08WindowLoggerLogsPositionAfterMovingAndRotatingMultipleTimesHeadingNorth stamp: 'TC 10/27/2022 15:04:00'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01DoesNotMoveWhenNoCommand stamp: 'TC 10/27/2022 15:04:08'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test02IsAtFailsForDifferentPosition stamp: 'TC 10/27/2022 15:04:08'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03IsAtFailsForDifferentHeading stamp: 'TC 10/27/2022 15:04:08'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04IncrementsYAfterMovingForwardWhenHeadingNorth stamp: 'TC 10/27/2022 15:04:08'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test06DecrementsYAfterMovingBackwardsWhenHeadingNorth stamp: 'TC 10/27/2022 15:04:08'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test07PointToEashAfterRotatingRightWhenHeadingNorth stamp: 'TC 10/27/2022 15:04:08'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test08PointsToWestAfterRotatingLeftWhenPointingNorth stamp: 'TC 10/27/2022 15:04:08'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test09DoesNotProcessInvalidCommand stamp: 'TC 10/27/2022 15:04:08'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test10CanProcessMoreThanOneCommand stamp: 'TC 10/27/2022 15:04:08'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test11IncrementsXAfterMovingForwareWhenHeadingEast stamp: 'TC 10/27/2022 15:04:08'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test12DecrementsXAfterMovingBackwardWhenHeadingEast stamp: 'TC 10/27/2022 15:04:08'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test13PointsToSouthAfterRotatingRightWhenHeadingEast stamp: 'TC 10/27/2022 15:04:08'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test14PointsToNorthAfterRotatingLeftWhenPointingEast stamp: 'TC 10/27/2022 15:04:08'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test15ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingSouth stamp: 'TC 10/27/2022 15:04:08'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test16ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingWest stamp: 'TC 10/27/2022 15:04:08'!
+FAILURE!
+
+!testRun: #MarsRoverRecorderTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC 10/27/2022 15:04:23'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC 10/27/2022 15:04:23'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'TC 10/27/2022 15:04:23'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC 10/27/2022 15:04:23'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'TC 10/27/2022 15:04:23'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'TC 10/27/2022 15:04:23'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test07WindowLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC 10/27/2022 15:04:23'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test08WindowLoggerLogsPositionAfterMovingAndRotatingMultipleTimesHeadingNorth stamp: 'TC 10/27/2022 15:04:23'!
+PASSED!
+
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #MarsRover category: 'MarsRover-WithHeading' stamp: 'TC 10/27/2022 15:04:59'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!testRun: #MarsRoverRecorderTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC 10/27/2022 15:05:04'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC 10/27/2022 15:05:04'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'TC 10/27/2022 15:05:04'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC 10/27/2022 15:05:04'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'TC 10/27/2022 15:05:04'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'TC 10/27/2022 15:05:04'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test07WindowLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC 10/27/2022 15:05:04'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test08WindowLoggerLogsPositionAfterMovingAndRotatingMultipleTimesHeadingNorth stamp: 'TC 10/27/2022 15:05:04'!
+PASSED!
+!MarsRover methodsFor: 'initialization' stamp: 'TC 10/27/2022 15:05:22' prior: 50560887!
+initializeAt: aPosition heading: aHeadingType
+	
+	position := RecordableObject with: aPosition.
+	head := RecordableObject with: (aHeadingType for: self).
+	"positionRecorders := OrderedCollection new.
+	headingRecorders := OrderedCollection new."! !
+!MarsRover methodsFor: 'moving' stamp: 'TC 10/27/2022 15:05:45' prior: 50559769!
+moveForward
+	
+	head moveForward.
+	"self informPositionRecorders."! !
+
+!testRun: #MarsRoverTest #test01DoesNotMoveWhenNoCommand stamp: 'TC 10/27/2022 15:06:35'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test02IsAtFailsForDifferentPosition stamp: 'TC 10/27/2022 15:06:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03IsAtFailsForDifferentHeading stamp: 'TC 10/27/2022 15:06:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04IncrementsYAfterMovingForwardWhenHeadingNorth stamp: 'TC 10/27/2022 15:06:35'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test06DecrementsYAfterMovingBackwardsWhenHeadingNorth stamp: 'TC 10/27/2022 15:06:35'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test07PointToEashAfterRotatingRightWhenHeadingNorth stamp: 'TC 10/27/2022 15:06:35'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test08PointsToWestAfterRotatingLeftWhenPointingNorth stamp: 'TC 10/27/2022 15:06:35'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test09DoesNotProcessInvalidCommand stamp: 'TC 10/27/2022 15:06:35'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test10CanProcessMoreThanOneCommand stamp: 'TC 10/27/2022 15:06:35'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test11IncrementsXAfterMovingForwareWhenHeadingEast stamp: 'TC 10/27/2022 15:06:35'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test12DecrementsXAfterMovingBackwardWhenHeadingEast stamp: 'TC 10/27/2022 15:06:35'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test13PointsToSouthAfterRotatingRightWhenHeadingEast stamp: 'TC 10/27/2022 15:06:35'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test14PointsToNorthAfterRotatingLeftWhenPointingEast stamp: 'TC 10/27/2022 15:06:35'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test15ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingSouth stamp: 'TC 10/27/2022 15:06:35'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test16ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingWest stamp: 'TC 10/27/2022 15:06:35'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test01DoesNotMoveWhenNoCommand stamp: 'TC 10/27/2022 15:06:43'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test02IsAtFailsForDifferentPosition stamp: 'TC 10/27/2022 15:06:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03IsAtFailsForDifferentHeading stamp: 'TC 10/27/2022 15:06:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04IncrementsYAfterMovingForwardWhenHeadingNorth stamp: 'TC 10/27/2022 15:06:43'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test06DecrementsYAfterMovingBackwardsWhenHeadingNorth stamp: 'TC 10/27/2022 15:06:43'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test07PointToEashAfterRotatingRightWhenHeadingNorth stamp: 'TC 10/27/2022 15:06:43'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test08PointsToWestAfterRotatingLeftWhenPointingNorth stamp: 'TC 10/27/2022 15:06:43'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test09DoesNotProcessInvalidCommand stamp: 'TC 10/27/2022 15:06:43'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test10CanProcessMoreThanOneCommand stamp: 'TC 10/27/2022 15:06:43'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test11IncrementsXAfterMovingForwareWhenHeadingEast stamp: 'TC 10/27/2022 15:06:43'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test12DecrementsXAfterMovingBackwardWhenHeadingEast stamp: 'TC 10/27/2022 15:06:43'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test13PointsToSouthAfterRotatingRightWhenHeadingEast stamp: 'TC 10/27/2022 15:06:43'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test14PointsToNorthAfterRotatingLeftWhenPointingEast stamp: 'TC 10/27/2022 15:06:43'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test15ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingSouth stamp: 'TC 10/27/2022 15:06:43'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test16ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingWest stamp: 'TC 10/27/2022 15:06:43'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test01DoesNotMoveWhenNoCommand stamp: 'TC 10/27/2022 15:08:02'!
+FAILURE!
+!MarsRover methodsFor: 'testing' stamp: 'TC 10/27/2022 15:11:32' prior: 50552492!
+isAt: aPosition heading: aHeadingType
+
+	^position value = aPosition and: [ head isHeading: aHeadingType ]! !
+
+!testRun: #MarsRoverTest #test01DoesNotMoveWhenNoCommand stamp: 'TC 10/27/2022 15:11:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02IsAtFailsForDifferentPosition stamp: 'TC 10/27/2022 15:11:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03IsAtFailsForDifferentHeading stamp: 'TC 10/27/2022 15:11:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04IncrementsYAfterMovingForwardWhenHeadingNorth stamp: 'TC 10/27/2022 15:11:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06DecrementsYAfterMovingBackwardsWhenHeadingNorth stamp: 'TC 10/27/2022 15:11:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07PointToEashAfterRotatingRightWhenHeadingNorth stamp: 'TC 10/27/2022 15:11:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08PointsToWestAfterRotatingLeftWhenPointingNorth stamp: 'TC 10/27/2022 15:11:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09DoesNotProcessInvalidCommand stamp: 'TC 10/27/2022 15:11:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanProcessMoreThanOneCommand stamp: 'TC 10/27/2022 15:11:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11IncrementsXAfterMovingForwareWhenHeadingEast stamp: 'TC 10/27/2022 15:11:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12DecrementsXAfterMovingBackwardWhenHeadingEast stamp: 'TC 10/27/2022 15:11:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13PointsToSouthAfterRotatingRightWhenHeadingEast stamp: 'TC 10/27/2022 15:11:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14PointsToNorthAfterRotatingLeftWhenPointingEast stamp: 'TC 10/27/2022 15:11:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingSouth stamp: 'TC 10/27/2022 15:11:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingWest stamp: 'TC 10/27/2022 15:11:35'!
+PASSED!
+!MarsRover methodsFor: 'heading' stamp: 'TC 10/27/2022 15:11:52' prior: 50560903!
+headEast
+	
+	head changeValueTo: (MarsRoverHeadingEast for: self).! !
+!MarsRover methodsFor: 'heading' stamp: 'TC 10/27/2022 15:11:55' prior: 50560910!
+headNorth
+	
+	head changeValueTo: (MarsRoverHeadingNorth for: self).! !
+!MarsRover methodsFor: 'heading' stamp: 'TC 10/27/2022 15:11:59' prior: 50560917!
+headSouth
+	
+	head changeValueTo: (MarsRoverHeadingSouth for: self).! !
+!MarsRover methodsFor: 'heading' stamp: 'TC 10/27/2022 15:12:02' prior: 50560924!
+headWest
+	
+	head changeValueTo: (MarsRoverHeadingWest for: self).! !
+!MarsRover methodsFor: 'heading' stamp: 'TC 10/27/2022 15:12:04' prior: 50560931!
+rotateLeft
+	
+	head rotateLeft.! !
+!MarsRover methodsFor: 'heading' stamp: 'TC 10/27/2022 15:12:07' prior: 50560936!
+rotateRight
+	
+	head rotateRight.! !
+!MarsRover methodsFor: 'initialization' stamp: 'TC 10/27/2022 15:12:12' prior: 50561146!
+initializeAt: aPosition heading: aHeadingType
+	
+	position := RecordableObject with: aPosition.
+	head := RecordableObject with: (aHeadingType for: self).! !
+
+!methodRemoval: MarsRover #informHeadingRecorders stamp: 'TC 10/27/2022 15:12:23'!
+informHeadingRecorders
+	
+	headingRecorders do: [
+		:aPositionRecorder |
+		aPositionRecorder informOfChangeOn: head class.
+	].!
+
+!methodRemoval: MarsRover #informPositionRecorders stamp: 'TC 10/27/2022 15:12:25'!
+informPositionRecorders
+	
+	positionRecorders do: [
+		:aPositionRecorder |
+		aPositionRecorder informOfChangeOn: position.
+	].!
+!MarsRover methodsFor: 'moving' stamp: 'TC 10/27/2022 15:12:32' prior: 50560941!
+moveBackward
+	
+	head moveBackward.! !
+!MarsRover methodsFor: 'moving' stamp: 'TC 10/27/2022 15:12:36' prior: 50560946!
+moveEast
+	
+	position changeValueTo: (position + (1@0)).! !
+!MarsRover methodsFor: 'moving' stamp: 'TC 10/27/2022 15:12:38' prior: 50561157!
+moveForward
+	
+	head moveForward.! !
+!MarsRover methodsFor: 'moving' stamp: 'TC 10/27/2022 15:12:41' prior: 50560952!
+moveNorth
+	
+	position changeValueTo: (position + (0@1)).! !
+!MarsRover methodsFor: 'moving' stamp: 'TC 10/27/2022 15:12:43' prior: 50560958!
+moveSouth
+	
+	position changeValueTo: (position + (0@-1)).! !
+!MarsRover methodsFor: 'moving' stamp: 'TC 10/27/2022 15:12:46' prior: 50560964!
+moveWest
+	
+	position changeValueTo: (position + (-1@0)).! !
+!MarsRover methodsFor: 'recorder addition' stamp: 'TC 10/27/2022 15:12:54' prior: 50560863!
+recordHeadingChangesOn: aHeadRecorder 
+	
+	head addRecordingBlock: [ :headValue | aHeadRecorder informOfChangeOn: headValue class asString.].! !
+!MarsRover methodsFor: 'recorder addition' stamp: 'TC 10/27/2022 15:12:57' prior: 50560872!
+recordPositionChangesOn: aPositionRecorder 
+
+	position addRecordingBlock: [ :positionValue | aPositionRecorder informOfChangeOn: positionValue asString. ].! !
+
+!testRun: #MarsRoverTest #test01DoesNotMoveWhenNoCommand stamp: 'TC 10/27/2022 15:15:03'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02IsAtFailsForDifferentPosition stamp: 'TC 10/27/2022 15:15:03'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03IsAtFailsForDifferentHeading stamp: 'TC 10/27/2022 15:15:03'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04IncrementsYAfterMovingForwardWhenHeadingNorth stamp: 'TC 10/27/2022 15:15:03'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06DecrementsYAfterMovingBackwardsWhenHeadingNorth stamp: 'TC 10/27/2022 15:15:03'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07PointToEashAfterRotatingRightWhenHeadingNorth stamp: 'TC 10/27/2022 15:15:03'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08PointsToWestAfterRotatingLeftWhenPointingNorth stamp: 'TC 10/27/2022 15:15:03'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09DoesNotProcessInvalidCommand stamp: 'TC 10/27/2022 15:15:03'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanProcessMoreThanOneCommand stamp: 'TC 10/27/2022 15:15:03'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11IncrementsXAfterMovingForwareWhenHeadingEast stamp: 'TC 10/27/2022 15:15:03'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12DecrementsXAfterMovingBackwardWhenHeadingEast stamp: 'TC 10/27/2022 15:15:03'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13PointsToSouthAfterRotatingRightWhenHeadingEast stamp: 'TC 10/27/2022 15:15:03'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14PointsToNorthAfterRotatingLeftWhenPointingEast stamp: 'TC 10/27/2022 15:15:03'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingSouth stamp: 'TC 10/27/2022 15:15:03'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingWest stamp: 'TC 10/27/2022 15:15:03'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC 10/27/2022 15:15:08'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC 10/27/2022 15:15:08'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'TC 10/27/2022 15:15:08'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC 10/27/2022 15:15:08'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'TC 10/27/2022 15:15:08'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'TC 10/27/2022 15:15:08'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test07WindowLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC 10/27/2022 15:15:08'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test08WindowLoggerLogsPositionAfterMovingAndRotatingMultipleTimesHeadingNorth stamp: 'TC 10/27/2022 15:15:08'!
+PASSED!
+!RecordableObject methodsFor: 'messaging' stamp: 'TC 10/27/2022 15:18:12' prior: 50560803 overrides: 50337880!
+doesNotUnderstand: aMessage
+	
+	^aMessage sendTo: value.
+	"Esto lo hacemos para no enviar 'value' constantemente a las variables de instancia de MarsRover que son de esta clase. Es ineficiente, pero funciona."! !
+
+!testRun: #MarsRoverTest #test01DoesNotMoveWhenNoCommand stamp: 'TC 10/27/2022 15:18:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02IsAtFailsForDifferentPosition stamp: 'TC 10/27/2022 15:18:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03IsAtFailsForDifferentHeading stamp: 'TC 10/27/2022 15:18:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04IncrementsYAfterMovingForwardWhenHeadingNorth stamp: 'TC 10/27/2022 15:18:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06DecrementsYAfterMovingBackwardsWhenHeadingNorth stamp: 'TC 10/27/2022 15:18:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07PointToEashAfterRotatingRightWhenHeadingNorth stamp: 'TC 10/27/2022 15:18:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08PointsToWestAfterRotatingLeftWhenPointingNorth stamp: 'TC 10/27/2022 15:18:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09DoesNotProcessInvalidCommand stamp: 'TC 10/27/2022 15:18:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanProcessMoreThanOneCommand stamp: 'TC 10/27/2022 15:18:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11IncrementsXAfterMovingForwareWhenHeadingEast stamp: 'TC 10/27/2022 15:18:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12DecrementsXAfterMovingBackwardWhenHeadingEast stamp: 'TC 10/27/2022 15:18:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13PointsToSouthAfterRotatingRightWhenHeadingEast stamp: 'TC 10/27/2022 15:18:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14PointsToNorthAfterRotatingLeftWhenPointingEast stamp: 'TC 10/27/2022 15:18:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingSouth stamp: 'TC 10/27/2022 15:18:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingWest stamp: 'TC 10/27/2022 15:18:31'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test01PositionLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC 10/27/2022 15:18:36'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test02PositionLoggerLogsPositionAfterMovingForwardHeadingNorth stamp: 'TC 10/27/2022 15:18:36'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test03PositionLoggerLogsPositionAfterMovingForwardTwiceAndBackwardsHeadingNorth stamp: 'TC 10/27/2022 15:18:36'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test04HeadingLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC 10/27/2022 15:18:36'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test05HeadingLoggerLogsHeadingAfterRotatingRightHeadingNorth stamp: 'TC 10/27/2022 15:18:36'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test06HeadingLoggerLogsHeadingAfterRotatingRightTwiceAndLeftHeadingNorth stamp: 'TC 10/27/2022 15:18:36'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test07WindowLoggerLogsNothingAfterProcessingEmptyCommandSequence stamp: 'TC 10/27/2022 15:18:36'!
+PASSED!
+
+!testRun: #MarsRoverRecorderTest #test08WindowLoggerLogsPositionAfterMovingAndRotatingMultipleTimesHeadingNorth stamp: 'TC 10/27/2022 15:18:36'!
+PASSED!
+
+----SNAPSHOT----(27 October 2022 15:18:47) CuisUniversity-5481.image priorSource: 7328533!
