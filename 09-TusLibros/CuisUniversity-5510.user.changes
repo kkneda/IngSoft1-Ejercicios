@@ -1,0 +1,2702 @@
+
+
+----QUIT----(26 October 2022 08:07:27) CuisUniversity-5510.image priorSource: 2900072!
+
+----STARTUP---- (26 October 2022 08:07:28) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5510.image!
+
+
+----QUIT----(26 October 2022 08:07:28) CuisUniversity-5510.image priorSource: 7154921!
+
+----STARTUP---- (30 October 2022 16:27:13) as /home/kaneda/Downloads/linux64/CuisUniversity-5510.image!
+
+
+Object subclass: #Cart
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'tusLibros-Exercise'!
+
+!classDefinition: #Cart category: 'tusLibros-Exercise' stamp: 'TC&OLT 10/30/2022 16:32:45'!
+Object subclass: #Cart
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'tusLibros-Exercise'!
+
+TestCase subclass: #CartTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'tusLibros-Exercise'!
+
+!classDefinition: #CartTest category: 'tusLibros-Exercise' stamp: 'TC&OLT 10/30/2022 16:32:59'!
+TestCase subclass: #CartTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'tusLibros-Exercise'!
+!CartTest methodsFor: 'no messages' stamp: 'TC&OLT 10/30/2022 16:40:01'!
+test01NewCartIsEmpty
+	
+	| cart |
+	
+	cart := Cart new.
+	
+	self assert: cart isEmpty.! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'TC&OLT 10/30/2022 16:40:11'!
+ERROR!
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'TC&OLT 10/30/2022 16:40:11'!
+ERROR!
+!Cart methodsFor: 'no messages' stamp: 'TC&OLT 10/30/2022 16:40:48'!
+isEmpty
+	
+	^true.! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'TC&OLT 10/30/2022 16:41:14'!
+PASSED!
+!CartTest methodsFor: 'tests' stamp: 'TC&OLT 10/30/2022 16:56:11'!
+test02
+
+	"
+	test02CartHasCataloguedBookAfterItsAddition
+	test02AddingCataloguedBookToCartResultsInCartIncludingSuchABook
+	"
+	
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	cart add: '978-0201633610'.
+	
+	self deny: cart isEmpty.
+	self assert: cart includes: '978-0201633610'.! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'TC&OLT 10/30/2022 16:56:18'!
+PASSED!
+
+!testRun: #CartTest #test02 stamp: 'TC&OLT 10/30/2022 16:56:18'!
+ERROR!
+
+!testRun: #CartTest #test02 stamp: 'TC&OLT 10/30/2022 16:56:18'!
+ERROR!
+!Cart class methodsFor: 'no messages' stamp: 'TC&OLT 10/30/2022 16:57:08'!
+withCatalog: aCatalogOfBooks
+	
+	^self new initializeWithCatalog: aCatalogOfBooks.! !
+
+Object subclass: #Cart
+	instanceVariableNames: 'catalog'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'tusLibros-Exercise'!
+
+!classDefinition: #Cart category: 'tusLibros-Exercise' stamp: 'TC&OLT 10/30/2022 16:57:58'!
+Object subclass: #Cart
+	instanceVariableNames: 'catalog'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'tusLibros-Exercise'!
+!Cart methodsFor: 'nil' stamp: 'TC&OLT 10/30/2022 16:58:11'!
+initializeWithCatalog: aCatalogOfBooks
+	
+	catalog := aCatalogOfBooks.! !
+
+!testRun: #CartTest #test02 stamp: 'TC&OLT 10/30/2022 16:58:24'!
+ERROR!
+
+!testRun: #CartTest #test02 stamp: 'TC&OLT 10/30/2022 16:58:24'!
+ERROR!
+
+Object subclass: #Cart
+	instanceVariableNames: 'catalog books'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'tusLibros-Exercise'!
+
+!classDefinition: #Cart category: 'tusLibros-Exercise' stamp: 'TC&OLT 10/30/2022 16:58:35'!
+Object subclass: #Cart
+	instanceVariableNames: 'catalog books'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'tusLibros-Exercise'!
+!Cart methodsFor: 'initialization' stamp: 'TC&OLT 10/30/2022 17:00:38' prior: 50555331!
+initializeWithCatalog: aCatalogOfBooks
+	
+	catalog := aCatalogOfBooks.
+	books := OrderedCollection new.! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'TC&OLT 10/30/2022 17:02:28'!
+PASSED!
+
+!testRun: #CartTest #test02 stamp: 'TC&OLT 10/30/2022 17:02:28'!
+ERROR!
+
+!testRun: #CartTest #test02 stamp: 'TC&OLT 10/30/2022 17:02:28'!
+ERROR!
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'TC&OLT 10/30/2022 17:02:32'!
+PASSED!
+
+!testRun: #CartTest #test02 stamp: 'TC&OLT 10/30/2022 17:02:32'!
+ERROR!
+
+!testRun: #CartTest #test02 stamp: 'TC&OLT 10/30/2022 17:02:32'!
+ERROR!
+!Cart methodsFor: 'nil' stamp: 'TC&OLT 10/30/2022 17:02:53'!
+add: aBook
+	
+	books add: aBook.! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'TC&OLT 10/30/2022 17:03:18'!
+PASSED!
+
+!testRun: #CartTest #test02 stamp: 'TC&OLT 10/30/2022 17:03:19'!
+FAILURE!
+
+!testRun: #CartTest #test02 stamp: 'TC&OLT 10/30/2022 17:03:19'!
+FAILURE!
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'TC&OLT 10/30/2022 17:03:27'!
+PASSED!
+
+!testRun: #CartTest #test02 stamp: 'TC&OLT 10/30/2022 17:03:27'!
+FAILURE!
+
+!testRun: #CartTest #test02 stamp: 'TC&OLT 10/30/2022 17:03:27'!
+FAILURE!
+!Cart methodsFor: 'testing' stamp: 'TC&OLT 10/30/2022 17:03:43' prior: 50555289!
+isEmpty
+	
+	^books isEmpty.! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'TC&OLT 10/30/2022 17:03:47'!
+ERROR!
+
+!testRun: #CartTest #test02 stamp: 'TC&OLT 10/30/2022 17:03:47'!
+ERROR!
+!CartTest methodsFor: 'tests' stamp: 'TC&OLT 10/30/2022 17:04:18' prior: 50555278!
+test01NewCartIsEmpty
+	
+	| cart |
+	
+	cart := Cart withCatalog: Set new.
+	
+	self assert: cart isEmpty.! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'TC&OLT 10/30/2022 17:04:20'!
+PASSED!
+
+!testRun: #CartTest #test02 stamp: 'TC&OLT 10/30/2022 17:04:20'!
+ERROR!
+
+!testRun: #CartTest #test02 stamp: 'TC&OLT 10/30/2022 17:04:20'!
+ERROR!
+!Cart methodsFor: 'nil' stamp: 'TC&OLT 10/30/2022 17:04:43'!
+includes: aBook
+	
+	^books includes: aBook.! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'TC&OLT 10/30/2022 17:04:47'!
+PASSED!
+
+!testRun: #CartTest #test02 stamp: 'TC&OLT 10/30/2022 17:04:47'!
+PASSED!
+!CartTest methodsFor: 'tests' stamp: 'TC&OLT 10/30/2022 17:10:03'!
+test03
+
+	"
+	test03CartCantBeAddedNonCataloguedBooks
+	"
+	
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	self should: [ cart add: '978-0201633611'. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError equals: cart class bookNotInCatalogErrorDescription.
+		self assert: cart isEmpty.
+	].! !
+!CartTest methodsFor: 'tests' stamp: 'TC&OLT 10/30/2022 17:11:33' prior: 50555423!
+test03
+
+	"
+	test03CartCantBeAddedNonCataloguedBooks
+	"
+	
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	self should: [ cart add: '978-0201633611'. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cart class bookNotInCatalogErrorDescription.
+		self assert: cart isEmpty.
+	].! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'TC&OLT 10/30/2022 17:11:38'!
+PASSED!
+
+!testRun: #CartTest #test02 stamp: 'TC&OLT 10/30/2022 17:11:38'!
+PASSED!
+
+!testRun: #CartTest #test03 stamp: 'TC&OLT 10/30/2022 17:11:38'!
+FAILURE!
+
+!testRun: #CartTest #test03 stamp: 'TC&OLT 10/30/2022 17:11:38'!
+FAILURE!
+!Cart methodsFor: 'adding' stamp: 'TC&OLT 10/30/2022 17:15:07' prior: 50555373!
+add: aBook
+	
+	(catalog includes: aBook) ifFalse: [ ^self error: self class bookNotInCatalogErrorDescription. ].
+	
+	books add: aBook.! !
+
+!testRun: #CartTest #test03 stamp: 'TC&OLT 10/30/2022 17:15:22'!
+ERROR!
+
+!testRun: #CartTest #test03 stamp: 'TC&OLT 10/30/2022 17:15:22'!
+ERROR!
+!Cart class methodsFor: 'nil' stamp: 'TC&OLT 10/30/2022 17:15:52'!
+bookNotInCatalogErrorDescription
+	
+	^'Book is not in catalog.'.! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'TC&OLT 10/30/2022 17:16:06'!
+PASSED!
+
+!testRun: #CartTest #test02 stamp: 'TC&OLT 10/30/2022 17:16:06'!
+PASSED!
+
+!testRun: #CartTest #test03 stamp: 'TC&OLT 10/30/2022 17:16:06'!
+PASSED!
+!Cart methodsFor: 'adding' stamp: 'TC&OLT 10/30/2022 17:18:37' prior: 50555460!
+add: aBook
+	
+	self assertBookCanBeAdded: aBook.
+	
+	books add: aBook.! !
+!Cart methodsFor: 'nil' stamp: 'TC&OLT 10/30/2022 17:19:03'!
+assertBookCanBeAdded: aBook
+	
+	
+	(catalog includes: aBook) ifFalse: [ ^self error: self class bookNotInCatalogErrorDescription. ].! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'TC&OLT 10/30/2022 17:19:17'!
+PASSED!
+
+!testRun: #CartTest #test02 stamp: 'TC&OLT 10/30/2022 17:19:17'!
+PASSED!
+
+!testRun: #CartTest #test03 stamp: 'TC&OLT 10/30/2022 17:19:17'!
+PASSED!
+!Cart methodsFor: 'adding' stamp: 'TC&OLT 10/30/2022 17:26:43'!
+addAmount: anAmountOfBooks ofBook: aBookToBeAdded
+	
+	! !
+!Cart methodsFor: 'adding' stamp: 'TC&OLT 10/30/2022 17:27:07' prior: 50555502!
+addAmount: anAmountOfBooks ofBook: aBookToBeAdded
+	
+	self assertBookCanBeAdded: aBookToBeAdded.
+	
+	books add: aBookToBeAdded.! !
+!CartTest methodsFor: 'tests' stamp: 'TC&OLT 10/30/2022 17:29:31'!
+test04
+
+	"
+	test04AddingCataloguedBookMoreThanOnceResultsInCartWithMultipleCopiesOfSuchABook
+	"
+	
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	"cart "! !
+!CartTest methodsFor: 'tests' stamp: 'TC&OLT 10/30/2022 17:31:48' prior: 50555514!
+test04
+
+	"
+	test04AddingCataloguedBookMoreThanOnceResultsInCartWithMultipleCopiesOfSuchABook
+	"
+	
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	cart addAmount: 3 ofBook: '978-0201633610'.
+	
+	self assert: (cart hasAmount: 3 ofBook: '978-0201633610').! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'TC&OLT 10/30/2022 17:31:54'!
+PASSED!
+
+!testRun: #CartTest #test02 stamp: 'TC&OLT 10/30/2022 17:31:54'!
+PASSED!
+
+!testRun: #CartTest #test03 stamp: 'TC&OLT 10/30/2022 17:31:54'!
+PASSED!
+
+!testRun: #CartTest #test04 stamp: 'TC&OLT 10/30/2022 17:31:54'!
+ERROR!
+
+!testRun: #CartTest #test04 stamp: 'TC&OLT 10/30/2022 17:31:54'!
+ERROR!
+
+----End fileIn of /home/kaneda/Downloads/linux64/Packages/TerseGuide.pck.st----!
+!Cart methodsFor: 'testing' stamp: 'TC&OLT 10/30/2022 17:32:39'!
+hasAmount: anAmount ofBook: aBook
+	
+	! !
+!Cart methodsFor: 'initialization' stamp: 'TC&OLT 10/30/2022 17:32:46' prior: 50555353!
+initializeWithCatalog: aCatalogOfBooks
+	
+	catalog := aCatalogOfBooks.
+	books := Dictionary new.! !
+
+x  Dictionary new.!
+
+x add: #a->4; add: #b->3; add: #c->1; add: #d->2; yourself.!
+
+x add: #a->4; add: #b->3; add: #c->1; add: #d->2; yourself!
+
+x at: #e put: 3.			!
+
+x!
+
+Dictionary!
+!Cart methodsFor: 'adding' stamp: 'TC&OLT 10/30/2022 17:42:25' prior: 50555507!
+addAmount: anAmountOfBooks ofBook: aBookToBeAdded
+	
+	| previousAmountOfBook |
+	
+	self assertBookCanBeAdded: aBookToBeAdded.
+	
+	previousAmountOfBook := (books at: aBookToBeAdded ifAbsent: [ 0 ]).
+	books at: aBookToBeAdded put: (previousAmountOfBook + anAmountOfBooks).! !
+!CartTest methodsFor: 'tests' stamp: 'TC&OLT 10/30/2022 17:43:17' prior: 50555295!
+test02
+
+	"
+	test02CartHasCataloguedBookAfterItsAddition
+	test02AddingCataloguedBookToCartResultsInCartIncludingSuchABook
+	"
+	
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	"cart add: '978-0201633610'."
+	
+	cart addAmount: 1 ofBook: '978-0201633610'.
+	
+	self deny: cart isEmpty.
+	self assert: cart includes: '978-0201633610'.! !
+!CartTest methodsFor: 'tests' stamp: 'TC&OLT 10/30/2022 17:43:35' prior: 50555436!
+test03
+
+	"
+	test03CartCantBeAddedNonCataloguedBooks
+	"
+	
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	self should: [ cart addAmount: 1 ofBook: '978-0201633611'. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cart class bookNotInCatalogErrorDescription.
+		self assert: cart isEmpty.
+	].! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'TC&OLT 10/30/2022 17:43:40'!
+PASSED!
+
+!testRun: #CartTest #test02 stamp: 'TC&OLT 10/30/2022 17:43:40'!
+FAILURE!
+
+!testRun: #CartTest #test03 stamp: 'TC&OLT 10/30/2022 17:43:40'!
+PASSED!
+
+!testRun: #CartTest #test04 stamp: 'TC&OLT 10/30/2022 17:43:40'!
+ERROR!
+!Cart methodsFor: 'testing' stamp: 'TC&OLT 10/30/2022 17:44:12' prior: 50555414!
+includes: aBook
+	
+	^books includesKey: aBook.! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'TC&OLT 10/30/2022 17:44:16'!
+PASSED!
+
+!testRun: #CartTest #test02 stamp: 'TC&OLT 10/30/2022 17:44:19'!
+PASSED!
+
+!testRun: #CartTest #test03 stamp: 'TC&OLT 10/30/2022 17:44:22'!
+PASSED!
+
+!testRun: #CartTest #test04 stamp: 'TC&OLT 10/30/2022 17:44:24'!
+ERROR!
+
+!testRun: #CartTest #test04 stamp: 'TC&OLT 10/30/2022 17:44:24'!
+ERROR!
+!CartTest methodsFor: 'tests' stamp: 'TC&OLT 10/30/2022 17:45:40' prior: 50555523!
+test04
+
+	"
+	test04AddingCataloguedBookMoreThanOnceResultsInCartWithMultipleCopiesOfSuchABook
+	"
+	
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	cart addAmount: 3 ofBook: '978-0201633610'.
+	
+	self assert: (cart amountOfBook: '978-0201633610') equals: 3.! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'TC&OLT 10/30/2022 17:45:44'!
+PASSED!
+
+!testRun: #CartTest #test02 stamp: 'TC&OLT 10/30/2022 17:45:44'!
+PASSED!
+
+!testRun: #CartTest #test03 stamp: 'TC&OLT 10/30/2022 17:45:44'!
+PASSED!
+
+!testRun: #CartTest #test04 stamp: 'TC&OLT 10/30/2022 17:45:44'!
+ERROR!
+
+!testRun: #CartTest #test04 stamp: 'TC&OLT 10/30/2022 17:45:44'!
+ERROR!
+
+!methodRemoval: Cart #hasAmount:ofBook: stamp: 'TC&OLT 10/30/2022 17:46:01'!
+hasAmount: anAmount ofBook: aBook
+	
+	!
+!Cart methodsFor: 'accessing' stamp: 'TC&OLT 10/30/2022 17:49:15'!
+amountOfBook: aBookToCheckAmountOf
+	
+	^catalog associationAt: aBookToCheckAmountOf ifAbsent: [0].! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'TC&OLT 10/30/2022 17:50:02'!
+PASSED!
+
+!testRun: #CartTest #test02 stamp: 'TC&OLT 10/30/2022 17:50:02'!
+PASSED!
+
+!testRun: #CartTest #test03 stamp: 'TC&OLT 10/30/2022 17:50:02'!
+PASSED!
+
+!testRun: #CartTest #test04 stamp: 'TC&OLT 10/30/2022 17:50:02'!
+ERROR!
+
+!testRun: #CartTest #test04 stamp: 'TC&OLT 10/30/2022 17:50:02'!
+ERROR!
+!Cart methodsFor: 'accessing' stamp: 'TC&OLT 10/30/2022 17:50:15' prior: 50558576!
+amountOfBook: aBookToCheckAmountOf
+	
+	^books associationAt: aBookToCheckAmountOf ifAbsent: [0].! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'TC&OLT 10/30/2022 17:50:18'!
+PASSED!
+
+!testRun: #CartTest #test02 stamp: 'TC&OLT 10/30/2022 17:50:18'!
+PASSED!
+
+!testRun: #CartTest #test03 stamp: 'TC&OLT 10/30/2022 17:50:18'!
+PASSED!
+
+!testRun: #CartTest #test04 stamp: 'TC&OLT 10/30/2022 17:50:18'!
+FAILURE!
+
+!testRun: #CartTest #test04 stamp: 'TC&OLT 10/30/2022 17:50:18'!
+FAILURE!
+
+!testRun: #CartTest #test04 stamp: 'TC&OLT 10/30/2022 17:50:31'!
+FAILURE!
+
+!testRun: #CartTest #test04 stamp: 'TC&OLT 10/30/2022 17:50:31'!
+FAILURE!
+!CartTest methodsFor: 'tests' stamp: 'TC&OLT 10/30/2022 17:51:01' prior: 50558549!
+test04
+
+	"
+	test04AddingCataloguedBookMoreThanOnceResultsInCartWithMultipleCopiesOfSuchABook
+	"
+	
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	cart addAmount: 3 ofBook: '978-0201633610'.
+	
+	self assert: 3 equals: (cart amountOfBook: '978-0201633610').! !
+
+!testRun: #CartTest #test04 stamp: 'TC&OLT 10/30/2022 17:51:07'!
+FAILURE!
+
+!testRun: #CartTest #test04 stamp: 'TC&OLT 10/30/2022 17:51:07'!
+FAILURE!
+!Cart methodsFor: 'accessing' stamp: 'TC&OLT 10/30/2022 17:51:35' prior: 50558594!
+amountOfBook: aBookToCheckAmountOf
+	
+	^books at: aBookToCheckAmountOf ifAbsent: [0].! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'TC&OLT 10/30/2022 17:51:39'!
+PASSED!
+
+!testRun: #CartTest #test02 stamp: 'TC&OLT 10/30/2022 17:51:39'!
+PASSED!
+
+!testRun: #CartTest #test03 stamp: 'TC&OLT 10/30/2022 17:51:39'!
+PASSED!
+
+!testRun: #CartTest #test04 stamp: 'TC&OLT 10/30/2022 17:51:39'!
+PASSED!
+!CartTest methodsFor: 'tests' stamp: 'TC&OLT 10/30/2022 17:53:21' prior: 50558494!
+test02
+
+	"
+	test02CartHasCataloguedBookAfterItsAddition
+	test02AddingCataloguedBookToCartResultsInCartIncludingSuchABook
+	"
+	
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	"cart add: '978-0201633610'."
+	
+	cart addAmount: 1 ofBook: '978-0201633610'.
+	
+	self assert: 1 equals: (cart amountOfBook: '978-0201633610').! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'TC&OLT 10/30/2022 17:53:24'!
+PASSED!
+
+!testRun: #CartTest #test02 stamp: 'TC&OLT 10/30/2022 17:53:24'!
+PASSED!
+
+!testRun: #CartTest #test03 stamp: 'TC&OLT 10/30/2022 17:53:24'!
+PASSED!
+
+!testRun: #CartTest #test04 stamp: 'TC&OLT 10/30/2022 17:53:24'!
+PASSED!
+!CartTest methodsFor: 'tests' stamp: 'TC&OLT 10/30/2022 17:53:32' prior: 50558650!
+test02
+
+	"
+	test02CartHasCataloguedBookAfterItsAddition
+	test02AddingCataloguedBookToCartResultsInCartIncludingSuchABook
+	"
+	
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	cart addAmount: 1 ofBook: '978-0201633610'.
+	
+	self assert: 1 equals: (cart amountOfBook: '978-0201633610').! !
+
+----SNAPSHOT----(30 October 2022 17:54:38) CuisUniversity-5510.image priorSource: 7155150!
+
+----STARTUP---- (30 October 2022 18:00:24) as /media/elage3/7e7b8103-5bbe-454e-bc02-f2be1a6d15c7/home/elage/Desktop/Ciencias_de_la_Computacion/ISW1/Ejercicios/carritoposta/linux64/CuisUniversity-5510.image!
+
+!CartTest methodsFor: 'tests' stamp: 'TC&OLT 10/30/2022 18:06:00'!
+test05
+
+	"
+	test05AddingNegativeOrZeroQuantityOfABookCausesAnError
+	"
+	
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	cart addAmount: -1 ofBook: '978-0201633610'.
+! !
+!CartTest methodsFor: 'tests' stamp: 'TC&OLT 10/30/2022 18:07:28' prior: 50558695!
+test05
+
+	"
+	test05AddingNegativeOrZeroQuantityOfABookCausesAnError
+	"
+	
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+
+	self should: [ cart addAmount: -1 ofBook: '978-0201633610'. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cart class nonPositiveAmmountErrorDescription.
+		self assert: cart isEmpty.
+	].! !
+
+!testRun: #CartTest #test05 stamp: 'TC&OLT 10/30/2022 18:07:33'!
+FAILURE!
+!Cart class methodsFor: 'error descriptions' stamp: 'TC&OLT 10/30/2022 18:09:13'!
+nonPositiveAmmountErrorDescription
+	
+	^'Ammount of books should be a positive number.'.! !
+!Cart methodsFor: 'adding' stamp: 'TC&OLT 10/30/2022 18:11:56' prior: 50558482!
+addAmount: anAmountOfBooks ofBook: aBookToBeAdded
+	
+	| previousAmountOfBook |
+	
+	self assertBookCanBeAdded: aBookToBeAdded.
+	(anAmountOfBooks >0) ifFalse: [ ^self error: self class nonPositiveAmmountErrorDescription. ].
+	
+	previousAmountOfBook := (books at: aBookToBeAdded ifAbsent: [ 0 ]).
+	books at: aBookToBeAdded put: (previousAmountOfBook + anAmountOfBooks).! !
+
+!testRun: #CartTest #test05 stamp: 'TC&OLT 10/30/2022 18:12:13'!
+PASSED!
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'TC&OLT 10/30/2022 18:12:15'!
+PASSED!
+
+!testRun: #CartTest #test02 stamp: 'TC&OLT 10/30/2022 18:12:15'!
+PASSED!
+
+!testRun: #CartTest #test03 stamp: 'TC&OLT 10/30/2022 18:12:15'!
+PASSED!
+
+!testRun: #CartTest #test04 stamp: 'TC&OLT 10/30/2022 18:12:15'!
+PASSED!
+
+!testRun: #CartTest #test05 stamp: 'TC&OLT 10/30/2022 18:12:15'!
+PASSED!
+!Cart methodsFor: 'assertions' stamp: 'TC&OLT 10/30/2022 18:14:14'!
+assertBookIsInCatalog: aBook
+	
+	
+	(catalog includes: aBook) ifFalse: [ ^self error: self class bookNotInCatalogErrorDescription. ].! !
+!Cart methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/30/2022 18:14:14' prior: 50558727!
+addAmount: anAmountOfBooks ofBook: aBookToBeAdded
+	
+	| previousAmountOfBook |
+	
+	self assertBookIsInCatalog: aBookToBeAdded.
+	(anAmountOfBooks >0) ifFalse: [ ^self error: self class nonPositiveAmmountErrorDescription. ].
+	
+	previousAmountOfBook := (books at: aBookToBeAdded ifAbsent: [ 0 ]).
+	books at: aBookToBeAdded put: (previousAmountOfBook + anAmountOfBooks).! !
+!Cart methodsFor: 'as yet unclassified' stamp: 'TC&OLT 10/30/2022 18:14:14' prior: 50555483!
+add: aBook
+	
+	self assertBookIsInCatalog: aBook.
+	
+	books add: aBook.! !
+
+!methodRemoval: Cart #assertBookCanBeAdded: stamp: 'TC&OLT 10/30/2022 18:14:14'!
+assertBookCanBeAdded: aBook
+	
+	
+	(catalog includes: aBook) ifFalse: [ ^self error: self class bookNotInCatalogErrorDescription. ].!
+!Cart methodsFor: 'adding' stamp: 'TC&OLT 10/30/2022 18:15:03' prior: 50558763!
+addAmount: anAmountOfBooks ofBook: aBookToBeAdded
+	
+	| previousAmountOfBook |
+	
+	self assertBookIsInCatalog: aBookToBeAdded.
+	(anAmountOfBooks >0) ifFalse: [ ^self error: self class nonPositiveAmmountErrorDescription. ].
+	
+	previousAmountOfBook := (books at: aBookToBeAdded ifAbsent: [ 0 ]).
+	books at: aBookToBeAdded put: (previousAmountOfBook + anAmountOfBooks).! !
+!Cart methodsFor: 'adding' stamp: 'TC&OLT 10/30/2022 18:16:05' prior: 50558790!
+addAmount: anAmountOfBooks ofBook: aBookToBeAdded
+	
+	| previousAmountOfBook |
+	
+	self assertBookIsInCatalog: aBookToBeAdded.
+	self assertAmountIsPositive: anAmountOfBooks .
+
+	
+	previousAmountOfBook := (books at: aBookToBeAdded ifAbsent: [ 0 ]).
+	books at: aBookToBeAdded put: (previousAmountOfBook + anAmountOfBooks).! !
+!Cart methodsFor: 'assertions' stamp: 'TC&OLT 10/30/2022 18:16:55'!
+assertAmountIsPositive: anAmountOfBooks
+
+	(anAmountOfBooks >0) ifFalse: [ ^self error: self class nonPositiveAmmountErrorDescription. ].! !
+
+!testRun: #CartTest #test05 stamp: 'TC&OLT 10/30/2022 18:17:05'!
+PASSED!
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'TC&OLT 10/30/2022 18:17:07'!
+PASSED!
+
+!testRun: #CartTest #test02 stamp: 'TC&OLT 10/30/2022 18:17:07'!
+PASSED!
+
+!testRun: #CartTest #test03 stamp: 'TC&OLT 10/30/2022 18:17:07'!
+PASSED!
+
+!testRun: #CartTest #test04 stamp: 'TC&OLT 10/30/2022 18:17:07'!
+PASSED!
+
+!testRun: #CartTest #test05 stamp: 'TC&OLT 10/30/2022 18:17:07'!
+PASSED!
+!CartTest methodsFor: 'tests' stamp: 'TC&OLT 10/30/2022 18:23:48'!
+test06
+
+	"
+	test06AllBooksAddedToCartAreInTheCart
+	"
+	
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610' with: '978-0892562060').
+	
+
+! !
+
+Dictionary!
+!CartTest methodsFor: 'tests' stamp: 'TC&OLT 10/30/2022 18:27:22' prior: 50558838!
+test06
+
+	"
+	test06AllBooksAddedToCartAreInTheCart
+	"
+	
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610' with: '978-0892562060').
+	
+	cart addAmount: 1 ofBook: '978-0201633610'.
+	cart addAmount: 2 ofBook: '978-0892562060'.	
+	
+	
+
+	self assert: 3 equals: cart books.
+
+! !
+!CartTest methodsFor: 'tests' stamp: 'TC&OLT 10/30/2022 18:29:21' prior: 50558846!
+test06
+
+	"
+	test06AllBooksAddedToCartAreInTheCart
+	"
+	
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610' with: '978-0892562060').
+	
+	cart addAmount: 1 ofBook: '978-0201633610'.
+	cart addAmount: 2 ofBook: '978-0892562060'.	
+	
+	self assert: (Dictionary with: '978-0201633610'->1 with: '978-0892562060'->2) equals: cart books.
+
+! !
+
+!testRun: #CartTest #test06 stamp: 'TC&OLT 10/30/2022 18:29:24'!
+ERROR!
+!Cart methodsFor: 'accessing' stamp: 'TC&OLT 10/30/2022 18:29:33'!
+books
+	self shouldBeImplemented.
+	^books! !
+!Cart methodsFor: 'accessing' stamp: 'TC&OLT 10/30/2022 18:29:59' prior: 50558874!
+books
+
+	^books! !
+
+!testRun: #CartTest #test06 stamp: 'TC&OLT 10/30/2022 18:30:04'!
+PASSED!
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'TC&OLT 10/30/2022 18:30:04'!
+PASSED!
+
+!testRun: #CartTest #test02 stamp: 'TC&OLT 10/30/2022 18:30:04'!
+PASSED!
+
+!testRun: #CartTest #test03 stamp: 'TC&OLT 10/30/2022 18:30:04'!
+PASSED!
+
+!testRun: #CartTest #test04 stamp: 'TC&OLT 10/30/2022 18:30:04'!
+PASSED!
+
+!testRun: #CartTest #test05 stamp: 'TC&OLT 10/30/2022 18:30:04'!
+PASSED!
+
+!testRun: #CartTest #test06 stamp: 'TC&OLT 10/30/2022 18:30:04'!
+PASSED!
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'TC&OLT 10/30/2022 18:30:07'!
+PASSED!
+
+!testRun: #CartTest #test02 stamp: 'TC&OLT 10/30/2022 18:30:07'!
+PASSED!
+
+!testRun: #CartTest #test03 stamp: 'TC&OLT 10/30/2022 18:30:07'!
+PASSED!
+
+!testRun: #CartTest #test04 stamp: 'TC&OLT 10/30/2022 18:30:07'!
+PASSED!
+
+!testRun: #CartTest #test05 stamp: 'TC&OLT 10/30/2022 18:30:07'!
+PASSED!
+
+!testRun: #CartTest #test06 stamp: 'TC&OLT 10/30/2022 18:30:07'!
+PASSED!
+
+----SNAPSHOT----(30 October 2022 18:31:10) CuisUniversity-5510.image priorSource: 7265109!
+
+----SNAPSHOT----(30 October 2022 18:34:06) CuisUniversity-5510.image priorSource: 7272367!
+
+----STARTUP---- (30 October 2022 18:36:07) as /home/kaneda/Downloads/linux64/CuisUniversity-5510.image!
+
+
+!methodRemoval: Cart #add: stamp: 'TC 10/30/2022 18:38:40'!
+add: aBook
+	
+	self assertBookIsInCatalog: aBook.
+	
+	books add: aBook.!
+!CartTest methodsFor: 'tests' stamp: 'TC 10/30/2022 18:41:35'!
+test02CataloguedBookAdditionToNewCartResultsInCartWithCataloguedBook
+	
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	cart addAmount: 1 ofBook: '978-0201633610'.
+	
+	self assert: 1 equals: (cart amountOfBook: '978-0201633610').! !
+
+!methodRemoval: CartTest #test02CataloguedBookAdditionToNewCartResultsInCartWithCataloguedBook stamp: 'TC 10/30/2022 18:42:19'!
+test02CataloguedBookAdditionToNewCartResultsInCartWithCataloguedBook
+	
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	cart addAmount: 1 ofBook: '978-0201633610'.
+	
+	self assert: 1 equals: (cart amountOfBook: '978-0201633610').!
+!CartTest methodsFor: 'tests' stamp: 'TC 10/30/2022 18:42:26'!
+test02CataloguedBookAdditionToNewCartResultsInCartWithCataloguedBook
+
+	"
+	test02CartHasCataloguedBookAfterItsAddition
+	test02AddingCataloguedBookToCartResultsInCartIncludingSuchABook
+	"
+	
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	cart addAmount: 1 ofBook: '978-0201633610'.
+	
+	self assert: 1 equals: (cart amountOfBook: '978-0201633610').! !
+
+!methodRemoval: CartTest #test02 stamp: 'TC 10/30/2022 18:42:26'!
+test02
+
+	"
+	test02CartHasCataloguedBookAfterItsAddition
+	test02AddingCataloguedBookToCartResultsInCartIncludingSuchABook
+	"
+	
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	cart addAmount: 1 ofBook: '978-0201633610'.
+	
+	self assert: 1 equals: (cart amountOfBook: '978-0201633610').!
+!CartTest methodsFor: 'tests' stamp: 'TC 10/30/2022 18:43:53'!
+test03BookNotInCartCatalogCantBeAddedToCart
+
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	self should: [ cart addAmount: 1 ofBook: '978-0201633611'. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cart class bookNotInCatalogErrorDescription.
+		self assert: cart isEmpty.
+	].! !
+
+!methodRemoval: CartTest #test03BookNotInCartCatalogCantBeAddedToCart stamp: 'TC 10/30/2022 18:44:02'!
+test03BookNotInCartCatalogCantBeAddedToCart
+
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	self should: [ cart addAmount: 1 ofBook: '978-0201633611'. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cart class bookNotInCatalogErrorDescription.
+		self assert: cart isEmpty.
+	].!
+!CartTest methodsFor: 'tests' stamp: 'TC 10/30/2022 18:44:09'!
+test03BookNotInCartCatalogCantBeAddedToCart
+
+	"
+	test03CartCantBeAddedNonCataloguedBooks
+	"
+	
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	self should: [ cart addAmount: 1 ofBook: '978-0201633611'. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cart class bookNotInCatalogErrorDescription.
+		self assert: cart isEmpty.
+	].! !
+
+!methodRemoval: CartTest #test03 stamp: 'TC 10/30/2022 18:44:09'!
+test03
+
+	"
+	test03CartCantBeAddedNonCataloguedBooks
+	"
+	
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	self should: [ cart addAmount: 1 ofBook: '978-0201633611'. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cart class bookNotInCatalogErrorDescription.
+		self assert: cart isEmpty.
+	].!
+!CartTest methodsFor: 'tests' stamp: 'TC 10/30/2022 18:45:01'!
+test02AdditingCataloguedBookToCartResultsInCartWithCataloguedBook
+
+	"
+	test02CartHasCataloguedBookAfterItsAddition
+	test02AddingCataloguedBookToCartResultsInCartIncludingSuchABook
+	"
+	
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	cart addAmount: 1 ofBook: '978-0201633610'.
+	
+	self assert: 1 equals: (cart amountOfBook: '978-0201633610').! !
+
+!methodRemoval: CartTest #test02CataloguedBookAdditionToNewCartResultsInCartWithCataloguedBook stamp: 'TC 10/30/2022 18:45:01'!
+test02CataloguedBookAdditionToNewCartResultsInCartWithCataloguedBook
+
+	"
+	test02CartHasCataloguedBookAfterItsAddition
+	test02AddingCataloguedBookToCartResultsInCartIncludingSuchABook
+	"
+	
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	cart addAmount: 1 ofBook: '978-0201633610'.
+	
+	self assert: 1 equals: (cart amountOfBook: '978-0201633610').!
+!CartTest methodsFor: 'tests' stamp: 'TC 10/30/2022 18:46:06'!
+test04AddingCataloguedBookMultipleTimesToCartResultsInCartWIthMultipleSuchBooks
+
+	"
+	test04AddingCataloguedBookMoreThanOnceResultsInCartWithMultipleCopiesOfSuchABook
+	"
+	
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	cart addAmount: 3 ofBook: '978-0201633610'.
+	
+	self assert: 3 equals: (cart amountOfBook: '978-0201633610').! !
+
+!methodRemoval: CartTest #test04 stamp: 'TC 10/30/2022 18:46:06'!
+test04
+
+	"
+	test04AddingCataloguedBookMoreThanOnceResultsInCartWithMultipleCopiesOfSuchABook
+	"
+	
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	cart addAmount: 3 ofBook: '978-0201633610'.
+	
+	self assert: 3 equals: (cart amountOfBook: '978-0201633610').!
+!CartTest methodsFor: 'tests' stamp: 'TC 10/30/2022 18:46:21'!
+test02AdditingCataloguedBookToCartResultsInCartWithSuchBook
+
+	"
+	test02CartHasCataloguedBookAfterItsAddition
+	test02AddingCataloguedBookToCartResultsInCartIncludingSuchABook
+	"
+	
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	cart addAmount: 1 ofBook: '978-0201633610'.
+	
+	self assert: 1 equals: (cart amountOfBook: '978-0201633610').! !
+
+!methodRemoval: CartTest #test02AdditingCataloguedBookToCartResultsInCartWithCataloguedBook stamp: 'TC 10/30/2022 18:46:21'!
+test02AdditingCataloguedBookToCartResultsInCartWithCataloguedBook
+
+	"
+	test02CartHasCataloguedBookAfterItsAddition
+	test02AddingCataloguedBookToCartResultsInCartIncludingSuchABook
+	"
+	
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	cart addAmount: 1 ofBook: '978-0201633610'.
+	
+	self assert: 1 equals: (cart amountOfBook: '978-0201633610').!
+!CartTest methodsFor: 'tests' stamp: 'TC 10/30/2022 18:46:29'!
+test02AddingCataloguedBookToCartResultsInCartWithSuchBook
+
+	"
+	test02CartHasCataloguedBookAfterItsAddition
+	test02AddingCataloguedBookToCartResultsInCartIncludingSuchABook
+	"
+	
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	cart addAmount: 1 ofBook: '978-0201633610'.
+	
+	self assert: 1 equals: (cart amountOfBook: '978-0201633610').! !
+
+!methodRemoval: CartTest #test02AdditingCataloguedBookToCartResultsInCartWithSuchBook stamp: 'TC 10/30/2022 18:46:29'!
+test02AdditingCataloguedBookToCartResultsInCartWithSuchBook
+
+	"
+	test02CartHasCataloguedBookAfterItsAddition
+	test02AddingCataloguedBookToCartResultsInCartIncludingSuchABook
+	"
+	
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	cart addAmount: 1 ofBook: '978-0201633610'.
+	
+	self assert: 1 equals: (cart amountOfBook: '978-0201633610').!
+!CartTest methodsFor: 'tests' stamp: 'TC 10/30/2022 18:46:44'!
+test04AddingCataloguedBookMultipleTimesToCartResultsInCartWithMultipleSuchBooks
+
+	"
+	test04AddingCataloguedBookMoreThanOnceResultsInCartWithMultipleCopiesOfSuchABook
+	"
+	
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	cart addAmount: 3 ofBook: '978-0201633610'.
+	
+	self assert: 3 equals: (cart amountOfBook: '978-0201633610').! !
+
+!methodRemoval: CartTest #test04AddingCataloguedBookMultipleTimesToCartResultsInCartWIthMultipleSuchBooks stamp: 'TC 10/30/2022 18:46:44'!
+test04AddingCataloguedBookMultipleTimesToCartResultsInCartWIthMultipleSuchBooks
+
+	"
+	test04AddingCataloguedBookMoreThanOnceResultsInCartWithMultipleCopiesOfSuchABook
+	"
+	
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	cart addAmount: 3 ofBook: '978-0201633610'.
+	
+	self assert: 3 equals: (cart amountOfBook: '978-0201633610').!
+!CartTest methodsFor: 'tests' stamp: 'TC 10/30/2022 18:46:54' prior: 50559111!
+test02AddingCataloguedBookToCartResultsInCartWithSuchBook
+
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	cart addAmount: 1 ofBook: '978-0201633610'.
+	
+	self assert: 1 equals: (cart amountOfBook: '978-0201633610').! !
+!CartTest methodsFor: 'tests' stamp: 'TC 10/30/2022 18:46:57' prior: 50559000!
+test03BookNotInCartCatalogCantBeAddedToCart
+
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	self should: [ cart addAmount: 1 ofBook: '978-0201633611'. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cart class bookNotInCatalogErrorDescription.
+		self assert: cart isEmpty.
+	].! !
+!CartTest methodsFor: 'tests' stamp: 'TC 10/30/2022 18:47:00' prior: 50559140!
+test04AddingCataloguedBookMultipleTimesToCartResultsInCartWithMultipleSuchBooks
+
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	cart addAmount: 3 ofBook: '978-0201633610'.
+	
+	self assert: 3 equals: (cart amountOfBook: '978-0201633610').! !
+!CartTest methodsFor: 'tests' stamp: 'TC 10/30/2022 18:49:00'!
+test05BookCantBeAddedZeroOrLessTimesToCart
+
+	"
+	test05AddingNegativeOrZeroQuantityOfABookCausesAnError
+	"
+	
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+
+	self should: [ cart addAmount: -1 ofBook: '978-0201633610'. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cart class nonPositiveAmmountErrorDescription.
+		self assert: cart isEmpty.
+	].! !
+
+!methodRemoval: CartTest #test05 stamp: 'TC 10/30/2022 18:49:00'!
+test05
+
+	"
+	test05AddingNegativeOrZeroQuantityOfABookCausesAnError
+	"
+	
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+
+	self should: [ cart addAmount: -1 ofBook: '978-0201633610'. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cart class nonPositiveAmmountErrorDescription.
+		self assert: cart isEmpty.
+	].!
+!CartTest methodsFor: 'tests' stamp: 'TC 10/30/2022 18:49:06' prior: 50559205!
+test05BookCantBeAddedZeroOrLessTimesToCart
+
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+
+	self should: [ cart addAmount: -1 ofBook: '978-0201633610'. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cart class nonPositiveAmmountErrorDescription.
+		self assert: cart isEmpty.
+	].! !
+!CartTest methodsFor: 'tests' stamp: 'TC 10/30/2022 18:50:05'!
+test06AddingMultipleCataloguedBooksToCartResultsInCartWithOnlySuchBooks
+
+	"
+	test06AllBooksAddedToCartAreInTheCart
+	"
+	
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610' with: '978-0892562060').
+	
+	cart addAmount: 1 ofBook: '978-0201633610'.
+	cart addAmount: 2 ofBook: '978-0892562060'.	
+	
+	self assert: (Dictionary with: '978-0201633610'->1 with: '978-0892562060'->2) equals: cart books.
+
+! !
+
+!methodRemoval: CartTest #test06 stamp: 'TC 10/30/2022 18:50:05'!
+test06
+
+	"
+	test06AllBooksAddedToCartAreInTheCart
+	"
+	
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610' with: '978-0892562060').
+	
+	cart addAmount: 1 ofBook: '978-0201633610'.
+	cart addAmount: 2 ofBook: '978-0892562060'.	
+	
+	self assert: (Dictionary with: '978-0201633610'->1 with: '978-0892562060'->2) equals: cart books.
+
+!
+!CartTest methodsFor: 'tests' stamp: 'TC 10/30/2022 18:50:28' prior: 50559248!
+test06AddingMultipleCataloguedBooksToCartResultsInCartWithOnlySuchBooks
+
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610' with: '978-0892562060').
+	
+	cart addAmount: 1 ofBook: '978-0201633610'.
+	cart addAmount: 2 ofBook: '978-0892562060'.	
+	
+	self assert: (Dictionary with: '978-0201633610'->1 with: '978-0892562060'->2) equals: cart books.
+
+! !
+!CartTest methodsFor: 'tests' stamp: 'TC 10/30/2022 18:50:55' prior: 50559235!
+test05BookCantBeAddedZeroOrLessTimesToCart
+
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	self should: [ cart addAmount: -1 ofBook: '978-0201633610'. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cart class nonPositiveAmmountErrorDescription.
+		self assert: cart isEmpty.
+	].! !
+!CartTest methodsFor: 'tests' stamp: 'TC 10/30/2022 18:53:18'!
+test04AddingMultipleCopiesOfCataloguedBookToCartResultsInCartWithMultipleCopiesOfSuchBook
+
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	cart addAmount: 3 ofBook: '978-0201633610'.
+	
+	self assert: 3 equals: (cart amountOfBook: '978-0201633610').! !
+
+!methodRemoval: CartTest #test04AddingCataloguedBookMultipleTimesToCartResultsInCartWithMultipleSuchBooks stamp: 'TC 10/30/2022 18:53:18'!
+test04AddingCataloguedBookMultipleTimesToCartResultsInCartWithMultipleSuchBooks
+
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	cart addAmount: 3 ofBook: '978-0201633610'.
+	
+	self assert: 3 equals: (cart amountOfBook: '978-0201633610').!
+!CartTest methodsFor: 'tests' stamp: 'TC 10/30/2022 18:56:29'!
+test03AddingBookNotInCartCatalogResultsInError
+
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	self should: [ cart addAmount: 1 ofBook: '978-0201633611'. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cart class bookNotInCatalogErrorDescription.
+		self assert: cart isEmpty.
+	].! !
+
+!methodRemoval: CartTest #test03BookNotInCartCatalogCantBeAddedToCart stamp: 'TC 10/30/2022 18:56:29'!
+test03BookNotInCartCatalogCantBeAddedToCart
+
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	self should: [ cart addAmount: 1 ofBook: '978-0201633611'. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cart class bookNotInCatalogErrorDescription.
+		self assert: cart isEmpty.
+	].!
+!CartTest methodsFor: 'tests' stamp: 'TC 10/30/2022 18:57:29'!
+test02AddingBookInCartCatalogResultsInCartWithSuchBook
+
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	cart addAmount: 1 ofBook: '978-0201633610'.
+	
+	self assert: 1 equals: (cart amountOfBook: '978-0201633610').! !
+
+!methodRemoval: CartTest #test02AddingCataloguedBookToCartResultsInCartWithSuchBook stamp: 'TC 10/30/2022 18:57:29'!
+test02AddingCataloguedBookToCartResultsInCartWithSuchBook
+
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	cart addAmount: 1 ofBook: '978-0201633610'.
+	
+	self assert: 1 equals: (cart amountOfBook: '978-0201633610').!
+!CartTest methodsFor: 'tests' stamp: 'TC 10/30/2022 18:57:50'!
+test02AddingBookInCartCatalogToCartResultsInCartWithSuchBook
+
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	cart addAmount: 1 ofBook: '978-0201633610'.
+	
+	self assert: 1 equals: (cart amountOfBook: '978-0201633610').! !
+
+!methodRemoval: CartTest #test02AddingBookInCartCatalogResultsInCartWithSuchBook stamp: 'TC 10/30/2022 18:57:50'!
+test02AddingBookInCartCatalogResultsInCartWithSuchBook
+
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	cart addAmount: 1 ofBook: '978-0201633610'.
+	
+	self assert: 1 equals: (cart amountOfBook: '978-0201633610').!
+!CartTest methodsFor: 'tests' stamp: 'TC 10/30/2022 18:58:03'!
+test03AddingBookNotInCartCatalogToCartResultsInError
+
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	self should: [ cart addAmount: 1 ofBook: '978-0201633611'. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cart class bookNotInCatalogErrorDescription.
+		self assert: cart isEmpty.
+	].! !
+
+!methodRemoval: CartTest #test03AddingBookNotInCartCatalogResultsInError stamp: 'TC 10/30/2022 18:58:03'!
+test03AddingBookNotInCartCatalogResultsInError
+
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	self should: [ cart addAmount: 1 ofBook: '978-0201633611'. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cart class bookNotInCatalogErrorDescription.
+		self assert: cart isEmpty.
+	].!
+!CartTest methodsFor: 'tests' stamp: 'TC 10/30/2022 18:58:30'!
+test04AddingMultipleCopiesOfBookInCartCatalogToCartResultsInCartWithMultipleCopiesOfSuchBook
+
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	cart addAmount: 3 ofBook: '978-0201633610'.
+	
+	self assert: 3 equals: (cart amountOfBook: '978-0201633610').! !
+
+!methodRemoval: CartTest #test04AddingMultipleCopiesOfCataloguedBookToCartResultsInCartWithMultipleCopiesOfSuchBook stamp: 'TC 10/30/2022 18:58:30'!
+test04AddingMultipleCopiesOfCataloguedBookToCartResultsInCartWithMultipleCopiesOfSuchBook
+
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	cart addAmount: 3 ofBook: '978-0201633610'.
+	
+	self assert: 3 equals: (cart amountOfBook: '978-0201633610').!
+!CartTest methodsFor: 'tests' stamp: 'TC 10/30/2022 18:59:13'!
+test05AddingZeroOrLessCopiesOfBookToCartResultsInError
+
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	self should: [ cart addAmount: -1 ofBook: '978-0201633610'. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cart class nonPositiveAmmountErrorDescription.
+		self assert: cart isEmpty.
+	].! !
+
+!methodRemoval: CartTest #test05BookCantBeAddedZeroOrLessTimesToCart stamp: 'TC 10/30/2022 18:59:13'!
+test05BookCantBeAddedZeroOrLessTimesToCart
+
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	self should: [ cart addAmount: -1 ofBook: '978-0201633610'. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cart class nonPositiveAmmountErrorDescription.
+		self assert: cart isEmpty.
+	].!
+!CartTest methodsFor: 'tests' stamp: 'TC 10/30/2022 18:59:32'!
+test06AddingMultipleBooksInCartCatalogToCartResultsInCartWithOnlySuchBooks
+
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610' with: '978-0892562060').
+	
+	cart addAmount: 1 ofBook: '978-0201633610'.
+	cart addAmount: 2 ofBook: '978-0892562060'.	
+	
+	self assert: (Dictionary with: '978-0201633610'->1 with: '978-0892562060'->2) equals: cart books.
+
+! !
+
+!methodRemoval: CartTest #test06AddingMultipleCataloguedBooksToCartResultsInCartWithOnlySuchBooks stamp: 'TC 10/30/2022 18:59:32'!
+test06AddingMultipleCataloguedBooksToCartResultsInCartWithOnlySuchBooks
+
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610' with: '978-0892562060').
+	
+	cart addAmount: 1 ofBook: '978-0201633610'.
+	cart addAmount: 2 ofBook: '978-0892562060'.	
+	
+	self assert: (Dictionary with: '978-0201633610'->1 with: '978-0892562060'->2) equals: cart books.
+
+!
+!Cart methodsFor: 'accessing' stamp: 'TC 10/30/2022 19:02:38' prior: 50558878!
+books
+
+	^books copy.! !
+
+!methodRemoval: Cart #includes: stamp: 'TC 10/30/2022 19:03:49'!
+includes: aBook
+	
+	^books includesKey: aBook.!
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'TC 10/30/2022 19:03:53'!
+PASSED!
+
+!testRun: #CartTest #test02AddingBookInCartCatalogToCartResultsInCartWithSuchBook stamp: 'TC 10/30/2022 19:03:53'!
+PASSED!
+
+!testRun: #CartTest #test03AddingBookNotInCartCatalogToCartResultsInError stamp: 'TC 10/30/2022 19:03:53'!
+PASSED!
+
+!testRun: #CartTest #test04AddingMultipleCopiesOfBookInCartCatalogToCartResultsInCartWithMultipleCopiesOfSuchBook stamp: 'TC 10/30/2022 19:03:53'!
+PASSED!
+
+!testRun: #CartTest #test05AddingZeroOrLessCopiesOfBookToCartResultsInError stamp: 'TC 10/30/2022 19:03:53'!
+PASSED!
+
+!testRun: #CartTest #test06AddingMultipleBooksInCartCatalogToCartResultsInCartWithOnlySuchBooks stamp: 'TC 10/30/2022 19:03:53'!
+PASSED!
+!CartTest methodsFor: 'tests' stamp: 'TC 10/30/2022 19:12:45' prior: 50559377!
+test02AddingBookInCartCatalogToCartResultsInCartWithSuchBook
+
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	cart addAmount: 1 ofBook: '978-0201633610'.
+	
+	self assert: 1 equals: (cart amountOfBook: '978-0201633610').! !
+!Behavior method!
+withCatalog: aCatalogOfBooks
+	#_coverageTracker2219500_ markAsExecuted.
+	^ #_coverageTracker2219500_
+		coverAll:
+			{43 to: 64}
+		evaluating: [
+			(#_coverageTracker2219500_
+				coverAll:
+					{39 to: 41}
+				evaluating: [
+					(#_coverageTracker2219500_
+						coverAll:
+							{34 to: 37}
+						byLiteralOrPseudoVariable: self) new ]) initializeWithCatalog:
+				(#_coverageTracker2219500_
+					cover: (66 to: 80)
+					declaredAt: (14 to: 28)
+					by: aCatalogOfBooks) ].! !
+!Behavior method!
+initializeWithCatalog: aCatalogOfBooks
+	#_coverageTracker2219443_ markAsExecuted.
+	#_coverageTracker2219443_
+		cover: (43 to: 49)
+		declaredAt: (43 to: 49)
+		by:
+			(catalog _ #_coverageTracker2219443_
+				cover: (54 to: 68)
+				declaredAt: (24 to: 38)
+				by: aCatalogOfBooks).
+	#_coverageTracker2219443_
+		cover: (72 to: 76)
+		declaredAt: (72 to: 76)
+		by:
+			(books _ #_coverageTracker2219443_
+				coverAll:
+					{92 to: 94}
+				evaluating: [
+					(#_coverageTracker2219443_
+						coverAll:
+							{81 to: 90}
+						by: Dictionary) new ]).! !
+!Behavior method!
+isEmpty
+	#_coverageTracker2219519_ markAsExecuted.
+	^ #_coverageTracker2219519_
+		coverAll:
+			{19 to: 25}
+		evaluating: [
+			(#_coverageTracker2219519_
+				cover: (13 to: 17)
+				declaredAt: (13 to: 17)
+				by: books) isEmpty ].! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'TC 10/30/2022 19:13:06'!
+PASSED!
+!Behavior method!
+addAmount: anAmountOfBooks ofBook: aBookToBeAdded
+	| previousAmountOfBook |
+	#_coverageTracker2219542_ markAsExecuted.
+	#_coverageTracker2219542_
+		coverAll:
+			{87 to: 108}
+		evaluating: [
+			(#_coverageTracker2219542_
+				coverAll:
+					{82 to: 85}
+				byLiteralOrPseudoVariable: self) assertBookIsInCatalog:
+				(#_coverageTracker2219542_
+					cover: (110 to: 123)
+					declaredAt: (36 to: 49)
+					by: aBookToBeAdded) ].
+	#_coverageTracker2219542_
+		coverAll:
+			{132 to: 154}
+		evaluating: [
+			(#_coverageTracker2219542_
+				coverAll:
+					{127 to: 130}
+				byLiteralOrPseudoVariable: self) assertAmountIsPositive:
+				(#_coverageTracker2219542_
+					cover: (156 to: 170)
+					declaredAt: (12 to: 26)
+					by: anAmountOfBooks) ].
+	#_coverageTracker2219542_
+		cover: (178 to: 197)
+		declaredAt: (56 to: 75)
+		by:
+			(previousAmountOfBook _ #_coverageTracker2219542_
+				coverAll:
+					{209 to: 211. 228 to: 236}
+				evaluating: [
+					(#_coverageTracker2219542_
+						cover: (203 to: 207)
+						declaredAt: (203 to: 207)
+						by: books)
+						at:
+							(#_coverageTracker2219542_
+								cover: (213 to: 226)
+								declaredAt: (36 to: 49)
+								by: aBookToBeAdded)
+						ifAbsent: [
+							#_coverageTracker2219542_
+								coverAll:
+									{240 to: 240}
+								byLiteralOrPseudoVariable: 0 ]]).
+	#_coverageTracker2219542_
+		coverAll:
+			{253 to: 255. 272 to: 275}
+		evaluating: [
+			(#_coverageTracker2219542_
+				cover: (247 to: 251)
+				declaredAt: (203 to: 207)
+				by: books)
+				at:
+					(#_coverageTracker2219542_
+						cover: (257 to: 270)
+						declaredAt: (36 to: 49)
+						by: aBookToBeAdded)
+				put:
+					(#_coverageTracker2219542_
+						coverAll:
+							{299 to: 299}
+						evaluating: [
+							(#_coverageTracker2219542_
+								cover: (278 to: 297)
+								declaredAt: (56 to: 75)
+								by: previousAmountOfBook) +
+								(#_coverageTracker2219542_
+									cover: (301 to: 315)
+									declaredAt: (12 to: 26)
+									by: anAmountOfBooks) ]) ].! !
+!Behavior method!
+assertBookIsInCatalog: aBook
+	#_coverageTracker2219383_ markAsExecuted.
+	#_coverageTracker2219383_
+		coverAll:
+			{61 to: 68}
+		evaluating: [
+			(#_coverageTracker2219383_
+				coverAll:
+					{44 to: 52}
+				evaluating: [
+					(#_coverageTracker2219383_
+						cover: (36 to: 42)
+						declaredAt: (36 to: 42)
+						by: catalog) includes:
+						(#_coverageTracker2219383_
+							cover: (54 to: 58)
+							declaredAt: (24 to: 28)
+							by: aBook) ]) ifFalse: [ ^ #_coverageTracker2219383_
+					coverAll:
+						{78 to: 83}
+					evaluating: [
+						(#_coverageTracker2219383_
+							coverAll:
+								{73 to: 76}
+							byLiteralOrPseudoVariable: self) error:
+							(#_coverageTracker2219383_
+								coverAll:
+									{96 to: 127}
+								evaluating: [
+									(#_coverageTracker2219383_
+										coverAll:
+											{90 to: 94}
+										evaluating: [
+											(#_coverageTracker2219383_
+												coverAll:
+													{85 to: 88}
+												byLiteralOrPseudoVariable: self) class ]) bookNotInCatalogErrorDescription ]) ]]].! !
+!Behavior method!
+assertAmountIsPositive: anAmountOfBooks
+	#_coverageTracker2219466_ markAsExecuted.
+	#_coverageTracker2219466_
+		coverAll:
+			{64 to: 71}
+		evaluating: [
+			(#_coverageTracker2219466_
+				coverAll:
+					{60 to: 60}
+				evaluating: [
+					(#_coverageTracker2219466_
+						cover: (44 to: 58)
+						declaredAt: (25 to: 39)
+						by: anAmountOfBooks) >
+						(#_coverageTracker2219466_
+							coverAll:
+								{61 to: 61}
+							byLiteralOrPseudoVariable: 0) ]) ifFalse: [ ^ #_coverageTracker2219466_
+					coverAll:
+						{81 to: 86}
+					evaluating: [
+						(#_coverageTracker2219466_
+							coverAll:
+								{76 to: 79}
+							byLiteralOrPseudoVariable: self) error:
+							(#_coverageTracker2219466_
+								coverAll:
+									{99 to: 132}
+								evaluating: [
+									(#_coverageTracker2219466_
+										coverAll:
+											{93 to: 97}
+										evaluating: [
+											(#_coverageTracker2219466_
+												coverAll:
+													{88 to: 91}
+												byLiteralOrPseudoVariable: self) class ]) nonPositiveAmmountErrorDescription ]) ]]].! !
+!Behavior method!
+amountOfBook: aBookToCheckAmountOf
+	#_coverageTracker2219494_ markAsExecuted.
+	^ #_coverageTracker2219494_
+		coverAll:
+			{46 to: 48. 71 to: 79}
+		evaluating: [
+			(#_coverageTracker2219494_
+				cover: (40 to: 44)
+				declaredAt: (40 to: 44)
+				by: books)
+				at:
+					(#_coverageTracker2219494_
+						cover: (50 to: 69)
+						declaredAt: (15 to: 34)
+						by: aBookToCheckAmountOf)
+				ifAbsent: [
+					#_coverageTracker2219494_
+						coverAll:
+							{82 to: 82}
+						byLiteralOrPseudoVariable: 0 ]].! !
+
+!testRun: #CartTest #test02AddingBookInCartCatalogToCartResultsInCartWithSuchBook stamp: 'TC 10/30/2022 19:13:06'!
+PASSED!
+!Behavior method!
+bookNotInCatalogErrorDescription
+	#_coverageTracker2219517_ markAsExecuted.
+	^ #_coverageTracker2219517_
+		coverAll:
+			{38 to: 62}
+		byLiteralOrPseudoVariable: 'Book is not in catalog.'.! !
+
+!testRun: #CartTest #test03AddingBookNotInCartCatalogToCartResultsInError stamp: 'TC 10/30/2022 19:13:06'!
+PASSED!
+
+!testRun: #CartTest #test04AddingMultipleCopiesOfBookInCartCatalogToCartResultsInCartWithMultipleCopiesOfSuchBook stamp: 'TC 10/30/2022 19:13:07'!
+PASSED!
+!Behavior method!
+nonPositiveAmmountErrorDescription
+	#_coverageTracker2219462_ markAsExecuted.
+	^ #_coverageTracker2219462_
+		coverAll:
+			{40 to: 86}
+		byLiteralOrPseudoVariable: 'Ammount of books should be a positive number.'.! !
+
+!testRun: #CartTest #test05AddingZeroOrLessCopiesOfBookToCartResultsInError stamp: 'TC 10/30/2022 19:13:07'!
+PASSED!
+!Behavior method!
+books
+	#_coverageTracker2219488_ markAsExecuted.
+	^ #_coverageTracker2219488_
+		coverAll:
+			{16 to: 19}
+		evaluating: [
+			(#_coverageTracker2219488_
+				cover: (10 to: 14)
+				declaredAt: (10 to: 14)
+				by: books) copy ].! !
+
+!testRun: #CartTest #test06AddingMultipleBooksInCartCatalogToCartResultsInCartWithOnlySuchBooks stamp: 'TC 10/30/2022 19:13:07'!
+PASSED!
+!Behavior method!
+withCatalog: aCatalogOfBooks
+	#_coverageTracker2302073_ markAsExecuted.
+	^ #_coverageTracker2302073_
+		coverAll:
+			{43 to: 64}
+		evaluating: [
+			(#_coverageTracker2302073_
+				coverAll:
+					{39 to: 41}
+				evaluating: [
+					(#_coverageTracker2302073_
+						coverAll:
+							{34 to: 37}
+						byLiteralOrPseudoVariable: self) new ]) initializeWithCatalog:
+				(#_coverageTracker2302073_
+					cover: (66 to: 80)
+					declaredAt: (14 to: 28)
+					by: aCatalogOfBooks) ].! !
+!Behavior method!
+initializeWithCatalog: aCatalogOfBooks
+	#_coverageTracker2302018_ markAsExecuted.
+	#_coverageTracker2302018_
+		cover: (43 to: 49)
+		declaredAt: (43 to: 49)
+		by:
+			(catalog _ #_coverageTracker2302018_
+				cover: (54 to: 68)
+				declaredAt: (24 to: 38)
+				by: aCatalogOfBooks).
+	#_coverageTracker2302018_
+		cover: (72 to: 76)
+		declaredAt: (72 to: 76)
+		by:
+			(books _ #_coverageTracker2302018_
+				coverAll:
+					{92 to: 94}
+				evaluating: [
+					(#_coverageTracker2302018_
+						coverAll:
+							{81 to: 90}
+						by: Dictionary) new ]).! !
+!Behavior method!
+isEmpty
+	#_coverageTracker2302096_ markAsExecuted.
+	^ #_coverageTracker2302096_
+		coverAll:
+			{19 to: 25}
+		evaluating: [
+			(#_coverageTracker2302096_
+				cover: (13 to: 17)
+				declaredAt: (13 to: 17)
+				by: books) isEmpty ].! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'TC 10/30/2022 19:14:29'!
+PASSED!
+!Behavior method!
+addAmount: anAmountOfBooks ofBook: aBookToBeAdded
+	| previousAmountOfBook |
+	#_coverageTracker2302100_ markAsExecuted.
+	#_coverageTracker2302100_
+		coverAll:
+			{87 to: 108}
+		evaluating: [
+			(#_coverageTracker2302100_
+				coverAll:
+					{82 to: 85}
+				byLiteralOrPseudoVariable: self) assertBookIsInCatalog:
+				(#_coverageTracker2302100_
+					cover: (110 to: 123)
+					declaredAt: (36 to: 49)
+					by: aBookToBeAdded) ].
+	#_coverageTracker2302100_
+		coverAll:
+			{132 to: 154}
+		evaluating: [
+			(#_coverageTracker2302100_
+				coverAll:
+					{127 to: 130}
+				byLiteralOrPseudoVariable: self) assertAmountIsPositive:
+				(#_coverageTracker2302100_
+					cover: (156 to: 170)
+					declaredAt: (12 to: 26)
+					by: anAmountOfBooks) ].
+	#_coverageTracker2302100_
+		cover: (178 to: 197)
+		declaredAt: (56 to: 75)
+		by:
+			(previousAmountOfBook _ #_coverageTracker2302100_
+				coverAll:
+					{209 to: 211. 228 to: 236}
+				evaluating: [
+					(#_coverageTracker2302100_
+						cover: (203 to: 207)
+						declaredAt: (203 to: 207)
+						by: books)
+						at:
+							(#_coverageTracker2302100_
+								cover: (213 to: 226)
+								declaredAt: (36 to: 49)
+								by: aBookToBeAdded)
+						ifAbsent: [
+							#_coverageTracker2302100_
+								coverAll:
+									{240 to: 240}
+								byLiteralOrPseudoVariable: 0 ]]).
+	#_coverageTracker2302100_
+		coverAll:
+			{253 to: 255. 272 to: 275}
+		evaluating: [
+			(#_coverageTracker2302100_
+				cover: (247 to: 251)
+				declaredAt: (203 to: 207)
+				by: books)
+				at:
+					(#_coverageTracker2302100_
+						cover: (257 to: 270)
+						declaredAt: (36 to: 49)
+						by: aBookToBeAdded)
+				put:
+					(#_coverageTracker2302100_
+						coverAll:
+							{299 to: 299}
+						evaluating: [
+							(#_coverageTracker2302100_
+								cover: (278 to: 297)
+								declaredAt: (56 to: 75)
+								by: previousAmountOfBook) +
+								(#_coverageTracker2302100_
+									cover: (301 to: 315)
+									declaredAt: (12 to: 26)
+									by: anAmountOfBooks) ]) ].! !
+!Behavior method!
+assertBookIsInCatalog: aBook
+	#_coverageTracker2301995_ markAsExecuted.
+	#_coverageTracker2301995_
+		coverAll:
+			{61 to: 68}
+		evaluating: [
+			(#_coverageTracker2301995_
+				coverAll:
+					{44 to: 52}
+				evaluating: [
+					(#_coverageTracker2301995_
+						cover: (36 to: 42)
+						declaredAt: (36 to: 42)
+						by: catalog) includes:
+						(#_coverageTracker2301995_
+							cover: (54 to: 58)
+							declaredAt: (24 to: 28)
+							by: aBook) ]) ifFalse: [ ^ #_coverageTracker2301995_
+					coverAll:
+						{78 to: 83}
+					evaluating: [
+						(#_coverageTracker2301995_
+							coverAll:
+								{73 to: 76}
+							byLiteralOrPseudoVariable: self) error:
+							(#_coverageTracker2301995_
+								coverAll:
+									{96 to: 127}
+								evaluating: [
+									(#_coverageTracker2301995_
+										coverAll:
+											{90 to: 94}
+										evaluating: [
+											(#_coverageTracker2301995_
+												coverAll:
+													{85 to: 88}
+												byLiteralOrPseudoVariable: self) class ]) bookNotInCatalogErrorDescription ]) ]]].! !
+!Behavior method!
+assertAmountIsPositive: anAmountOfBooks
+	#_coverageTracker2302039_ markAsExecuted.
+	#_coverageTracker2302039_
+		coverAll:
+			{64 to: 71}
+		evaluating: [
+			(#_coverageTracker2302039_
+				coverAll:
+					{60 to: 60}
+				evaluating: [
+					(#_coverageTracker2302039_
+						cover: (44 to: 58)
+						declaredAt: (25 to: 39)
+						by: anAmountOfBooks) >
+						(#_coverageTracker2302039_
+							coverAll:
+								{61 to: 61}
+							byLiteralOrPseudoVariable: 0) ]) ifFalse: [ ^ #_coverageTracker2302039_
+					coverAll:
+						{81 to: 86}
+					evaluating: [
+						(#_coverageTracker2302039_
+							coverAll:
+								{76 to: 79}
+							byLiteralOrPseudoVariable: self) error:
+							(#_coverageTracker2302039_
+								coverAll:
+									{99 to: 132}
+								evaluating: [
+									(#_coverageTracker2302039_
+										coverAll:
+											{93 to: 97}
+										evaluating: [
+											(#_coverageTracker2302039_
+												coverAll:
+													{88 to: 91}
+												byLiteralOrPseudoVariable: self) class ]) nonPositiveAmmountErrorDescription ]) ]]].! !
+!Behavior method!
+amountOfBook: aBookToCheckAmountOf
+	#_coverageTracker2302056_ markAsExecuted.
+	^ #_coverageTracker2302056_
+		coverAll:
+			{46 to: 48. 71 to: 79}
+		evaluating: [
+			(#_coverageTracker2302056_
+				cover: (40 to: 44)
+				declaredAt: (40 to: 44)
+				by: books)
+				at:
+					(#_coverageTracker2302056_
+						cover: (50 to: 69)
+						declaredAt: (15 to: 34)
+						by: aBookToCheckAmountOf)
+				ifAbsent: [
+					#_coverageTracker2302056_
+						coverAll:
+							{82 to: 82}
+						byLiteralOrPseudoVariable: 0 ]].! !
+
+!testRun: #CartTest #test02AddingBookInCartCatalogToCartResultsInCartWithSuchBook stamp: 'TC 10/30/2022 19:14:29'!
+PASSED!
+!Behavior method!
+bookNotInCatalogErrorDescription
+	#_coverageTracker2302092_ markAsExecuted.
+	^ #_coverageTracker2302092_
+		coverAll:
+			{38 to: 62}
+		byLiteralOrPseudoVariable: 'Book is not in catalog.'.! !
+
+!testRun: #CartTest #test03AddingBookNotInCartCatalogToCartResultsInError stamp: 'TC 10/30/2022 19:14:29'!
+PASSED!
+
+!testRun: #CartTest #test04AddingMultipleCopiesOfBookInCartCatalogToCartResultsInCartWithMultipleCopiesOfSuchBook stamp: 'TC 10/30/2022 19:14:29'!
+PASSED!
+!Behavior method!
+nonPositiveAmmountErrorDescription
+	#_coverageTracker2302024_ markAsExecuted.
+	^ #_coverageTracker2302024_
+		coverAll:
+			{40 to: 86}
+		byLiteralOrPseudoVariable: 'Ammount of books should be a positive number.'.! !
+
+!testRun: #CartTest #test05AddingZeroOrLessCopiesOfBookToCartResultsInError stamp: 'TC 10/30/2022 19:14:29'!
+PASSED!
+!Behavior method!
+books
+	#_coverageTracker2302052_ markAsExecuted.
+	^ #_coverageTracker2302052_
+		coverAll:
+			{16 to: 19}
+		evaluating: [
+			(#_coverageTracker2302052_
+				cover: (10 to: 14)
+				declaredAt: (10 to: 14)
+				by: books) copy ].! !
+
+!testRun: #CartTest #test06AddingMultipleBooksInCartCatalogToCartResultsInCartWithOnlySuchBooks stamp: 'TC 10/30/2022 19:14:29'!
+PASSED!
+!CartTest methodsFor: 'tests' stamp: 'TC 10/30/2022 19:14:56' prior: 50559538!
+test02AddingBookInCartCatalogToCartResultsInCartWithSuchBook
+
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	cart addAmount: 1 ofBook: '978-0201633610'.
+	
+	self deny: cart isEmpty.
+	self assert: 1 equals: (cart amountOfBook: '978-0201633610').! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'TC 10/30/2022 19:14:58'!
+PASSED!
+
+!testRun: #CartTest #test02AddingBookInCartCatalogToCartResultsInCartWithSuchBook stamp: 'TC 10/30/2022 19:14:58'!
+PASSED!
+
+!testRun: #CartTest #test03AddingBookNotInCartCatalogToCartResultsInError stamp: 'TC 10/30/2022 19:14:58'!
+PASSED!
+
+!testRun: #CartTest #test04AddingMultipleCopiesOfBookInCartCatalogToCartResultsInCartWithMultipleCopiesOfSuchBook stamp: 'TC 10/30/2022 19:14:58'!
+PASSED!
+
+!testRun: #CartTest #test05AddingZeroOrLessCopiesOfBookToCartResultsInError stamp: 'TC 10/30/2022 19:14:58'!
+PASSED!
+
+!testRun: #CartTest #test06AddingMultipleBooksInCartCatalogToCartResultsInCartWithOnlySuchBooks stamp: 'TC 10/30/2022 19:14:58'!
+PASSED!
+!Behavior method!
+withCatalog: aCatalogOfBooks
+	#_coverageTracker2335928_ markAsExecuted.
+	^ #_coverageTracker2335928_
+		coverAll:
+			{43 to: 64}
+		evaluating: [
+			(#_coverageTracker2335928_
+				coverAll:
+					{39 to: 41}
+				evaluating: [
+					(#_coverageTracker2335928_
+						coverAll:
+							{34 to: 37}
+						byLiteralOrPseudoVariable: self) new ]) initializeWithCatalog:
+				(#_coverageTracker2335928_
+					cover: (66 to: 80)
+					declaredAt: (14 to: 28)
+					by: aCatalogOfBooks) ].! !
+!Behavior method!
+initializeWithCatalog: aCatalogOfBooks
+	#_coverageTracker2335839_ markAsExecuted.
+	#_coverageTracker2335839_
+		cover: (43 to: 49)
+		declaredAt: (43 to: 49)
+		by:
+			(catalog _ #_coverageTracker2335839_
+				cover: (54 to: 68)
+				declaredAt: (24 to: 38)
+				by: aCatalogOfBooks).
+	#_coverageTracker2335839_
+		cover: (72 to: 76)
+		declaredAt: (72 to: 76)
+		by:
+			(books _ #_coverageTracker2335839_
+				coverAll:
+					{92 to: 94}
+				evaluating: [
+					(#_coverageTracker2335839_
+						coverAll:
+							{81 to: 90}
+						by: Dictionary) new ]).! !
+!Behavior method!
+isEmpty
+	#_coverageTracker2335936_ markAsExecuted.
+	^ #_coverageTracker2335936_
+		coverAll:
+			{19 to: 25}
+		evaluating: [
+			(#_coverageTracker2335936_
+				cover: (13 to: 17)
+				declaredAt: (13 to: 17)
+				by: books) isEmpty ].! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'TC 10/30/2022 19:15:03'!
+PASSED!
+!Behavior method!
+addAmount: anAmountOfBooks ofBook: aBookToBeAdded
+	| previousAmountOfBook |
+	#_coverageTracker2335944_ markAsExecuted.
+	#_coverageTracker2335944_
+		coverAll:
+			{87 to: 108}
+		evaluating: [
+			(#_coverageTracker2335944_
+				coverAll:
+					{82 to: 85}
+				byLiteralOrPseudoVariable: self) assertBookIsInCatalog:
+				(#_coverageTracker2335944_
+					cover: (110 to: 123)
+					declaredAt: (36 to: 49)
+					by: aBookToBeAdded) ].
+	#_coverageTracker2335944_
+		coverAll:
+			{132 to: 154}
+		evaluating: [
+			(#_coverageTracker2335944_
+				coverAll:
+					{127 to: 130}
+				byLiteralOrPseudoVariable: self) assertAmountIsPositive:
+				(#_coverageTracker2335944_
+					cover: (156 to: 170)
+					declaredAt: (12 to: 26)
+					by: anAmountOfBooks) ].
+	#_coverageTracker2335944_
+		cover: (178 to: 197)
+		declaredAt: (56 to: 75)
+		by:
+			(previousAmountOfBook _ #_coverageTracker2335944_
+				coverAll:
+					{209 to: 211. 228 to: 236}
+				evaluating: [
+					(#_coverageTracker2335944_
+						cover: (203 to: 207)
+						declaredAt: (203 to: 207)
+						by: books)
+						at:
+							(#_coverageTracker2335944_
+								cover: (213 to: 226)
+								declaredAt: (36 to: 49)
+								by: aBookToBeAdded)
+						ifAbsent: [
+							#_coverageTracker2335944_
+								coverAll:
+									{240 to: 240}
+								byLiteralOrPseudoVariable: 0 ]]).
+	#_coverageTracker2335944_
+		coverAll:
+			{253 to: 255. 272 to: 275}
+		evaluating: [
+			(#_coverageTracker2335944_
+				cover: (247 to: 251)
+				declaredAt: (203 to: 207)
+				by: books)
+				at:
+					(#_coverageTracker2335944_
+						cover: (257 to: 270)
+						declaredAt: (36 to: 49)
+						by: aBookToBeAdded)
+				put:
+					(#_coverageTracker2335944_
+						coverAll:
+							{299 to: 299}
+						evaluating: [
+							(#_coverageTracker2335944_
+								cover: (278 to: 297)
+								declaredAt: (56 to: 75)
+								by: previousAmountOfBook) +
+								(#_coverageTracker2335944_
+									cover: (301 to: 315)
+									declaredAt: (12 to: 26)
+									by: anAmountOfBooks) ]) ].! !
+!Behavior method!
+assertBookIsInCatalog: aBook
+	#_coverageTracker2335813_ markAsExecuted.
+	#_coverageTracker2335813_
+		coverAll:
+			{61 to: 68}
+		evaluating: [
+			(#_coverageTracker2335813_
+				coverAll:
+					{44 to: 52}
+				evaluating: [
+					(#_coverageTracker2335813_
+						cover: (36 to: 42)
+						declaredAt: (36 to: 42)
+						by: catalog) includes:
+						(#_coverageTracker2335813_
+							cover: (54 to: 58)
+							declaredAt: (24 to: 28)
+							by: aBook) ]) ifFalse: [ ^ #_coverageTracker2335813_
+					coverAll:
+						{78 to: 83}
+					evaluating: [
+						(#_coverageTracker2335813_
+							coverAll:
+								{73 to: 76}
+							byLiteralOrPseudoVariable: self) error:
+							(#_coverageTracker2335813_
+								coverAll:
+									{96 to: 127}
+								evaluating: [
+									(#_coverageTracker2335813_
+										coverAll:
+											{90 to: 94}
+										evaluating: [
+											(#_coverageTracker2335813_
+												coverAll:
+													{85 to: 88}
+												byLiteralOrPseudoVariable: self) class ]) bookNotInCatalogErrorDescription ]) ]]].! !
+!Behavior method!
+assertAmountIsPositive: anAmountOfBooks
+	#_coverageTracker2335862_ markAsExecuted.
+	#_coverageTracker2335862_
+		coverAll:
+			{64 to: 71}
+		evaluating: [
+			(#_coverageTracker2335862_
+				coverAll:
+					{60 to: 60}
+				evaluating: [
+					(#_coverageTracker2335862_
+						cover: (44 to: 58)
+						declaredAt: (25 to: 39)
+						by: anAmountOfBooks) >
+						(#_coverageTracker2335862_
+							coverAll:
+								{61 to: 61}
+							byLiteralOrPseudoVariable: 0) ]) ifFalse: [ ^ #_coverageTracker2335862_
+					coverAll:
+						{81 to: 86}
+					evaluating: [
+						(#_coverageTracker2335862_
+							coverAll:
+								{76 to: 79}
+							byLiteralOrPseudoVariable: self) error:
+							(#_coverageTracker2335862_
+								coverAll:
+									{99 to: 132}
+								evaluating: [
+									(#_coverageTracker2335862_
+										coverAll:
+											{93 to: 97}
+										evaluating: [
+											(#_coverageTracker2335862_
+												coverAll:
+													{88 to: 91}
+												byLiteralOrPseudoVariable: self) class ]) nonPositiveAmmountErrorDescription ]) ]]].! !
+!Behavior method!
+amountOfBook: aBookToCheckAmountOf
+	#_coverageTracker2335908_ markAsExecuted.
+	^ #_coverageTracker2335908_
+		coverAll:
+			{46 to: 48. 71 to: 79}
+		evaluating: [
+			(#_coverageTracker2335908_
+				cover: (40 to: 44)
+				declaredAt: (40 to: 44)
+				by: books)
+				at:
+					(#_coverageTracker2335908_
+						cover: (50 to: 69)
+						declaredAt: (15 to: 34)
+						by: aBookToCheckAmountOf)
+				ifAbsent: [
+					#_coverageTracker2335908_
+						coverAll:
+							{82 to: 82}
+						byLiteralOrPseudoVariable: 0 ]].! !
+
+!testRun: #CartTest #test02AddingBookInCartCatalogToCartResultsInCartWithSuchBook stamp: 'TC 10/30/2022 19:15:03'!
+PASSED!
+!Behavior method!
+bookNotInCatalogErrorDescription
+	#_coverageTracker2335934_ markAsExecuted.
+	^ #_coverageTracker2335934_
+		coverAll:
+			{38 to: 62}
+		byLiteralOrPseudoVariable: 'Book is not in catalog.'.! !
+
+!testRun: #CartTest #test03AddingBookNotInCartCatalogToCartResultsInError stamp: 'TC 10/30/2022 19:15:03'!
+PASSED!
+
+!testRun: #CartTest #test04AddingMultipleCopiesOfBookInCartCatalogToCartResultsInCartWithMultipleCopiesOfSuchBook stamp: 'TC 10/30/2022 19:15:03'!
+PASSED!
+!Behavior method!
+nonPositiveAmmountErrorDescription
+	#_coverageTracker2335858_ markAsExecuted.
+	^ #_coverageTracker2335858_
+		coverAll:
+			{40 to: 86}
+		byLiteralOrPseudoVariable: 'Ammount of books should be a positive number.'.! !
+
+!testRun: #CartTest #test05AddingZeroOrLessCopiesOfBookToCartResultsInError stamp: 'TC 10/30/2022 19:15:03'!
+PASSED!
+!Behavior method!
+books
+	#_coverageTracker2335883_ markAsExecuted.
+	^ #_coverageTracker2335883_
+		coverAll:
+			{16 to: 19}
+		evaluating: [
+			(#_coverageTracker2335883_
+				cover: (10 to: 14)
+				declaredAt: (10 to: 14)
+				by: books) copy ].! !
+
+!testRun: #CartTest #test06AddingMultipleBooksInCartCatalogToCartResultsInCartWithOnlySuchBooks stamp: 'TC 10/30/2022 19:15:03'!
+PASSED!
+!CartTest methodsFor: 'tests' stamp: 'TC 10/30/2022 19:15:40' prior: 50559426!
+test04AddingMultipleCopiesOfBookInCartCatalogToCartResultsInCartWithMultipleCopiesOfSuchBook
+
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: '978-0201633610').
+	
+	cart addAmount: 3 ofBook: '978-0201633610'.
+	
+	self deny: cart isEmpty.
+	self assert: 3 equals: (cart amountOfBook: '978-0201633610').! !
+
+TestCase subclass: #CartTest
+	instanceVariableNames: 'designPrinciplesBook'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'tusLibros-Exercise'!
+
+!classDefinition: #CartTest category: 'tusLibros-Exercise' stamp: 'TC 10/30/2022 19:17:50'!
+TestCase subclass: #CartTest
+	instanceVariableNames: 'designPrinciplesBook'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'tusLibros-Exercise'!
+!CartTest methodsFor: 'nil' stamp: 'TC 10/30/2022 19:18:54' overrides: 16961394!
+setUp
+	
+	designPrinciplesBook := '978-02016336100'.! !
+!CartTest methodsFor: 'tests' stamp: 'TC 10/30/2022 19:19:44' prior: 50560019!
+test02AddingBookInCartCatalogToCartResultsInCartWithSuchBook
+
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: designPrinciplesBook).
+	
+	cart addAmount: 1 ofBook: '978-0201633610'.
+	
+	self deny: cart isEmpty.
+	self assert: 1 equals: (cart amountOfBook: '978-0201633610').! !
+!CartTest methodsFor: 'tests' stamp: 'TC 10/30/2022 19:20:06'!
+cartWithdesignPrinciplesInCatalog
+
+	^ Cart withCatalog: (Set with: designPrinciplesBook)! !
+!CartTest methodsFor: 'tests' stamp: 'TC 10/30/2022 19:20:07' prior: 50560319!
+test02AddingBookInCartCatalogToCartResultsInCartWithSuchBook
+
+	| cart |
+	
+	cart := self cartWithdesignPrinciplesInCatalog.
+	
+	cart addAmount: 1 ofBook: '978-0201633610'.
+	
+	self deny: cart isEmpty.
+	self assert: 1 equals: (cart amountOfBook: '978-0201633610').! !
+!CartTest methodsFor: 'tests' stamp: 'TC 10/30/2022 19:20:21'!
+cartWithDesignPrinciplesInCatalog
+
+	^ Cart withCatalog: (Set with: designPrinciplesBook)! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'TC 10/30/2022 19:20:21' prior: 50560336!
+test02AddingBookInCartCatalogToCartResultsInCartWithSuchBook
+
+	| cart |
+	
+	cart := self cartWithDesignPrinciplesInCatalog.
+	
+	cart addAmount: 1 ofBook: '978-0201633610'.
+	
+	self deny: cart isEmpty.
+	self assert: 1 equals: (cart amountOfBook: '978-0201633610').! !
+
+!methodRemoval: CartTest #cartWithdesignPrinciplesInCatalog stamp: 'TC 10/30/2022 19:20:21'!
+cartWithdesignPrinciplesInCatalog
+
+	^ Cart withCatalog: (Set with: designPrinciplesBook)!
+!CartTest methodsFor: 'tests' stamp: 'TC 10/30/2022 19:20:46' prior: 50559398!
+test03AddingBookNotInCartCatalogToCartResultsInError
+
+	| cart |
+	
+	cart := self cartWithDesignPrinciplesInCatalog.
+	
+	self should: [ cart addAmount: 1 ofBook: '978-0201633611'. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cart class bookNotInCatalogErrorDescription.
+		self assert: cart isEmpty.
+	].! !
+!CartTest methodsFor: 'tests' stamp: 'TC 10/30/2022 19:20:57' prior: 50560289!
+test04AddingMultipleCopiesOfBookInCartCatalogToCartResultsInCartWithMultipleCopiesOfSuchBook
+
+	| cart |
+	
+	cart := self cartWithDesignPrinciplesInCatalog.
+	
+	cart addAmount: 3 ofBook: designPrinciplesBook.
+	
+	self deny: cart isEmpty.
+	self assert: 3 equals: (cart amountOfBook: '978-0201633610').! !
+!CartTest methodsFor: 'tests' stamp: 'TC 10/30/2022 19:22:41'!
+cartWithDesignPrinciplesBookInCatalog
+
+	^ Cart withCatalog: (Set with: designPrinciplesBook)! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'TC 10/30/2022 19:22:41' prior: 50560370!
+test03AddingBookNotInCartCatalogToCartResultsInError
+
+	| cart |
+	
+	cart := self cartWithDesignPrinciplesBookInCatalog.
+	
+	self should: [ cart addAmount: 1 ofBook: '978-0201633611'. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cart class bookNotInCatalogErrorDescription.
+		self assert: cart isEmpty.
+	].! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'TC 10/30/2022 19:22:41' prior: 50560353!
+test02AddingBookInCartCatalogToCartResultsInCartWithSuchBook
+
+	| cart |
+	
+	cart := self cartWithDesignPrinciplesBookInCatalog.
+	
+	cart addAmount: 1 ofBook: '978-0201633610'.
+	
+	self deny: cart isEmpty.
+	self assert: 1 equals: (cart amountOfBook: '978-0201633610').! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'TC 10/30/2022 19:22:41' prior: 50560384!
+test04AddingMultipleCopiesOfBookInCartCatalogToCartResultsInCartWithMultipleCopiesOfSuchBook
+
+	| cart |
+	
+	cart := self cartWithDesignPrinciplesBookInCatalog.
+	
+	cart addAmount: 3 ofBook: designPrinciplesBook.
+	
+	self deny: cart isEmpty.
+	self assert: 3 equals: (cart amountOfBook: '978-0201633610').! !
+
+!methodRemoval: CartTest #cartWithDesignPrinciplesInCatalog stamp: 'TC 10/30/2022 19:22:41'!
+cartWithDesignPrinciplesInCatalog
+
+	^ Cart withCatalog: (Set with: designPrinciplesBook)!
+!CartTest methodsFor: 'tests' stamp: 'TC 10/30/2022 19:23:11' prior: 50559450!
+test05AddingZeroOrLessCopiesOfBookToCartResultsInError
+
+	| cart |
+	
+	cart := self cartWithDesignPrinciplesBookInCatalog.
+	
+	self should: [ cart addAmount: -1 ofBook: designPrinciplesBook. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cart class nonPositiveAmmountErrorDescription.
+		self assert: cart isEmpty.
+	].! !
+!CartTest methodsFor: 'tests' stamp: 'TC 10/30/2022 19:23:37' prior: 50559478!
+test06AddingMultipleBooksInCartCatalogToCartResultsInCartWithOnlySuchBooks
+
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: designPrinciplesBook with: '978-0892562060').
+	
+	cart addAmount: 1 ofBook: designPrinciplesBook.
+	cart addAmount: 2 ofBook: '978-0892562060'.	
+	
+	self assert: (Dictionary with: '978-0201633610'->1 with: '978-0892562060'->2) equals: cart books.
+
+! !
+!CartTest methodsFor: 'tests' stamp: 'TC 10/30/2022 19:23:44' prior: 50560460!
+test06AddingMultipleBooksInCartCatalogToCartResultsInCartWithOnlySuchBooks
+
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: designPrinciplesBook with: '978-0892562060').
+	
+	cart addAmount: 1 ofBook: designPrinciplesBook.
+	cart addAmount: 2 ofBook: '978-0892562060'.	
+	
+	self assert: (Dictionary with: designPrinciplesBook->1 with: '978-0892562060'->2) equals: cart books.
+
+! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'TC 10/30/2022 19:23:47'!
+PASSED!
+
+!testRun: #CartTest #test02AddingBookInCartCatalogToCartResultsInCartWithSuchBook stamp: 'TC 10/30/2022 19:23:47'!
+ERROR!
+
+!testRun: #CartTest #test03AddingBookNotInCartCatalogToCartResultsInError stamp: 'TC 10/30/2022 19:23:47'!
+PASSED!
+
+!testRun: #CartTest #test04AddingMultipleCopiesOfBookInCartCatalogToCartResultsInCartWithMultipleCopiesOfSuchBook stamp: 'TC 10/30/2022 19:23:47'!
+FAILURE!
+
+!testRun: #CartTest #test05AddingZeroOrLessCopiesOfBookToCartResultsInError stamp: 'TC 10/30/2022 19:23:47'!
+PASSED!
+
+!testRun: #CartTest #test06AddingMultipleBooksInCartCatalogToCartResultsInCartWithOnlySuchBooks stamp: 'TC 10/30/2022 19:23:47'!
+PASSED!
+!CartTest methodsFor: 'tests' stamp: 'TC 10/30/2022 19:24:07' prior: 50560416!
+test02AddingBookInCartCatalogToCartResultsInCartWithSuchBook
+
+	| cart |
+	
+	cart := self cartWithDesignPrinciplesBookInCatalog.
+	
+	cart addAmount: 1 ofBook: designPrinciplesBook.
+	
+	self deny: cart isEmpty.
+	self assert: 1 equals: (cart amountOfBook: designPrinciplesBook).! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'TC 10/30/2022 19:24:10'!
+PASSED!
+
+!testRun: #CartTest #test02AddingBookInCartCatalogToCartResultsInCartWithSuchBook stamp: 'TC 10/30/2022 19:24:10'!
+PASSED!
+
+!testRun: #CartTest #test03AddingBookNotInCartCatalogToCartResultsInError stamp: 'TC 10/30/2022 19:24:10'!
+PASSED!
+
+!testRun: #CartTest #test04AddingMultipleCopiesOfBookInCartCatalogToCartResultsInCartWithMultipleCopiesOfSuchBook stamp: 'TC 10/30/2022 19:24:10'!
+FAILURE!
+
+!testRun: #CartTest #test05AddingZeroOrLessCopiesOfBookToCartResultsInError stamp: 'TC 10/30/2022 19:24:10'!
+PASSED!
+
+!testRun: #CartTest #test06AddingMultipleBooksInCartCatalogToCartResultsInCartWithOnlySuchBooks stamp: 'TC 10/30/2022 19:24:10'!
+PASSED!
+
+!testRun: #CartTest #test04AddingMultipleCopiesOfBookInCartCatalogToCartResultsInCartWithMultipleCopiesOfSuchBook stamp: 'TC 10/30/2022 19:24:10'!
+FAILURE!
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'TC 10/30/2022 19:24:22'!
+PASSED!
+
+!testRun: #CartTest #test02AddingBookInCartCatalogToCartResultsInCartWithSuchBook stamp: 'TC 10/30/2022 19:24:22'!
+PASSED!
+
+!testRun: #CartTest #test03AddingBookNotInCartCatalogToCartResultsInError stamp: 'TC 10/30/2022 19:24:22'!
+PASSED!
+
+!testRun: #CartTest #test04AddingMultipleCopiesOfBookInCartCatalogToCartResultsInCartWithMultipleCopiesOfSuchBook stamp: 'TC 10/30/2022 19:24:22'!
+FAILURE!
+
+!testRun: #CartTest #test05AddingZeroOrLessCopiesOfBookToCartResultsInError stamp: 'TC 10/30/2022 19:24:22'!
+PASSED!
+
+!testRun: #CartTest #test06AddingMultipleBooksInCartCatalogToCartResultsInCartWithOnlySuchBooks stamp: 'TC 10/30/2022 19:24:22'!
+PASSED!
+
+!testRun: #CartTest #test04AddingMultipleCopiesOfBookInCartCatalogToCartResultsInCartWithMultipleCopiesOfSuchBook stamp: 'TC 10/30/2022 19:24:22'!
+FAILURE!
+!CartTest methodsFor: 'tests' stamp: 'TC 10/30/2022 19:24:30' prior: 50560428!
+test04AddingMultipleCopiesOfBookInCartCatalogToCartResultsInCartWithMultipleCopiesOfSuchBook
+
+	| cart |
+	
+	cart := self cartWithDesignPrinciplesBookInCatalog.
+	
+	cart addAmount: 3 ofBook: designPrinciplesBook.
+	
+	self deny: cart isEmpty.
+	self assert: 3 equals: (cart amountOfBook: designPrinciplesBook).! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'TC 10/30/2022 19:24:32'!
+PASSED!
+
+!testRun: #CartTest #test02AddingBookInCartCatalogToCartResultsInCartWithSuchBook stamp: 'TC 10/30/2022 19:24:32'!
+PASSED!
+
+!testRun: #CartTest #test03AddingBookNotInCartCatalogToCartResultsInError stamp: 'TC 10/30/2022 19:24:32'!
+PASSED!
+
+!testRun: #CartTest #test04AddingMultipleCopiesOfBookInCartCatalogToCartResultsInCartWithMultipleCopiesOfSuchBook stamp: 'TC 10/30/2022 19:24:32'!
+PASSED!
+
+!testRun: #CartTest #test05AddingZeroOrLessCopiesOfBookToCartResultsInError stamp: 'TC 10/30/2022 19:24:32'!
+PASSED!
+
+!testRun: #CartTest #test06AddingMultipleBooksInCartCatalogToCartResultsInCartWithOnlySuchBooks stamp: 'TC 10/30/2022 19:24:32'!
+PASSED!
+
+TestCase subclass: #CartTest
+	instanceVariableNames: 'designPrinciplesBook fortniteBook'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'tusLibros-Exercise'!
+
+!classDefinition: #CartTest category: 'tusLibros-Exercise' stamp: 'TC 10/30/2022 19:32:36'!
+TestCase subclass: #CartTest
+	instanceVariableNames: 'designPrinciplesBook fortniteBook'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'tusLibros-Exercise'!
+!CartTest methodsFor: 'set up' stamp: 'TC 10/30/2022 19:32:49' prior: 50560314 overrides: 16961394!
+setUp
+	
+	designPrinciplesBook := '978-02016336100'.
+	fortniteBook := '978-0316491266'.! !
+!CartTest methodsFor: 'tests' stamp: 'TC 10/30/2022 19:33:06' prior: 50560402!
+test03AddingBookNotInCartCatalogToCartResultsInError
+
+	| cart |
+	
+	cart := self cartWithDesignPrinciplesBookInCatalog.
+	
+	self should: [ cart addAmount: 1 ofBook: fortniteBook. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cart class bookNotInCatalogErrorDescription.
+		self assert: cart isEmpty.
+	].! !
+!CartTest methodsFor: 'tests' stamp: 'TC 10/30/2022 19:33:37' prior: 50560475!
+test06AddingMultipleBooksInCartCatalogToCartResultsInCartWithOnlySuchBooks
+
+	| cart |
+	
+	cart := Cart withCatalog: (Set with: designPrinciplesBook with: fortniteBook).
+	
+	cart addAmount: 1 ofBook: designPrinciplesBook.
+	cart addAmount: 2 ofBook: fortniteBook.	
+	
+	self assert: (Dictionary with: designPrinciplesBook->1 with: fortniteBook->2) equals: cart books.
+
+! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'TC 10/30/2022 19:33:40'!
+PASSED!
+
+!testRun: #CartTest #test02AddingBookInCartCatalogToCartResultsInCartWithSuchBook stamp: 'TC 10/30/2022 19:33:40'!
+PASSED!
+
+!testRun: #CartTest #test03AddingBookNotInCartCatalogToCartResultsInError stamp: 'TC 10/30/2022 19:33:40'!
+PASSED!
+
+!testRun: #CartTest #test04AddingMultipleCopiesOfBookInCartCatalogToCartResultsInCartWithMultipleCopiesOfSuchBook stamp: 'TC 10/30/2022 19:33:40'!
+PASSED!
+
+!testRun: #CartTest #test05AddingZeroOrLessCopiesOfBookToCartResultsInError stamp: 'TC 10/30/2022 19:33:41'!
+PASSED!
+
+!testRun: #CartTest #test06AddingMultipleBooksInCartCatalogToCartResultsInCartWithOnlySuchBooks stamp: 'TC 10/30/2022 19:33:41'!
+PASSED!
+
+----SNAPSHOT----(30 October 2022 19:36:58) CuisUniversity-5510.image priorSource: 7272459!
