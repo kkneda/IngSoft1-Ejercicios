@@ -1,0 +1,3878 @@
+
+
+----QUIT----(26 October 2022 08:07:27) CuisUniversity-5510.image priorSource: 2900072!
+
+----STARTUP---- (26 October 2022 08:07:28) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5510.image!
+
+
+----QUIT----(26 October 2022 08:07:28) CuisUniversity-5510.image priorSource: 7154921!
+
+----STARTUP---- (2 November 2022 13:40:49) as /home/kaneda/Downloads/tusLibros-iteracion2/linux64/CuisUniversity-5510.image!
+
+
+----End fileIn of /home/kaneda/Downloads/tusLibros-iteracion2/linux64/TusLibros-18.st----!
+
+TestCase subclass: #CashierTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #CashierTest category: 'TusLibros' stamp: 'TC&OLT 11/2/2022 13:41:53'!
+TestCase subclass: #CashierTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #Cashier category: 'TusLibros' stamp: 'TC&OLT 11/2/2022 13:42:19'!
+Object subclass: #Cashier
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!CashierTest methodsFor: 'no messages' stamp: 'TC&OLT 11/2/2022 13:42:15'!
+test01
+	
+	"test0CheckoutOfEmptyCartResultsInError"
+	
+	| cart salesBook cashier |
+	
+	cart := Cart acceptingItemsOf: Array new.
+	
+	salesBook := OrderedCollection new.
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	self should: [ cashier checkout: cart. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cashier emptyCartAtCheckoutErrorMessage.
+		self assert: OrderedCollection new equals: salesBook.
+	].! !
+
+!testRun: #CashierTest #test01 stamp: 'TC&OLT 11/2/2022 13:42:35'!
+ERROR!
+
+!testRun: #CashierTest #test01 stamp: 'TC&OLT 11/2/2022 13:42:35'!
+ERROR!
+!Cashier class methodsFor: 'no messages' stamp: 'TC&OLT 11/2/2022 13:42:59'!
+recordingSalesOn: aSalesBookToRecordSalesOn
+	
+	^self new initializeRecordingSalesOn: aSalesBookToRecordSalesOn.! !
+
+Object subclass: #Cashier
+	instanceVariableNames: 'salesBook'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #Cashier category: 'TusLibros' stamp: 'TC&OLT 11/2/2022 13:43:28'!
+Object subclass: #Cashier
+	instanceVariableNames: 'salesBook'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!Cashier methodsFor: 'no messages' stamp: 'TC&OLT 11/2/2022 13:43:48'!
+initializeRecordingSalesOn: aSalesBookToRecordSalesOn
+	
+	salesBook := aSalesBookToRecordSalesOn.! !
+!Cashier methodsFor: 'nil' stamp: 'TC&OLT 11/2/2022 13:44:25'!
+emptyCartAtCheckoutErrorMessage
+	
+	^'Cart cannot be empty at checkout.'.! !
+!Cashier methodsFor: 'nil' stamp: 'TC&OLT 11/2/2022 13:45:14'!
+checkout: aCartToPerformCeheckoutOn
+	
+	^self error: self emptyCartAtCheckoutErrorMessage.! !
+
+!testRun: #CashierTest #test01 stamp: 'TC&OLT 11/2/2022 13:45:23'!
+PASSED!
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/2/2022 13:46:59'!
+test02
+	
+	"test0CheckoutOfCartWithSingleItemReturnsPriceOfSuchItem"
+	
+	| cart salesBook cashier |
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book'->(10*euro)).
+	cart add: 'valid book'.
+	
+	salesBook := OrderedCollection new.
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	self assert: (10*euro) equals: (cashier checkout: cart).! !
+
+!testRun: #CashierTest #test01 stamp: 'TC&OLT 11/2/2022 13:47:01'!
+PASSED!
+
+!testRun: #CashierTest #test02 stamp: 'TC&OLT 11/2/2022 13:47:01'!
+ERROR!
+
+!testRun: #CashierTest #test02 stamp: 'TC&OLT 11/2/2022 13:47:01'!
+ERROR!
+
+!classDefinition: #Cart category: 'TusLibros' stamp: 'TC&OLT 11/2/2022 13:47:43'!
+Object subclass: #Cart
+	instanceVariableNames: 'priceList items'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!Cart methodsFor: 'as yet unclassified' stamp: 'TC&OLT 11/2/2022 13:47:43' prior: 50555290!
+initializeAcceptingItemsOf: aCatalog
+
+	priceList := aCatalog.
+	items := OrderedCollection new.! !
+!Cart methodsFor: 'as yet unclassified' stamp: 'TC&OLT 11/2/2022 13:47:43' prior: 50555277!
+assertIsValidItem: anItem
+
+	(priceList includes: anItem) ifFalse: [ self error: self invalidItemErrorMessage ]! !
+!Cart methodsFor: 'assertions' stamp: 'TC&OLT 11/2/2022 13:48:01' prior: 50555550!
+assertIsValidItem: anItem
+
+	(priceList includesKey: anItem) ifFalse: [ self error: self invalidItemErrorMessage ]! !
+
+!testRun: #CashierTest #test01 stamp: 'TC&OLT 11/2/2022 13:48:05'!
+PASSED!
+
+!testRun: #CashierTest #test02 stamp: 'TC&OLT 11/2/2022 13:48:05'!
+ERROR!
+
+!testRun: #CashierTest #test02 stamp: 'TC&OLT 11/2/2022 13:48:05'!
+ERROR!
+!Cashier methodsFor: 'checkout' stamp: 'TC&OLT 11/2/2022 13:48:47' prior: 50555508!
+checkout: aCartToPerformCeheckoutOn
+	
+	aCartToPerformCeheckoutOn isEmpty ifTrue: [
+		self error: self emptyCartAtCheckoutErrorMessage.
+	].
+	
+	^10*euro.! !
+
+!testRun: #CashierTest #test01 stamp: 'TC&OLT 11/2/2022 13:48:51'!
+PASSED!
+
+!testRun: #CashierTest #test02 stamp: 'TC&OLT 11/2/2022 13:48:51'!
+PASSED!
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/2/2022 13:50:15'!
+test03
+	
+	"test03CheckoutOfCartWithMultipleCopiesOfMultipleItemsReturnsPriceForAllCopies"
+	
+	| cart salesBook cashier |
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book 1'->(10*euro) with: 'valid book 2'->(15*euro)).
+	cart add: 2 of: 'valid book 1'.
+	cart add: 2 of: 'valid book 2'.
+	
+	salesBook := OrderedCollection new.
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	self assert: (65*euro) equals: (cashier checkout: cart).! !
+
+!testRun: #CashierTest #test01 stamp: 'TC&OLT 11/2/2022 13:50:17'!
+PASSED!
+
+!testRun: #CashierTest #test02 stamp: 'TC&OLT 11/2/2022 13:50:17'!
+PASSED!
+
+!testRun: #CashierTest #test03 stamp: 'TC&OLT 11/2/2022 13:50:17'!
+FAILURE!
+
+!testRun: #CashierTest #test03 stamp: 'TC&OLT 11/2/2022 13:50:17'!
+FAILURE!
+!CartTest methodsFor: 'tests' stamp: 'TC&OLT 11/2/2022 13:51:01'!
+test09AccumulatedPriceOfEmptyCartIsZero
+	
+	| cart |
+	
+	cart := self createCart.
+	
+	self assert: 0 equals: cart accumulatedPrice.! !
+!CartTest methodsFor: 'support' stamp: 'TC&OLT 11/2/2022 13:51:31' prior: 50555429!
+defaultCatalog
+	
+	^ Array with: self itemSellByTheStore->self itemSellByTheStorePrice.! !
+!CartTest methodsFor: 'support' stamp: 'TC&OLT 11/2/2022 13:51:48'!
+itemSellByTheStorePrice
+	
+	^ 10*euro! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'TC&OLT 11/2/2022 13:51:59'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'TC&OLT 11/2/2022 13:51:59'!
+ERROR!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'TC&OLT 11/2/2022 13:51:59'!
+ERROR!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'TC&OLT 11/2/2022 13:51:59'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'TC&OLT 11/2/2022 13:51:59'!
+ERROR!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'TC&OLT 11/2/2022 13:51:59'!
+ERROR!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'TC&OLT 11/2/2022 13:51:59'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'TC&OLT 11/2/2022 13:51:59'!
+ERROR!
+
+!testRun: #CartTest #test09AccumulatedPriceOfEmptyCartIsZero stamp: 'TC&OLT 11/2/2022 13:51:59'!
+ERROR!
+!Cart methodsFor: 'initialization' stamp: 'TC&OLT 11/2/2022 13:55:18' prior: 50555544!
+initializeAcceptingItemsOf: aPriceList
+
+	priceList := aPriceList.
+	items := OrderedCollection new.! !
+!Cart methodsFor: 'adding' stamp: 'TC&OLT 11/2/2022 13:59:27' prior: 50555308!
+add: aQuantity of: anItem
+
+	self assertIsValidQuantity: aQuantity.
+	self assertIsValidItem: anItem.
+
+	items add: anItem withOccurrences: aQuantity.! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'TC&OLT 11/2/2022 13:59:40'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'TC&OLT 11/2/2022 13:59:40'!
+ERROR!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'TC&OLT 11/2/2022 13:59:40'!
+ERROR!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'TC&OLT 11/2/2022 13:59:40'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'TC&OLT 11/2/2022 13:59:40'!
+ERROR!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'TC&OLT 11/2/2022 13:59:40'!
+ERROR!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'TC&OLT 11/2/2022 13:59:40'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'TC&OLT 11/2/2022 13:59:40'!
+ERROR!
+
+!testRun: #CartTest #test09AccumulatedPriceOfEmptyCartIsZero stamp: 'TC&OLT 11/2/2022 13:59:40'!
+ERROR!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'TC&OLT 11/2/2022 13:59:49'!
+ERROR!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'TC&OLT 11/2/2022 13:59:49'!
+ERROR!
+!CartTest methodsFor: 'support' stamp: 'TC&OLT 11/2/2022 13:59:59' prior: 50555616!
+defaultCatalog
+	
+	^ Dictionary with: self itemSellByTheStore->self itemSellByTheStorePrice.! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'TC&OLT 11/2/2022 14:00:02'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'TC&OLT 11/2/2022 14:00:02'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'TC&OLT 11/2/2022 14:00:02'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'TC&OLT 11/2/2022 14:00:02'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'TC&OLT 11/2/2022 14:00:02'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'TC&OLT 11/2/2022 14:00:02'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'TC&OLT 11/2/2022 14:00:02'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'TC&OLT 11/2/2022 14:00:02'!
+PASSED!
+
+!testRun: #CartTest #test09AccumulatedPriceOfEmptyCartIsZero stamp: 'TC&OLT 11/2/2022 14:00:02'!
+ERROR!
+
+!testRun: #CartTest #test09AccumulatedPriceOfEmptyCartIsZero stamp: 'TC&OLT 11/2/2022 14:00:02'!
+ERROR!
+!Cart methodsFor: 'queries' stamp: 'TC&OLT 11/2/2022 14:00:25'!
+accumulatedPrice
+	
+	^0*euro.! !
+!Cart methodsFor: 'queries' stamp: 'TC&OLT 11/2/2022 14:00:28' prior: 50555743!
+accumulatedPrice
+	
+	^0.! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'TC&OLT 11/2/2022 14:00:31'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'TC&OLT 11/2/2022 14:00:31'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'TC&OLT 11/2/2022 14:00:31'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'TC&OLT 11/2/2022 14:00:31'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'TC&OLT 11/2/2022 14:00:31'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'TC&OLT 11/2/2022 14:00:31'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'TC&OLT 11/2/2022 14:00:31'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'TC&OLT 11/2/2022 14:00:31'!
+PASSED!
+
+!testRun: #CartTest #test09AccumulatedPriceOfEmptyCartIsZero stamp: 'TC&OLT 11/2/2022 14:00:31'!
+PASSED!
+!CartTest methodsFor: 'tests' stamp: 'TC&OLT 11/2/2022 14:01:20'!
+test09AccumulatedPriceOfCartWithSingleItemIsPriceOfSuchItem
+	
+	| cart |
+	
+	cart := self createCart.
+	
+	cart add: self itemSellByTheStore.
+	
+	self assert: self itemSellByTheStorePrice equals: cart accumulatedPrice.! !
+!CartTest methodsFor: 'tests' stamp: 'TC&OLT 11/2/2022 14:01:28'!
+test10AccumulatedPriceOfEmptyCartIsZero
+	
+	| cart |
+	
+	cart := self createCart.
+	
+	self assert: 0 equals: cart accumulatedPrice.! !
+
+!methodRemoval: CartTest #test09AccumulatedPriceOfEmptyCartIsZero stamp: 'TC&OLT 11/2/2022 14:01:28'!
+test09AccumulatedPriceOfEmptyCartIsZero
+	
+	| cart |
+	
+	cart := self createCart.
+	
+	self assert: 0 equals: cart accumulatedPrice.!
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'TC&OLT 11/2/2022 14:01:30'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'TC&OLT 11/2/2022 14:01:30'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'TC&OLT 11/2/2022 14:01:30'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'TC&OLT 11/2/2022 14:01:30'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'TC&OLT 11/2/2022 14:01:30'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'TC&OLT 11/2/2022 14:01:30'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'TC&OLT 11/2/2022 14:01:30'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'TC&OLT 11/2/2022 14:01:30'!
+PASSED!
+
+!testRun: #CartTest #test09AccumulatedPriceOfCartWithSingleItemIsPriceOfSuchItem stamp: 'TC&OLT 11/2/2022 14:01:30'!
+FAILURE!
+
+!testRun: #CartTest #test10AccumulatedPriceOfEmptyCartIsZero stamp: 'TC&OLT 11/2/2022 14:01:30'!
+PASSED!
+
+!testRun: #CartTest #test09AccumulatedPriceOfCartWithSingleItemIsPriceOfSuchItem stamp: 'TC&OLT 11/2/2022 14:01:30'!
+FAILURE!
+!Cart methodsFor: 'queries' stamp: 'TC&OLT 11/2/2022 14:02:14' prior: 50555747!
+accumulatedPrice
+	
+	items isEmpty ifTrue: [^0.].
+	^10*euro.! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'TC&OLT 11/2/2022 14:02:24'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'TC&OLT 11/2/2022 14:02:24'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'TC&OLT 11/2/2022 14:02:24'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'TC&OLT 11/2/2022 14:02:24'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'TC&OLT 11/2/2022 14:02:24'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'TC&OLT 11/2/2022 14:02:24'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'TC&OLT 11/2/2022 14:02:24'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'TC&OLT 11/2/2022 14:02:24'!
+PASSED!
+
+!testRun: #CartTest #test09AccumulatedPriceOfCartWithSingleItemIsPriceOfSuchItem stamp: 'TC&OLT 11/2/2022 14:02:24'!
+PASSED!
+
+!testRun: #CartTest #test10AccumulatedPriceOfEmptyCartIsZero stamp: 'TC&OLT 11/2/2022 14:02:24'!
+PASSED!
+!CartTest methodsFor: 'tests' stamp: 'TC&OLT 11/2/2022 14:03:03'!
+test10AccumulatedPriceOfCartWithSingleItemIsPriceOfSuchItem
+	
+	| cart |
+	
+	cart := self createCart.
+	
+	cart add: self itemSellByTheStore.
+	
+	self assert: self itemSellByTheStorePrice equals: cart accumulatedPrice.! !
+
+!methodRemoval: CartTest #test09AccumulatedPriceOfCartWithSingleItemIsPriceOfSuchItem stamp: 'TC&OLT 11/2/2022 14:03:03'!
+test09AccumulatedPriceOfCartWithSingleItemIsPriceOfSuchItem
+	
+	| cart |
+	
+	cart := self createCart.
+	
+	cart add: self itemSellByTheStore.
+	
+	self assert: self itemSellByTheStorePrice equals: cart accumulatedPrice.!
+!CartTest methodsFor: 'tests' stamp: 'TC&OLT 11/2/2022 14:03:11'!
+test09AccumulatedPriceOfEmptyCartIsZero
+	
+	| cart |
+	
+	cart := self createCart.
+	
+	self assert: 0 equals: cart accumulatedPrice.! !
+
+!methodRemoval: CartTest #test10AccumulatedPriceOfEmptyCartIsZero stamp: 'TC&OLT 11/2/2022 14:03:11'!
+test10AccumulatedPriceOfEmptyCartIsZero
+	
+	| cart |
+	
+	cart := self createCart.
+	
+	self assert: 0 equals: cart accumulatedPrice.!
+!CartTest methodsFor: 'tests' stamp: 'TC&OLT 11/2/2022 14:03:53'!
+test10AccumulatedPriceOfCartWithMultipleCopiesOfAnItemIsPriceForAllSuchCopies
+	
+	| cart |
+	
+	cart := self createCart.
+	
+	cart add: 2 of: self itemSellByTheStore.
+	
+	self assert: 2 * self itemSellByTheStorePrice equals: cart accumulatedPrice.! !
+!CartTest methodsFor: 'tests' stamp: 'TC&OLT 11/2/2022 14:04:12'!
+test11AccumulatedPriceOfCartWithMultipleCopiesOfAnItemIsPriceForAllSuchCopies
+	
+	| cart |
+	
+	cart := self createCart.
+	
+	cart add: 2 of: self itemSellByTheStore.
+	
+	self assert: 2 * self itemSellByTheStorePrice equals: cart accumulatedPrice.! !
+
+!methodRemoval: CartTest #test10AccumulatedPriceOfCartWithMultipleCopiesOfAnItemIsPriceForAllSuchCopies stamp: 'TC&OLT 11/2/2022 14:04:12'!
+test10AccumulatedPriceOfCartWithMultipleCopiesOfAnItemIsPriceForAllSuchCopies
+	
+	| cart |
+	
+	cart := self createCart.
+	
+	cart add: 2 of: self itemSellByTheStore.
+	
+	self assert: 2 * self itemSellByTheStorePrice equals: cart accumulatedPrice.!
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'TC&OLT 11/2/2022 14:04:16'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'TC&OLT 11/2/2022 14:04:16'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'TC&OLT 11/2/2022 14:04:16'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'TC&OLT 11/2/2022 14:04:16'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'TC&OLT 11/2/2022 14:04:16'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'TC&OLT 11/2/2022 14:04:16'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'TC&OLT 11/2/2022 14:04:16'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'TC&OLT 11/2/2022 14:04:16'!
+PASSED!
+
+!testRun: #CartTest #test09AccumulatedPriceOfEmptyCartIsZero stamp: 'TC&OLT 11/2/2022 14:04:16'!
+PASSED!
+
+!testRun: #CartTest #test10AccumulatedPriceOfCartWithSingleItemIsPriceOfSuchItem stamp: 'TC&OLT 11/2/2022 14:04:16'!
+PASSED!
+
+!testRun: #CartTest #test11AccumulatedPriceOfCartWithMultipleCopiesOfAnItemIsPriceForAllSuchCopies stamp: 'TC&OLT 11/2/2022 14:04:16'!
+FAILURE!
+
+!testRun: #CartTest #test11AccumulatedPriceOfCartWithMultipleCopiesOfAnItemIsPriceForAllSuchCopies stamp: 'TC&OLT 11/2/2022 14:04:16'!
+FAILURE!
+!Cart methodsFor: 'queries' stamp: 'TC&OLT 11/2/2022 14:05:14' prior: 50555841!
+accumulatedPrice
+	
+	| accumulatedPrice |
+	
+	accumulatedPrice := 0.
+	
+	items do: [
+		:anItem |
+		accumulatedPrice := accumulatedPrice + (priceList at: anItem).
+	].
+	
+	^accumulatedPrice.! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'TC&OLT 11/2/2022 14:05:17'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'TC&OLT 11/2/2022 14:05:17'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'TC&OLT 11/2/2022 14:05:17'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'TC&OLT 11/2/2022 14:05:17'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'TC&OLT 11/2/2022 14:05:17'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'TC&OLT 11/2/2022 14:05:17'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'TC&OLT 11/2/2022 14:05:17'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'TC&OLT 11/2/2022 14:05:17'!
+PASSED!
+
+!testRun: #CartTest #test09AccumulatedPriceOfEmptyCartIsZero stamp: 'TC&OLT 11/2/2022 14:05:17'!
+PASSED!
+
+!testRun: #CartTest #test10AccumulatedPriceOfCartWithSingleItemIsPriceOfSuchItem stamp: 'TC&OLT 11/2/2022 14:05:17'!
+PASSED!
+
+!testRun: #CartTest #test11AccumulatedPriceOfCartWithMultipleCopiesOfAnItemIsPriceForAllSuchCopies stamp: 'TC&OLT 11/2/2022 14:05:17'!
+PASSED!
+!Cart methodsFor: 'queries' stamp: 'TC&OLT 11/2/2022 14:06:19' prior: 50555988!
+accumulatedPrice
+	
+	"| accumulatedPrice |
+	
+	accumulatedPrice := 0.
+	
+	items do: [
+		:anItem |
+		accumulatedPrice := accumulatedPrice + (priceList at: anItem).
+	].
+	
+	^accumulatedPrice."
+	
+	^items sum: [ :anItem | priceList at: anItem. ] ifEmpty: [ 0 ].! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'TC&OLT 11/2/2022 14:06:21'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'TC&OLT 11/2/2022 14:06:21'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'TC&OLT 11/2/2022 14:06:21'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'TC&OLT 11/2/2022 14:06:21'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'TC&OLT 11/2/2022 14:06:21'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'TC&OLT 11/2/2022 14:06:21'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'TC&OLT 11/2/2022 14:06:21'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'TC&OLT 11/2/2022 14:06:21'!
+PASSED!
+
+!testRun: #CartTest #test09AccumulatedPriceOfEmptyCartIsZero stamp: 'TC&OLT 11/2/2022 14:06:21'!
+PASSED!
+
+!testRun: #CartTest #test10AccumulatedPriceOfCartWithSingleItemIsPriceOfSuchItem stamp: 'TC&OLT 11/2/2022 14:06:21'!
+PASSED!
+
+!testRun: #CartTest #test11AccumulatedPriceOfCartWithMultipleCopiesOfAnItemIsPriceForAllSuchCopies stamp: 'TC&OLT 11/2/2022 14:06:21'!
+PASSED!
+!Cart methodsFor: 'queries' stamp: 'TC&OLT 11/2/2022 14:06:27' prior: 50556035!
+accumulatedPrice
+	
+	^items sum: [ :anItem | priceList at: anItem. ] ifEmpty: [ 0 ].! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'TC&OLT 11/2/2022 14:06:31'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'TC&OLT 11/2/2022 14:06:31'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'TC&OLT 11/2/2022 14:06:31'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'TC&OLT 11/2/2022 14:06:31'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'TC&OLT 11/2/2022 14:06:31'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'TC&OLT 11/2/2022 14:06:31'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'TC&OLT 11/2/2022 14:06:31'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'TC&OLT 11/2/2022 14:06:31'!
+PASSED!
+
+!testRun: #CartTest #test09AccumulatedPriceOfEmptyCartIsZero stamp: 'TC&OLT 11/2/2022 14:06:31'!
+PASSED!
+
+!testRun: #CartTest #test10AccumulatedPriceOfCartWithSingleItemIsPriceOfSuchItem stamp: 'TC&OLT 11/2/2022 14:06:31'!
+PASSED!
+
+!testRun: #CartTest #test11AccumulatedPriceOfCartWithMultipleCopiesOfAnItemIsPriceForAllSuchCopies stamp: 'TC&OLT 11/2/2022 14:06:31'!
+PASSED!
+
+!testRun: #CashierTest #test01 stamp: 'TC&OLT 11/2/2022 14:06:43'!
+PASSED!
+
+!testRun: #CashierTest #test02 stamp: 'TC&OLT 11/2/2022 14:06:43'!
+PASSED!
+
+!testRun: #CashierTest #test03 stamp: 'TC&OLT 11/2/2022 14:06:43'!
+FAILURE!
+
+!testRun: #CashierTest #test03 stamp: 'TC&OLT 11/2/2022 14:06:43'!
+FAILURE!
+!Cashier methodsFor: 'checkout' stamp: 'TC&OLT 11/2/2022 14:07:09' prior: 50555571!
+checkout: aCartToPerformCeheckoutOn
+	
+	aCartToPerformCeheckoutOn isEmpty ifTrue: [
+		self error: self emptyCartAtCheckoutErrorMessage.
+	].
+	
+	^aCartToPerformCeheckoutOn accumulatedPrice.! !
+
+!testRun: #CashierTest #test01 stamp: 'TC&OLT 11/2/2022 14:07:11'!
+PASSED!
+
+!testRun: #CashierTest #test02 stamp: 'TC&OLT 11/2/2022 14:07:11'!
+PASSED!
+
+!testRun: #CashierTest #test03 stamp: 'TC&OLT 11/2/2022 14:07:11'!
+FAILURE!
+
+!testRun: #CashierTest #test03 stamp: 'TC&OLT 11/2/2022 14:07:11'!
+FAILURE!
+!Cashier methodsFor: 'checkout' stamp: 'TC&OLT 11/2/2022 14:07:25' prior: 50556137!
+checkout: aCartToPerformCeheckoutOn
+	
+	aCartToPerformCeheckoutOn isEmpty ifTrue: [
+		^self error: self emptyCartAtCheckoutErrorMessage.
+	].
+	
+	^aCartToPerformCeheckoutOn accumulatedPrice.! !
+
+!testRun: #CashierTest #test01 stamp: 'TC&OLT 11/2/2022 14:07:29'!
+PASSED!
+
+!testRun: #CashierTest #test02 stamp: 'TC&OLT 11/2/2022 14:07:29'!
+PASSED!
+
+!testRun: #CashierTest #test03 stamp: 'TC&OLT 11/2/2022 14:07:29'!
+FAILURE!
+
+!testRun: #CashierTest #test03 stamp: 'TC&OLT 11/2/2022 14:07:29'!
+FAILURE!
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/2/2022 14:07:38' prior: 50555583!
+test03
+	
+	"test03CheckoutOfCartWithMultipleCopiesOfMultipleItemsReturnsPriceForAllCopies"
+	
+	| cart salesBook cashier |
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book 1'->(10*euro) with: 'valid book 2'->(15*euro)).
+	cart add: 2 of: 'valid book 1'.
+	cart add: 3 of: 'valid book 2'.
+	
+	salesBook := OrderedCollection new.
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	self assert: (65*euro) equals: (cashier checkout: cart).! !
+
+!testRun: #CashierTest #test01 stamp: 'TC&OLT 11/2/2022 14:07:41'!
+PASSED!
+
+!testRun: #CashierTest #test02 stamp: 'TC&OLT 11/2/2022 14:07:41'!
+PASSED!
+
+!testRun: #CashierTest #test03 stamp: 'TC&OLT 11/2/2022 14:07:41'!
+PASSED!
+!Cashier methodsFor: 'checkout' stamp: 'TC&OLT 11/2/2022 14:08:13' prior: 50556156!
+checkout: aCartToPerformCeheckoutOn
+	
+	self assertCheckoutCanBePerformedOn: aCartToPerformCeheckoutOn.
+	
+	^aCartToPerformCeheckoutOn accumulatedPrice.! !
+!Cashier methodsFor: 'nil' stamp: 'TC&OLT 11/2/2022 14:09:00'!
+assertCheckoutCanBePerformedOn: aCartToPerformCheckoutOn
+	
+	aCartToPerformCheckoutOn isEmpty ifTrue: [
+		^self error: self emptyCartAtCheckoutErrorMessage.
+	].! !
+!Cashier methodsFor: 'checkout' stamp: 'TC&OLT 11/2/2022 14:09:11' prior: 50556199!
+checkout: aCartToPerformCheckoutOn
+	
+	self assertCheckoutCanBePerformedOn: aCartToPerformCheckoutOn.
+	
+	^aCartToPerformCheckoutOn accumulatedPrice.! !
+
+!testRun: #CashierTest #test01 stamp: 'TC&OLT 11/2/2022 14:09:16'!
+PASSED!
+
+!testRun: #CashierTest #test02 stamp: 'TC&OLT 11/2/2022 14:09:16'!
+PASSED!
+
+!testRun: #CashierTest #test03 stamp: 'TC&OLT 11/2/2022 14:09:16'!
+PASSED!
+
+----SNAPSHOT----(2 November 2022 14:09:27) CuisUniversity-5510.image priorSource: 7155150!
+
+----STARTUP---- (2 November 2022 15:48:45) as /media/elage3/7e7b8103-5bbe-454e-bc02-f2be1a6d15c7/home/elage/Desktop/Ciencias_de_la_Computacion/ISW1/Ejercicios/tusLibrosIteracion2/canedaLatessa/linux64/CuisUniversity-5510.image!
+
+!Cashier methodsFor: 'checkout' stamp: 'TC&OLT 11/2/2022 15:56:16' prior: 50556214!
+checkout: aCartToPerformCheckoutOn
+	
+	| cartAccumulatedPrice |
+	
+	self assertCheckoutCanBePerformedOn: aCartToPerformCheckoutOn.
+	
+	cartAccumulatedPrice:= aCartToPerformCheckoutOn accumulatedPrice.
+	salesBook add: cartAccumulatedPrice.
+	
+	^cartAccumulatedPrice.! !
+!Cashier methodsFor: 'checkout' stamp: 'TC&OLT 11/2/2022 14:09:11' prior: 50556239!
+checkout: aCartToPerformCheckoutOn
+	
+	self assertCheckoutCanBePerformedOn: aCartToPerformCheckoutOn.
+	
+	^aCartToPerformCheckoutOn accumulatedPrice.! !
+
+!testRun: #CashierTest #test01 stamp: 'TC&OLT 11/2/2022 15:58:31'!
+PASSED!
+
+!testRun: #CashierTest #test02 stamp: 'TC&OLT 11/2/2022 15:58:31'!
+PASSED!
+
+!testRun: #CashierTest #test03 stamp: 'TC&OLT 11/2/2022 15:58:31'!
+PASSED!
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'TC&OLT 11/2/2022 15:58:34'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'TC&OLT 11/2/2022 15:58:34'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'TC&OLT 11/2/2022 15:58:34'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'TC&OLT 11/2/2022 15:58:34'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'TC&OLT 11/2/2022 15:58:34'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'TC&OLT 11/2/2022 15:58:34'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'TC&OLT 11/2/2022 15:58:34'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'TC&OLT 11/2/2022 15:58:34'!
+PASSED!
+
+!testRun: #CartTest #test09AccumulatedPriceOfEmptyCartIsZero stamp: 'TC&OLT 11/2/2022 15:58:34'!
+PASSED!
+
+!testRun: #CartTest #test10AccumulatedPriceOfCartWithSingleItemIsPriceOfSuchItem stamp: 'TC&OLT 11/2/2022 15:58:34'!
+PASSED!
+
+!testRun: #CartTest #test11AccumulatedPriceOfCartWithMultipleCopiesOfAnItemIsPriceForAllSuchCopies stamp: 'TC&OLT 11/2/2022 15:58:34'!
+PASSED!
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/2/2022 16:05:24'!
+test04
+	
+	"test04SalesBooksRegistersCheckout"
+	
+	| cart salesBook cashier |
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book 1'->(10*euro) with: 'valid book 2'->(15*euro)).
+	cart add: 2 of: 'valid book 1'.
+	cart add: 3 of: 'valid book 2'.
+	
+	salesBook := OrderedCollection new.
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	cashier checkout: cart.
+	
+	self assert: (OrderedCollection with: 65*euro) equals: (salesBook).! !
+
+!testRun: #CashierTest #test04 stamp: 'TC&OLT 11/2/2022 16:05:26'!
+FAILURE!
+!Cashier methodsFor: 'checkout' stamp: 'TC&OLT 11/2/2022 15:56:16' prior: 50556250!
+checkout: aCartToPerformCheckoutOn
+	
+	| cartAccumulatedPrice |
+	
+	self assertCheckoutCanBePerformedOn: aCartToPerformCheckoutOn.
+	
+	cartAccumulatedPrice:= aCartToPerformCheckoutOn accumulatedPrice.
+	salesBook add: cartAccumulatedPrice.
+	
+	^cartAccumulatedPrice.! !
+
+!testRun: #CashierTest #test04 stamp: 'TC&OLT 11/2/2022 16:05:48'!
+PASSED!
+
+!testRun: #CashierTest #test01 stamp: 'TC&OLT 11/2/2022 16:05:51'!
+PASSED!
+
+!testRun: #CashierTest #test02 stamp: 'TC&OLT 11/2/2022 16:05:51'!
+PASSED!
+
+!testRun: #CashierTest #test03 stamp: 'TC&OLT 11/2/2022 16:05:51'!
+PASSED!
+
+!testRun: #CashierTest #test04 stamp: 'TC&OLT 11/2/2022 16:05:51'!
+PASSED!
+
+Object subclass: #CreditCard
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #CreditCard category: 'TusLibros' stamp: 'TC&OLT 11/2/2022 17:35:51'!
+Object subclass: #CreditCard
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/2/2022 17:44:58'!
+test05
+	
+	"test05CheckoutCannotBePerformedWhenUsingACreditCardWithInvalidNumber"
+	
+	| cart salesBook cashier creditCard|
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book 1'->(10*euro) with: 'valid book 2'->(15*euro)).
+	cart add: 2 of: 'valid book 1'.
+	cart add: 3 of: 'valid book 2'.
+	
+	salesBook := OrderedCollection new.
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	cashier checkoutOn: cart with: creditCard. 
+	
+	self assert: (OrderedCollection with: 65*euro) equals: (salesBook).! !
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/2/2022 17:46:06' prior: 50556355!
+test05
+	
+	"test05CheckoutCannotBePerformedWhenUsingACreditCardWithInvalidNumber"
+	
+	| cart salesBook cashier creditCard|
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book 1'->(10*euro) with: 'valid book 2'->(15*euro)).
+	cart add: 2 of: 'valid book 1'.
+	cart add: 3 of: 'valid book 2'.
+	
+	salesBook := OrderedCollection new.
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	creditCard:= CreditCard new.
+	
+	cashier checkoutOn: cart with: creditCard. 
+	
+	"self assert:"
+	self assert: (OrderedCollection with: 0*euro) equals: (salesBook).! !
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/2/2022 17:50:40' prior: 50556374!
+test05
+	
+	"test05CheckoutCannotBePerformedWhenUsingACreditCardWithInvalidNumber"
+	
+	| cart salesBook cashier creditCard|
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book 1'->(10*euro) with: 'valid book 2'->(15*euro)).
+	cart add: 2 of: 'valid book 1'.
+	cart add: 3 of: 'valid book 2'.
+	
+	salesBook := OrderedCollection new.
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	creditCard:= CreditCard new.
+	
+	self 
+		should: [cashier checkoutOn: cart with: creditCard. ]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = cashier invalidCardNumber.
+			self assert: salesBook isEmpty.
+		].
+		
+	! !
+
+!testRun: #CashierTest #test05 stamp: 'TC&OLT 11/2/2022 17:50:41'!
+ERROR!
+
+!testRun: #CashierTest #test05 stamp: 'TC&OLT 11/2/2022 17:50:50'!
+ERROR!
+
+!testRun: #CashierTest #test05 stamp: 'TC&OLT 11/2/2022 17:50:50'!
+ERROR!
+
+----SNAPSHOT----(2 November 2022 17:51:22) CuisUniversity-5510.image priorSource: 7186490!
+!Cashier methodsFor: 'checkout' stamp: 'TC&OLT 11/2/2022 17:52:54'!
+checkout: aCartToPerformCheckoutOn with: aCard 
+	
+	| cartAccumulatedPrice |
+	
+	self assertCheckoutCanBePerformedOn: aCartToPerformCheckoutOn.
+	
+	cartAccumulatedPrice:= aCartToPerformCheckoutOn accumulatedPrice.
+	salesBook add: cartAccumulatedPrice.
+	
+	^cartAccumulatedPrice.! !
+
+!methodRemoval: Cashier #checkout: stamp: 'TC&OLT 11/2/2022 17:52:55'!
+checkout: aCartToPerformCheckoutOn
+	
+	| cartAccumulatedPrice |
+	
+	self assertCheckoutCanBePerformedOn: aCartToPerformCheckoutOn.
+	
+	cartAccumulatedPrice:= aCartToPerformCheckoutOn accumulatedPrice.
+	salesBook add: cartAccumulatedPrice.
+	
+	^cartAccumulatedPrice.!
+!Cashier methodsFor: 'checkout' stamp: 'TC&OLT 11/2/2022 17:53:49'!
+checkoutOn: aCartToPerformCheckoutOn with: aCard 
+	
+	| cartAccumulatedPrice |
+	
+	self assertCheckoutCanBePerformedOn: aCartToPerformCheckoutOn.
+	
+	cartAccumulatedPrice:= aCartToPerformCheckoutOn accumulatedPrice.
+	salesBook add: cartAccumulatedPrice.
+	
+	^cartAccumulatedPrice.! !
+
+!methodRemoval: Cashier #checkout:with: stamp: 'TC&OLT 11/2/2022 17:53:49'!
+checkout: aCartToPerformCheckoutOn with: aCard 
+	
+	| cartAccumulatedPrice |
+	
+	self assertCheckoutCanBePerformedOn: aCartToPerformCheckoutOn.
+	
+	cartAccumulatedPrice:= aCartToPerformCheckoutOn accumulatedPrice.
+	salesBook add: cartAccumulatedPrice.
+	
+	^cartAccumulatedPrice.!
+!Cashier methodsFor: 'checkout' stamp: 'TC&OLT 11/2/2022 18:11:40' prior: 50556449!
+checkoutOn: aCartToPerformCheckoutOn with: aCardToPerformCheckoutWith
+	
+	| cartAccumulatedPrice |
+	
+	
+	self assertCheckoutCanBePerformedOn: aCartToPerformCheckoutOn.
+	
+	aCardToPerformCheckoutWith .
+	
+	cartAccumulatedPrice:= aCartToPerformCheckoutOn accumulatedPrice.
+	salesBook add: cartAccumulatedPrice.
+	
+	^cartAccumulatedPrice.! !
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/2/2022 18:20:07' prior: 50556394!
+test05
+	
+	"test05CheckoutCannotBePerformedWhenUsingACreditCardWithInvalidNumber"
+	
+	| cart salesBook cashier expiredCreditCard|
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book 1'->(10*euro) with: 'valid book 2'->(15*euro)).
+	cart add: 2 of: 'valid book 1'.
+	cart add: 3 of: 'valid book 2'.
+	
+	salesBook := OrderedCollection new.
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	expiredCreditCard:= CreditCard validTo: (15/September/2021).
+	
+	self 
+		should: [cashier checkoutOn: cart with: expiredCreditCard. ]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = cashier expiredCardError.
+			self assert: salesBook isEmpty.
+		].
+		
+	! !
+
+!testRun: #CashierTest #test05 stamp: 'TC&OLT 11/2/2022 18:20:16'!
+ERROR!
+!CreditCard class methodsFor: 'nil' stamp: 'TC&OLT 11/2/2022 18:25:44'!
+validTo: anExpiringDate
+
+	^self new initializeCardValidTo: anExpiringDate.! !
+
+!classDefinition: #CreditCard category: 'TusLibros' stamp: 'TC&OLT 11/2/2022 18:26:17'!
+Object subclass: #CreditCard
+	instanceVariableNames: 'expirationDate'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!CreditCard methodsFor: 'nil' stamp: 'TC&OLT 11/2/2022 18:26:15'!
+initializeCardValidTo: anExpiringDate
+
+	expirationDate:= anExpiringDate .! !
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/2/2022 18:28:10' prior: 50556486!
+test05
+	
+	"test05CheckoutCannotBePerformedWhenUsingACreditCardWithInvalidNumber"
+	
+	| cart salesBook cashier expiredCreditCard|
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book 1'->(10*euro) with: 'valid book 2'->(15*euro)).
+	cart add: 2 of: 'valid book 1'.
+	cart add: 3 of: 'valid book 2'.
+	
+	salesBook := OrderedCollection new.
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	expiredCreditCard:= CreditCard validTo: (September/2021).
+	
+	self 
+		should: [cashier checkoutOn: cart with: expiredCreditCard. ]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = cashier expiredCardError.
+			self assert: salesBook isEmpty.
+		].
+		
+	! !
+!CreditCard class methodsFor: 'as yet unclassified' stamp: 'TC&OLT 11/2/2022 18:29:15'!
+goodThrough: anExpiringDate
+
+	^self new initializeCardValidTo: anExpiringDate.! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'TC&OLT 11/2/2022 18:29:15' prior: 50556531!
+test05
+	
+	"test05CheckoutCannotBePerformedWhenUsingACreditCardWithInvalidNumber"
+	
+	| cart salesBook cashier expiredCreditCard|
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book 1'->(10*euro) with: 'valid book 2'->(15*euro)).
+	cart add: 2 of: 'valid book 1'.
+	cart add: 3 of: 'valid book 2'.
+	
+	salesBook := OrderedCollection new.
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	expiredCreditCard:= CreditCard goodThrough: (September/2021).
+	
+	self 
+		should: [cashier checkoutOn: cart with: expiredCreditCard. ]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = cashier expiredCardError.
+			self assert: salesBook isEmpty.
+		].
+		
+	! !
+
+!methodRemoval: CreditCard class #validTo: stamp: 'TC&OLT 11/2/2022 18:29:15'!
+validTo: anExpiringDate
+
+	^self new initializeCardValidTo: anExpiringDate.!
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/2/2022 18:29:44' prior: 50556562!
+test05
+	
+	"test05CheckoutCannotBePerformedWhenUsingACreditCardWithInvalidNumber"
+	
+	| cart salesBook cashier expiredCreditCard|
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book 1'->(10*euro) with: 'valid book 2'->(15*euro)).
+	cart add: 2 of: 'valid book 1'.
+	cart add: 3 of: 'valid book 2'.
+	
+	salesBook := OrderedCollection new.
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	expiredCreditCard:= CreditCard goodThrough: (September/2021).
+	
+	self 
+		should: [cashier checkoutOn: cart with: expiredCreditCard. ]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = cashier expiredCardErrorMessage.
+			self assert: salesBook isEmpty.
+		].
+		
+	! !
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/2/2022 18:31:36' prior: 50556592!
+test05
+	
+	"test05CheckoutCannotBePerformedWhenUsingAnExpiredCreditCard"
+	
+	| cart salesBook cashier expiredCreditCard|
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book 1'->(10*euro) with: 'valid book 2'->(15*euro)).
+	cart add: 2 of: 'valid book 1'.
+	cart add: 3 of: 'valid book 2'.
+	
+	salesBook := OrderedCollection new.
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	expiredCreditCard:= CreditCard goodThrough: (September/2021).
+	
+	self 
+		should: [cashier checkoutOn: cart with: expiredCreditCard. ]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = cashier expiredCardErrorMessage.
+			self assert: salesBook isEmpty.
+		].
+		
+	! !
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/2/2022 18:34:19' prior: 50556618!
+test05
+	
+	"test05CheckoutCannotBePerformedWhenUsingAnExpiredCreditCard"
+	
+	| cart salesBook cashier expiredCreditCard|
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book 1'->(10*euro) with: 'valid book 2'->(15*euro)).
+	cart add: 2 of: 'valid book 1'.
+	cart add: 3 of: 'valid book 2'.
+	
+	salesBook := OrderedCollection new.
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	expiredCreditCard:= CreditCard goodThrough: (September/2021).
+	
+	self 
+		should: [cashier checkoutFor: cart with: expiredCreditCard on: (2/November/2022).]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = cashier expiredCardErrorMessage.
+			self assert: salesBook isEmpty.
+		].
+		
+	! !
+
+!testRun: #CashierTest #test05 stamp: 'TC&OLT 11/2/2022 18:34:23'!
+ERROR!
+
+!testRun: #CashierTest #test05 stamp: 'TC&OLT 11/2/2022 18:34:23'!
+ERROR!
+!Cashier methodsFor: 'checkout' stamp: 'TC&OLT 11/2/2022 18:37:10'!
+checkoutFor: aCartToPerformCheckoutFor with: aCardToPerformCheckoutWith on: anExpiringDate
+	
+	| cartAccumulatedPrice |
+	
+	
+	self assertCheckoutCanBePerformedOn: aCartToPerformCheckoutFor.
+	
+	aCardToPerformCheckoutWith .
+	
+	cartAccumulatedPrice:= aCartToPerformCheckoutFor accumulatedPrice.
+	salesBook add: cartAccumulatedPrice.
+	
+	^cartAccumulatedPrice.! !
+!Cashier methodsFor: 'assertions' stamp: 'TC&OLT 11/2/2022 18:37:26'!
+assertCheckoutCanBePerformedFor: aCartToPerformCheckoutOn
+	
+	aCartToPerformCheckoutOn isEmpty ifTrue: [
+		^self error: self emptyCartAtCheckoutErrorMessage.
+	].! !
+!Cashier methodsFor: 'as yet unclassified' stamp: 'TC&OLT 11/2/2022 18:37:26' prior: 50556673!
+checkoutFor: aCartToPerformCheckoutFor with: aCardToPerformCheckoutWith on: anExpiringDate
+	
+	| cartAccumulatedPrice |
+	
+	
+	self assertCheckoutCanBePerformedFor: aCartToPerformCheckoutFor.
+	
+	aCardToPerformCheckoutWith .
+	
+	cartAccumulatedPrice:= aCartToPerformCheckoutFor accumulatedPrice.
+	salesBook add: cartAccumulatedPrice.
+	
+	^cartAccumulatedPrice.! !
+!Cashier methodsFor: 'as yet unclassified' stamp: 'TC&OLT 11/2/2022 18:37:26' prior: 50556472!
+checkoutOn: aCartToPerformCheckoutOn with: aCardToPerformCheckoutWith
+	
+	| cartAccumulatedPrice |
+	
+	
+	self assertCheckoutCanBePerformedFor: aCartToPerformCheckoutOn.
+	
+	aCardToPerformCheckoutWith .
+	
+	cartAccumulatedPrice:= aCartToPerformCheckoutOn accumulatedPrice.
+	salesBook add: cartAccumulatedPrice.
+	
+	^cartAccumulatedPrice.! !
+
+!methodRemoval: Cashier #assertCheckoutCanBePerformedOn: stamp: 'TC&OLT 11/2/2022 18:37:26'!
+assertCheckoutCanBePerformedOn: aCartToPerformCheckoutOn
+	
+	aCartToPerformCheckoutOn isEmpty ifTrue: [
+		^self error: self emptyCartAtCheckoutErrorMessage.
+	].!
+
+!methodRemoval: Cashier #checkoutOn:with: stamp: 'TC&OLT 11/2/2022 18:37:30'!
+checkoutOn: aCartToPerformCheckoutOn with: aCardToPerformCheckoutWith
+	
+	| cartAccumulatedPrice |
+	
+	
+	self assertCheckoutCanBePerformedFor: aCartToPerformCheckoutOn.
+	
+	aCardToPerformCheckoutWith .
+	
+	cartAccumulatedPrice:= aCartToPerformCheckoutOn accumulatedPrice.
+	salesBook add: cartAccumulatedPrice.
+	
+	^cartAccumulatedPrice.!
+!Cashier methodsFor: 'checkout' stamp: 'TC&OLT 11/2/2022 18:40:08' prior: 50556696!
+checkoutFor: aCartToPerformCheckoutFor with: aCardToPerformCheckoutWith on: aDateToPerformCheckoutOn
+	
+	| cartAccumulatedPrice |
+	
+	
+	self assertCheckoutCanBePerformedFor: aCartToPerformCheckoutFor.
+	
+	self  assertCheckoutCanBePerformedWith: aCardToPerformCheckoutWith on: aDateToPerformCheckoutOn .
+	
+	cartAccumulatedPrice:= aCartToPerformCheckoutFor accumulatedPrice.
+	salesBook add: cartAccumulatedPrice.
+	
+	^cartAccumulatedPrice.! !
+!Cashier methodsFor: 'assertions' stamp: 'TC&OLT 11/2/2022 18:43:06'!
+ assertCheckoutCanBePerformedWith: aCardToPerformCheckoutWith on: aDateToPerformCheckoutOn .
+	
+	(aCardToPerformCheckoutWith isExpiredOn: aDateToPerformCheckoutOn) ifFalse: [
+		^self error: self emptyCartAtCheckoutErrorMessage.
+	].! !
+!Cashier methodsFor: 'assertions' stamp: 'TC&OLT 11/2/2022 18:43:29' prior: 50556761!
+assertCheckoutCanBePerformedWith: aCardToPerformCheckoutWith on: aDateToPerformCheckoutOn .
+	
+	(aCardToPerformCheckoutWith isExpiredOn: aDateToPerformCheckoutOn) ifFalse: [
+		^self error: self expiredCardErrorMessage.
+	].! !
+!Cashier methodsFor: 'error messages' stamp: 'TC&OLT 11/2/2022 18:46:38'!
+expiredCardErrorMessage
+
+	^'cannot perform checkout with an expired card'! !
+!CreditCard methodsFor: 'nil' stamp: 'TC&OLT 11/2/2022 18:48:43'!
+isExpiredOn: aDateToCheckExpiry
+
+	! !
+!CreditCard methodsFor: 'as yet unclassified' stamp: 'TC&OLT 11/2/2022 18:48:47' prior: 50556786!
+isExpiredOn: aDateToCheckExpiryOn
+
+	! !
+
+September/2022 > September/2021!
+
+1/September/2022 > 1/September/2021!
+
+1/September/2021 class!
+
+(1/September/2021) class!
+
+(September/2021) class!
+
+(September/1/2021) class!
+
+September/1/2021 < September/3/2022!
+
+(September/1/2021) < (September/3/3022)!
+
+(September/1/2021) > (September/3/3022)!
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/2/2022 18:53:42' prior: 50556643!
+test05
+	
+	"test05CheckoutCannotBePerformedWhenUsingAnExpiredCreditCard"
+	
+	| cart salesBook cashier expiredCreditCard|
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book 1'->(10*euro) with: 'valid book 2'->(15*euro)).
+	cart add: 2 of: 'valid book 1'.
+	cart add: 3 of: 'valid book 2'.
+	
+	salesBook := OrderedCollection new.
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	expiredCreditCard:= CreditCard goodThrough: (September/1/2021).
+	
+	self 
+		should: [cashier checkoutFor: cart with: expiredCreditCard on: (2/November/2022).]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = cashier expiredCardErrorMessage.
+			self assert: salesBook isEmpty.
+		].
+		
+	! !
+
+!testRun: #CashierTest #test05 stamp: 'TC&OLT 11/2/2022 18:53:44'!
+ERROR!
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/2/2022 18:53:55' prior: 50556805!
+test05
+	
+	"test05CheckoutCannotBePerformedWhenUsingAnExpiredCreditCard"
+	
+	| cart salesBook cashier expiredCreditCard|
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book 1'->(10*euro) with: 'valid book 2'->(15*euro)).
+	cart add: 2 of: 'valid book 1'.
+	cart add: 3 of: 'valid book 2'.
+	
+	salesBook := OrderedCollection new.
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	expiredCreditCard:= CreditCard goodThrough: (September/1/2021).
+	
+	self 
+		should: [cashier checkoutFor: cart with: expiredCreditCard on: (2/November/2022).]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = cashier expiredCardErrorMessage.
+			self assert: salesBook isEmpty.
+		].
+		
+	! !
+
+!testRun: #CashierTest #test05 stamp: 'TC&OLT 11/2/2022 18:53:57'!
+ERROR!
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/2/2022 18:54:10' prior: 50556833!
+test05
+	
+	"test05CheckoutCannotBePerformedWhenUsingAnExpiredCreditCard"
+	
+	| cart salesBook cashier expiredCreditCard|
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book 1'->(10*euro) with: 'valid book 2'->(15*euro)).
+	cart add: 2 of: 'valid book 1'.
+	cart add: 3 of: 'valid book 2'.
+	
+	salesBook := OrderedCollection new.
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	expiredCreditCard:= CreditCard goodThrough: (September/1/2021).
+	
+	self 
+		should: [cashier checkoutFor: cart with: expiredCreditCard on: (November/2/2022).]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = cashier expiredCardErrorMessage.
+			self assert: salesBook isEmpty.
+		].
+		
+	! !
+!CreditCard methodsFor: 'as yet unclassified' stamp: 'TC&OLT 11/2/2022 18:56:02' prior: 50556791!
+isExpiredOn: aDateToCheckExpiryOn
+
+	^expirationDate < aDateToCheckExpiryOn.! !
+
+!testRun: #CashierTest #test05 stamp: 'TC&OLT 11/2/2022 18:56:41'!
+FAILURE!
+
+!testRun: #CashierTest #test05 stamp: 'TC&OLT 11/2/2022 18:56:41'!
+FAILURE!
+
+!testRun: #CashierTest #test05 stamp: 'TC&OLT 11/2/2022 18:57:28'!
+FAILURE!
+
+!testRun: #CashierTest #test05 stamp: 'TC&OLT 11/2/2022 18:58:30'!
+FAILURE!
+
+!testRun: #CashierTest #test05 stamp: 'TC&OLT 11/2/2022 18:58:39'!
+FAILURE!
+
+!testRun: #CashierTest #test05 stamp: 'TC&OLT 11/2/2022 19:01:47'!
+FAILURE!
+
+!testRun: #CashierTest #test05 stamp: 'TC&OLT 11/2/2022 19:01:47'!
+FAILURE!
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/2/2022 19:03:35' prior: 50556861!
+test05
+	
+	"test05CheckoutCannotBePerformedWhenUsingAnExpiredCreditCard"
+	
+	| cart salesBook cashier expiredCreditCard|
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book 1'->(10*euro) with: 'valid book 2'->(15*euro)).
+	cart add: 2 of: 'valid book 1'.
+	cart add: 3 of: 'valid book 2'.
+	
+	salesBook := OrderedCollection new.
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	expiredCreditCard:= CreditCard goodThrough: (September/1/2021).
+	
+	self 
+		should: [cashier checkoutFor: cart with: expiredCreditCard on: (November/2/2022).]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: cashier expiredCardErrorMessage.
+			self assert: salesBook isEmpty.
+		].
+		
+	! !
+
+!testRun: #CashierTest #test05 stamp: 'TC&OLT 11/2/2022 19:03:39'!
+FAILURE!
+
+!testRun: #CashierTest #test05 stamp: 'TC&OLT 11/2/2022 19:03:39'!
+FAILURE!
+!Cashier methodsFor: 'assertions' stamp: 'TC&OLT 11/2/2022 19:05:15' prior: 50556771!
+assertCheckoutCanBePerformedWith: aCardToPerformCheckoutWith on: aDateToPerformCheckoutOn .
+	
+	(aCardToPerformCheckoutWith isExpiredOn: aDateToPerformCheckoutOn) ifTrue: [
+		^self error: self expiredCardErrorMessage.
+	].! !
+
+!testRun: #CashierTest #test05 stamp: 'TC&OLT 11/2/2022 19:05:20'!
+PASSED!
+
+!testRun: #CashierTest #test05 stamp: 'TC&OLT 11/2/2022 19:05:54'!
+PASSED!
+
+!testRun: #CashierTest #test01 stamp: 'TC&OLT 11/2/2022 19:05:56'!
+FAILURE!
+
+!testRun: #CashierTest #test02 stamp: 'TC&OLT 11/2/2022 19:05:56'!
+ERROR!
+
+!testRun: #CashierTest #test03 stamp: 'TC&OLT 11/2/2022 19:05:56'!
+ERROR!
+
+!testRun: #CashierTest #test04 stamp: 'TC&OLT 11/2/2022 19:05:56'!
+ERROR!
+
+!testRun: #CashierTest #test05 stamp: 'TC&OLT 11/2/2022 19:05:56'!
+PASSED!
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/2/2022 19:07:41' prior: 50556303!
+test04
+	
+	"test04SalesBooksRegistersCheckout"
+	
+	| cart salesBook cashier creditCard|
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book 1'->(10*euro) with: 'valid book 2'->(15*euro)).
+	cart add: 2 of: 'valid book 1'.
+	cart add: 3 of: 'valid book 2'.
+	
+	salesBook := OrderedCollection new.
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	cashier checkout: cart.
+	
+	creditCard:= CreditCard goodThrough: (September/1/2025).
+	
+	self assert: (OrderedCollection with: 65*euro) equals: (salesBook).! !
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/2/2022 19:08:21' prior: 50556968!
+test04
+	
+	"test04SalesBooksRegistersCheckout"
+	
+	| cart salesBook cashier creditCard|
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book 1'->(10*euro) with: 'valid book 2'->(15*euro)).
+	cart add: 2 of: 'valid book 1'.
+	cart add: 3 of: 'valid book 2'.
+	
+	salesBook := OrderedCollection new.
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	cashier checkout: cart.
+	
+	creditCard:= CreditCard goodThrough: (September/1/2025).
+	cashier checkoutFor: cart with: creditCard on: (November/2/2022).
+	
+	self assert: (OrderedCollection with: 65*euro) equals: (salesBook).! !
+
+!testRun: #CashierTest #test04 stamp: 'TC&OLT 11/2/2022 19:08:23'!
+ERROR!
+
+!testRun: #CashierTest #test04 stamp: 'TC&OLT 11/2/2022 19:08:40'!
+ERROR!
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/2/2022 19:08:56' prior: 50556987!
+test04
+	
+	"test04SalesBooksRegistersCheckout"
+	
+	| cart salesBook cashier creditCard|
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book 1'->(10*euro) with: 'valid book 2'->(15*euro)).
+	cart add: 2 of: 'valid book 1'.
+	cart add: 3 of: 'valid book 2'.
+	
+	salesBook := OrderedCollection new.
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+
+	
+	creditCard:= CreditCard goodThrough: (September/1/2025).
+	cashier checkoutFor: cart with: creditCard on: (November/2/2022).
+	
+	self assert: (OrderedCollection with: 65*euro) equals: (salesBook).! !
+
+!testRun: #CashierTest #test04 stamp: 'TC&OLT 11/2/2022 19:08:57'!
+PASSED!
+
+!testRun: #CashierTest #test01 stamp: 'TC&OLT 11/2/2022 19:08:57'!
+FAILURE!
+
+!testRun: #CashierTest #test02 stamp: 'TC&OLT 11/2/2022 19:08:57'!
+ERROR!
+
+!testRun: #CashierTest #test03 stamp: 'TC&OLT 11/2/2022 19:08:57'!
+ERROR!
+
+!testRun: #CashierTest #test04 stamp: 'TC&OLT 11/2/2022 19:08:57'!
+PASSED!
+
+!testRun: #CashierTest #test05 stamp: 'TC&OLT 11/2/2022 19:08:57'!
+PASSED!
+
+!testRun: #CashierTest #test04 stamp: 'TC&OLT 11/2/2022 19:09:01'!
+PASSED!
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/2/2022 19:10:59' prior: 50556175!
+test03
+	
+	"test03CheckoutOfCartWithMultipleCopiesOfMultipleItemsReturnsPriceForAllCopies"
+	
+	| cart salesBook cashier creditCard|
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book 1'->(10*euro) with: 'valid book 2'->(15*euro)).
+	cart add: 2 of: 'valid book 1'.
+	cart add: 3 of: 'valid book 2'.
+	
+	salesBook := OrderedCollection new.
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	creditCard:= CreditCard goodThrough: (September/1/2025).
+	
+	
+	self assert: (65*euro) equals: (cashier checkoutFor: cart with: creditCard on: (November/2/2022)).! !
+
+!testRun: #CashierTest #test03 stamp: 'TC&OLT 11/2/2022 19:11:01'!
+PASSED!
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/2/2022 19:11:18' prior: 50555516!
+test02
+	
+	"test0CheckoutOfCartWithSingleItemReturnsPriceOfSuchItem"
+	
+	| cart salesBook cashier creditCard|
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book'->(10*euro)).
+	cart add: 'valid book'.
+	
+	salesBook := OrderedCollection new.
+	
+	creditCard:= CreditCard goodThrough: (September/1/2025).
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	self assert: (10*euro) equals: (cashier checkout: cart).! !
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/2/2022 19:11:35' prior: 50557073!
+test02
+	
+	"test0CheckoutOfCartWithSingleItemReturnsPriceOfSuchItem"
+	
+	| cart salesBook cashier creditCard|
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book'->(10*euro)).
+	cart add: 'valid book'.
+	
+	salesBook := OrderedCollection new.
+	
+	creditCard:= CreditCard goodThrough: (September/1/2025).
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	self assert: (10*euro) equals: (cashier checkoutFor: cart with: creditCard on: (November/2/2022)).! !
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/2/2022 19:12:01' prior: 50555458!
+test01
+	
+	"test0CheckoutOfEmptyCartResultsInError"
+	
+	| cart salesBook cashier creditCard|
+	
+	cart := Cart acceptingItemsOf: Array new.
+	
+	salesBook := OrderedCollection new.
+	
+	creditCard:= CreditCard goodThrough: (September/1/2025).
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	self should: [ cashier checkout: cart. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cashier emptyCartAtCheckoutErrorMessage.
+		self assert: OrderedCollection new equals: salesBook.
+	].! !
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/2/2022 19:12:36' prior: 50557107!
+test01
+	
+	"test0CheckoutOfEmptyCartResultsInError"
+	
+	| cart salesBook cashier creditCard|
+	
+	cart := Cart acceptingItemsOf: Array new.
+	
+	salesBook := OrderedCollection new.
+	
+	creditCard:= CreditCard goodThrough: (September/1/2025).
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	self should: [ cashier checkoutFor: cart with: creditCard on: (November/2/2022) ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cashier emptyCartAtCheckoutErrorMessage.
+		self assert: OrderedCollection new equals: salesBook.
+	].! !
+
+!testRun: #CashierTest #test01 stamp: 'TC&OLT 11/2/2022 19:12:39'!
+PASSED!
+
+!testRun: #CashierTest #test02 stamp: 'TC&OLT 11/2/2022 19:12:39'!
+PASSED!
+
+!testRun: #CashierTest #test03 stamp: 'TC&OLT 11/2/2022 19:12:39'!
+PASSED!
+
+!testRun: #CashierTest #test04 stamp: 'TC&OLT 11/2/2022 19:12:39'!
+PASSED!
+
+!testRun: #CashierTest #test05 stamp: 'TC&OLT 11/2/2022 19:12:39'!
+PASSED!
+
+TestCase subclass: #MPSimulatorTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #MPSimulatorTest category: 'TusLibros' stamp: 'TC&OLT 11/2/2022 19:19:40'!
+TestCase subclass: #MPSimulatorTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+TestCase subclass: #CardTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #CardTest category: 'TusLibros' stamp: 'TC&OLT 11/2/2022 19:23:50'!
+TestCase subclass: #CardTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+----SNAPSHOT----(2 November 2022 19:26:56) CuisUniversity-5510.image priorSource: 7192763!
+
+----STARTUP---- (3 November 2022 09:16:59) as /home/kaneda/Downloads/tusLibros-iteracion2/linux64_tusLibros-iteracion2/CuisUniversity-5510.image!
+
+!Cashier methodsFor: 'error messages' stamp: 'TC&OLT 11/3/2022 09:18:19' prior: 50556781!
+expiredCardErrorMessage
+
+	^'Cannot perform checkout with an expired card.'.! !
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 09:23:17' prior: 50556910!
+test05
+	
+	"test05CheckoutCannotBePerformedWhenUsingAnExpiredCreditCard"
+	
+	| cart salesBook cashier expiredCreditCard |
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book 1'->(10*euro) with: 'valid book 2'->(15*euro)).
+	cart add: 2 of: 'valid book 1'.
+	cart add: 3 of: 'valid book 2'.
+	
+	salesBook := OrderedCollection new.
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	expiredCreditCard:= CreditCard goodThrough: (September/1/2021).
+	
+	self 
+		should: [cashier checkoutFor: cart with: expiredCreditCard on: (November/2/2022).]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: cashier expiredCardErrorMessage.
+			self assert: salesBook isEmpty.
+		].
+		
+	! !
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 09:23:21' prior: 50557013!
+test04
+	
+	"test04SalesBooksRegistersCheckout"
+	
+	| cart salesBook cashier creditCard |
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book 1'->(10*euro) with: 'valid book 2'->(15*euro)).
+	cart add: 2 of: 'valid book 1'.
+	cart add: 3 of: 'valid book 2'.
+	
+	salesBook := OrderedCollection new.
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+
+	
+	creditCard:= CreditCard goodThrough: (September/1/2025).
+	cashier checkoutFor: cart with: creditCard on: (November/2/2022).
+	
+	self assert: (OrderedCollection with: 65*euro) equals: (salesBook).! !
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 09:23:24' prior: 50557050!
+test03
+	
+	"test03CheckoutOfCartWithMultipleCopiesOfMultipleItemsReturnsPriceForAllCopies"
+	
+	| cart salesBook cashier creditCard |
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book 1'->(10*euro) with: 'valid book 2'->(15*euro)).
+	cart add: 2 of: 'valid book 1'.
+	cart add: 3 of: 'valid book 2'.
+	
+	salesBook := OrderedCollection new.
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	creditCard:= CreditCard goodThrough: (September/1/2025).
+	
+	
+	self assert: (65*euro) equals: (cashier checkoutFor: cart with: creditCard on: (November/2/2022)).! !
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 09:23:26' prior: 50557089!
+test02
+	
+	"test0CheckoutOfCartWithSingleItemReturnsPriceOfSuchItem"
+	
+	| cart salesBook cashier creditCard |
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book'->(10*euro)).
+	cart add: 'valid book'.
+	
+	salesBook := OrderedCollection new.
+	
+	creditCard:= CreditCard goodThrough: (September/1/2025).
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	self assert: (10*euro) equals: (cashier checkoutFor: cart with: creditCard on: (November/2/2022)).! !
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 09:23:29' prior: 50557127!
+test01
+	
+	"test0CheckoutOfEmptyCartResultsInError"
+	
+	| cart salesBook cashier creditCard |
+	
+	cart := Cart acceptingItemsOf: Array new.
+	
+	salesBook := OrderedCollection new.
+	
+	creditCard:= CreditCard goodThrough: (September/1/2025).
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	self should: [ cashier checkoutFor: cart with: creditCard on: (November/2/2022) ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cashier emptyCartAtCheckoutErrorMessage.
+		self assert: OrderedCollection new equals: salesBook.
+	].! !
+
+!methodRemoval: CreditCard #initializeCardValidTo: stamp: 'TC&OLT 11/3/2022 09:24:00'!
+initializeCardValidTo: anExpiringDate
+
+	expirationDate:= anExpiringDate .!
+
+!methodRemoval: CreditCard #isExpiredOn: stamp: 'TC&OLT 11/3/2022 09:24:00'!
+isExpiredOn: aDateToCheckExpiryOn
+
+	^expirationDate < aDateToCheckExpiryOn.!
+
+!methodRemoval: CreditCard class #goodThrough: stamp: 'TC&OLT 11/3/2022 09:24:06'!
+goodThrough: anExpiringDate
+
+	^self new initializeCardValidTo: anExpiringDate.!
+
+!testRun: #CashierTest #test01 stamp: 'TC&OLT 11/3/2022 09:24:58'!
+ERROR!
+
+!testRun: #CashierTest #test02 stamp: 'TC&OLT 11/3/2022 09:24:58'!
+ERROR!
+
+!testRun: #CashierTest #test03 stamp: 'TC&OLT 11/3/2022 09:24:58'!
+ERROR!
+
+!testRun: #CashierTest #test04 stamp: 'TC&OLT 11/3/2022 09:24:58'!
+ERROR!
+
+!testRun: #CashierTest #test05 stamp: 'TC&OLT 11/3/2022 09:24:58'!
+ERROR!
+
+Object subclass: #CreditCardTest
+	instanceVariableNames: 'expirationDate'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #CreditCardTest category: 'TusLibros' stamp: 'TC&OLT 11/3/2022 09:26:17'!
+Object subclass: #CreditCardTest
+	instanceVariableNames: 'expirationDate'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classRemoval: #CreditCardTest stamp: 'TC&OLT 11/3/2022 09:26:23'!
+Object subclass: #CreditCardTest
+	instanceVariableNames: 'expirationDate'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+TestCase subclass: #CreditCardTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #CreditCardTest category: 'TusLibros' stamp: 'TC&OLT 11/3/2022 09:26:30'!
+TestCase subclass: #CreditCardTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!CreditCardTest methodsFor: 'no messages' stamp: 'TC&OLT 11/3/2022 09:31:33'!
+test01
+	
+	"test01CreditCardIsNotExpiredOnDateBeforeExpiration"
+	
+	| creditCard |
+	
+	creditCard := CreditCard goodThrough: November/3/2022.
+	
+	self deny: creditCard isExpiredOn: November/2/2022.! !
+!CreditCardTest class methodsFor: 'no messages' stamp: 'TC&OLT 11/3/2022 09:32:52'!
+goodThrough: aDateOfExpiration
+	
+	^self new initializeGoodThrough: aDateOfExpiration.! !
+
+!methodRemoval: CreditCardTest class #goodThrough: stamp: 'TC&OLT 11/3/2022 09:33:13'!
+goodThrough: aDateOfExpiration
+	
+	^self new initializeGoodThrough: aDateOfExpiration.!
+!CreditCard class methodsFor: 'no messages' stamp: 'TC&OLT 11/3/2022 09:33:16'!
+goodThrough: aDateOfExpiration
+	
+	^self new initializeGoodThrough: aDateOfExpiration.! !
+!CreditCard methodsFor: 'no messages' stamp: 'TC&OLT 11/3/2022 09:33:46'!
+initializeGoodThrough: aDateOfExpiration
+	
+	! !
+!CreditCard methodsFor: 'nil' stamp: 'TC&OLT 11/3/2022 09:34:18'!
+isExpiredOn: aDateToCheckExpirationOn
+	
+	^false.! !
+!CreditCardTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 09:34:46' prior: 50557358!
+test01
+	
+	"test01CreditCardIsNotExpiredOnDateBeforeExpiration"
+	
+	| creditCard |
+	
+	creditCard := CreditCard goodThrough: November/3/2022.
+	
+	self deny: (creditCard isExpiredOn: November/2/2022).! !
+
+!testRun: #CreditCardTest #test01 stamp: 'TC&OLT 11/3/2022 09:34:49'!
+PASSED!
+!CreditCardTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 09:35:09'!
+test02
+	
+	"test01CreditCardIsExpiredOnDatePastExpiration"
+	
+	| creditCard |
+	
+	creditCard := CreditCard goodThrough: November/3/2022.
+	
+	self assert: (creditCard isExpiredOn: November/4/2022).! !
+
+!testRun: #CreditCardTest #test01 stamp: 'TC&OLT 11/3/2022 09:35:12'!
+PASSED!
+
+!testRun: #CreditCardTest #test02 stamp: 'TC&OLT 11/3/2022 09:35:12'!
+FAILURE!
+
+!testRun: #CreditCardTest #test02 stamp: 'TC&OLT 11/3/2022 09:35:12'!
+FAILURE!
+!CreditCard methodsFor: 'initialization' stamp: 'TC&OLT 11/3/2022 09:35:33' prior: 50557384!
+initializeGoodThrough: aDateOfExpiration
+	
+	expirationDate := aDateOfExpiration.! !
+!CreditCard methodsFor: 'testing' stamp: 'TC&OLT 11/3/2022 09:35:54' prior: 50557388!
+isExpiredOn: aDateToCheckExpirationOn
+	
+	^expirationDate < aDateToCheckExpirationOn.! !
+
+!testRun: #CreditCardTest #test01 stamp: 'TC&OLT 11/3/2022 09:36:00'!
+PASSED!
+
+!testRun: #CreditCardTest #test02 stamp: 'TC&OLT 11/3/2022 09:36:00'!
+PASSED!
+!CreditCardTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 09:37:27'!
+test03
+	
+	"test03CreditCardCreationFailsForEmptyOwnerName"
+	
+	| creditCard |
+	
+	creditCard := CreditCard goodThrough: November/3/2022.
+	
+	self assert: (creditCard isExpiredOn: November/4/2022).! !
+!CreditCardTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 09:38:12' prior: 50557437!
+test03
+	
+	"test03CreditCardCreationFailsForEmptyOwnerName"
+	
+	| creditCard |
+	
+	creditCard := CreditCard ownedBy: 'Bingus' goodThrough: November/3/2022.
+	
+	self assert: (creditCard isExpiredOn: November/4/2022).! !
+
+!testRun: #CreditCardTest #test01 stamp: 'TC&OLT 11/3/2022 09:38:17'!
+PASSED!
+
+!testRun: #CreditCardTest #test02 stamp: 'TC&OLT 11/3/2022 09:38:17'!
+PASSED!
+
+!testRun: #CreditCardTest #test03 stamp: 'TC&OLT 11/3/2022 09:38:17'!
+ERROR!
+
+!testRun: #CreditCardTest #test03 stamp: 'TC&OLT 11/3/2022 09:38:17'!
+ERROR!
+!CreditCardTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 09:40:30' prior: 50557446!
+test03
+	
+	"test03CreditCardCreationFailsForEmptyOwnerName"
+	
+	| creditCard |
+	
+	self should: [ creditCard := CreditCard ownedBy: 'Bingus' goodThrough: November/3/2022. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: CreditCard emptyOwnerNameErrorMessage.
+	]! !
+!CreditCardTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 09:41:32' prior: 50557466!
+test03
+	
+	"test03CreditCardCreationFailsForEmptyOwnerName"
+	
+	| creditCard |
+	
+	self should: [ creditCard := CreditCard ownedBy: 'Bingus' goodThrough: November/3/2022. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: CreditCard emptyOwnerNameErrorMessage.
+	].! !
+
+!testRun: #CreditCardTest #test03 stamp: 'TC&OLT 11/3/2022 09:41:41'!
+ERROR!
+
+!testRun: #CreditCardTest #test03 stamp: 'TC&OLT 11/3/2022 09:41:41'!
+ERROR!
+!CreditCard class methodsFor: 'instance creation' stamp: 'TC&OLT 11/3/2022 09:42:16'!
+ownedBy: anOwnerName goodThrough: aDateOfExpiration
+	
+	^self new initializeOwnedBy: anOwnerName goodThrough: aDateOfExpiration.! !
+!CreditCard methodsFor: 'initialization' stamp: 'TC&OLT 11/3/2022 09:42:41'!
+initializeOwnedBy: anOwnerName GoodThrough: aDateOfExpiration
+	
+	expirationDate := aDateOfExpiration.! !
+
+Object subclass: #CreditCard
+	instanceVariableNames: 'ownerName expirationDate'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #CreditCard category: 'TusLibros' stamp: 'TC&OLT 11/3/2022 09:42:52'!
+Object subclass: #CreditCard
+	instanceVariableNames: 'ownerName expirationDate'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!CreditCard methodsFor: 'initialization' stamp: 'TC&OLT 11/3/2022 09:43:09' prior: 50557504!
+initializeOwnedBy: anOwnerName GoodThrough: aDateOfExpiration
+	
+	ownerName := anOwnerName.
+	expirationDate := aDateOfExpiration.! !
+!CreditCard methodsFor: 'initialization' stamp: 'TC&OLT 11/3/2022 09:43:36'!
+initializeOwnedBy: anOwnerName goodThrough: aDateOfExpiration
+	
+	ownerName := anOwnerName.
+	expirationDate := aDateOfExpiration.! !
+
+!methodRemoval: CreditCard #initializeOwnedBy:GoodThrough: stamp: 'TC&OLT 11/3/2022 09:43:36'!
+initializeOwnedBy: anOwnerName GoodThrough: aDateOfExpiration
+	
+	ownerName := anOwnerName.
+	expirationDate := aDateOfExpiration.!
+!CreditCard class methodsFor: 'instance creation' stamp: 'TC&OLT 11/3/2022 09:44:41' prior: 50557497!
+ownedBy: anOwnerName goodThrough: aDateOfExpiration
+	
+	anOwnerName isEmpty ifTrue: [ ^self error: self emptyOwnerNameErrorMessage. ].
+	^self new initializeOwnedBy: anOwnerName goodThrough: aDateOfExpiration.! !
+
+!methodRemoval: CreditCardTest #test03 stamp: 'TC&OLT 11/3/2022 10:10:46'!
+test03
+	
+	"test03CreditCardCreationFailsForEmptyOwnerName"
+	
+	| creditCard |
+	
+	self should: [ creditCard := CreditCard ownedBy: 'Bingus' goodThrough: November/3/2022. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: CreditCard emptyOwnerNameErrorMessage.
+	].!
+
+!methodRemoval: CreditCard class #ownedBy:goodThrough: stamp: 'TC&OLT 11/3/2022 10:10:52'!
+ownedBy: anOwnerName goodThrough: aDateOfExpiration
+	
+	anOwnerName isEmpty ifTrue: [ ^self error: self emptyOwnerNameErrorMessage. ].
+	^self new initializeOwnedBy: anOwnerName goodThrough: aDateOfExpiration.!
+
+!methodRemoval: CreditCard #initializeOwnedBy:goodThrough: stamp: 'TC&OLT 11/3/2022 10:10:57'!
+initializeOwnedBy: anOwnerName goodThrough: aDateOfExpiration
+	
+	ownerName := anOwnerName.
+	expirationDate := aDateOfExpiration.!
+
+!testRun: #CreditCardTest #test01 stamp: 'TC&OLT 11/3/2022 10:11:01'!
+PASSED!
+
+!testRun: #CreditCardTest #test02 stamp: 'TC&OLT 11/3/2022 10:11:01'!
+PASSED!
+
+Object subclass: #CreditCard
+	instanceVariableNames: 'expirationDate'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #CreditCard category: 'TusLibros' stamp: 'TC&OLT 11/3/2022 10:11:13'!
+Object subclass: #CreditCard
+	instanceVariableNames: 'expirationDate'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!testRun: #CashierTest #test01 stamp: 'TC&OLT 11/3/2022 10:11:30'!
+PASSED!
+
+!testRun: #CashierTest #test02 stamp: 'TC&OLT 11/3/2022 10:11:30'!
+PASSED!
+
+!testRun: #CashierTest #test03 stamp: 'TC&OLT 11/3/2022 10:11:30'!
+PASSED!
+
+!testRun: #CashierTest #test04 stamp: 'TC&OLT 11/3/2022 10:11:30'!
+PASSED!
+
+!testRun: #CashierTest #test05 stamp: 'TC&OLT 11/3/2022 10:11:30'!
+PASSED!
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 10:14:05'!
+test06
+	
+	"test06CheckoutCannotBePerformedWithAStolenCreditCard"
+	
+	"| cart salesBook cashier expiredCreditCard |
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book 1'->(10*euro) with: 'valid book 2'->(15*euro)).
+	cart add: 2 of: 'valid book 1'.
+	cart add: 3 of: 'valid book 2'.
+	
+	salesBook := OrderedCollection new.
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	expiredCreditCard:= CreditCard goodThrough: (September/1/2021).
+	
+	self should: [cashier checkoutFor: cart with: expiredCreditCard on: (November/2/2022).]
+	raise: Error - MessageNotUnderstood
+	withExceptionDo: [ :anError |
+		self assert: anError messageText equals: cashier expiredCardErrorMessage.
+		self assert: salesBook isEmpty.
+	]."
+	
+	! !
+
+!classDefinition: #MerchantProcessorTestDouble category: 'TusLibros' stamp: 'TC&OLT 11/3/2022 10:25:53'!
+Object subclass: #MerchantProcessorTestDouble
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 10:25:46' prior: 50557611!
+test06
+	
+	"test06CheckoutCannotBePerformedWithAStolenCreditCard"
+	
+	| cart salesBook cashier stolenCreditCard merchantProcessor |
+	
+	cart := Cart acceptingItemsOf: (Dictionary with:'valid book'->(10*euro)).
+	cart add: 'valid book'.
+	
+	salesBook := OrderedCollection new.
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	stolenCreditCard := CreditCard goodThrough: November/3/2022.
+	
+	merchantProcessor := MerchantProcessorTestDouble withDataBase: Dictionary new.
+	
+	self should: [ cashier checkoutFor: cart with: stolenCreditCard on: (November/2/2022) using: merchantProcessor. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cashier stolenCardErrorMessage.
+		self assert: salesBook isEmpty.
+	].! !
+
+!classRemoval: #MPSimulatorTest stamp: 'TC&OLT 11/3/2022 10:26:28'!
+TestCase subclass: #MPSimulatorTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+TestCase subclass: #MerchantProcessorTestDoubleTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #MerchantProcessorTestDoubleTest category: 'TusLibros' stamp: 'TC&OLT 11/3/2022 10:26:43'!
+TestCase subclass: #MerchantProcessorTestDoubleTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+Object subclass: #MerchantProcessorTestDouble
+	instanceVariableNames: 'debitDictionary'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #MerchantProcessorTestDouble category: 'TusLibros' stamp: 'TC&OLT 11/3/2022 10:43:38'!
+Object subclass: #MerchantProcessorTestDouble
+	instanceVariableNames: 'debitDictionary'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+----End fileIn of /home/kaneda/Downloads/tusLibros-iteracion2/linux64_tusLibros-iteracion2/Packages/TerseGuide.pck.st----!
+!MerchantProcessorTestDoubleTest methodsFor: 'no messages' stamp: 'TC&OLT 11/3/2022 10:52:16'!
+test01
+	
+	"test01DebitingAnyAmountFromCreditCardInDictionaryExecutesAssociatedClosure"
+	
+	| creditCard merchantProcessor |
+	
+	creditCard := CreditCard goodThrough: November/3/2022.
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: creditCard->[^'Success.']).
+	
+	self assert: 'Success' equals: (merchantProcessor debit: 0 from: creditCard).! !
+!MerchantProcessorTestDouble class methodsFor: 'no messages' stamp: 'TC&OLT 11/3/2022 10:53:06'!
+with: aClosureDictionary
+	
+	^self new initializeWith: aClosureDictionary.! !
+!MerchantProcessorTestDouble class methodsFor: 'instance creation' stamp: 'TC&OLT 11/3/2022 10:53:51' prior: 50560639!
+with: aDictionaryWithClosuresForValues
+	
+	^self new initializeWith: aDictionaryWithClosuresForValues.! !
+
+!testRun: #MerchantProcessorTestDoubleTest #test01 stamp: 'TC&OLT 11/3/2022 10:54:03'!
+ERROR!
+
+!testRun: #MerchantProcessorTestDoubleTest #test01 stamp: 'TC&OLT 11/3/2022 10:54:03'!
+ERROR!
+!MerchantProcessorTestDouble methodsFor: 'no messages' stamp: 'TC&OLT 11/3/2022 10:54:30'!
+initializeWith: aDictionaryWithClosuresForValues
+	
+	^debitDictionary := aDictionaryWithClosuresForValues.! !
+!MerchantProcessorTestDouble methodsFor: 'nil' stamp: 'TC&OLT 11/3/2022 10:55:20'!
+debit: anAmountToDebit from: aCreditCardToDebitFrom
+	
+	^(debitDictionary at: aCreditCardToDebitFrom) value! !
+
+!testRun: #MerchantProcessorTestDoubleTest #test01 stamp: 'TC&OLT 11/3/2022 10:55:52'!
+ERROR!
+
+!testRun: #MerchantProcessorTestDoubleTest #test01 stamp: 'TC&OLT 11/3/2022 10:55:52'!
+ERROR!
+!MerchantProcessorTestDouble methodsFor: 'debiting' stamp: 'TC&OLT 11/3/2022 10:56:19' prior: 50560665!
+debit: anAmountToDebit from: aCreditCardToDebitFrom
+	
+	^(debitDictionary at: aCreditCardToDebitFrom) value.! !
+
+!testRun: #MerchantProcessorTestDoubleTest #test01 stamp: 'TC&OLT 11/3/2022 10:56:28'!
+ERROR!
+
+!testRun: #MerchantProcessorTestDoubleTest #test01 stamp: 'TC&OLT 11/3/2022 10:56:28'!
+ERROR!
+
+!testRun: #MerchantProcessorTestDoubleTest #test01 stamp: 'TC&OLT 11/3/2022 10:56:48'!
+ERROR!
+
+!testRun: #MerchantProcessorTestDoubleTest #test01 stamp: 'TC&OLT 11/3/2022 10:56:48'!
+ERROR!
+!MerchantProcessorTestDouble methodsFor: 'initialization' stamp: 'TC&OLT 11/3/2022 10:57:47' prior: 50560659!
+initializeWith: aDictionaryWithClosuresForValues
+	
+	debitDictionary := aDictionaryWithClosuresForValues.! !
+
+!testRun: #MerchantProcessorTestDoubleTest #test01 stamp: 'TC&OLT 11/3/2022 10:57:59'!
+PASSED!
+!MerchantProcessorTestDoubleTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 11:00:49'!
+test02
+	
+	"test01DebitingAnyAmountFromCreditCardNotInDictionaryCausesAnError"
+	
+	| creditCardInDictionary creditCardNotInDictionary merchantProcessor |
+	
+	creditCardInDictionary := CreditCard goodThrough: November/3/2022.
+	creditCardNotInDictionary := CreditCard goodThrough: November/4/2022.
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: creditCardInDictionary ->[^'Success.']).
+	
+	self should: [ merchantProcessor debit: 0 from: creditCardNotInDictionary. ]
+	raise: 	Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: merchantProcessor cardNotRegisteredErrorMessage.
+	].! !
+
+!testRun: #MerchantProcessorTestDoubleTest #test01 stamp: 'TC&OLT 11/3/2022 11:00:52'!
+PASSED!
+
+!testRun: #MerchantProcessorTestDoubleTest #test02 stamp: 'TC&OLT 11/3/2022 11:00:52'!
+ERROR!
+
+!testRun: #MerchantProcessorTestDoubleTest #test02 stamp: 'TC&OLT 11/3/2022 11:00:52'!
+ERROR!
+!MerchantProcessorTestDouble methodsFor: 'debiting' stamp: 'TC&OLT 11/3/2022 11:01:21' prior: 50560678!
+debit: anAmountToDebit from: aCreditCardToDebitFrom
+	
+	^(debitDictionary at: aCreditCardToDebitFrom ifAbsent: [ self error: self cardNotRegisteredErrorMessage. ]) value.! !
+!MerchantProcessorTestDouble methodsFor: 'nil' stamp: 'TC&OLT 11/3/2022 11:01:49'!
+cardNotRegisteredErrorMessage
+	
+	^'Credit card has not been registered.'.! !
+
+!testRun: #MerchantProcessorTestDoubleTest #test01 stamp: 'TC&OLT 11/3/2022 11:02:02'!
+PASSED!
+
+!testRun: #MerchantProcessorTestDoubleTest #test02 stamp: 'TC&OLT 11/3/2022 11:02:02'!
+PASSED!
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 11:27:51' prior: 50557645!
+test06
+	
+	"test06CheckoutCannotBePerformedWithAStolenCreditCard"
+	
+	| cart salesBook cashier stolenCreditCard merchantProcessor |
+	
+	cart := Cart acceptingItemsOf: (Dictionary with:'valid book'->(10*euro)).
+	cart add: 'valid book'.
+	
+	salesBook := OrderedCollection new.
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	stolenCreditCard := CreditCard goodThrough: November/3/2022.
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: stolenCreditCard->[ cashier error: cashier stolenCreditCardErrorMessage. ]).
+	
+	self should: [ cashier checkoutFor: cart with: stolenCreditCard on: (November/2/2022) using: merchantProcessor. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cashier stolenCreditCardErrorMessage.
+		self assert: salesBook isEmpty.
+	].! !
+
+[ :daddasd :dada | 'hola'. ] value: 1 value: 2.!
+!MerchantProcessorTestDouble methodsFor: 'debiting' stamp: 'TC&OLT 11/3/2022 11:29:38' prior: 50560740!
+debit: anAmountToDebit from: aCreditCardToDebitFrom
+	
+	^(debitDictionary at: aCreditCardToDebitFrom ifAbsent: [ self error: self cardNotRegisteredErrorMessage. ]) value: anAmountToDebit value: aCreditCardToDebitFrom.! !
+
+!testRun: #MerchantProcessorTestDoubleTest #test01 stamp: 'TC&OLT 11/3/2022 11:29:48'!
+ERROR!
+
+!testRun: #MerchantProcessorTestDoubleTest #test02 stamp: 'TC&OLT 11/3/2022 11:29:48'!
+PASSED!
+
+!testRun: #MerchantProcessorTestDoubleTest #test01 stamp: 'TC&OLT 11/3/2022 11:29:48'!
+ERROR!
+!MerchantProcessorTestDoubleTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 11:30:06' prior: 50560624!
+test01
+	
+	"test01DebitingAnyAmountFromCreditCardInDictionaryExecutesAssociatedClosure"
+	
+	| creditCard merchantProcessor |
+	
+	creditCard := CreditCard goodThrough: November/3/2022.
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: creditCard->[ :anAmount :aCreditCard | ^'Success.']).
+	
+	self assert: 'Success' equals: (merchantProcessor debit: 0 from: creditCard).! !
+!MerchantProcessorTestDoubleTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 11:30:15' prior: 50560707!
+test02
+	
+	"test01DebitingAnyAmountFromCreditCardNotInDictionaryCausesAnError"
+	
+	| creditCardInDictionary creditCardNotInDictionary merchantProcessor |
+	
+	creditCardInDictionary := CreditCard goodThrough: November/3/2022.
+	creditCardNotInDictionary := CreditCard goodThrough: November/4/2022.
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: creditCardInDictionary ->[ :anAmount :aCreditCard | ^'Success.']).
+	
+	self should: [ merchantProcessor debit: 0 from: creditCardNotInDictionary. ]
+	raise: 	Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: merchantProcessor cardNotRegisteredErrorMessage.
+	].! !
+
+!testRun: #MerchantProcessorTestDoubleTest #test01 stamp: 'TC&OLT 11/3/2022 11:30:17'!
+PASSED!
+
+!testRun: #MerchantProcessorTestDoubleTest #test02 stamp: 'TC&OLT 11/3/2022 11:30:17'!
+PASSED!
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 11:31:12' prior: 50560760!
+test06
+	
+	"test06CheckoutCannotBePerformedWithAStolenCreditCard"
+	
+	| cart salesBook cashier stolenCreditCard merchantProcessor |
+	
+	cart := Cart acceptingItemsOf: (Dictionary with:'valid book'->(10*euro)).
+	cart add: 'valid book'.
+	
+	salesBook := OrderedCollection new.
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	stolenCreditCard := CreditCard goodThrough: November/3/2022.
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: stolenCreditCard->[ :anAmount :aCreditCard | cashier error: cashier stolenCreditCardErrorMessage. ]).
+	
+	self should: [ cashier checkoutFor: cart with: stolenCreditCard on: (November/2/2022) using: merchantProcessor. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cashier stolenCreditCardErrorMessage.
+		self assert: salesBook isEmpty.
+	].! !
+
+!testRun: #CashierTest #test01 stamp: 'TC&OLT 11/3/2022 11:32:11'!
+PASSED!
+
+!testRun: #CashierTest #test02 stamp: 'TC&OLT 11/3/2022 11:32:11'!
+PASSED!
+
+!testRun: #CashierTest #test03 stamp: 'TC&OLT 11/3/2022 11:32:11'!
+PASSED!
+
+!testRun: #CashierTest #test04 stamp: 'TC&OLT 11/3/2022 11:32:11'!
+PASSED!
+
+!testRun: #CashierTest #test05 stamp: 'TC&OLT 11/3/2022 11:32:11'!
+PASSED!
+
+!testRun: #CashierTest #test06 stamp: 'TC&OLT 11/3/2022 11:32:11'!
+ERROR!
+
+!testRun: #CashierTest #test06 stamp: 'TC&OLT 11/3/2022 11:32:11'!
+ERROR!
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 11:32:36' prior: 50560857!
+test06
+	
+	"test06CheckoutCannotBePerformedWithAStolenCreditCard"
+	
+	| cart salesBook cashier stolenCreditCard merchantProcessor |
+	
+	cart := Cart acceptingItemsOf: (Dictionary with:'valid book'->(10*euro)).
+	cart add: 'valid book'.
+	
+	salesBook := OrderedCollection new.
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	stolenCreditCard := CreditCard goodThrough: November/3/2022.
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: stolenCreditCard->[ :anAmount :aCreditCard | cashier error: cashier stolenCardErrorMessage. ]).
+	
+	self should: [ cashier checkoutFor: cart with: stolenCreditCard on: (November/2/2022) using: merchantProcessor. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cashier stolenCardErrorMessage.
+		self assert: salesBook isEmpty.
+	].! !
+!Cashier methodsFor: 'error messages' stamp: 'TC&OLT 11/3/2022 11:33:07'!
+stolenCardErrorMessage
+
+	^'Cannot perform checkout with a stolen card.'.! !
+!Cashier methodsFor: 'checkout' stamp: 'TC&OLT 11/3/2022 11:35:50'!
+checkoutFor: aCartToPerformCheckoutFor with: aCardToPerformCheckoutWith on: aDateToPerformCheckoutOn using: aMerchantProcessor
+	
+	| cartAccumulatedPrice |
+	
+	self assertCheckoutCanBePerformedFor: aCartToPerformCheckoutFor.
+	self assertCheckoutCanBePerformedWith: aCardToPerformCheckoutWith on: aDateToPerformCheckoutOn. "Cambiar nombre para chequeo por vencimiento."
+	
+	cartAccumulatedPrice := aCartToPerformCheckoutFor accumulatedPrice.
+	salesBook add: cartAccumulatedPrice.
+	
+	aMerchantProcessor debit: cartAccumulatedPrice from: aCartToPerformCheckoutFor.
+	
+	^cartAccumulatedPrice.! !
+
+!testRun: #CashierTest #test01 stamp: 'TC&OLT 11/3/2022 11:35:55'!
+PASSED!
+
+!testRun: #CashierTest #test02 stamp: 'TC&OLT 11/3/2022 11:35:55'!
+PASSED!
+
+!testRun: #CashierTest #test03 stamp: 'TC&OLT 11/3/2022 11:35:55'!
+PASSED!
+
+!testRun: #CashierTest #test04 stamp: 'TC&OLT 11/3/2022 11:35:55'!
+PASSED!
+
+!testRun: #CashierTest #test05 stamp: 'TC&OLT 11/3/2022 11:35:55'!
+PASSED!
+
+!testRun: #CashierTest #test06 stamp: 'TC&OLT 11/3/2022 11:35:55'!
+FAILURE!
+
+!testRun: #CashierTest #test06 stamp: 'TC&OLT 11/3/2022 11:35:55'!
+FAILURE!
+
+aDictionaryWithClosuresForValues!
+
+!testRun: #CashierTest #test06 stamp: 'TC&OLT 11/3/2022 11:38:13'!
+FAILURE!
+
+!testRun: #MerchantProcessorTestDoubleTest #test01 stamp: 'TC&OLT 11/3/2022 11:41:07'!
+PASSED!
+
+!testRun: #MerchantProcessorTestDoubleTest #test02 stamp: 'TC&OLT 11/3/2022 11:41:07'!
+PASSED!
+!MerchantProcessorTestDouble methodsFor: 'debiting' stamp: 'TC&OLT 11/3/2022 11:41:23' prior: 50560791!
+debit: anAmountToDebit from: aCreditCardToDebitFrom
+	
+	^(debitDictionary at: aCreditCardToDebitFrom ifAbsent: [ :anAmount :aCreditCard | self error: self cardNotRegisteredErrorMessage. ]) value: anAmountToDebit value: aCreditCardToDebitFrom.! !
+!MerchantProcessorTestDouble methodsFor: 'debiting' stamp: 'TC&OLT 11/3/2022 11:43:11' prior: 50560985!
+debit: anAmountToDebit from: aCreditCardToDebitFrom
+	
+	^(debitDictionary at: aCreditCardToDebitFrom ifAbsent: [self error: self cardNotRegisteredErrorMessage. ]) value: anAmountToDebit value: aCreditCardToDebitFrom.! !
+!MerchantProcessorTestDouble methodsFor: 'debiting' stamp: 'TC&OLT 11/3/2022 11:43:18' prior: 50560996!
+debit: anAmountToDebit from: aCreditCardToDebitFrom
+	
+	^(debitDictionary at: aCreditCardToDebitFrom ifAbsent: [ self error: self cardNotRegisteredErrorMessage. ]) value: anAmountToDebit value: aCreditCardToDebitFrom.! !
+!MerchantProcessorTestDouble methodsFor: 'debiting' stamp: 'TC&OLT 11/3/2022 11:44:04' prior: 50561007!
+debit: anAmountToDebit from: aCreditCardToDebitFrom
+	
+	^(debitDictionary at: aCreditCardToDebitFrom ifAbsent: [ self error: self cardNotRegisteredErrorMessage. ]) value: anAmountToDebit value: aCreditCardToDebitFrom.! !
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 11:44:37' prior: 50560903!
+test06
+	
+	"test06CheckoutCannotBePerformedWithAStolenCreditCard"
+	
+	| cart salesBook cashier stolenCreditCard merchantProcessor |
+	
+	cart := Cart acceptingItemsOf: (Dictionary with:'valid book'->(10*euro)).
+	cart add: 'valid book'.
+	
+	salesBook := OrderedCollection new.
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	stolenCreditCard := CreditCard goodThrough: November/3/2022.
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: (stolenCreditCard->[ :anAmount :aCreditCard | cashier error: cashier stolenCardErrorMessage. ])).
+	
+	self should: [ cashier checkoutFor: cart with: stolenCreditCard on: (November/2/2022) using: merchantProcessor. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cashier stolenCardErrorMessage.
+		self assert: salesBook isEmpty.
+	].! !
+
+!testRun: #CashierTest #test06 stamp: 'TC&OLT 11/3/2022 11:44:44'!
+FAILURE!
+
+!testRun: #CashierTest #test06 stamp: 'TC&OLT 11/3/2022 11:44:44'!
+FAILURE!
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 11:45:32' prior: 50561028!
+test06
+	
+	"test06CheckoutCannotBePerformedWithAStolenCreditCard"
+	
+	| cart salesBook cashier stolenCreditCard merchantProcessor |
+	
+	cart := Cart acceptingItemsOf: (Dictionary with:'valid book'->(10*euro)).
+	cart add: 'valid book'.
+	
+	salesBook := OrderedCollection new.
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	stolenCreditCard := CreditCard goodThrough: November/3/2022.
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: stolenCreditCard->[ :anAmount :aCreditCard | cashier error: cashier stolenCardErrorMessage. ]).
+	
+	self should: [ cashier checkoutFor: cart with: stolenCreditCard on: (November/2/2022) using: merchantProcessor. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cashier stolenCardErrorMessage.
+		self assert: salesBook isEmpty.
+	].! !
+!Cashier methodsFor: 'checkout' stamp: 'TC&OLT 11/3/2022 11:48:19' prior: 50560937!
+checkoutFor: aCartToPerformCheckoutFor with: aCardToPerformCheckoutWith on: aDateToPerformCheckoutOn using: aMerchantProcessor
+	
+	| cartAccumulatedPrice |
+	
+	self assertCheckoutCanBePerformedFor: aCartToPerformCheckoutFor.
+	self assertCheckoutCanBePerformedWith: aCardToPerformCheckoutWith on: aDateToPerformCheckoutOn. "Cambiar nombre para chequeo por vencimiento."
+	
+	cartAccumulatedPrice := aCartToPerformCheckoutFor accumulatedPrice.
+	salesBook add: cartAccumulatedPrice.
+	
+	aMerchantProcessor debit: cartAccumulatedPrice from: aCardToPerformCheckoutWith.
+	
+	^cartAccumulatedPrice.! !
+
+!testRun: #CashierTest #test06 stamp: 'TC&OLT 11/3/2022 11:48:41'!
+FAILURE!
+
+!testRun: #CashierTest #test06 stamp: 'TC&OLT 11/3/2022 11:48:41'!
+FAILURE!
+!Cashier methodsFor: 'checkout' stamp: 'TC&OLT 11/3/2022 11:49:25' prior: 50561091!
+checkoutFor: aCartToPerformCheckoutFor with: aCardToPerformCheckoutWith on: aDateToPerformCheckoutOn using: aMerchantProcessor
+	
+	| cartAccumulatedPrice |
+	
+	self assertCheckoutCanBePerformedFor: aCartToPerformCheckoutFor.
+	self assertCheckoutCanBePerformedWith: aCardToPerformCheckoutWith on: aDateToPerformCheckoutOn. "Cambiar nombre para chequeo por vencimiento."
+	
+	cartAccumulatedPrice := aCartToPerformCheckoutFor accumulatedPrice.
+	
+	aMerchantProcessor debit: cartAccumulatedPrice from: aCardToPerformCheckoutWith.
+	
+	salesBook add: cartAccumulatedPrice.
+	
+	^cartAccumulatedPrice.! !
+
+!testRun: #CashierTest #test06 stamp: 'TC&OLT 11/3/2022 11:50:12'!
+PASSED!
+
+!testRun: #CashierTest #test01 stamp: 'TC&OLT 11/3/2022 11:50:14'!
+PASSED!
+
+!testRun: #CashierTest #test02 stamp: 'TC&OLT 11/3/2022 11:50:14'!
+PASSED!
+
+!testRun: #CashierTest #test03 stamp: 'TC&OLT 11/3/2022 11:50:14'!
+PASSED!
+
+!testRun: #CashierTest #test04 stamp: 'TC&OLT 11/3/2022 11:50:14'!
+PASSED!
+
+!testRun: #CashierTest #test05 stamp: 'TC&OLT 11/3/2022 11:50:14'!
+PASSED!
+
+!testRun: #CashierTest #test06 stamp: 'TC&OLT 11/3/2022 11:50:14'!
+PASSED!
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 11:53:19'!
+test07
+	
+	"test07CheckoutCannotBePerformedWithACardWithInsufficientFunds"
+	
+	| cart salesBook cashier creditCardWithInsufficientFunds merchantProcessor |
+	
+	cart := Cart acceptingItemsOf: (Dictionary with:'valid book'->(10*euro)).
+	cart add: 'valid book'.
+	
+	salesBook := OrderedCollection new.
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	creditCardWithInsufficientFunds := CreditCard goodThrough: November/3/2022.
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: creditCardWithInsufficientFunds->[ :anAmount :aCreditCard | cashier error: cashier cardWithInsufficientFundsErrorMessage. ]).
+	
+	self should: [ cashier checkoutFor: cart with: creditCardWithInsufficientFunds on: (November/2/2022) using: merchantProcessor. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cashier stolenCardErrorMessage.
+		self assert: salesBook isEmpty.
+	].! !
+
+!testRun: #CashierTest #test01 stamp: 'TC&OLT 11/3/2022 11:53:23'!
+PASSED!
+
+!testRun: #CashierTest #test02 stamp: 'TC&OLT 11/3/2022 11:53:23'!
+PASSED!
+
+!testRun: #CashierTest #test03 stamp: 'TC&OLT 11/3/2022 11:53:23'!
+PASSED!
+
+!testRun: #CashierTest #test04 stamp: 'TC&OLT 11/3/2022 11:53:23'!
+PASSED!
+
+!testRun: #CashierTest #test05 stamp: 'TC&OLT 11/3/2022 11:53:23'!
+PASSED!
+
+!testRun: #CashierTest #test06 stamp: 'TC&OLT 11/3/2022 11:53:23'!
+PASSED!
+
+!testRun: #CashierTest #test07 stamp: 'TC&OLT 11/3/2022 11:53:23'!
+FAILURE!
+
+!testRun: #CashierTest #test07 stamp: 'TC&OLT 11/3/2022 11:53:23'!
+FAILURE!
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 11:53:34' prior: 50561155!
+test07
+	
+	"test07CheckoutCannotBePerformedWithACardWithInsufficientFunds"
+	
+	| cart salesBook cashier creditCardWithInsufficientFunds merchantProcessor |
+	
+	cart := Cart acceptingItemsOf: (Dictionary with:'valid book'->(10*euro)).
+	cart add: 'valid book'.
+	
+	salesBook := OrderedCollection new.
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	creditCardWithInsufficientFunds := CreditCard goodThrough: November/3/2022.
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: creditCardWithInsufficientFunds->[ :anAmount :aCreditCard | cashier error: cashier cardWithInsufficientFundsErrorMessage. ]).
+	
+	self should: [ cashier checkoutFor: cart with: creditCardWithInsufficientFunds on: (November/2/2022) using: merchantProcessor. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cashier cardWithInsufficientFundsErrorMessage.
+		self assert: salesBook isEmpty.
+	].! !
+
+!testRun: #CashierTest #test01 stamp: 'TC&OLT 11/3/2022 11:58:16'!
+PASSED!
+
+!testRun: #CashierTest #test02 stamp: 'TC&OLT 11/3/2022 11:58:16'!
+PASSED!
+
+!testRun: #CashierTest #test03 stamp: 'TC&OLT 11/3/2022 11:58:16'!
+PASSED!
+
+!testRun: #CashierTest #test04 stamp: 'TC&OLT 11/3/2022 11:58:16'!
+PASSED!
+
+!testRun: #CashierTest #test05 stamp: 'TC&OLT 11/3/2022 11:58:16'!
+PASSED!
+
+!testRun: #CashierTest #test06 stamp: 'TC&OLT 11/3/2022 11:58:16'!
+PASSED!
+
+!testRun: #CashierTest #test07 stamp: 'TC&OLT 11/3/2022 11:58:16'!
+ERROR!
+
+!testRun: #CashierTest #test07 stamp: 'TC&OLT 11/3/2022 11:58:16'!
+ERROR!
+!Cashier methodsFor: 'error messages' stamp: 'TC&OLT 11/3/2022 11:58:39'!
+cardWithInsufficientFundsErrorMessage
+
+	^'Cannot perform checkout with a card with insufficient funds.'.! !
+
+!testRun: #CashierTest #test01 stamp: 'TC&OLT 11/3/2022 11:58:44'!
+PASSED!
+
+!testRun: #CashierTest #test02 stamp: 'TC&OLT 11/3/2022 11:58:44'!
+PASSED!
+
+!testRun: #CashierTest #test03 stamp: 'TC&OLT 11/3/2022 11:58:44'!
+PASSED!
+
+!testRun: #CashierTest #test04 stamp: 'TC&OLT 11/3/2022 11:58:44'!
+PASSED!
+
+!testRun: #CashierTest #test05 stamp: 'TC&OLT 11/3/2022 11:58:44'!
+PASSED!
+
+!testRun: #CashierTest #test06 stamp: 'TC&OLT 11/3/2022 11:58:44'!
+PASSED!
+
+!testRun: #CashierTest #test07 stamp: 'TC&OLT 11/3/2022 11:58:44'!
+PASSED!
+
+[ 'hola'. ] class!
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 12:05:30' prior: 50557281!
+test01
+	
+	"test0CheckoutOfEmptyCartResultsInError"
+	
+	| cart salesBook creditCard merchantProcessor cashier |
+	
+	cart := Cart acceptingItemsOf: Array new.
+	
+	salesBook := OrderedCollection new.
+	
+	creditCard:= CreditCard goodThrough: (September/1/2025).
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: creditCard ->[ :anAmount :aCreditCard | . ]).
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	self should: [ cashier checkoutFor: cart with: creditCard on: (November/2/2022) using: merchantProcessor. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cashier emptyCartAtCheckoutErrorMessage.
+		self assert: OrderedCollection new equals: salesBook.
+	].! !
+
+!testRun: #CashierTest #test01 stamp: 'TC&OLT 11/3/2022 12:05:33'!
+PASSED!
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 12:06:26' prior: 50557263!
+test02
+	
+	"test0CheckoutOfCartWithSingleItemReturnsPriceOfSuchItem"
+	
+	| cart salesBook creditCard merchantProcessor cashier |
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book'->(10*euro)).
+	cart add: 'valid book'.
+	
+	salesBook := OrderedCollection new.
+	
+	creditCard:= CreditCard goodThrough: (September/1/2025).
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: creditCard ->[ :anAmount :aCreditCard | . ]).
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	self assert: (10*euro) equals: (cashier checkoutFor: cart with: creditCard on: (November/2/2022) using: merchantProcessor).! !
+
+!testRun: #CashierTest #test01 stamp: 'TC&OLT 11/3/2022 12:06:28'!
+PASSED!
+
+!testRun: #CashierTest #test02 stamp: 'TC&OLT 11/3/2022 12:06:28'!
+PASSED!
+
+!testRun: #CashierTest #test03 stamp: 'TC&OLT 11/3/2022 12:06:28'!
+PASSED!
+
+!testRun: #CashierTest #test04 stamp: 'TC&OLT 11/3/2022 12:06:28'!
+PASSED!
+
+!testRun: #CashierTest #test05 stamp: 'TC&OLT 11/3/2022 12:06:28'!
+PASSED!
+
+!testRun: #CashierTest #test06 stamp: 'TC&OLT 11/3/2022 12:06:28'!
+PASSED!
+
+!testRun: #CashierTest #test07 stamp: 'TC&OLT 11/3/2022 12:06:28'!
+PASSED!
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 12:07:42' prior: 50557242!
+test03
+	
+	"test03CheckoutOfCartWithMultipleCopiesOfMultipleItemsReturnsPriceForAllCopies"
+	
+	| cart salesBook creditCard merchantProcessor cashier |
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book 1'->(10*euro) with: 'valid book 2'->(15*euro)).
+	cart add: 2 of: 'valid book 1'.
+	cart add: 3 of: 'valid book 2'.
+	
+	salesBook := OrderedCollection new.
+	
+	creditCard:= CreditCard goodThrough: (September/1/2025).
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: creditCard->[ :anAmount :anCreditCard | . ]).
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	self assert: (65*euro) equals: (cashier checkoutFor: cart with: creditCard on: (November/2/2022)).! !
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 12:07:56' prior: 50561349!
+test03
+	
+	"test03CheckoutOfCartWithMultipleCopiesOfMultipleItemsReturnsPriceForAllCopies"
+	
+	| cart salesBook creditCard merchantProcessor cashier |
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book 1'->(10*euro) with: 'valid book 2'->(15*euro)).
+	cart add: 2 of: 'valid book 1'.
+	cart add: 3 of: 'valid book 2'.
+	
+	salesBook := OrderedCollection new.
+	
+	creditCard:= CreditCard goodThrough: (September/1/2025).
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: creditCard->[ :anAmount :anCreditCard | . ]).
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	self assert: (65*euro) equals: (cashier checkoutFor: cart with: creditCard on: (November/2/2022) using: merchantProcessor).! !
+
+!testRun: #CashierTest #test01 stamp: 'TC&OLT 11/3/2022 12:07:59'!
+PASSED!
+
+!testRun: #CashierTest #test02 stamp: 'TC&OLT 11/3/2022 12:07:59'!
+PASSED!
+
+!testRun: #CashierTest #test03 stamp: 'TC&OLT 11/3/2022 12:07:59'!
+PASSED!
+
+!testRun: #CashierTest #test04 stamp: 'TC&OLT 11/3/2022 12:07:59'!
+PASSED!
+
+!testRun: #CashierTest #test05 stamp: 'TC&OLT 11/3/2022 12:07:59'!
+PASSED!
+
+!testRun: #CashierTest #test06 stamp: 'TC&OLT 11/3/2022 12:07:59'!
+PASSED!
+
+!testRun: #CashierTest #test07 stamp: 'TC&OLT 11/3/2022 12:07:59'!
+PASSED!
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 12:08:26' prior: 50557221!
+test04
+	
+	"test04SalesBooksRegistersCheckout"
+	
+	| cart salesBook creditCard merchantProcessor cashier |
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book 1'->(10*euro) with: 'valid book 2'->(15*euro)).
+	cart add: 2 of: 'valid book 1'.
+	cart add: 3 of: 'valid book 2'.
+	
+	salesBook := OrderedCollection new.
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+
+	
+	creditCard:= CreditCard goodThrough: (September/1/2025).
+	cashier checkoutFor: cart with: creditCard on: (November/2/2022).
+	
+	self assert: (OrderedCollection with: 65*euro) equals: (salesBook).! !
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 12:09:16' prior: 50561417!
+test04
+	
+	"test04SalesBooksRegistersCheckout"
+	
+	| cart salesBook creditCard merchantProcessor cashier |
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book 1'->(10*euro) with: 'valid book 2'->(15*euro)).
+	cart add: 2 of: 'valid book 1'.
+	cart add: 3 of: 'valid book 2'.
+	
+	salesBook := OrderedCollection new.
+
+	creditCard:= CreditCard goodThrough: (September/1/2025).
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: creditCard->[ :anAmount :anCreditCard | . ]).
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	cashier checkoutFor: cart with: creditCard on: (November/2/2022) using: merchantProcessor.
+	
+	self assert: (OrderedCollection with: 65*euro) equals: (salesBook).! !
+
+!testRun: #CashierTest #test01 stamp: 'TC&OLT 11/3/2022 12:09:18'!
+PASSED!
+
+!testRun: #CashierTest #test02 stamp: 'TC&OLT 11/3/2022 12:09:18'!
+PASSED!
+
+!testRun: #CashierTest #test03 stamp: 'TC&OLT 11/3/2022 12:09:18'!
+PASSED!
+
+!testRun: #CashierTest #test04 stamp: 'TC&OLT 11/3/2022 12:09:18'!
+PASSED!
+
+!testRun: #CashierTest #test05 stamp: 'TC&OLT 11/3/2022 12:09:18'!
+PASSED!
+
+!testRun: #CashierTest #test06 stamp: 'TC&OLT 11/3/2022 12:09:18'!
+PASSED!
+
+!testRun: #CashierTest #test07 stamp: 'TC&OLT 11/3/2022 12:09:18'!
+PASSED!
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 12:12:28' prior: 50557195!
+test05
+	
+	"test05CheckoutCannotBePerformedWhenUsingAnExpiredCreditCard"
+	
+	| cart salesBook expiredCreditCard merchantProcessor accessToMerchant cashier |
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book 1'->(10*euro) with: 'valid book 2'->(15*euro)).
+	cart add: 2 of: 'valid book 1'.
+	cart add: 3 of: 'valid book 2'.
+	
+	salesBook := OrderedCollection new.
+	
+	expiredCreditCard:= CreditCard goodThrough: (September/1/2021).
+	
+	accessToMerchant := false.
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: expiredCreditCard->[ :anAmount :aCreditCard | accessToMerchant := true.]).
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	self 
+		should: [cashier checkoutFor: cart with: expiredCreditCard on: (November/2/2022) using: merchantProcessor.]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: cashier expiredCardErrorMessage.
+			self assert: salesBook isEmpty.
+			self deny: accessToMerchant.
+		].
+		
+	! !
+
+!testRun: #CashierTest #test01 stamp: 'TC&OLT 11/3/2022 12:12:30'!
+PASSED!
+
+!testRun: #CashierTest #test02 stamp: 'TC&OLT 11/3/2022 12:12:30'!
+PASSED!
+
+!testRun: #CashierTest #test03 stamp: 'TC&OLT 11/3/2022 12:12:30'!
+PASSED!
+
+!testRun: #CashierTest #test04 stamp: 'TC&OLT 11/3/2022 12:12:30'!
+PASSED!
+
+!testRun: #CashierTest #test05 stamp: 'TC&OLT 11/3/2022 12:12:30'!
+PASSED!
+
+!testRun: #CashierTest #test06 stamp: 'TC&OLT 11/3/2022 12:12:30'!
+PASSED!
+
+!testRun: #CashierTest #test07 stamp: 'TC&OLT 11/3/2022 12:12:30'!
+PASSED!
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 12:14:36'!
+test01CheckoutOfEmptyCartResultsInError
+	
+	| cart salesBook creditCard merchantProcessor cashier |
+	
+	cart := Cart acceptingItemsOf: Array new.
+	
+	salesBook := OrderedCollection new.
+	
+	creditCard:= CreditCard goodThrough: (September/1/2025).
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: creditCard ->[ :anAmount :aCreditCard | . ]).
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	self should: [ cashier checkoutFor: cart with: creditCard on: (November/2/2022) using: merchantProcessor. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cashier emptyCartAtCheckoutErrorMessage.
+		self assert: OrderedCollection new equals: salesBook.
+	].! !
+
+!methodRemoval: CashierTest #test01CheckoutOfEmptyCartResultsInError stamp: 'TC&OLT 11/3/2022 12:14:44'!
+test01CheckoutOfEmptyCartResultsInError
+	
+	| cart salesBook creditCard merchantProcessor cashier |
+	
+	cart := Cart acceptingItemsOf: Array new.
+	
+	salesBook := OrderedCollection new.
+	
+	creditCard:= CreditCard goodThrough: (September/1/2025).
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: creditCard ->[ :anAmount :aCreditCard | . ]).
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	self should: [ cashier checkoutFor: cart with: creditCard on: (November/2/2022) using: merchantProcessor. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cashier emptyCartAtCheckoutErrorMessage.
+		self assert: OrderedCollection new equals: salesBook.
+	].!
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 12:14:58'!
+test01CheckoutOfEmptyCartResultsInError
+	
+	"test0CheckoutOfEmptyCartResultsInError"
+	
+	| cart salesBook creditCard merchantProcessor cashier |
+	
+	cart := Cart acceptingItemsOf: Array new.
+	
+	salesBook := OrderedCollection new.
+	
+	creditCard:= CreditCard goodThrough: (September/1/2025).
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: creditCard ->[ :anAmount :aCreditCard | . ]).
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	self should: [ cashier checkoutFor: cart with: creditCard on: (November/2/2022) using: merchantProcessor. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cashier emptyCartAtCheckoutErrorMessage.
+		self assert: OrderedCollection new equals: salesBook.
+	].! !
+
+!methodRemoval: CashierTest #test01 stamp: 'TC&OLT 11/3/2022 12:14:58'!
+test01
+	
+	"test0CheckoutOfEmptyCartResultsInError"
+	
+	| cart salesBook creditCard merchantProcessor cashier |
+	
+	cart := Cart acceptingItemsOf: Array new.
+	
+	salesBook := OrderedCollection new.
+	
+	creditCard:= CreditCard goodThrough: (September/1/2025).
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: creditCard ->[ :anAmount :aCreditCard | . ]).
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	self should: [ cashier checkoutFor: cart with: creditCard on: (November/2/2022) using: merchantProcessor. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cashier emptyCartAtCheckoutErrorMessage.
+		self assert: OrderedCollection new equals: salesBook.
+	].!
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 12:15:40'!
+test02CheckoutOfCartWithSingleItemReturnsPriceOfSuchItem
+	
+	"test0CheckoutOfCartWithSingleItemReturnsPriceOfSuchItem"
+	
+	| cart salesBook creditCard merchantProcessor cashier |
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book'->(10*euro)).
+	cart add: 'valid book'.
+	
+	salesBook := OrderedCollection new.
+	
+	creditCard:= CreditCard goodThrough: (September/1/2025).
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: creditCard ->[ :anAmount :aCreditCard | . ]).
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	self assert: (10*euro) equals: (cashier checkoutFor: cart with: creditCard on: (November/2/2022) using: merchantProcessor).! !
+
+!methodRemoval: CashierTest #test02 stamp: 'TC&OLT 11/3/2022 12:15:40'!
+test02
+	
+	"test0CheckoutOfCartWithSingleItemReturnsPriceOfSuchItem"
+	
+	| cart salesBook creditCard merchantProcessor cashier |
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book'->(10*euro)).
+	cart add: 'valid book'.
+	
+	salesBook := OrderedCollection new.
+	
+	creditCard:= CreditCard goodThrough: (September/1/2025).
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: creditCard ->[ :anAmount :aCreditCard | . ]).
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	self assert: (10*euro) equals: (cashier checkoutFor: cart with: creditCard on: (November/2/2022) using: merchantProcessor).!
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 12:15:52' prior: 50561634!
+test02CheckoutOfCartWithSingleItemReturnsPriceOfSuchItem
+	
+	| cart salesBook creditCard merchantProcessor cashier |
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book'->(10*euro)).
+	cart add: 'valid book'.
+	
+	salesBook := OrderedCollection new.
+	
+	creditCard:= CreditCard goodThrough: (September/1/2025).
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: creditCard ->[ :anAmount :aCreditCard | . ]).
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	self assert: (10*euro) equals: (cashier checkoutFor: cart with: creditCard on: (November/2/2022) using: merchantProcessor).! !
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 12:15:56' prior: 50561582!
+test01CheckoutOfEmptyCartResultsInError
+	
+	| cart salesBook creditCard merchantProcessor cashier |
+	
+	cart := Cart acceptingItemsOf: Array new.
+	
+	salesBook := OrderedCollection new.
+	
+	creditCard:= CreditCard goodThrough: (September/1/2025).
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: creditCard ->[ :anAmount :aCreditCard | . ]).
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	self should: [ cashier checkoutFor: cart with: creditCard on: (November/2/2022) using: merchantProcessor. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cashier emptyCartAtCheckoutErrorMessage.
+		self assert: OrderedCollection new equals: salesBook.
+	].! !
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 12:16:12'!
+test03CheckoutOfCartWithMultipleCopiesOfMultipleItemsReturnsPriceForAllCopies
+	
+	"test03CheckoutOfCartWithMultipleCopiesOfMultipleItemsReturnsPriceForAllCopies"
+	
+	| cart salesBook creditCard merchantProcessor cashier |
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book 1'->(10*euro) with: 'valid book 2'->(15*euro)).
+	cart add: 2 of: 'valid book 1'.
+	cart add: 3 of: 'valid book 2'.
+	
+	salesBook := OrderedCollection new.
+	
+	creditCard:= CreditCard goodThrough: (September/1/2025).
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: creditCard->[ :anAmount :anCreditCard | . ]).
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	self assert: (65*euro) equals: (cashier checkoutFor: cart with: creditCard on: (November/2/2022) using: merchantProcessor).! !
+
+!methodRemoval: CashierTest #test03 stamp: 'TC&OLT 11/3/2022 12:16:12'!
+test03
+	
+	"test03CheckoutOfCartWithMultipleCopiesOfMultipleItemsReturnsPriceForAllCopies"
+	
+	| cart salesBook creditCard merchantProcessor cashier |
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book 1'->(10*euro) with: 'valid book 2'->(15*euro)).
+	cart add: 2 of: 'valid book 1'.
+	cart add: 3 of: 'valid book 2'.
+	
+	salesBook := OrderedCollection new.
+	
+	creditCard:= CreditCard goodThrough: (September/1/2025).
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: creditCard->[ :anAmount :anCreditCard | . ]).
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	self assert: (65*euro) equals: (cashier checkoutFor: cart with: creditCard on: (November/2/2022) using: merchantProcessor).!
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 12:16:14' prior: 50561728!
+test03CheckoutOfCartWithMultipleCopiesOfMultipleItemsReturnsPriceForAllCopies
+	
+	| cart salesBook creditCard merchantProcessor cashier |
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book 1'->(10*euro) with: 'valid book 2'->(15*euro)).
+	cart add: 2 of: 'valid book 1'.
+	cart add: 3 of: 'valid book 2'.
+	
+	salesBook := OrderedCollection new.
+	
+	creditCard:= CreditCard goodThrough: (September/1/2025).
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: creditCard->[ :anAmount :anCreditCard | . ]).
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	self assert: (65*euro) equals: (cashier checkoutFor: cart with: creditCard on: (November/2/2022) using: merchantProcessor).! !
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 12:16:25' prior: 50561438!
+test04
+	
+	| cart salesBook creditCard merchantProcessor cashier |
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book 1'->(10*euro) with: 'valid book 2'->(15*euro)).
+	cart add: 2 of: 'valid book 1'.
+	cart add: 3 of: 'valid book 2'.
+	
+	salesBook := OrderedCollection new.
+
+	creditCard:= CreditCard goodThrough: (September/1/2025).
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: creditCard->[ :anAmount :anCreditCard | . ]).
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	cashier checkoutFor: cart with: creditCard on: (November/2/2022) using: merchantProcessor.
+	
+	self assert: (OrderedCollection with: 65*euro) equals: (salesBook).! !
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 12:16:31'!
+test04SalesBooksRegistersCheckout
+	
+	| cart salesBook creditCard merchantProcessor cashier |
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book 1'->(10*euro) with: 'valid book 2'->(15*euro)).
+	cart add: 2 of: 'valid book 1'.
+	cart add: 3 of: 'valid book 2'.
+	
+	salesBook := OrderedCollection new.
+
+	creditCard:= CreditCard goodThrough: (September/1/2025).
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: creditCard->[ :anAmount :anCreditCard | . ]).
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	cashier checkoutFor: cart with: creditCard on: (November/2/2022) using: merchantProcessor.
+	
+	self assert: (OrderedCollection with: 65*euro) equals: (salesBook).! !
+
+!methodRemoval: CashierTest #test04 stamp: 'TC&OLT 11/3/2022 12:16:31'!
+test04
+	
+	| cart salesBook creditCard merchantProcessor cashier |
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book 1'->(10*euro) with: 'valid book 2'->(15*euro)).
+	cart add: 2 of: 'valid book 1'.
+	cart add: 3 of: 'valid book 2'.
+	
+	salesBook := OrderedCollection new.
+
+	creditCard:= CreditCard goodThrough: (September/1/2025).
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: creditCard->[ :anAmount :anCreditCard | . ]).
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	cashier checkoutFor: cart with: creditCard on: (November/2/2022) using: merchantProcessor.
+	
+	self assert: (OrderedCollection with: 65*euro) equals: (salesBook).!
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 12:20:22' prior: 50561703!
+test01CheckoutOfEmptyCartResultsInError
+	
+	| cart salesBook creditCard accessToMerchant merchantProcessor cashier |
+	
+	cart := Cart acceptingItemsOf: Array new.
+	
+	salesBook := OrderedCollection new.
+	
+	creditCard:= CreditCard goodThrough: (September/1/2025).
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: creditCard ->[ :anAmount :aCreditCard | . ]).
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	self should: [ cashier checkoutFor: cart with: creditCard on: (November/2/2022) using: merchantProcessor. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cashier emptyCartAtCheckoutErrorMessage.
+		self assert: OrderedCollection new equals: salesBook.
+		
+	].! !
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 12:20:53' prior: 50561880!
+test01CheckoutOfEmptyCartResultsInError
+	
+	| cart salesBook creditCard accessToMerchant merchantProcessor cashier |
+	
+	cart := Cart acceptingItemsOf: Array new.
+	
+	salesBook := OrderedCollection new.
+	
+	creditCard:= CreditCard goodThrough: (September/1/2025).
+	
+	accessToMerchant := false.
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: creditCard ->[ :anAmount :aCreditCard | accessToMerchant := true. ]).
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	self should: [ cashier checkoutFor: cart with: creditCard on: (November/2/2022) using: merchantProcessor. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cashier emptyCartAtCheckoutErrorMessage.
+		self assert: OrderedCollection new equals: salesBook.
+		self deny: accessToMerchant.
+	].! !
+
+!testRun: #CashierTest #test01CheckoutOfEmptyCartResultsInError stamp: 'TC&OLT 11/3/2022 12:20:56'!
+PASSED!
+
+!testRun: #CashierTest #test02CheckoutOfCartWithSingleItemReturnsPriceOfSuchItem stamp: 'TC&OLT 11/3/2022 12:20:56'!
+PASSED!
+
+!testRun: #CashierTest #test03CheckoutOfCartWithMultipleCopiesOfMultipleItemsReturnsPriceForAllCopies stamp: 'TC&OLT 11/3/2022 12:20:56'!
+PASSED!
+
+!testRun: #CashierTest #test04SalesBooksRegistersCheckout stamp: 'TC&OLT 11/3/2022 12:20:56'!
+PASSED!
+
+!testRun: #CashierTest #test05 stamp: 'TC&OLT 11/3/2022 12:20:56'!
+PASSED!
+
+!testRun: #CashierTest #test06 stamp: 'TC&OLT 11/3/2022 12:20:56'!
+PASSED!
+
+!testRun: #CashierTest #test07 stamp: 'TC&OLT 11/3/2022 12:20:56'!
+PASSED!
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 12:22:27' prior: 50561480!
+test05
+	
+	| cart salesBook expiredCreditCard merchantProcessor accessToMerchant cashier |
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book 1'->(10*euro) with: 'valid book 2'->(15*euro)).
+	cart add: 2 of: 'valid book 1'.
+	cart add: 3 of: 'valid book 2'.
+	
+	salesBook := OrderedCollection new.
+	
+	expiredCreditCard:= CreditCard goodThrough: (September/1/2021).
+	
+	accessToMerchant := false.
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: expiredCreditCard->[ :anAmount :aCreditCard | accessToMerchant := true.]).
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	self 
+		should: [cashier checkoutFor: cart with: expiredCreditCard on: (November/2/2022) using: merchantProcessor.]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: cashier expiredCardErrorMessage.
+			self assert: salesBook isEmpty.
+			self deny: accessToMerchant.
+		].
+		
+	! !
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 12:22:33'!
+test05CheckoutCannotBePerformedWhenUsingAnExpiredCreditCard
+	
+	| cart salesBook expiredCreditCard merchantProcessor accessToMerchant cashier |
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book 1'->(10*euro) with: 'valid book 2'->(15*euro)).
+	cart add: 2 of: 'valid book 1'.
+	cart add: 3 of: 'valid book 2'.
+	
+	salesBook := OrderedCollection new.
+	
+	expiredCreditCard:= CreditCard goodThrough: (September/1/2021).
+	
+	accessToMerchant := false.
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: expiredCreditCard->[ :anAmount :aCreditCard | accessToMerchant := true.]).
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	self 
+		should: [cashier checkoutFor: cart with: expiredCreditCard on: (November/2/2022) using: merchantProcessor.]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: cashier expiredCardErrorMessage.
+			self assert: salesBook isEmpty.
+			self deny: accessToMerchant.
+		].
+		
+	! !
+
+!methodRemoval: CashierTest #test05 stamp: 'TC&OLT 11/3/2022 12:22:33'!
+test05
+	
+	| cart salesBook expiredCreditCard merchantProcessor accessToMerchant cashier |
+	
+	cart := Cart acceptingItemsOf: (Dictionary with: 'valid book 1'->(10*euro) with: 'valid book 2'->(15*euro)).
+	cart add: 2 of: 'valid book 1'.
+	cart add: 3 of: 'valid book 2'.
+	
+	salesBook := OrderedCollection new.
+	
+	expiredCreditCard:= CreditCard goodThrough: (September/1/2021).
+	
+	accessToMerchant := false.
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: expiredCreditCard->[ :anAmount :aCreditCard | accessToMerchant := true.]).
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	self 
+		should: [cashier checkoutFor: cart with: expiredCreditCard on: (November/2/2022) using: merchantProcessor.]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: cashier expiredCardErrorMessage.
+			self assert: salesBook isEmpty.
+			self deny: accessToMerchant.
+		].
+		
+	!
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 12:22:44' prior: 50561062!
+test06
+	
+	| cart salesBook cashier stolenCreditCard merchantProcessor |
+	
+	cart := Cart acceptingItemsOf: (Dictionary with:'valid book'->(10*euro)).
+	cart add: 'valid book'.
+	
+	salesBook := OrderedCollection new.
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	stolenCreditCard := CreditCard goodThrough: November/3/2022.
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: stolenCreditCard->[ :anAmount :aCreditCard | cashier error: cashier stolenCardErrorMessage. ]).
+	
+	self should: [ cashier checkoutFor: cart with: stolenCreditCard on: (November/2/2022) using: merchantProcessor. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cashier stolenCardErrorMessage.
+		self assert: salesBook isEmpty.
+	].! !
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 12:22:49'!
+test06CheckoutCannotBePerformedWithAStolenCreditCard
+	
+	| cart salesBook cashier stolenCreditCard merchantProcessor |
+	
+	cart := Cart acceptingItemsOf: (Dictionary with:'valid book'->(10*euro)).
+	cart add: 'valid book'.
+	
+	salesBook := OrderedCollection new.
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	stolenCreditCard := CreditCard goodThrough: November/3/2022.
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: stolenCreditCard->[ :anAmount :aCreditCard | cashier error: cashier stolenCardErrorMessage. ]).
+	
+	self should: [ cashier checkoutFor: cart with: stolenCreditCard on: (November/2/2022) using: merchantProcessor. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cashier stolenCardErrorMessage.
+		self assert: salesBook isEmpty.
+	].! !
+
+!methodRemoval: CashierTest #test06 stamp: 'TC&OLT 11/3/2022 12:22:49'!
+test06
+	
+	| cart salesBook cashier stolenCreditCard merchantProcessor |
+	
+	cart := Cart acceptingItemsOf: (Dictionary with:'valid book'->(10*euro)).
+	cart add: 'valid book'.
+	
+	salesBook := OrderedCollection new.
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	stolenCreditCard := CreditCard goodThrough: November/3/2022.
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: stolenCreditCard->[ :anAmount :aCreditCard | cashier error: cashier stolenCardErrorMessage. ]).
+	
+	self should: [ cashier checkoutFor: cart with: stolenCreditCard on: (November/2/2022) using: merchantProcessor. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cashier stolenCardErrorMessage.
+		self assert: salesBook isEmpty.
+	].!
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 12:22:56' prior: 50561206!
+test07
+	
+	| cart salesBook cashier creditCardWithInsufficientFunds merchantProcessor |
+	
+	cart := Cart acceptingItemsOf: (Dictionary with:'valid book'->(10*euro)).
+	cart add: 'valid book'.
+	
+	salesBook := OrderedCollection new.
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	creditCardWithInsufficientFunds := CreditCard goodThrough: November/3/2022.
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: creditCardWithInsufficientFunds->[ :anAmount :aCreditCard | cashier error: cashier cardWithInsufficientFundsErrorMessage. ]).
+	
+	self should: [ cashier checkoutFor: cart with: creditCardWithInsufficientFunds on: (November/2/2022) using: merchantProcessor. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cashier cardWithInsufficientFundsErrorMessage.
+		self assert: salesBook isEmpty.
+	].! !
+!CashierTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 12:23:02'!
+test07CheckoutCannotBePerformedWithACardWithInsufficientFunds
+	
+	| cart salesBook cashier creditCardWithInsufficientFunds merchantProcessor |
+	
+	cart := Cart acceptingItemsOf: (Dictionary with:'valid book'->(10*euro)).
+	cart add: 'valid book'.
+	
+	salesBook := OrderedCollection new.
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	creditCardWithInsufficientFunds := CreditCard goodThrough: November/3/2022.
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: creditCardWithInsufficientFunds->[ :anAmount :aCreditCard | cashier error: cashier cardWithInsufficientFundsErrorMessage. ]).
+	
+	self should: [ cashier checkoutFor: cart with: creditCardWithInsufficientFunds on: (November/2/2022) using: merchantProcessor. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cashier cardWithInsufficientFundsErrorMessage.
+		self assert: salesBook isEmpty.
+	].! !
+
+!methodRemoval: CashierTest #test07 stamp: 'TC&OLT 11/3/2022 12:23:02'!
+test07
+	
+	| cart salesBook cashier creditCardWithInsufficientFunds merchantProcessor |
+	
+	cart := Cart acceptingItemsOf: (Dictionary with:'valid book'->(10*euro)).
+	cart add: 'valid book'.
+	
+	salesBook := OrderedCollection new.
+	
+	cashier := Cashier recordingSalesOn: salesBook.
+	
+	creditCardWithInsufficientFunds := CreditCard goodThrough: November/3/2022.
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: creditCardWithInsufficientFunds->[ :anAmount :aCreditCard | cashier error: cashier cardWithInsufficientFundsErrorMessage. ]).
+	
+	self should: [ cashier checkoutFor: cart with: creditCardWithInsufficientFunds on: (November/2/2022) using: merchantProcessor. ]
+	raise: Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: cashier cardWithInsufficientFundsErrorMessage.
+		self assert: salesBook isEmpty.
+	].!
+!CreditCardTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 12:26:46' prior: 50557393!
+test01
+	
+	| creditCard |
+	
+	creditCard := CreditCard goodThrough: November/3/2022.
+	
+	self deny: (creditCard isExpiredOn: November/2/2022).! !
+!CreditCardTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 12:26:53'!
+test01CreditCardIsNotExpiredOnDateBeforeExpiration
+	
+	| creditCard |
+	
+	creditCard := CreditCard goodThrough: November/3/2022.
+	
+	self deny: (creditCard isExpiredOn: November/2/2022).! !
+
+!methodRemoval: CreditCardTest #test01 stamp: 'TC&OLT 11/3/2022 12:26:54'!
+test01
+	
+	| creditCard |
+	
+	creditCard := CreditCard goodThrough: November/3/2022.
+	
+	self deny: (creditCard isExpiredOn: November/2/2022).!
+!CreditCardTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 12:27:06' prior: 50557404!
+test02
+	
+	| creditCard |
+	
+	creditCard := CreditCard goodThrough: November/3/2022.
+	
+	self assert: (creditCard isExpiredOn: November/4/2022).! !
+!CreditCardTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 12:27:12'!
+test02CreditCardIsExpiredOnDatePastExpiration
+	
+	| creditCard |
+	
+	creditCard := CreditCard goodThrough: November/3/2022.
+	
+	self assert: (creditCard isExpiredOn: November/4/2022).! !
+
+!methodRemoval: CreditCardTest #test02 stamp: 'TC&OLT 11/3/2022 12:27:12'!
+test02
+	
+	| creditCard |
+	
+	creditCard := CreditCard goodThrough: November/3/2022.
+	
+	self assert: (creditCard isExpiredOn: November/4/2022).!
+!MerchantProcessorTestDoubleTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 12:27:24' prior: 50560811!
+test01
+	
+	| creditCard merchantProcessor |
+	
+	creditCard := CreditCard goodThrough: November/3/2022.
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: creditCard->[ :anAmount :aCreditCard | ^'Success.']).
+	
+	self assert: 'Success' equals: (merchantProcessor debit: 0 from: creditCard).! !
+!MerchantProcessorTestDoubleTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 12:27:29'!
+test01DebitingAnyAmountFromCreditCardInDictionaryExecutesAssociatedClosure
+	
+	| creditCard merchantProcessor |
+	
+	creditCard := CreditCard goodThrough: November/3/2022.
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: creditCard->[ :anAmount :aCreditCard | ^'Success.']).
+	
+	self assert: 'Success' equals: (merchantProcessor debit: 0 from: creditCard).! !
+
+!methodRemoval: MerchantProcessorTestDoubleTest #test01 stamp: 'TC&OLT 11/3/2022 12:27:29'!
+test01
+	
+	| creditCard merchantProcessor |
+	
+	creditCard := CreditCard goodThrough: November/3/2022.
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: creditCard->[ :anAmount :aCreditCard | ^'Success.']).
+	
+	self assert: 'Success' equals: (merchantProcessor debit: 0 from: creditCard).!
+!MerchantProcessorTestDoubleTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 12:27:39' prior: 50560827!
+test02
+	
+	| creditCardInDictionary creditCardNotInDictionary merchantProcessor |
+	
+	creditCardInDictionary := CreditCard goodThrough: November/3/2022.
+	creditCardNotInDictionary := CreditCard goodThrough: November/4/2022.
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: creditCardInDictionary ->[ :anAmount :aCreditCard | ^'Success.']).
+	
+	self should: [ merchantProcessor debit: 0 from: creditCardNotInDictionary. ]
+	raise: 	Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: merchantProcessor cardNotRegisteredErrorMessage.
+	].! !
+!MerchantProcessorTestDoubleTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 12:27:44'!
+test01DebitingAnyAmountFromCreditCardNotInDictionaryCausesAnError
+	
+	| creditCardInDictionary creditCardNotInDictionary merchantProcessor |
+	
+	creditCardInDictionary := CreditCard goodThrough: November/3/2022.
+	creditCardNotInDictionary := CreditCard goodThrough: November/4/2022.
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: creditCardInDictionary ->[ :anAmount :aCreditCard | ^'Success.']).
+	
+	self should: [ merchantProcessor debit: 0 from: creditCardNotInDictionary. ]
+	raise: 	Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: merchantProcessor cardNotRegisteredErrorMessage.
+	].! !
+
+!methodRemoval: MerchantProcessorTestDoubleTest #test02 stamp: 'TC&OLT 11/3/2022 12:27:44'!
+test02
+	
+	| creditCardInDictionary creditCardNotInDictionary merchantProcessor |
+	
+	creditCardInDictionary := CreditCard goodThrough: November/3/2022.
+	creditCardNotInDictionary := CreditCard goodThrough: November/4/2022.
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: creditCardInDictionary ->[ :anAmount :aCreditCard | ^'Success.']).
+	
+	self should: [ merchantProcessor debit: 0 from: creditCardNotInDictionary. ]
+	raise: 	Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: merchantProcessor cardNotRegisteredErrorMessage.
+	].!
+!MerchantProcessorTestDoubleTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 12:28:01' prior: 50562290!
+test01DebitingAnyAmountFromCreditCardInDictionaryExecutesAssociatedClosure
+	
+	| creditCard merchantProcessor |
+	
+	creditCard := CreditCard goodThrough: November/3/2022.
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: creditCard->[ :anAmount :aCreditCard | ^'Success.']).
+	
+	self assert: 'Success.' equals: (merchantProcessor debit: 0 from: creditCard).! !
+
+!testRun: #MerchantProcessorTestDoubleTest #test01DebitingAnyAmountFromCreditCardInDictionaryExecutesAssociatedClosure stamp: 'TC&OLT 11/3/2022 12:28:03'!
+PASSED!
+
+!testRun: #MerchantProcessorTestDoubleTest #test01DebitingAnyAmountFromCreditCardNotInDictionaryCausesAnError stamp: 'TC&OLT 11/3/2022 12:28:03'!
+PASSED!
+!MerchantProcessorTestDoubleTest methodsFor: 'tests' stamp: 'TC&OLT 11/3/2022 12:28:10'!
+test02DebitingAnyAmountFromCreditCardNotInDictionaryCausesAnError
+	
+	| creditCardInDictionary creditCardNotInDictionary merchantProcessor |
+	
+	creditCardInDictionary := CreditCard goodThrough: November/3/2022.
+	creditCardNotInDictionary := CreditCard goodThrough: November/4/2022.
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: creditCardInDictionary ->[ :anAmount :aCreditCard | ^'Success.']).
+	
+	self should: [ merchantProcessor debit: 0 from: creditCardNotInDictionary. ]
+	raise: 	Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: merchantProcessor cardNotRegisteredErrorMessage.
+	].! !
+
+!methodRemoval: MerchantProcessorTestDoubleTest #test01DebitingAnyAmountFromCreditCardNotInDictionaryCausesAnError stamp: 'TC&OLT 11/3/2022 12:28:10'!
+test01DebitingAnyAmountFromCreditCardNotInDictionaryCausesAnError
+	
+	| creditCardInDictionary creditCardNotInDictionary merchantProcessor |
+	
+	creditCardInDictionary := CreditCard goodThrough: November/3/2022.
+	creditCardNotInDictionary := CreditCard goodThrough: November/4/2022.
+	
+	merchantProcessor := MerchantProcessorTestDouble with: (Dictionary with: creditCardInDictionary ->[ :anAmount :aCreditCard | ^'Success.']).
+	
+	self should: [ merchantProcessor debit: 0 from: creditCardNotInDictionary. ]
+	raise: 	Error
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: merchantProcessor cardNotRegisteredErrorMessage.
+	].!
+
+!testRun: #MerchantProcessorTestDoubleTest #test01DebitingAnyAmountFromCreditCardInDictionaryExecutesAssociatedClosure stamp: 'TC&OLT 11/3/2022 12:28:13'!
+PASSED!
+
+!testRun: #MerchantProcessorTestDoubleTest #test02DebitingAnyAmountFromCreditCardNotInDictionaryCausesAnError stamp: 'TC&OLT 11/3/2022 12:28:13'!
+PASSED!
+
+!testRun: #CreditCardTest #test01CreditCardIsNotExpiredOnDateBeforeExpiration stamp: 'TC&OLT 11/3/2022 12:28:26'!
+PASSED!
+
+!testRun: #CreditCardTest #test02CreditCardIsExpiredOnDatePastExpiration stamp: 'TC&OLT 11/3/2022 12:28:26'!
+PASSED!
+
+!testRun: #CashierTest #test01CheckoutOfEmptyCartResultsInError stamp: 'TC&OLT 11/3/2022 12:28:30'!
+PASSED!
+
+!testRun: #CashierTest #test02CheckoutOfCartWithSingleItemReturnsPriceOfSuchItem stamp: 'TC&OLT 11/3/2022 12:28:30'!
+PASSED!
+
+!testRun: #CashierTest #test03CheckoutOfCartWithMultipleCopiesOfMultipleItemsReturnsPriceForAllCopies stamp: 'TC&OLT 11/3/2022 12:28:30'!
+PASSED!
+
+!testRun: #CashierTest #test04SalesBooksRegistersCheckout stamp: 'TC&OLT 11/3/2022 12:28:30'!
+PASSED!
+
+!testRun: #CashierTest #test05CheckoutCannotBePerformedWhenUsingAnExpiredCreditCard stamp: 'TC&OLT 11/3/2022 12:28:30'!
+PASSED!
+
+!testRun: #CashierTest #test06CheckoutCannotBePerformedWithAStolenCreditCard stamp: 'TC&OLT 11/3/2022 12:28:30'!
+PASSED!
+
+!testRun: #CashierTest #test07CheckoutCannotBePerformedWithACardWithInsufficientFunds stamp: 'TC&OLT 11/3/2022 12:28:30'!
+PASSED!
+
+!classRemoval: #CardTest stamp: 'TC&OLT 11/3/2022 12:29:29'!
+TestCase subclass: #CardTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'TC&OLT 11/3/2022 12:29:35'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'TC&OLT 11/3/2022 12:29:35'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'TC&OLT 11/3/2022 12:29:35'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'TC&OLT 11/3/2022 12:29:35'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'TC&OLT 11/3/2022 12:29:35'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'TC&OLT 11/3/2022 12:29:35'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'TC&OLT 11/3/2022 12:29:35'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'TC&OLT 11/3/2022 12:29:35'!
+PASSED!
+
+!testRun: #CartTest #test09AccumulatedPriceOfEmptyCartIsZero stamp: 'TC&OLT 11/3/2022 12:29:35'!
+PASSED!
+
+!testRun: #CartTest #test10AccumulatedPriceOfCartWithSingleItemIsPriceOfSuchItem stamp: 'TC&OLT 11/3/2022 12:29:35'!
+PASSED!
+
+!testRun: #CartTest #test11AccumulatedPriceOfCartWithMultipleCopiesOfAnItemIsPriceForAllSuchCopies stamp: 'TC&OLT 11/3/2022 12:29:35'!
+PASSED!
+
+----SNAPSHOT----(3 November 2022 12:29:55) CuisUniversity-5510.image priorSource: 7216973!
+
+----SNAPSHOT----(3 November 2022 12:30:06) CuisUniversity-5510.image priorSource: 7388669!
