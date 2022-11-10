@@ -1,0 +1,2778 @@
+
+
+----QUIT----(26 October 2022 08:07:27) CuisUniversity-5510.image priorSource: 2900072!
+
+----STARTUP---- (26 October 2022 08:07:28) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5510.image!
+
+
+----QUIT----(26 October 2022 08:07:28) CuisUniversity-5510.image priorSource: 7154921!
+
+----STARTUP---- (10 November 2022 10:51:37) as /home/kaneda/Downloads/linux64/CuisUniversity-5510.image!
+
+
+----End fileIn of /home/kaneda/Downloads/linux64/Packages/System/Collections-CompactArrays.pck.st----!
+
+----End fileIn of /home/kaneda/Downloads/linux64/Packages/Features/Compression.pck.st----!
+
+----End fileIn of /home/kaneda/Downloads/linux64/Packages/Features/Sound.pck.st----!
+
+----End fileIn of /home/kaneda/Downloads/linux64/Packages/Features/Cryptography-DigitalSignatures.pck.st----!
+
+----End fileIn of /home/kaneda/Downloads/linux64/Packages/Features/Identities-UUID.pck.st----!
+
+----End fileIn of /home/kaneda/Downloads/linux64/Packages/System/Network-Kernel.pck.st----!
+
+----End fileIn of /home/kaneda/Downloads/2022-2c-main/09-TusLibros/Iteracion4/WebClient.pck.st----!
+
+----End fileIn of /home/kaneda/Downloads/2022-2c-main/09-TusLibros/Iteracion4/TusLibrosREST Ejercicio it4.st----!
+
+----End fileIn of /home/kaneda/Downloads/2022-2c-main/09-TusLibros/Iteracion4/TusLibros-Model Ejercicio it4.st----!
+
+----End fileIn of /home/kaneda/Downloads/2022-2c-main/09-TusLibros/Iteracion4/TusLibros-Tests Ejercicio it4.st----!
+
+!testRun: #TusLibrosSystemFacadeTest #test01CanCreateCartWithValidUserAndPassword stamp: 'TC 11/10/2022 10:54:42'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02CanNotCreateCartWithInvalidUser stamp: 'TC 11/10/2022 10:54:42'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test03CanNotCreateCartWithInvalidPassword stamp: 'TC 11/10/2022 10:54:42'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test04CanAddItemsToACreatedCart stamp: 'TC 11/10/2022 10:54:42'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test05CanNotAddItemToNotCreatedCart stamp: 'TC 11/10/2022 10:54:42'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test06CanNotAddItemNotSellByTheStore stamp: 'TC 11/10/2022 10:54:42'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test08CanNotListCartOfInvalidCartId stamp: 'TC 11/10/2022 10:54:42'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'TC 11/10/2022 10:54:42'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10CheckOutReturnsTransactionIdAndImpactsCustomerPurchases stamp: 'TC 11/10/2022 10:54:42'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10_1_CanNotCheckoutAnAlreadyCheckedOutCart stamp: 'TC 11/10/2022 10:54:42'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test11CanNotCheckoutANotCreatedCart stamp: 'TC 11/10/2022 10:54:42'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test12CanNotCheckoutAnEmptyCart stamp: 'TC 11/10/2022 10:54:42'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test13CanNotCheckoutWithAnExpiredCreditCard stamp: 'TC 11/10/2022 10:54:42'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'TC 11/10/2022 10:54:42'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test15CanNotListPurchasesOfInvalidCustomer stamp: 'TC 11/10/2022 10:54:42'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test16CanNotListPurchasesOfValidCustomerWithInvalidPassword stamp: 'TC 11/10/2022 10:54:42'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test17CanNotAddToCartWhenSessionIsExpired stamp: 'TC 11/10/2022 10:54:42'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test18CanNotListCartWhenSessionIsExpired stamp: 'TC 11/10/2022 10:54:42'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test19CanNotCheckOutCartWhenSessionIsExpired stamp: 'TC 11/10/2022 10:54:42'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test20BookPerformanceShouldNotTakeTooLong stamp: 'TC 11/10/2022 10:54:44'!
+FAILURE!
+
+!testRun: #TusLibrosSystemFacadeTest #test21StorePerformanceShouldNotTakeTooLong stamp: 'TC 11/10/2022 10:54:46'!
+FAILURE!
+
+!testRun: #TusLibrosSystemFacadeTest #test20BookPerformanceShouldNotTakeTooLong stamp: 'TC 11/10/2022 10:54:59'!
+FAILURE!
+
+!testRun: #TusLibrosSystemFacadeTest #test20BookPerformanceShouldNotTakeTooLong stamp: 'TC 11/10/2022 10:55:01'!
+FAILURE!
+
+!testRun: #TusLibrosSystemFacadeTest #test20BookPerformanceShouldNotTakeTooLong stamp: 'TC 11/10/2022 11:10:16'!
+FAILURE!
+
+!testRun: #TusLibrosSystemFacadeTest #test20BookPerformanceShouldNotTakeTooLong stamp: 'TC 11/10/2022 11:10:18'!
+FAILURE!
+
+Object subclass: #TusLibrosSystemFacade
+	instanceVariableNames: 'validUsersAndPasswords catalog lastId merchantProcessor salesBook clock cartSessions salesSemaphore moneyRaisedSemaphore'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+
+!classDefinition: #TusLibrosSystemFacade category: 'TusLibros-Model' stamp: 'TC 11/10/2022 11:35:37'!
+Object subclass: #TusLibrosSystemFacade
+	instanceVariableNames: 'validUsersAndPasswords catalog lastId merchantProcessor salesBook clock cartSessions salesSemaphore moneyRaisedSemaphore'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+!TusLibrosSystemFacade methodsFor: 'initialization' stamp: 'TC 11/10/2022 11:36:21' prior: 50593551!
+initializeAuthenticatingWith: aValidUsersAndPasswords 
+	acceptingItemsOf: aCatalog 
+	registeringOn: aSalesBook 
+	debitingThrought: aMerchantProcessor 
+	measuringTimeWith: aClock
+
+	validUsersAndPasswords := aValidUsersAndPasswords.
+	catalog := aCatalog.
+	salesBook := aSalesBook.
+	merchantProcessor := aMerchantProcessor.
+	clock := aClock.
+	
+	cartSessions := Dictionary new.
+	lastId := 0.
+	
+	salesSemaphore := Semaphore new.
+	moneyRaisedSemaphore := Semaphore new.! !
+!TusLibrosSystemFacade methodsFor: 'private' stamp: 'TC 11/10/2022 11:37:43' prior: 50593454!
+bookPerformance: anItem
+
+	| bookPerformance totalMoney totalSales |
+
+	bookPerformance := Dictionary new.
+	
+	salesSemaphore wait.
+	[ totalSales := self totalSalesOf: anItem. ] fork.
+	salesSemaphore signal.
+	
+	moneyRaisedSemaphore wait.
+	[ totalMoney := self totalMoneyRaisedBy: anItem. ] fork.
+	moneyRaisedSemaphore signal.
+	
+	bookPerformance at: 'quantity' put: totalSales.
+	bookPerformance at: 'total' put: totalMoney.
+	bookPerformance at: 'summary' put: anItem,' was selled ',totalSales asString, ' times and raised a total amount of money equal to: ', totalMoney asString.
+	
+	^bookPerformance
+	
+
+! !
+!TusLibrosSystemFacade methodsFor: 'private' stamp: 'TC 11/10/2022 11:49:06' prior: 50594898!
+bookPerformance: anItem
+
+	| bookPerformance totalMoney totalSales |
+
+	bookPerformance := Dictionary new.
+	
+	salesSemaphore wait.
+	[ totalSales := self totalSalesOf: anItem. ] fork.
+	salesSemaphore signal.
+	
+	moneyRaisedSemaphore wait.
+	[ totalMoney := self totalMoneyRaisedBy: anItem. ] fork.
+	moneyRaisedSemaphore signal.
+	
+	
+	"[
+		 totalSales := self totalSalesOf: anItem.
+		salesSemaphore signal.
+	] fork.
+	
+	[
+		 totalSales := self totalSalesOf: anItem.
+		salesSemaphore signal.
+	] fork.
+	
+	salesSemaphore wait.
+	bookPerformance at: 'quantity' put: totalSales.
+	
+	moneyRaisedSemaphore wait.
+	bookPerformance at: 'total' put: totalMoney.
+	"
+	
+	bookPerformance at: 'quantity' put: totalSales.
+	bookPerformance at: 'total' put: totalMoney.
+	bookPerformance at: 'summary' put: anItem,' was selled ',totalSales asString, ' times and raised a total amount of money equal to: ', totalMoney asString.
+	
+	^bookPerformance
+	
+
+! !
+
+Object subclass: #TusLibrosSystemFacade
+	instanceVariableNames: 'validUsersAndPasswords catalog lastId merchantProcessor salesBook clock cartSessions'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+
+!classDefinition: #TusLibrosSystemFacade category: 'TusLibros-Model' stamp: 'TC 11/10/2022 11:53:12'!
+Object subclass: #TusLibrosSystemFacade
+	instanceVariableNames: 'validUsersAndPasswords catalog lastId merchantProcessor salesBook clock cartSessions'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+!TusLibrosSystemFacade methodsFor: 'initialization' stamp: 'TC 11/10/2022 11:53:18' prior: 50594880!
+initializeAuthenticatingWith: aValidUsersAndPasswords 
+	acceptingItemsOf: aCatalog 
+	registeringOn: aSalesBook 
+	debitingThrought: aMerchantProcessor 
+	measuringTimeWith: aClock
+
+	validUsersAndPasswords := aValidUsersAndPasswords.
+	catalog := aCatalog.
+	salesBook := aSalesBook.
+	merchantProcessor := aMerchantProcessor.
+	clock := aClock.
+	
+	cartSessions := Dictionary new.
+	lastId := 0.! !
+!TusLibrosSystemFacade methodsFor: 'private' stamp: 'TC 11/10/2022 12:09:37' prior: 50594920!
+bookPerformance: anItem
+
+	| bookPerformance totalSalesSemaphore moneyRaisedSemaphore totalMoney totalSales |
+
+	bookPerformance := Dictionary new.
+	
+	totalSalesSemaphore := Semaphore new.
+	moneyRaisedSemaphore := Semaphore new.
+	
+	[
+		totalSales := self totalSalesOf: anItem.
+		totalSalesSemaphore signal.
+	] fork.
+	
+	[
+		totalMoney := self totalMoneyRaisedBy: anItem.
+		moneyRaisedSemaphore signal.
+	] fork.
+	
+	totalSalesSemaphore wait.
+	bookPerformance at: 'quantity' put: totalSales.
+	bookPerformance at: 'quantity' put: totalSales.
+	
+	moneyRaisedSemaphore wait.
+	bookPerformance at: 'total' put: totalMoney.
+	bookPerformance at: 'total' put: totalMoney.
+	
+	bookPerformance at: 'summary' put: anItem,' was selled ',totalSales asString, ' times and raised a total amount of money equal to: ', totalMoney asString.
+	
+	^bookPerformance.
+
+! !
+
+!testRun: #TusLibrosSystemFacadeTest #test20BookPerformanceShouldNotTakeTooLong stamp: 'TC 11/10/2022 12:09:48'!
+PASSED!
+!TusLibrosSystemFacade methodsFor: 'private' stamp: 'TC 11/10/2022 12:32:10' prior: 50594986!
+bookPerformance: anItem
+
+	| bookPerformance totalSalesSemaphore moneyRaisedSemaphore totalMoney totalSales |
+
+	bookPerformance := Dictionary new.
+	
+	totalSalesSemaphore := Semaphore new.
+	moneyRaisedSemaphore := Semaphore new.
+	
+	[
+		totalSales := self totalSalesOf: anItem.
+		totalSalesSemaphore signal.
+	] fork.
+	
+	[
+		totalMoney := self totalMoneyRaisedBy: anItem.
+		moneyRaisedSemaphore signal.
+	] fork.
+	
+	totalSalesSemaphore wait.
+	moneyRaisedSemaphore wait.
+	
+	bookPerformance at: 'quantity' put: totalSales.
+	bookPerformance at: 'quantity' put: totalSales.
+	
+	bookPerformance at: 'total' put: totalMoney.
+	bookPerformance at: 'total' put: totalMoney.
+	
+	bookPerformance at: 'summary' put: anItem,' was selled ',totalSales asString, ' times and raised a total amount of money equal to: ', totalMoney asString.
+	
+	^bookPerformance.
+
+! !
+
+!testRun: #TusLibrosSystemFacadeTest #test20BookPerformanceShouldNotTakeTooLong stamp: 'TC 11/10/2022 12:32:17'!
+PASSED!
+
+Object subclass: #BlockParallelRunner
+	instanceVariableNames: 'semaphores'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+
+!classDefinition: #BlockParallelRunner category: 'TusLibros-Model' stamp: 'TC 11/10/2022 12:39:27'!
+Object subclass: #BlockParallelRunner
+	instanceVariableNames: 'semaphores'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+!BlockParallelRunner class methodsFor: 'nil' stamp: 'TC 11/10/2022 12:39:44' overrides: 16785646!
+new
+	
+	^self new initialize.! !
+!BlockParallelRunner methodsFor: 'nil' stamp: 'TC 11/10/2022 12:40:02' overrides: 16920235!
+initialize
+	
+	semaphores := OrderedCollection new.! !
+!BlockParallelRunner methodsFor: 'nil' stamp: 'TC 11/10/2022 12:41:15'!
+run: aBlockToRunInParallel
+	
+	| semaphore |
+	
+	semaphore := Semaphore new.
+	semaphores add: semaphore.
+	
+	[
+		aBlockToRunInParallel value.
+		semaphore signal.
+	] fork.! !
+!BlockParallelRunner methodsFor: 'nil' stamp: 'TC 11/10/2022 12:41:57'!
+wait
+	
+	semaphores do: [
+		:aSemaphore |
+		aSemaphore wait.
+	].! !
+!BlockParallelRunner methodsFor: 'as yet unclassified' stamp: 'TC 11/10/2022 12:42:22' prior: 50595082!
+wait
+	
+	"join"
+	
+	semaphores do: [
+		:aSemaphore |
+		aSemaphore wait.
+	].! !
+!BlockParallelRunner methodsFor: 'as yet unclassified' stamp: 'TC 11/10/2022 12:42:29' prior: 50595074!
+run: aBlockToRunInParallel
+	
+	"fork"
+	
+	| semaphore |
+	
+	semaphore := Semaphore new.
+	semaphores add: semaphore.
+	
+	[
+		aBlockToRunInParallel value.
+		semaphore signal.
+	] fork.! !
+
+!classRenamed: #BlockParallelRunner as: #ParallelBlockRunner stamp: 'TC 11/10/2022 12:44:27'!
+Smalltalk renameClassNamed: #BlockParallelRunner as: #ParallelBlockRunner!
+!TusLibrosSystemFacade methodsFor: 'private' stamp: 'TC 11/10/2022 12:47:49' prior: 50595020!
+bookPerformance: anItem
+
+	| bookPerformance parallelBlockRunner totalSalesSemaphore moneyRaisedSemaphore totalMoney totalSales |
+
+	bookPerformance := Dictionary new.
+	
+	"totalSalesSemaphore := Semaphore new.
+	moneyRaisedSemaphore := Semaphore new.
+	
+	[
+		totalSales := self totalSalesOf: anItem.
+		totalSalesSemaphore signal.
+	] fork.
+	
+	[
+		totalMoney := self totalMoneyRaisedBy: anItem.
+		moneyRaisedSemaphore signal.
+	] fork.
+	
+	totalSalesSemaphore wait.
+	moneyRaisedSemaphore wait."
+	
+	parallelBlockRunner := ParallelBlockRunner new.
+	
+	parallelBlockRunner run: [ totalSales := self totalSalesOf: anItem. ].
+	parallelBlockRunner run: [ totalMoney := self totalMoneyRaisedBy: anItem. ].
+	
+	parallelBlockRunner wait.
+	
+	bookPerformance at: 'quantity' put: totalSales.
+	bookPerformance at: 'quantity' put: totalSales.
+	
+	bookPerformance at: 'total' put: totalMoney.
+	bookPerformance at: 'total' put: totalMoney.
+	
+	bookPerformance at: 'summary' put: anItem,' was selled ',totalSales asString, ' times and raised a total amount of money equal to: ', totalMoney asString.
+	
+	^bookPerformance.
+
+! !
+
+----End fileIn of /home/kaneda/Downloads/linux64/Packages/TerseGuide.pck.st----!
+!ParallelBlockRunner methodsFor: 'fork-join protocol' stamp: 'TC 11/10/2022 12:49:03' prior: 50595088!
+wait
+	
+	"join"
+	
+	semaphores do: [
+		:aSemaphore |
+		aSemaphore wait.
+	].
+	
+	semaphores := OrderedCollection new.! !
+!Behavior method!
+initialize
+	#_coverageTracker7078741_ markAsExecuted.
+	#_coverageTracker7078741_
+		cover: (14 to: 18)
+		declaredAt: (14 to: 18)
+		by:
+			(today _ #_coverageTracker7078741_
+				coverAll:
+					{35 to: 37}
+				evaluating: [
+					(#_coverageTracker7078741_
+						coverAll:
+							{23 to: 33}
+						by: DateAndTime) now ]).! !
+!Behavior method!
+today
+	#_coverageTracker7079891_ markAsExecuted.
+	^ #_coverageTracker7079891_
+		cover: (12 to: 16)
+		declaredAt: (12 to: 16)
+		by: today.! !
+!Behavior method!
+now: aTime
+	#_coverageTracker7077938_ markAsExecuted.
+	^ #_coverageTracker7077938_
+		coverAll:
+			{26 to: 39}
+		evaluating: [
+			(#_coverageTracker7077938_
+				coverAll:
+					{22 to: 24}
+				evaluating: [
+					(#_coverageTracker7077938_
+						coverAll:
+							{17 to: 20}
+						byLiteralOrPseudoVariable: self) new ]) initializeNow:
+				(#_coverageTracker7077938_
+					cover: (41 to: 45)
+					declaredAt: (6 to: 10)
+					by: aTime) ].! !
+!Behavior method!
+initializeNow: aTime
+	#_coverageTracker7079912_ markAsExecuted.
+	#_coverageTracker7079912_
+		cover: (25 to: 27)
+		declaredAt: (25 to: 27)
+		by:
+			(now _ #_coverageTracker7079912_
+				cover: (32 to: 36)
+				declaredAt: (16 to: 20)
+				by: aTime).! !
+!Behavior method!
+defaultCatalog
+	#_coverageTracker7077954_ markAsExecuted.
+	^ [ | cascadeReceiver |
+	cascadeReceiver _ #_coverageTracker7077954_
+		coverAll:
+			{32 to: 34}
+		evaluating: [
+			(#_coverageTracker7077954_
+				coverAll:
+					{21 to: 30}
+				by: Dictionary) new ].
+	#_coverageTracker7077954_
+		coverAll:
+			{38 to: 40. 66 to: 69}
+		evaluating: [
+			cascadeReceiver
+				at:
+					(#_coverageTracker7077954_
+						coverAll:
+							{47 to: 64}
+						evaluating: [
+							(#_coverageTracker7077954_
+								coverAll:
+									{42 to: 45}
+								byLiteralOrPseudoVariable: self) itemSellByTheStore ])
+				put:
+					(#_coverageTracker7077954_
+						coverAll:
+							{76 to: 98}
+						evaluating: [
+							(#_coverageTracker7077954_
+								coverAll:
+									{71 to: 74}
+								byLiteralOrPseudoVariable: self) itemSellByTheStorePrice ]) ].
+	#_coverageTracker7077954_
+		coverAll:
+			{103 to: 105. 138 to: 141}
+		evaluating: [
+			cascadeReceiver
+				at:
+					(#_coverageTracker7077954_
+						coverAll:
+							{112 to: 136}
+						evaluating: [
+							(#_coverageTracker7077954_
+								coverAll:
+									{107 to: 110}
+								byLiteralOrPseudoVariable: self) anotherItemSellByTheStore ])
+				put:
+					(#_coverageTracker7077954_
+						coverAll:
+							{148 to: 177}
+						evaluating: [
+							(#_coverageTracker7077954_
+								coverAll:
+									{143 to: 146}
+								byLiteralOrPseudoVariable: self) anotherItemSellByTheStorePrice ]) ].
+	#_coverageTracker7077954_
+		coverAll:
+			{182 to: 189}
+		evaluating: [ cascadeReceiver yourself ]] value.! !
+!Behavior method!
+itemSellByTheStore
+	#_coverageTracker7079642_ markAsExecuted.
+	^ #_coverageTracker7079642_
+		coverAll:
+			{25 to: 35}
+		byLiteralOrPseudoVariable: 'validBook'.! !
+!Behavior method!
+itemSellByTheStorePrice
+	#_coverageTracker7079566_ markAsExecuted.
+	^ #_coverageTracker7079566_
+		coverAll:
+			{29 to: 30}
+		byLiteralOrPseudoVariable: 10.! !
+!Behavior method!
+anotherItemSellByTheStore
+	#_coverageTracker7077534_ markAsExecuted.
+	^ #_coverageTracker7077534_
+		coverAll:
+			{31 to: 48}
+		byLiteralOrPseudoVariable: 'anotherValidBook'.! !
+!Behavior method!
+anotherItemSellByTheStorePrice
+	#_coverageTracker7079504_ markAsExecuted.
+	^ #_coverageTracker7079504_
+		coverAll:
+			{36 to: 37}
+		byLiteralOrPseudoVariable: 15.! !
+!Behavior method!
+authenticatingWith: aValidUsersAndPasswords acceptingItemsOf: aCatalog registeringOn: aSalesBook debitingThrought: aMerchantProcessor measuringTimeWith: aClock
+	#_coverageTracker7078549_ markAsExecuted.
+	^ #_coverageTracker7078549_
+		coverAll:
+			{184 to: 212. 241 to: 257. 271 to: 284. 300 to: 316. 340 to: 357}
+		evaluating: [
+			(#_coverageTracker7078549_
+				coverAll:
+					{177 to: 179}
+				evaluating: [
+					(#_coverageTracker7078549_
+						coverAll:
+							{172 to: 175}
+						byLiteralOrPseudoVariable: self) new ])
+				initializeAuthenticatingWith:
+					(#_coverageTracker7078549_
+						cover: (214 to: 236)
+						declaredAt: (21 to: 43)
+						by: aValidUsersAndPasswords)
+				acceptingItemsOf:
+					(#_coverageTracker7078549_
+						cover: (259 to: 266)
+						declaredAt: (65 to: 72)
+						by: aCatalog)
+				registeringOn:
+					(#_coverageTracker7078549_
+						cover: (286 to: 295)
+						declaredAt: (91 to: 100)
+						by: aSalesBook)
+				debitingThrought:
+					(#_coverageTracker7078549_
+						cover: (318 to: 335)
+						declaredAt: (122 to: 139)
+						by: aMerchantProcessor)
+				measuringTimeWith:
+					(#_coverageTracker7078549_
+						cover: (359 to: 364)
+						declaredAt: (162 to: 167)
+						by: aClock) ].! !
+!Behavior method!
+initializeAuthenticatingWith: aValidUsersAndPasswords acceptingItemsOf: aCatalog registeringOn: aSalesBook debitingThrought: aMerchantProcessor measuringTimeWith: aClock
+	#_coverageTracker7079375_ markAsExecuted.
+	#_coverageTracker7079375_
+		cover: (181 to: 202)
+		declaredAt: (181 to: 202)
+		by:
+			(validUsersAndPasswords _ #_coverageTracker7079375_
+				cover: (207 to: 229)
+				declaredAt: (31 to: 53)
+				by: aValidUsersAndPasswords).
+	#_coverageTracker7079375_
+		cover: (233 to: 239)
+		declaredAt: (233 to: 239)
+		by:
+			(catalog _ #_coverageTracker7079375_
+				cover: (244 to: 251)
+				declaredAt: (75 to: 82)
+				by: aCatalog).
+	#_coverageTracker7079375_
+		cover: (255 to: 263)
+		declaredAt: (255 to: 263)
+		by:
+			(salesBook _ #_coverageTracker7079375_
+				cover: (268 to: 277)
+				declaredAt: (101 to: 110)
+				by: aSalesBook).
+	#_coverageTracker7079375_
+		cover: (281 to: 297)
+		declaredAt: (281 to: 297)
+		by:
+			(merchantProcessor _ #_coverageTracker7079375_
+				cover: (302 to: 319)
+				declaredAt: (132 to: 149)
+				by: aMerchantProcessor).
+	#_coverageTracker7079375_
+		cover: (323 to: 327)
+		declaredAt: (323 to: 327)
+		by:
+			(clock _ #_coverageTracker7079375_
+				cover: (332 to: 337)
+				declaredAt: (172 to: 177)
+				by: aClock).
+	#_coverageTracker7079375_
+		cover: (343 to: 354)
+		declaredAt: (343 to: 354)
+		by:
+			(cartSessions _ #_coverageTracker7079375_
+				coverAll:
+					{370 to: 372}
+				evaluating: [
+					(#_coverageTracker7079375_
+						coverAll:
+							{359 to: 368}
+						by: Dictionary) new ]).
+	#_coverageTracker7079375_
+		cover: (376 to: 381)
+		declaredAt: (376 to: 381)
+		by:
+			(lastId _ #_coverageTracker7079375_
+				coverAll:
+					{386 to: 386}
+				byLiteralOrPseudoVariable: 0).! !
+!Behavior method!
+createCartFor: aUser authenticatedWith: aPassword
+	#_coverageTracker7078147_ markAsExecuted.
+	^ #_coverageTracker7078147_
+		coverAll:
+			{60 to: 62. 70 to: 87. 99 to: 101}
+		evaluating: [
+			(#_coverageTracker7078147_
+				coverAll:
+					{55 to: 58}
+				byLiteralOrPseudoVariable: self)
+				if:
+					(#_coverageTracker7078147_
+						cover: (64 to: 68)
+						declaredAt: (16 to: 20)
+						by: aUser)
+				authenticatesWith:
+					(#_coverageTracker7078147_
+						cover: (89 to: 97)
+						declaredAt: (41 to: 49)
+						by: aPassword)
+				do: [ | cartId cartSession |
+					#_coverageTracker7078147_
+						cover: (132 to: 137)
+						declaredAt: (107 to: 112)
+						by:
+							(cartId _ #_coverageTracker7078147_
+								coverAll:
+									{147 to: 160}
+								evaluating: [
+									(#_coverageTracker7078147_
+										coverAll:
+											{142 to: 145}
+										byLiteralOrPseudoVariable: self) generateCartId ]).
+					#_coverageTracker7078147_
+						cover: (165 to: 175)
+						declaredAt: (114 to: 124)
+						by:
+							(cartSession _ #_coverageTracker7078147_
+								coverAll:
+									{192 to: 199. 207 to: 211. 246 to: 248}
+								evaluating: [
+									(#_coverageTracker7078147_
+										coverAll:
+											{180 to: 190}
+										by: CartSession)
+										ownedBy:
+											(#_coverageTracker7078147_
+												cover: (201 to: 205)
+												declaredAt: (16 to: 20)
+												by: aUser)
+										with:
+											(#_coverageTracker7078147_
+												coverAll:
+													{219 to: 235}
+												evaluating: [
+													(#_coverageTracker7078147_
+														coverAll:
+															{214 to: 217}
+														by: Cart) acceptingItemsOf:
+														(#_coverageTracker7078147_
+															cover: (237 to: 243)
+															declaredAt: (237 to: 243)
+															by: catalog) ])
+										on:
+											(#_coverageTracker7078147_
+												coverAll:
+													{250 to: 253}
+												byLiteralOrPseudoVariable: self) ]).
+					#_coverageTracker7078147_
+						coverAll:
+							{272 to: 274. 283 to: 286}
+						evaluating: [
+							(#_coverageTracker7078147_
+								cover: (259 to: 270)
+								declaredAt: (259 to: 270)
+								by: cartSessions)
+								at:
+									(#_coverageTracker7078147_
+										cover: (276 to: 281)
+										declaredAt: (107 to: 112)
+										by: cartId)
+								put:
+									(#_coverageTracker7078147_
+										cover: (288 to: 298)
+										declaredAt: (114 to: 124)
+										by: cartSession) ].
+					#_coverageTracker7078147_
+						cover: (305 to: 310)
+						declaredAt: (107 to: 112)
+						by: cartId ]].! !
+!Behavior method!
+if: aUser authenticatesWith: aPassword do: aBlock
+	#_coverageTracker7079752_ markAsExecuted.
+	^ #_coverageTracker7079752_
+		coverAll:
+			{106 to: 112. 124 to: 131}
+		evaluating: [
+			(#_coverageTracker7079752_
+				coverAll:
+					{61 to: 65. 73 to: 90}
+				evaluating: [
+					(#_coverageTracker7079752_
+						coverAll:
+							{56 to: 59}
+						byLiteralOrPseudoVariable: self)
+						does:
+							(#_coverageTracker7079752_
+								cover: (67 to: 71)
+								declaredAt: (5 to: 9)
+								by: aUser)
+						authenticatesWith:
+							(#_coverageTracker7079752_
+								cover: (92 to: 100)
+								declaredAt: (30 to: 38)
+								by: aPassword) ])
+				ifTrue:
+					(#_coverageTracker7079752_
+						cover: (114 to: 119)
+						declaredAt: (44 to: 49)
+						by: aBlock)
+				ifFalse: [
+					#_coverageTracker7079752_
+						coverAll:
+							{140 to: 169}
+						evaluating: [
+							(#_coverageTracker7079752_
+								coverAll:
+									{135 to: 138}
+								byLiteralOrPseudoVariable: self) signalInvalidUserAndOrPassword ]]].! !
+!Behavior method!
+does: aUser authenticatesWith: aPassword
+	"Recordar que esto es solo un ejemplo. No se deben guardar passwords en un sistema de verdad sino un
+	hash o similar - Hernan"
+	| storedPassword |
+	#_coverageTracker7077498_ markAsExecuted.
+	#_coverageTracker7077498_
+		cover: (197 to: 210)
+		declaredAt: (177 to: 190)
+		by:
+			(storedPassword _ #_coverageTracker7077498_
+				coverAll:
+					{238 to: 240. 248 to: 256}
+				evaluating: [
+					(#_coverageTracker7077498_
+						cover: (215 to: 236)
+						declaredAt: (215 to: 236)
+						by: validUsersAndPasswords)
+						at:
+							(#_coverageTracker7077498_
+								cover: (242 to: 246)
+								declaredAt: (7 to: 11)
+								by: aUser)
+						ifAbsent: [ ^ #_coverageTracker7077498_
+								coverAll:
+									{261 to: 265}
+								byLiteralOrPseudoVariable: false ]]).
+	^ #_coverageTracker7077498_
+		coverAll:
+			{282 to: 282}
+		evaluating: [
+			(#_coverageTracker7077498_
+				cover: (272 to: 280)
+				declaredAt: (32 to: 40)
+				by: aPassword) =
+				(#_coverageTracker7077498_
+					cover: (284 to: 297)
+					declaredAt: (177 to: 190)
+					by: storedPassword) ].! !
+!Behavior method!
+generateCartId
+	"Recuerden que esto es un ejemplo, por lo que voy a generar ids numericos consecutivos, pero en una 
+	implementacion real no deberian se numeros consecutivos ni nada que genere problemas de seguridad - Hernan"
+	#_coverageTracker7077919_ markAsExecuted.
+	#_coverageTracker7077919_
+		cover: (242 to: 247)
+		declaredAt: (232 to: 237)
+		by:
+			(lastId _ #_coverageTracker7077919_
+				coverAll:
+					{249 to: 249}
+				evaluating: [
+					(#_coverageTracker7077919_
+						cover: (232 to: 237)
+						declaredAt: (232 to: 237)
+						by: lastId) +
+						(#_coverageTracker7077919_
+							coverAll:
+								{251 to: 251}
+							byLiteralOrPseudoVariable: 1) ]).
+	^ #_coverageTracker7077919_
+		cover: (256 to: 261)
+		declaredAt: (232 to: 237)
+		by: lastId.! !
+!Behavior method!
+acceptingItemsOf: aCatalog
+	#_coverageTracker7077646_ markAsExecuted.
+	^ #_coverageTracker7077646_
+		coverAll:
+			{40 to: 66}
+		evaluating: [
+			(#_coverageTracker7077646_
+				coverAll:
+					{36 to: 38}
+				evaluating: [
+					(#_coverageTracker7077646_
+						coverAll:
+							{31 to: 34}
+						byLiteralOrPseudoVariable: self) new ]) initializeAcceptingItemsOf:
+				(#_coverageTracker7077646_
+					cover: (68 to: 75)
+					declaredAt: (19 to: 26)
+					by: aCatalog) ].! !
+!Behavior method!
+initializeAcceptingItemsOf: aCatalog
+	#_coverageTracker7080323_ markAsExecuted.
+	#_coverageTracker7080323_
+		cover: (40 to: 46)
+		declaredAt: (40 to: 46)
+		by:
+			(catalog _ #_coverageTracker7080323_
+				cover: (51 to: 58)
+				declaredAt: (29 to: 36)
+				by: aCatalog).
+	#_coverageTracker7080323_
+		cover: (62 to: 66)
+		declaredAt: (62 to: 66)
+		by:
+			(items _ #_coverageTracker7080323_
+				coverAll:
+					{75 to: 77}
+				evaluating: [
+					(#_coverageTracker7080323_
+						coverAll:
+							{71 to: 73}
+						by: Bag) new ]).! !
+!Behavior method!
+ownedBy: aCustomer with: aCart on: aSystemFacade
+	#_coverageTracker7078455_ markAsExecuted.
+	^ #_coverageTracker7078455_
+		coverAll:
+			{62 to: 79. 91 to: 95. 103 to: 105}
+		evaluating: [
+			(#_coverageTracker7078455_
+				coverAll:
+					{58 to: 60}
+				evaluating: [
+					(#_coverageTracker7078455_
+						coverAll:
+							{53 to: 56}
+						byLiteralOrPseudoVariable: self) new ])
+				initializeOwnedBy:
+					(#_coverageTracker7078455_
+						cover: (81 to: 89)
+						declaredAt: (10 to: 18)
+						by: aCustomer)
+				with:
+					(#_coverageTracker7078455_
+						cover: (97 to: 101)
+						declaredAt: (26 to: 30)
+						by: aCart)
+				on:
+					(#_coverageTracker7078455_
+						cover: (107 to: 119)
+						declaredAt: (36 to: 48)
+						by: aSystemFacade) ].! !
+!Behavior method!
+initializeOwnedBy: aCustomer with: aCart on: aSystemFacade
+	#_coverageTracker7079350_ markAsExecuted.
+	#_coverageTracker7079350_
+		cover: (62 to: 66)
+		declaredAt: (62 to: 66)
+		by:
+			(owner _ #_coverageTracker7079350_
+				cover: (71 to: 79)
+				declaredAt: (20 to: 28)
+				by: aCustomer).
+	#_coverageTracker7079350_
+		cover: (83 to: 86)
+		declaredAt: (83 to: 86)
+		by:
+			(cart _ #_coverageTracker7079350_
+				cover: (91 to: 95)
+				declaredAt: (36 to: 40)
+				by: aCart).
+	#_coverageTracker7079350_
+		cover: (99 to: 110)
+		declaredAt: (99 to: 110)
+		by:
+			(systemFacade _ #_coverageTracker7079350_
+				cover: (115 to: 127)
+				declaredAt: (46 to: 58)
+				by: aSystemFacade).
+	#_coverageTracker7079350_
+		cover: (131 to: 142)
+		declaredAt: (131 to: 142)
+		by:
+			(lastUsedTime _ #_coverageTracker7079350_
+				coverAll:
+					{152 to: 154}
+				evaluating: [
+					(#_coverageTracker7079350_
+						coverAll:
+							{147 to: 150}
+						byLiteralOrPseudoVariable: self) now ]).! !
+!Behavior method!
+now
+	#_coverageTracker7078197_ markAsExecuted.
+	^ #_coverageTracker7078197_
+		coverAll:
+			{21 to: 23}
+		evaluating: [
+			(#_coverageTracker7078197_
+				cover: (8 to: 19)
+				declaredAt: (8 to: 19)
+				by: systemFacade) now ].! !
+!Behavior method!
+now
+	#_coverageTracker7079511_ markAsExecuted.
+	^ #_coverageTracker7079511_
+		coverAll:
+			{15 to: 17}
+		evaluating: [
+			(#_coverageTracker7079511_
+				cover: (9 to: 13)
+				declaredAt: (9 to: 13)
+				by: clock) now ].! !
+!Behavior method!
+now
+	#_coverageTracker7078451_ markAsExecuted.
+	^ #_coverageTracker7078451_
+		cover: (10 to: 12)
+		declaredAt: (10 to: 12)
+		by: now.! !
+!Behavior method!
+add: anAmount of: aBook toCartIdentifiedAs: aCartId
+	#_coverageTracker7079251_ markAsExecuted.
+	#_coverageTracker7079251_
+		coverAll:
+			{60 to: 87. 97 to: 99}
+		evaluating: [
+			(#_coverageTracker7079251_
+				coverAll:
+					{55 to: 58}
+				byLiteralOrPseudoVariable: self)
+				withCartSessionIdentifiedAs:
+					(#_coverageTracker7079251_
+						cover: (89 to: 95)
+						declaredAt: (45 to: 51)
+						by: aCartId)
+				do: [ :cartSession |
+					#_coverageTracker7079251_
+						coverAll:
+							{130 to: 139. 150 to: 152}
+						evaluating: [
+							(#_coverageTracker7079251_
+								cover: (118 to: 128)
+								declaredAt: (104 to: 114)
+								by: cartSession)
+								addToCart:
+									(#_coverageTracker7079251_
+										cover: (141 to: 148)
+										declaredAt: (6 to: 13)
+										by: anAmount)
+								of:
+									(#_coverageTracker7079251_
+										cover: (154 to: 158)
+										declaredAt: (19 to: 23)
+										by: aBook) ]]].! !
+!Behavior method!
+withCartSessionIdentifiedAs: aCartId do: aBlock
+	| cartSession |
+	#_coverageTracker7080109_ markAsExecuted.
+	#_coverageTracker7080109_
+		cover: (70 to: 80)
+		declaredAt: (53 to: 63)
+		by:
+			(cartSession _ #_coverageTracker7080109_
+				coverAll:
+					{98 to: 100. 110 to: 118}
+				evaluating: [
+					(#_coverageTracker7080109_
+						cover: (85 to: 96)
+						declaredAt: (85 to: 96)
+						by: cartSessions)
+						at:
+							(#_coverageTracker7080109_
+								cover: (102 to: 108)
+								declaredAt: (30 to: 36)
+								by: aCartId)
+						ifAbsent: [
+							#_coverageTracker7080109_
+								coverAll:
+									{126 to: 144}
+								evaluating: [
+									(#_coverageTracker7080109_
+										coverAll:
+											{121 to: 124}
+										byLiteralOrPseudoVariable: self) signalInvalidCartId ]]]).
+	^ #_coverageTracker7080109_
+		coverAll:
+			{163 to: 165}
+		evaluating: [
+			(#_coverageTracker7080109_
+				cover: (151 to: 161)
+				declaredAt: (53 to: 63)
+				by: cartSession) do:
+				(#_coverageTracker7080109_
+					cover: (167 to: 172)
+					declaredAt: (42 to: 47)
+					by: aBlock) ].! !
+!Behavior method!
+do: aBlock
+	| now |
+	#_coverageTracker7079657_ markAsExecuted.
+	#_coverageTracker7079657_
+		cover: (24 to: 26)
+		declaredAt: (16 to: 18)
+		by:
+			(now _ #_coverageTracker7079657_
+				coverAll:
+					{36 to: 38}
+				evaluating: [
+					(#_coverageTracker7079657_
+						coverAll:
+							{31 to: 34}
+						byLiteralOrPseudoVariable: self) now ]).
+	#_coverageTracker7079657_
+		coverAll:
+			{47 to: 68}
+		evaluating: [
+			(#_coverageTracker7079657_
+				coverAll:
+					{42 to: 45}
+				byLiteralOrPseudoVariable: self) assertIsNotExpirtedAt:
+				(#_coverageTracker7079657_
+					cover: (70 to: 72)
+					declaredAt: (16 to: 18)
+					by: now) ].
+	^ #_coverageTracker7079657_
+		coverAll:
+			{103 to: 109}
+		evaluating: [
+			[
+			#_coverageTracker7079657_
+				coverAll:
+					{89 to: 94}
+				evaluating: [
+					(#_coverageTracker7079657_
+						cover: (82 to: 87)
+						declaredAt: (5 to: 10)
+						by: aBlock) value:
+						(#_coverageTracker7079657_
+							coverAll:
+								{96 to: 99}
+							byLiteralOrPseudoVariable: self) ]] ensure: [
+				#_coverageTracker7079657_
+					cover: (113 to: 124)
+					declaredAt: (113 to: 124)
+					by:
+						(lastUsedTime _ #_coverageTracker7079657_
+							cover: (129 to: 131)
+							declaredAt: (16 to: 18)
+							by: now) ]].! !
+!Behavior method!
+assertIsNotExpirtedAt: aTime
+	#_coverageTracker7077041_ markAsExecuted.
+	#_coverageTracker7077041_
+		coverAll:
+			{58 to: 64}
+		evaluating: [
+			(#_coverageTracker7077041_
+				coverAll:
+					{38 to: 49}
+				evaluating: [
+					(#_coverageTracker7077041_
+						coverAll:
+							{33 to: 36}
+						byLiteralOrPseudoVariable: self) isExpiredAt:
+						(#_coverageTracker7077041_
+							cover: (51 to: 55)
+							declaredAt: (24 to: 28)
+							by: aTime) ]) ifTrue: [
+				#_coverageTracker7077041_
+					coverAll:
+						{73 to: 96}
+					evaluating: [
+						(#_coverageTracker7077041_
+							coverAll:
+								{68 to: 71}
+							byLiteralOrPseudoVariable: self) signalCartSessionExpired ]]].! !
+!Behavior method!
+isExpiredAt: aTime
+	#_coverageTracker7079498_ markAsExecuted.
+	^ #_coverageTracker7079498_
+		coverAll:
+			{72 to: 72}
+		evaluating: [
+			(#_coverageTracker7079498_
+				coverAll:
+					{40 to: 40}
+				evaluating: [
+					(#_coverageTracker7079498_
+						cover: (27 to: 38)
+						declaredAt: (27 to: 38)
+						by: lastUsedTime) +
+						(#_coverageTracker7079498_
+							coverAll:
+								{55 to: 69}
+							evaluating: [
+								(#_coverageTracker7079498_
+									cover: (42 to: 53)
+									declaredAt: (42 to: 53)
+									by: systemFacade) sessionDuration ]) ]) <
+				(#_coverageTracker7079498_
+					cover: (74 to: 78)
+					declaredAt: (14 to: 18)
+					by: aTime) ].! !
+!Behavior method!
+sessionDuration
+	#_coverageTracker7080232_ markAsExecuted.
+	^ #_coverageTracker7080232_
+		coverAll:
+			{24 to: 30}
+		evaluating: [
+			(#_coverageTracker7080232_
+				coverAll:
+					{21 to: 22}
+				byLiteralOrPseudoVariable: 30) minutes ].! !
+!Behavior method!
+addToCart: anAmount of: aBook
+	#_coverageTracker7077518_ markAsExecuted.
+	^ #_coverageTracker7077518_
+		coverAll:
+			{39 to: 42. 53 to: 55}
+		evaluating: [
+			(#_coverageTracker7077518_
+				cover: (34 to: 37)
+				declaredAt: (34 to: 37)
+				by: cart)
+				add:
+					(#_coverageTracker7077518_
+						cover: (44 to: 51)
+						declaredAt: (12 to: 19)
+						by: anAmount)
+				of:
+					(#_coverageTracker7077518_
+						cover: (57 to: 61)
+						declaredAt: (25 to: 29)
+						by: aBook) ].! !
+!Behavior method!
+add: aQuantity of: anItem
+	#_coverageTracker7079320_ markAsExecuted.
+	#_coverageTracker7079320_
+		coverAll:
+			{34 to: 55}
+		evaluating: [
+			(#_coverageTracker7079320_
+				coverAll:
+					{29 to: 32}
+				byLiteralOrPseudoVariable: self) assertIsValidQuantity:
+				(#_coverageTracker7079320_
+					cover: (57 to: 65)
+					declaredAt: (6 to: 14)
+					by: aQuantity) ].
+	#_coverageTracker7079320_
+		coverAll:
+			{74 to: 91}
+		evaluating: [
+			(#_coverageTracker7079320_
+				coverAll:
+					{69 to: 72}
+				byLiteralOrPseudoVariable: self) assertIsValidItem:
+				(#_coverageTracker7079320_
+					cover: (93 to: 98)
+					declaredAt: (20 to: 25)
+					by: anItem) ].
+	#_coverageTracker7079320_
+		coverAll:
+			{109 to: 112. 121 to: 136}
+		evaluating: [
+			(#_coverageTracker7079320_
+				cover: (103 to: 107)
+				declaredAt: (103 to: 107)
+				by: items)
+				add:
+					(#_coverageTracker7079320_
+						cover: (114 to: 119)
+						declaredAt: (20 to: 25)
+						by: anItem)
+				withOccurrences:
+					(#_coverageTracker7079320_
+						cover: (138 to: 146)
+						declaredAt: (6 to: 14)
+						by: aQuantity) ].! !
+!Behavior method!
+assertIsValidQuantity: aQuantity
+	#_coverageTracker7080354_ markAsExecuted.
+	#_coverageTracker7080354_
+		coverAll:
+			{63 to: 70}
+		evaluating: [
+			(#_coverageTracker7080354_
+				coverAll:
+					{46 to: 61}
+				evaluating: [
+					(#_coverageTracker7080354_
+						cover: (36 to: 44)
+						declaredAt: (24 to: 32)
+						by: aQuantity) strictlyPositive ]) ifFalse: [
+				#_coverageTracker7080354_
+					coverAll:
+						{78 to: 98}
+					evaluating: [
+						(#_coverageTracker7080354_
+							coverAll:
+								{73 to: 76}
+							byLiteralOrPseudoVariable: self) signalInvalidQuantity ]]].! !
+!Behavior method!
+assertIsValidItem: anItem
+	#_coverageTracker7078126_ markAsExecuted.
+	#_coverageTracker7078126_
+		coverAll:
+			{59 to: 66}
+		evaluating: [
+			(#_coverageTracker7078126_
+				coverAll:
+					{38 to: 49}
+				evaluating: [
+					(#_coverageTracker7078126_
+						cover: (30 to: 36)
+						declaredAt: (30 to: 36)
+						by: catalog) includesKey:
+						(#_coverageTracker7078126_
+							cover: (51 to: 56)
+							declaredAt: (20 to: 25)
+							by: anItem) ]) ifFalse: [
+				#_coverageTracker7078126_
+					coverAll:
+						{75 to: 91}
+					evaluating: [
+						(#_coverageTracker7078126_
+							coverAll:
+								{70 to: 73}
+							byLiteralOrPseudoVariable: self) signalInvalidItem ]]].! !
+!Behavior method!
+validCreditCardNumber
+	#_coverageTracker7080062_ markAsExecuted.
+	^ #_coverageTracker7080062_
+		coverAll:
+			{27 to: 44}
+		byLiteralOrPseudoVariable: '1234567890123456'.! !
+!Behavior method!
+validOwnerName
+	#_coverageTracker7077855_ markAsExecuted.
+	^ #_coverageTracker7077855_
+		coverAll:
+			{20 to: 33}
+		byLiteralOrPseudoVariable: 'Pepe Sanchez'.! !
+!Behavior method!
+notExpiredMonthOfYear
+	#_coverageTracker7077902_ markAsExecuted.
+	^ #_coverageTracker7077902_
+		coverAll:
+			{33 to: 38. 57 to: 61}
+		evaluating: [
+			(#_coverageTracker7077902_
+				coverAll:
+					{27 to: 31}
+				by: Month)
+				month:
+					(#_coverageTracker7077902_
+						coverAll:
+							{46 to: 55}
+						evaluating: [
+							(#_coverageTracker7077902_
+								cover: (40 to: 44)
+								declaredAt: (40 to: 44)
+								by: today) monthIndex ])
+				year:
+					(#_coverageTracker7077902_
+						coverAll:
+							{80 to: 80}
+						evaluating: [
+							(#_coverageTracker7077902_
+								coverAll:
+									{69 to: 78}
+								evaluating: [
+									(#_coverageTracker7077902_
+										cover: (63 to: 67)
+										declaredAt: (40 to: 44)
+										by: today) yearNumber ]) +
+								(#_coverageTracker7077902_
+									coverAll:
+										{81 to: 82}
+									byLiteralOrPseudoVariable: 1) ]) ].! !
+!Behavior method!
+checkOutCartIdentifiedAs: aCartId withCreditCardNumbered: aCreditCartNumber ownedBy: anOwner expiringOn: anExpirationMonthOfYear
+	#_coverageTracker7078995_ markAsExecuted.
+	^ #_coverageTracker7078995_
+		coverAll:
+			{141 to: 168. 181 to: 183}
+		evaluating: [
+			(#_coverageTracker7078995_
+				coverAll:
+					{133 to: 136}
+				byLiteralOrPseudoVariable: self)
+				withCartSessionIdentifiedAs:
+					(#_coverageTracker7078995_
+						cover: (170 to: 176)
+						declaredAt: (27 to: 33)
+						by: aCartId)
+				do: [ :cartSession | | ticket |
+					#_coverageTracker7078995_
+						cover: (217 to: 222)
+						declaredAt: (204 to: 209)
+						by:
+							(ticket _ #_coverageTracker7078995_
+								coverAll:
+									{244 to: 278. 303 to: 310. 325 to: 335}
+								evaluating: [
+									(#_coverageTracker7078995_
+										cover: (227 to: 237)
+										declaredAt: (188 to: 198)
+										by: cartSession)
+										checkOutCartWithCreditCardNumbered:
+											(#_coverageTracker7078995_
+												cover: (280 to: 296)
+												declaredAt: (59 to: 75)
+												by: aCreditCartNumber)
+										ownedBy:
+											(#_coverageTracker7078995_
+												cover: (312 to: 318)
+												declaredAt: (86 to: 92)
+												by: anOwner)
+										expiringOn:
+											(#_coverageTracker7078995_
+												cover: (337 to: 359)
+												declaredAt: (106 to: 128)
+												by: anExpirationMonthOfYear) ]).
+					#_coverageTracker7078995_
+						coverAll:
+							{370 to: 382}
+						evaluating: [
+							(#_coverageTracker7078995_
+								coverAll:
+									{365 to: 368}
+								byLiteralOrPseudoVariable: self) removeCartId:
+								(#_coverageTracker7078995_
+									cover: (384 to: 390)
+									declaredAt: (27 to: 33)
+									by: aCartId) ].
+					#_coverageTracker7078995_
+						coverAll:
+							{403 to: 415}
+						evaluating: [
+							(#_coverageTracker7078995_
+								cover: (396 to: 401)
+								declaredAt: (204 to: 209)
+								by: ticket) transactionId ]]].! !
+!Behavior method!
+checkOutCartWithCreditCardNumbered: aCreditCartNumber ownedBy: anOwner expiringOn: anExpirationMonthOfYear
+	#_coverageTracker7078752_ markAsExecuted.
+	^ #_coverageTracker7078752_
+		coverAll:
+			{369 to: 376}
+		evaluating: [
+			(#_coverageTracker7078752_
+				coverAll:
+					{124 to: 134. 144 to: 151. 161 to: 169. 268 to: 276. 312 to: 314. 330 to: 343}
+				evaluating: [
+					(#_coverageTracker7078752_
+						coverAll:
+							{113 to: 119}
+						by: Cashier)
+						toCheckout:
+							(#_coverageTracker7078752_
+								cover: (136 to: 139)
+								declaredAt: (136 to: 139)
+								by: cart)
+						ownedBy:
+							(#_coverageTracker7078752_
+								cover: (153 to: 157)
+								declaredAt: (153 to: 157)
+								by: owner)
+						charging:
+							(#_coverageTracker7078752_
+								coverAll:
+									{183 to: 191. 211 to: 218. 228 to: 238}
+								evaluating: [
+									(#_coverageTracker7078752_
+										coverAll:
+											{172 to: 181}
+										by: CreditCard)
+										numbered:
+											(#_coverageTracker7078752_
+												cover: (193 to: 209)
+												declaredAt: (37 to: 53)
+												by: aCreditCartNumber)
+										ownedBy:
+											(#_coverageTracker7078752_
+												cover: (220 to: 226)
+												declaredAt: (64 to: 70)
+												by: anOwner)
+										expiringOn:
+											(#_coverageTracker7078752_
+												cover: (240 to: 262)
+												declaredAt: (84 to: 106)
+												by: anExpirationMonthOfYear) ])
+						throught:
+							(#_coverageTracker7078752_
+								coverAll:
+									{291 to: 307}
+								evaluating: [
+									(#_coverageTracker7078752_
+										cover: (278 to: 289)
+										declaredAt: (278 to: 289)
+										by: systemFacade) merchantProcessor ])
+						on:
+							(#_coverageTracker7078752_
+								coverAll:
+									{321 to: 325}
+								evaluating: [
+									(#_coverageTracker7078752_
+										coverAll:
+											{316 to: 319}
+										byLiteralOrPseudoVariable: self) today ])
+						registeringOn:
+							(#_coverageTracker7078752_
+								coverAll:
+									{358 to: 366}
+								evaluating: [
+									(#_coverageTracker7078752_
+										cover: (345 to: 356)
+										declaredAt: (278 to: 289)
+										by: systemFacade) salesBook ]) ]) checkOut ].! !
+!Behavior method!
+numbered: aNumber ownedBy: anOwnerName expiringOn: aMonth
+	#_coverageTracker7079515_ markAsExecuted.
+	#_coverageTracker7079515_
+		coverAll:
+			{68 to: 87}
+		evaluating: [
+			(#_coverageTracker7079515_
+				coverAll:
+					{63 to: 66}
+				byLiteralOrPseudoVariable: self) assertIsValidNumber:
+				(#_coverageTracker7079515_
+					cover: (89 to: 95)
+					declaredAt: (11 to: 17)
+					by: aNumber) ].
+	#_coverageTracker7079515_
+		coverAll:
+			{104 to: 126}
+		evaluating: [
+			(#_coverageTracker7079515_
+				coverAll:
+					{99 to: 102}
+				byLiteralOrPseudoVariable: self) assertIsValidOwnerName:
+				(#_coverageTracker7079515_
+					cover: (128 to: 138)
+					declaredAt: (28 to: 38)
+					by: anOwnerName) ].
+	^ #_coverageTracker7079515_
+		coverAll:
+			{154 to: 172. 182 to: 189. 203 to: 213}
+		evaluating: [
+			(#_coverageTracker7079515_
+				coverAll:
+					{150 to: 152}
+				evaluating: [
+					(#_coverageTracker7079515_
+						coverAll:
+							{145 to: 148}
+						byLiteralOrPseudoVariable: self) new ])
+				initializeNumbered:
+					(#_coverageTracker7079515_
+						cover: (174 to: 180)
+						declaredAt: (11 to: 17)
+						by: aNumber)
+				ownedBy:
+					(#_coverageTracker7079515_
+						cover: (191 to: 201)
+						declaredAt: (28 to: 38)
+						by: anOwnerName)
+				expiringOn:
+					(#_coverageTracker7079515_
+						cover: (215 to: 220)
+						declaredAt: (52 to: 57)
+						by: aMonth) ].! !
+!Behavior method!
+assertIsValidNumber: aNumber
+	#_coverageTracker7077145_ markAsExecuted.
+	#_coverageTracker7077145_
+		coverAll:
+			{50 to: 57}
+		evaluating: [
+			(#_coverageTracker7077145_
+				coverAll:
+					{45 to: 45}
+				evaluating: [
+					(#_coverageTracker7077145_
+						coverAll:
+							{40 to: 43}
+						evaluating: [
+							(#_coverageTracker7077145_
+								cover: (32 to: 38)
+								declaredAt: (22 to: 28)
+								by: aNumber) size ]) =
+						(#_coverageTracker7077145_
+							coverAll:
+								{47 to: 48}
+							byLiteralOrPseudoVariable: 16) ]) ifFalse: [
+				#_coverageTracker7077145_
+					coverAll:
+						{66 to: 84}
+					evaluating: [
+						(#_coverageTracker7077145_
+							coverAll:
+								{61 to: 64}
+							byLiteralOrPseudoVariable: self) signalInvalidNumber ]]].
+	#_coverageTracker7077145_
+		coverAll:
+			{153 to: 159}
+		evaluating: [
+			(#_coverageTracker7077145_
+				coverAll:
+					{99 to: 109}
+				evaluating: [
+					(#_coverageTracker7077145_
+						cover: (91 to: 97)
+						declaredAt: (22 to: 28)
+						by: aNumber) anySatisfy: [ :aCharacter |
+						#_coverageTracker7077145_
+							coverAll:
+								{146 to: 148}
+							evaluating: [
+								(#_coverageTracker7077145_
+									coverAll:
+										{138 to: 144}
+									evaluating: [
+										(#_coverageTracker7077145_
+											cover: (127 to: 136)
+											declaredAt: (114 to: 123)
+											by: aCharacter) isDigit ]) not ]]]) ifTrue: [
+				#_coverageTracker7077145_
+					coverAll:
+						{168 to: 186}
+					evaluating: [
+						(#_coverageTracker7077145_
+							coverAll:
+								{163 to: 166}
+							byLiteralOrPseudoVariable: self) signalInvalidNumber ]]].! !
+!Behavior method!
+assertIsValidOwnerName: anOwnerName
+	#_coverageTracker7077726_ markAsExecuted.
+	#_coverageTracker7077726_
+		coverAll:
+			{59 to: 65}
+		evaluating: [
+			(#_coverageTracker7077726_
+				coverAll:
+					{51 to: 57}
+				evaluating: [
+					(#_coverageTracker7077726_
+						cover: (39 to: 49)
+						declaredAt: (25 to: 35)
+						by: anOwnerName) isEmpty ]) ifTrue: [
+				#_coverageTracker7077726_
+					coverAll:
+						{74 to: 95}
+					evaluating: [
+						(#_coverageTracker7077726_
+							coverAll:
+								{69 to: 72}
+							byLiteralOrPseudoVariable: self) signalInvalidOwnerName ]]].! !
+!Behavior method!
+initializeNumbered: aNumber ownedBy: anOwnerName expiringOn: aMonth
+	#_coverageTracker7077652_ markAsExecuted.
+	#_coverageTracker7077652_
+		cover: (73 to: 78)
+		declaredAt: (73 to: 78)
+		by:
+			(number _ #_coverageTracker7077652_
+				cover: (83 to: 89)
+				declaredAt: (21 to: 27)
+				by: aNumber).
+	#_coverageTracker7077652_
+		cover: (93 to: 101)
+		declaredAt: (93 to: 101)
+		by:
+			(ownerName _ #_coverageTracker7077652_
+				cover: (106 to: 116)
+				declaredAt: (38 to: 48)
+				by: anOwnerName).
+	#_coverageTracker7077652_
+		cover: (120 to: 129)
+		declaredAt: (120 to: 129)
+		by:
+			(expiration _ #_coverageTracker7077652_
+				cover: (134 to: 139)
+				declaredAt: (62 to: 67)
+				by: aMonth).! !
+!Behavior method!
+merchantProcessor
+	#_coverageTracker7077914_ markAsExecuted.
+	^ #_coverageTracker7077914_
+		cover: (23 to: 39)
+		declaredAt: (23 to: 39)
+		by: merchantProcessor.! !
+!Behavior method!
+today
+	#_coverageTracker7080065_ markAsExecuted.
+	^ #_coverageTracker7080065_
+		coverAll:
+			{23 to: 27}
+		evaluating: [
+			(#_coverageTracker7080065_
+				cover: (10 to: 21)
+				declaredAt: (10 to: 21)
+				by: systemFacade) today ].! !
+!Behavior method!
+today
+	#_coverageTracker7080067_ markAsExecuted.
+	^ #_coverageTracker7080067_
+		coverAll:
+			{17 to: 21}
+		evaluating: [
+			(#_coverageTracker7080067_
+				cover: (11 to: 15)
+				declaredAt: (11 to: 15)
+				by: clock) today ].! !
+!Behavior method!
+today
+	#_coverageTracker7078602_ markAsExecuted.
+	^ #_coverageTracker7078602_
+		coverAll:
+			{15 to: 18}
+		evaluating: [
+			(#_coverageTracker7078602_
+				cover: (11 to: 13)
+				declaredAt: (11 to: 13)
+				by: now) date ].! !
+!Behavior method!
+salesBook
+	#_coverageTracker7080244_ markAsExecuted.
+	^ #_coverageTracker7080244_
+		cover: (15 to: 23)
+		declaredAt: (15 to: 23)
+		by: salesBook.! !
+!Behavior method!
+toCheckout: aCart ownedBy: anOwner charging: aCreditCard throught: aMerchantProcessor on: aDate registeringOn: aSalesBook
+	#_coverageTracker7078688_ markAsExecuted.
+	#_coverageTracker7078688_
+		coverAll:
+			{131 to: 147}
+		evaluating: [
+			(#_coverageTracker7078688_
+				coverAll:
+					{126 to: 129}
+				byLiteralOrPseudoVariable: self) assertIsNotEmpty:
+				(#_coverageTracker7078688_
+					cover: (149 to: 153)
+					declaredAt: (13 to: 17)
+					by: aCart) ].
+	#_coverageTracker7078688_
+		coverAll:
+			{162 to: 180. 194 to: 196}
+		evaluating: [
+			(#_coverageTracker7078688_
+				coverAll:
+					{157 to: 160}
+				byLiteralOrPseudoVariable: self)
+				assertIsNotExpired:
+					(#_coverageTracker7078688_
+						cover: (182 to: 192)
+						declaredAt: (46 to: 56)
+						by: aCreditCard)
+				on:
+					(#_coverageTracker7078688_
+						cover: (198 to: 202)
+						declaredAt: (91 to: 95)
+						by: aDate) ].
+	^ #_coverageTracker7078688_
+		coverAll:
+			{218 to: 238. 246 to: 253. 263 to: 271. 285 to: 293. 314 to: 327}
+		evaluating: [
+			(#_coverageTracker7078688_
+				coverAll:
+					{214 to: 216}
+				evaluating: [
+					(#_coverageTracker7078688_
+						coverAll:
+							{209 to: 212}
+						byLiteralOrPseudoVariable: self) new ])
+				initializeToCheckout:
+					(#_coverageTracker7078688_
+						cover: (240 to: 244)
+						declaredAt: (13 to: 17)
+						by: aCart)
+				ownedBy:
+					(#_coverageTracker7078688_
+						cover: (255 to: 261)
+						declaredAt: (28 to: 34)
+						by: anOwner)
+				charging:
+					(#_coverageTracker7078688_
+						cover: (273 to: 283)
+						declaredAt: (46 to: 56)
+						by: aCreditCard)
+				throught:
+					(#_coverageTracker7078688_
+						cover: (295 to: 312)
+						declaredAt: (68 to: 85)
+						by: aMerchantProcessor)
+				registeringOn:
+					(#_coverageTracker7078688_
+						cover: (329 to: 338)
+						declaredAt: (112 to: 121)
+						by: aSalesBook) ].! !
+!Behavior method!
+assertIsNotEmpty: aCart
+	#_coverageTracker7077185_ markAsExecuted.
+	#_coverageTracker7077185_
+		coverAll:
+			{43 to: 49}
+		evaluating: [
+			(#_coverageTracker7077185_
+				coverAll:
+					{35 to: 41}
+				evaluating: [
+					(#_coverageTracker7077185_
+						cover: (29 to: 33)
+						declaredAt: (19 to: 23)
+						by: aCart) isEmpty ]) ifTrue: [
+				#_coverageTracker7077185_
+					coverAll:
+						{57 to: 79}
+					evaluating: [
+						(#_coverageTracker7077185_
+							coverAll:
+								{52 to: 55}
+							byLiteralOrPseudoVariable: self) signalCartCanNotBeEmpty ]]].! !
+!Behavior method!
+isEmpty
+	#_coverageTracker7080346_ markAsExecuted.
+	^ #_coverageTracker7080346_
+		coverAll:
+			{19 to: 25}
+		evaluating: [
+			(#_coverageTracker7080346_
+				cover: (13 to: 17)
+				declaredAt: (13 to: 17)
+				by: items) isEmpty ].! !
+!Behavior method!
+assertIsNotExpired: aCreditCard on: aDate
+	#_coverageTracker7079608_ markAsExecuted.
+	#_coverageTracker7079608_
+		coverAll:
+			{79 to: 85}
+		evaluating: [
+			(#_coverageTracker7079608_
+				coverAll:
+					{59 to: 70}
+				evaluating: [
+					(#_coverageTracker7079608_
+						cover: (47 to: 57)
+						declaredAt: (21 to: 31)
+						by: aCreditCard) isExpiredOn:
+						(#_coverageTracker7079608_
+							cover: (72 to: 76)
+							declaredAt: (37 to: 41)
+							by: aDate) ]) ifTrue: [
+				#_coverageTracker7079608_
+					coverAll:
+						{93 to: 129}
+					evaluating: [
+						(#_coverageTracker7079608_
+							coverAll:
+								{88 to: 91}
+							byLiteralOrPseudoVariable: self) signalCanNotChargeAnExpiredCreditCard ]]].! !
+!Behavior method!
+isExpiredOn: aDate
+	#_coverageTracker7078092_ markAsExecuted.
+	^ #_coverageTracker7078092_
+		coverAll:
+			{42 to: 42}
+		evaluating: [
+			(#_coverageTracker7078092_
+				coverAll:
+					{36 to: 40}
+				evaluating: [
+					(#_coverageTracker7078092_
+						cover: (25 to: 34)
+						declaredAt: (25 to: 34)
+						by: expiration) start ]) <
+				(#_coverageTracker7078092_
+					coverAll:
+						{99 to: 103}
+					evaluating: [
+						(#_coverageTracker7078092_
+							coverAll:
+								{51 to: 56. 75 to: 79}
+							evaluating: [
+								(#_coverageTracker7078092_
+									coverAll:
+										{45 to: 49}
+									by: Month)
+									month:
+										(#_coverageTracker7078092_
+											coverAll:
+												{64 to: 73}
+											evaluating: [
+												(#_coverageTracker7078092_
+													cover: (58 to: 62)
+													declaredAt: (14 to: 18)
+													by: aDate) monthIndex ])
+									year:
+										(#_coverageTracker7078092_
+											coverAll:
+												{87 to: 96}
+											evaluating: [
+												(#_coverageTracker7078092_
+													cover: (81 to: 85)
+													declaredAt: (14 to: 18)
+													by: aDate) yearNumber ]) ]) start ]) ].! !
+!Behavior method!
+initializeToCheckout: aCart ownedBy: anOwner charging: aCreditCard throught: aMerchantProcessor registeringOn: aSalesBook
+	#_coverageTracker7077684_ markAsExecuted.
+	#_coverageTracker7077684_
+		cover: (126 to: 129)
+		declaredAt: (126 to: 129)
+		by:
+			(cart _ #_coverageTracker7077684_
+				cover: (134 to: 138)
+				declaredAt: (23 to: 27)
+				by: aCart).
+	#_coverageTracker7077684_
+		cover: (142 to: 146)
+		declaredAt: (142 to: 146)
+		by:
+			(owner _ #_coverageTracker7077684_
+				cover: (151 to: 157)
+				declaredAt: (38 to: 44)
+				by: anOwner).
+	#_coverageTracker7077684_
+		cover: (161 to: 170)
+		declaredAt: (161 to: 170)
+		by:
+			(creditCard _ #_coverageTracker7077684_
+				cover: (175 to: 185)
+				declaredAt: (56 to: 66)
+				by: aCreditCard).
+	#_coverageTracker7077684_
+		cover: (189 to: 205)
+		declaredAt: (189 to: 205)
+		by:
+			(merchantProcessor _ #_coverageTracker7077684_
+				cover: (210 to: 227)
+				declaredAt: (78 to: 95)
+				by: aMerchantProcessor).
+	#_coverageTracker7077684_
+		cover: (231 to: 239)
+		declaredAt: (231 to: 239)
+		by:
+			(salesBook _ #_coverageTracker7077684_
+				cover: (244 to: 253)
+				declaredAt: (112 to: 121)
+				by: aSalesBook).! !
+!Behavior method!
+checkOut
+	#_coverageTracker7077050_ markAsExecuted.
+	#_coverageTracker7077050_
+		coverAll:
+			{17 to: 28}
+		evaluating: [
+			(#_coverageTracker7077050_
+				coverAll:
+					{12 to: 15}
+				byLiteralOrPseudoVariable: self) createTicket ].
+	#_coverageTracker7077050_
+		coverAll:
+			{37 to: 46}
+		evaluating: [
+			(#_coverageTracker7077050_
+				coverAll:
+					{32 to: 35}
+				byLiteralOrPseudoVariable: self) debitTotal ].
+	#_coverageTracker7077050_
+		coverAll:
+			{55 to: 66}
+		evaluating: [
+			(#_coverageTracker7077050_
+				coverAll:
+					{50 to: 53}
+				byLiteralOrPseudoVariable: self) registerSale ].
+	^ #_coverageTracker7077050_
+		cover: (73 to: 78)
+		declaredAt: (73 to: 78)
+		by: ticket.! !
+!Behavior method!
+createTicket
+	| lineItems |
+	#_coverageTracker7078038_ markAsExecuted.
+	#_coverageTracker7078038_
+		cover: (33 to: 41)
+		declaredAt: (18 to: 26)
+		by:
+			(lineItems _ #_coverageTracker7078038_
+				coverAll:
+					{64 to: 66}
+				evaluating: [
+					(#_coverageTracker7078038_
+						coverAll:
+							{46 to: 62}
+						by: OrderedCollection) new ]).
+	#_coverageTracker7078038_
+		coverAll:
+			{75 to: 95}
+		evaluating: [
+			(#_coverageTracker7078038_
+				cover: (70 to: 73)
+				declaredAt: (70 to: 73)
+				by: cart) itemsAndQuantitiesDo: [ :anItem :aQuantity |
+				#_coverageTracker7078038_
+					coverAll:
+						{133 to: 136}
+					evaluating: [
+						(#_coverageTracker7078038_
+							cover: (123 to: 131)
+							declaredAt: (18 to: 26)
+							by: lineItems) add:
+							(#_coverageTracker7078038_
+								coverAll:
+									{144 to: 160. 169 to: 177}
+								evaluating: [
+									(#_coverageTracker7078038_
+										coverAll:
+											{139 to: 142}
+										byLiteralOrPseudoVariable: self)
+										createLineItemOf:
+											(#_coverageTracker7078038_
+												cover: (162 to: 167)
+												declaredAt: (100 to: 105)
+												by: anItem)
+										quantity:
+											(#_coverageTracker7078038_
+												cover: (179 to: 187)
+												declaredAt: (108 to: 116)
+												by: aQuantity) ]) ]]].
+	#_coverageTracker7078038_
+		cover: (195 to: 200)
+		declaredAt: (195 to: 200)
+		by:
+			(ticket _ #_coverageTracker7078038_
+				coverAll:
+					{212 to: 214}
+				evaluating: [
+					(#_coverageTracker7078038_
+						coverAll:
+							{205 to: 210}
+						by: Ticket) of:
+						(#_coverageTracker7078038_
+							cover: (216 to: 224)
+							declaredAt: (18 to: 26)
+							by: lineItems) ]).! !
+!Behavior method!
+itemsAndQuantitiesDo: aBlock
+	#_coverageTracker7078386_ markAsExecuted.
+	^ #_coverageTracker7078386_
+		coverAll:
+			{50 to: 65}
+		evaluating: [
+			(#_coverageTracker7078386_
+				coverAll:
+					{41 to: 48}
+				evaluating: [
+					(#_coverageTracker7078386_
+						cover: (35 to: 39)
+						declaredAt: (35 to: 39)
+						by: items) contents ]) keysAndValuesDo: [ :anItem :aQuantity |
+				#_coverageTracker7078386_
+					coverAll:
+						{97 to: 102. 111 to: 116}
+					evaluating: [
+						(#_coverageTracker7078386_
+							cover: (90 to: 95)
+							declaredAt: (23 to: 28)
+							by: aBlock)
+							value:
+								(#_coverageTracker7078386_
+									cover: (104 to: 109)
+									declaredAt: (70 to: 75)
+									by: anItem)
+							value:
+								(#_coverageTracker7078386_
+									cover: (118 to: 126)
+									declaredAt: (78 to: 86)
+									by: aQuantity) ]]].! !
+!Behavior method!
+createLineItemOf: anItem quantity: aQuantity
+	#_coverageTracker7080217_ markAsExecuted.
+	^ #_coverageTracker7080217_
+		coverAll:
+			{59 to: 61. 70 to: 78. 90 to: 95}
+		evaluating: [
+			(#_coverageTracker7080217_
+				coverAll:
+					{50 to: 57}
+				by: LineItem)
+				of:
+					(#_coverageTracker7080217_
+						cover: (63 to: 68)
+						declaredAt: (19 to: 24)
+						by: anItem)
+				quantity:
+					(#_coverageTracker7080217_
+						cover: (80 to: 88)
+						declaredAt: (36 to: 44)
+						by: aQuantity)
+				total:
+					(#_coverageTracker7080217_
+						coverAll:
+							{103 to: 110. 119 to: 127}
+						evaluating: [
+							(#_coverageTracker7080217_
+								coverAll:
+									{98 to: 101}
+								byLiteralOrPseudoVariable: self)
+								totalOf:
+									(#_coverageTracker7080217_
+										cover: (112 to: 117)
+										declaredAt: (19 to: 24)
+										by: anItem)
+								quantity:
+									(#_coverageTracker7080217_
+										cover: (129 to: 137)
+										declaredAt: (36 to: 44)
+										by: aQuantity) ]) ].! !
+!Behavior method!
+totalOf: anItem quantity: aQuantity
+	#_coverageTracker7079568_ markAsExecuted.
+	^ #_coverageTracker7079568_
+		coverAll:
+			{67 to: 67}
+		evaluating: [
+			(#_coverageTracker7079568_
+				coverAll:
+					{55 to: 57}
+				evaluating: [
+					(#_coverageTracker7079568_
+						coverAll:
+							{47 to: 53}
+						evaluating: [
+							(#_coverageTracker7079568_
+								cover: (42 to: 45)
+								declaredAt: (42 to: 45)
+								by: cart) catalog ]) at:
+						(#_coverageTracker7079568_
+							cover: (59 to: 64)
+							declaredAt: (10 to: 15)
+							by: anItem) ]) *
+				(#_coverageTracker7079568_
+					cover: (69 to: 77)
+					declaredAt: (27 to: 35)
+					by: aQuantity) ].! !
+!Behavior method!
+catalog
+	#_coverageTracker7077885_ markAsExecuted.
+	^ #_coverageTracker7077885_
+		cover: (14 to: 20)
+		declaredAt: (14 to: 20)
+		by: catalog.! !
+!Behavior method!
+of: anItem quantity: aQuantity total: aTotal
+	#_coverageTracker7077230_ markAsExecuted.
+	^ #_coverageTracker7077230_
+		coverAll:
+			{58 to: 70. 79 to: 87. 99 to: 104}
+		evaluating: [
+			(#_coverageTracker7077230_
+				coverAll:
+					{54 to: 56}
+				evaluating: [
+					(#_coverageTracker7077230_
+						coverAll:
+							{49 to: 52}
+						byLiteralOrPseudoVariable: self) new ])
+				initializeOf:
+					(#_coverageTracker7077230_
+						cover: (72 to: 77)
+						declaredAt: (5 to: 10)
+						by: anItem)
+				quantity:
+					(#_coverageTracker7077230_
+						cover: (89 to: 97)
+						declaredAt: (22 to: 30)
+						by: aQuantity)
+				total:
+					(#_coverageTracker7077230_
+						cover: (106 to: 111)
+						declaredAt: (39 to: 44)
+						by: aTotal) ].! !
+!Behavior method!
+initializeOf: anItem quantity: aQuantity total: aTotal
+	#_coverageTracker7079636_ markAsExecuted.
+	#_coverageTracker7079636_
+		cover: (58 to: 61)
+		declaredAt: (58 to: 61)
+		by:
+			(item _ #_coverageTracker7079636_
+				cover: (66 to: 71)
+				declaredAt: (15 to: 20)
+				by: anItem).
+	#_coverageTracker7079636_
+		cover: (75 to: 82)
+		declaredAt: (75 to: 82)
+		by:
+			(quantity _ #_coverageTracker7079636_
+				cover: (87 to: 95)
+				declaredAt: (32 to: 40)
+				by: aQuantity).
+	#_coverageTracker7079636_
+		cover: (99 to: 103)
+		declaredAt: (99 to: 103)
+		by:
+			(total _ #_coverageTracker7079636_
+				cover: (108 to: 113)
+				declaredAt: (49 to: 54)
+				by: aTotal).! !
+!Behavior method!
+of: aCollectionOfLineItems
+	#_coverageTracker7079619_ markAsExecuted.
+	^ #_coverageTracker7079619_
+		coverAll:
+			{40 to: 52}
+		evaluating: [
+			(#_coverageTracker7079619_
+				coverAll:
+					{36 to: 38}
+				evaluating: [
+					(#_coverageTracker7079619_
+						coverAll:
+							{31 to: 34}
+						byLiteralOrPseudoVariable: self) new ]) initializeOf:
+				(#_coverageTracker7079619_
+					cover: (54 to: 75)
+					declaredAt: (5 to: 26)
+					by: aCollectionOfLineItems) ].! !
+!Behavior method!
+initializeOf: aCollectionOfLineItems
+	#_coverageTracker7080238_ markAsExecuted.
+	#_coverageTracker7080238_
+		cover: (41 to: 49)
+		declaredAt: (41 to: 49)
+		by:
+			(lineItems _ #_coverageTracker7080238_
+				cover: (54 to: 75)
+				declaredAt: (15 to: 36)
+				by: aCollectionOfLineItems).! !
+!Behavior method!
+debitTotal
+	| transactionId |
+	#_coverageTracker7080050_ markAsExecuted.
+	#_coverageTracker7080050_
+		cover: (35 to: 47)
+		declaredAt: (16 to: 28)
+		by:
+			(transactionId _ #_coverageTracker7080050_
+				coverAll:
+					{70 to: 75. 90 to: 94}
+				evaluating: [
+					(#_coverageTracker7080050_
+						cover: (52 to: 68)
+						declaredAt: (52 to: 68)
+						by: merchantProcessor)
+						debit:
+							(#_coverageTracker7080050_
+								coverAll:
+									{84 to: 88}
+								evaluating: [
+									(#_coverageTracker7080050_
+										cover: (77 to: 82)
+										declaredAt: (77 to: 82)
+										by: ticket) total ])
+						from:
+							(#_coverageTracker7080050_
+								cover: (96 to: 105)
+								declaredAt: (96 to: 105)
+								by: creditCard) ]).
+	#_coverageTracker7080050_
+		coverAll:
+			{116 to: 129}
+		evaluating: [
+			(#_coverageTracker7080050_
+				cover: (109 to: 114)
+				declaredAt: (77 to: 82)
+				by: ticket) transactionId:
+				(#_coverageTracker7080050_
+					cover: (131 to: 143)
+					declaredAt: (16 to: 28)
+					by: transactionId) ].! !
+!Behavior method!
+total
+	#_coverageTracker7078118_ markAsExecuted.
+	^ #_coverageTracker7078118_
+		coverAll:
+			{21 to: 24}
+		evaluating: [
+			(#_coverageTracker7078118_
+				cover: (11 to: 19)
+				declaredAt: (11 to: 19)
+				by: lineItems) sum: [ :aLineItem |
+				#_coverageTracker7078118_
+					coverAll:
+						{51 to: 55}
+					evaluating: [
+						(#_coverageTracker7078118_
+							cover: (41 to: 49)
+							declaredAt: (29 to: 37)
+							by: aLineItem) total ]]].! !
+!Behavior method!
+total
+	#_coverageTracker7079099_ markAsExecuted.
+	^ #_coverageTracker7079099_
+		cover: (12 to: 16)
+		declaredAt: (12 to: 16)
+		by: total.! !
+!Behavior method!
+transactionId: anId
+	#_coverageTracker7079101_ markAsExecuted.
+	#_coverageTracker7079101_
+		cover: (23 to: 35)
+		declaredAt: (23 to: 35)
+		by:
+			(transactionId _ #_coverageTracker7079101_
+				cover: (40 to: 43)
+				declaredAt: (16 to: 19)
+				by: anId).! !
+!Behavior method!
+registerSale
+	#_coverageTracker7079082_ markAsExecuted.
+	#_coverageTracker7079082_
+		coverAll:
+			{26 to: 29}
+		evaluating: [
+			(#_coverageTracker7079082_
+				cover: (16 to: 24)
+				declaredAt: (16 to: 24)
+				by: salesBook) add:
+				(#_coverageTracker7079082_
+					coverAll:
+						{36 to: 45}
+					evaluating: [
+						(#_coverageTracker7079082_
+							coverAll:
+								{31 to: 34}
+							byLiteralOrPseudoVariable: self) createSale ]) ].! !
+!Behavior method!
+createSale
+	#_coverageTracker7079735_ markAsExecuted.
+	^ #_coverageTracker7079735_
+		coverAll:
+			{21 to: 27. 35 to: 48}
+		evaluating: [
+			(#_coverageTracker7079735_
+				coverAll:
+					{16 to: 19}
+				by: Sale)
+				doneBy:
+					(#_coverageTracker7079735_
+						cover: (29 to: 33)
+						declaredAt: (29 to: 33)
+						by: owner)
+				certifiedWith:
+					(#_coverageTracker7079735_
+						cover: (50 to: 55)
+						declaredAt: (50 to: 55)
+						by: ticket) ].! !
+!Behavior method!
+doneBy: aCustomer certifiedWith: aTicket
+	#_coverageTracker7079893_ markAsExecuted.
+	^ #_coverageTracker7079893_
+		coverAll:
+			{55 to: 71. 83 to: 96}
+		evaluating: [
+			(#_coverageTracker7079893_
+				coverAll:
+					{51 to: 53}
+				evaluating: [
+					(#_coverageTracker7079893_
+						coverAll:
+							{46 to: 49}
+						byLiteralOrPseudoVariable: self) new ])
+				initializeDoneBy:
+					(#_coverageTracker7079893_
+						cover: (73 to: 81)
+						declaredAt: (9 to: 17)
+						by: aCustomer)
+				certifiedWith:
+					(#_coverageTracker7079893_
+						cover: (98 to: 104)
+						declaredAt: (34 to: 40)
+						by: aTicket) ].! !
+!Behavior method!
+initializeDoneBy: aCustomer certifiedWith: aTicket
+	#_coverageTracker7079244_ markAsExecuted.
+	#_coverageTracker7079244_
+		cover: (55 to: 62)
+		declaredAt: (55 to: 62)
+		by:
+			(customer _ #_coverageTracker7079244_
+				cover: (67 to: 75)
+				declaredAt: (19 to: 27)
+				by: aCustomer).
+	#_coverageTracker7079244_
+		cover: (79 to: 84)
+		declaredAt: (79 to: 84)
+		by:
+			(ticket _ #_coverageTracker7079244_
+				cover: (89 to: 95)
+				declaredAt: (44 to: 50)
+				by: aTicket).! !
+!Behavior method!
+removeCartId: aCartId
+	"I'll not generate an error if the cartId is invalid because when used from http
+	request can be duplicated - Hernan"
+	#_coverageTracker7077376_ markAsExecuted.
+	#_coverageTracker7077376_
+		coverAll:
+			{157 to: 166. 176 to: 184}
+		evaluating: [
+			(#_coverageTracker7077376_
+				cover: (144 to: 155)
+				declaredAt: (144 to: 155)
+				by: cartSessions)
+				removeKey:
+					(#_coverageTracker7077376_
+						cover: (168 to: 174)
+						declaredAt: (15 to: 21)
+						by: aCartId)
+				ifAbsent: [ ]].! !
+!Behavior method!
+transactionId
+	#_coverageTracker7077494_ markAsExecuted.
+	^ #_coverageTracker7077494_
+		cover: (18 to: 30)
+		declaredAt: (18 to: 30)
+		by: transactionId.! !
+!Behavior method!
+bookPerformance: anItem
+	| bookPerformance parallelBlockRunner totalSalesSemaphore moneyRaisedSemaphore totalMoney totalSales |
+	#_coverageTracker7077403_ markAsExecuted.
+	#_coverageTracker7077403_
+		cover: (132 to: 146)
+		declaredAt: (29 to: 43)
+		by:
+			(bookPerformance _ #_coverageTracker7077403_
+				coverAll:
+					{162 to: 164}
+				evaluating: [
+					(#_coverageTracker7077403_
+						coverAll:
+							{151 to: 160}
+						by: Dictionary) new ]).
+	#_coverageTracker7077403_
+		cover: (491 to: 509)
+		declaredAt: (45 to: 63)
+		by:
+			(parallelBlockRunner _ #_coverageTracker7077403_
+				coverAll:
+					{534 to: 536}
+				evaluating: [
+					(#_coverageTracker7077403_
+						coverAll:
+							{514 to: 532}
+						by: ParallelBlockRunner) new ]).
+	#_coverageTracker7077403_
+		coverAll:
+			{562 to: 565}
+		evaluating: [
+			(#_coverageTracker7077403_
+				cover: (542 to: 560)
+				declaredAt: (45 to: 63)
+				by: parallelBlockRunner) run: [
+				#_coverageTracker7077403_
+					cover: (569 to: 578)
+					declaredAt: (117 to: 126)
+					by:
+						(totalSales _ #_coverageTracker7077403_
+							coverAll:
+								{588 to: 600}
+							evaluating: [
+								(#_coverageTracker7077403_
+									coverAll:
+										{583 to: 586}
+									byLiteralOrPseudoVariable: self) totalSalesOf:
+									(#_coverageTracker7077403_
+										cover: (602 to: 607)
+										declaredAt: (18 to: 23)
+										by: anItem) ]) ]].
+	#_coverageTracker7077403_
+		coverAll:
+			{634 to: 637}
+		evaluating: [
+			(#_coverageTracker7077403_
+				cover: (614 to: 632)
+				declaredAt: (45 to: 63)
+				by: parallelBlockRunner) run: [
+				#_coverageTracker7077403_
+					cover: (641 to: 650)
+					declaredAt: (106 to: 115)
+					by:
+						(totalMoney _ #_coverageTracker7077403_
+							coverAll:
+								{660 to: 678}
+							evaluating: [
+								(#_coverageTracker7077403_
+									coverAll:
+										{655 to: 658}
+									byLiteralOrPseudoVariable: self) totalMoneyRaisedBy:
+									(#_coverageTracker7077403_
+										cover: (680 to: 685)
+										declaredAt: (18 to: 23)
+										by: anItem) ]) ]].
+	#_coverageTracker7077403_
+		coverAll:
+			{714 to: 717}
+		evaluating: [
+			(#_coverageTracker7077403_
+				cover: (694 to: 712)
+				declaredAt: (45 to: 63)
+				by: parallelBlockRunner) wait ].
+	#_coverageTracker7077403_
+		coverAll:
+			{739 to: 741. 754 to: 757}
+		evaluating: [
+			(#_coverageTracker7077403_
+				cover: (723 to: 737)
+				declaredAt: (29 to: 43)
+				by: bookPerformance)
+				at:
+					(#_coverageTracker7077403_
+						coverAll:
+							{743 to: 752}
+						byLiteralOrPseudoVariable: 'quantity')
+				put:
+					(#_coverageTracker7077403_
+						cover: (759 to: 768)
+						declaredAt: (117 to: 126)
+						by: totalSales) ].
+	#_coverageTracker7077403_
+		coverAll:
+			{788 to: 790. 803 to: 806}
+		evaluating: [
+			(#_coverageTracker7077403_
+				cover: (772 to: 786)
+				declaredAt: (29 to: 43)
+				by: bookPerformance)
+				at:
+					(#_coverageTracker7077403_
+						coverAll:
+							{792 to: 801}
+						byLiteralOrPseudoVariable: 'quantity')
+				put:
+					(#_coverageTracker7077403_
+						cover: (808 to: 817)
+						declaredAt: (117 to: 126)
+						by: totalSales) ].
+	#_coverageTracker7077403_
+		coverAll:
+			{839 to: 841. 851 to: 854}
+		evaluating: [
+			(#_coverageTracker7077403_
+				cover: (823 to: 837)
+				declaredAt: (29 to: 43)
+				by: bookPerformance)
+				at:
+					(#_coverageTracker7077403_
+						coverAll:
+							{843 to: 849}
+						byLiteralOrPseudoVariable: 'total')
+				put:
+					(#_coverageTracker7077403_
+						cover: (856 to: 865)
+						declaredAt: (106 to: 115)
+						by: totalMoney) ].
+	#_coverageTracker7077403_
+		coverAll:
+			{885 to: 887. 897 to: 900}
+		evaluating: [
+			(#_coverageTracker7077403_
+				cover: (869 to: 883)
+				declaredAt: (29 to: 43)
+				by: bookPerformance)
+				at:
+					(#_coverageTracker7077403_
+						coverAll:
+							{889 to: 895}
+						byLiteralOrPseudoVariable: 'total')
+				put:
+					(#_coverageTracker7077403_
+						cover: (902 to: 911)
+						declaredAt: (106 to: 115)
+						by: totalMoney) ].
+	#_coverageTracker7077403_
+		coverAll:
+			{933 to: 935. 947 to: 950}
+		evaluating: [
+			(#_coverageTracker7077403_
+				cover: (917 to: 931)
+				declaredAt: (29 to: 43)
+				by: bookPerformance)
+				at:
+					(#_coverageTracker7077403_
+						coverAll:
+							{937 to: 945}
+						byLiteralOrPseudoVariable: 'summary')
+				put:
+					(#_coverageTracker7077403_
+						coverAll:
+							{1049 to: 1049}
+						evaluating: [
+							(#_coverageTracker7077403_
+								coverAll:
+									{993 to: 993}
+								evaluating: [
+									(#_coverageTracker7077403_
+										coverAll:
+											{973 to: 973}
+										evaluating: [
+											(#_coverageTracker7077403_
+												coverAll:
+													{958 to: 958}
+												evaluating: [
+													(#_coverageTracker7077403_
+														cover: (952 to: 957)
+														declaredAt: (18 to: 23)
+														by: anItem) ,
+														(#_coverageTracker7077403_
+															coverAll:
+																{959 to: 972}
+															byLiteralOrPseudoVariable: ' was selled ') ]) ,
+												(#_coverageTracker7077403_
+													coverAll:
+														{985 to: 992}
+													evaluating: [
+														(#_coverageTracker7077403_
+															cover: (974 to: 983)
+															declaredAt: (117 to: 126)
+															by: totalSales) asString ]) ]) ,
+										(#_coverageTracker7077403_
+											coverAll:
+												{995 to: 1048}
+											byLiteralOrPseudoVariable: ' times and raised a total amount of money equal to: ') ]) ,
+								(#_coverageTracker7077403_
+									coverAll:
+										{1062 to: 1069}
+									evaluating: [
+										(#_coverageTracker7077403_
+											cover: (1051 to: 1060)
+											declaredAt: (106 to: 115)
+											by: totalMoney) asString ]) ]) ].
+	^ #_coverageTracker7077403_
+		cover: (1076 to: 1090)
+		declaredAt: (29 to: 43)
+		by: bookPerformance.! !
+!Behavior method!
+new
+	#_coverageTracker7077860_ markAsExecuted.
+	^ #_coverageTracker7077860_
+		coverAll:
+			{18 to: 27}
+		evaluating: [
+			(#_coverageTracker7077860_
+				coverAll:
+					{14 to: 16}
+				evaluating: [
+					(#_coverageTracker7077860_
+						coverAll:
+							{9 to: 12}
+						byLiteralOrPseudoVariable: self) new ]) initialize ].! !
+
+!methodRemoval: ParallelBlockRunner class #new stamp: 'TC 11/10/2022 12:51:26'!
+new
+	
+	^self new initialize.!
+
+!testRun: #TusLibrosSystemFacadeTest #test20BookPerformanceShouldNotTakeTooLong stamp: 'TC 11/10/2022 12:51:43'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test21StorePerformanceShouldNotTakeTooLong stamp: 'TC 11/10/2022 12:52:31'!
+FAILURE!
+
+!testRun: #TusLibrosSystemFacadeTest #test21StorePerformanceShouldNotTakeTooLong stamp: 'TC 11/10/2022 12:52:33'!
+FAILURE!
+!TusLibrosSystemFacade methodsFor: 'private' stamp: 'TC 11/10/2022 12:52:59' prior: 50595108!
+bookPerformance: anItem
+
+	| bookPerformance parallelBlockRunner totalMoney totalSales |
+
+	bookPerformance := Dictionary new.
+	
+	parallelBlockRunner := ParallelBlockRunner new.
+	
+	parallelBlockRunner run: [ totalSales := self totalSalesOf: anItem. ].
+	parallelBlockRunner run: [ totalMoney := self totalMoneyRaisedBy: anItem. ].
+	
+	parallelBlockRunner wait.
+	
+	bookPerformance at: 'quantity' put: totalSales.
+	bookPerformance at: 'quantity' put: totalSales.
+	
+	bookPerformance at: 'total' put: totalMoney.
+	bookPerformance at: 'total' put: totalMoney.
+	
+	bookPerformance at: 'summary' put: anItem,' was selled ',totalSales asString, ' times and raised a total amount of money equal to: ', totalMoney asString.
+	
+	^bookPerformance.
+
+! !
+!TusLibrosSystemFacade methodsFor: 'private' stamp: 'TC 11/10/2022 12:54:37' prior: 50593495!
+storePerformance
+
+	| performance parallelBlockRunner totalMoney totalSales |
+	
+	performance := Dictionary new.
+	
+	parallelBlockRunner := ParallelBlockRunner new.
+	
+	parallelBlockRunner run: [ totalSales := self totalSales. ].
+	parallelBlockRunner run: [ totalMoney := self totalMoneyRaised. ].
+	
+	parallelBlockRunner wait.
+	
+	performance at: 'quantity' put: totalSales.
+	performance at: 'total' put: totalMoney.
+	performance at: 'summary' put: 'The store selled a total of ',totalSales asString, ' books and raised a total amount of money equal to: ', totalMoney asString.
+	
+	^performance
+	
+
+! !
+
+!testRun: #TusLibrosSystemFacadeTest #test21StorePerformanceShouldNotTakeTooLong stamp: 'TC 11/10/2022 12:54:59'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01CanCreateCartWithValidUserAndPassword stamp: 'TC 11/10/2022 12:55:05'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02CanNotCreateCartWithInvalidUser stamp: 'TC 11/10/2022 12:55:05'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test03CanNotCreateCartWithInvalidPassword stamp: 'TC 11/10/2022 12:55:05'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test04CanAddItemsToACreatedCart stamp: 'TC 11/10/2022 12:55:05'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test05CanNotAddItemToNotCreatedCart stamp: 'TC 11/10/2022 12:55:05'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test06CanNotAddItemNotSellByTheStore stamp: 'TC 11/10/2022 12:55:05'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test08CanNotListCartOfInvalidCartId stamp: 'TC 11/10/2022 12:55:05'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'TC 11/10/2022 12:55:05'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10CheckOutReturnsTransactionIdAndImpactsCustomerPurchases stamp: 'TC 11/10/2022 12:55:05'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10_1_CanNotCheckoutAnAlreadyCheckedOutCart stamp: 'TC 11/10/2022 12:55:05'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test11CanNotCheckoutANotCreatedCart stamp: 'TC 11/10/2022 12:55:05'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test12CanNotCheckoutAnEmptyCart stamp: 'TC 11/10/2022 12:55:05'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test13CanNotCheckoutWithAnExpiredCreditCard stamp: 'TC 11/10/2022 12:55:05'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'TC 11/10/2022 12:55:05'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test15CanNotListPurchasesOfInvalidCustomer stamp: 'TC 11/10/2022 12:55:05'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test16CanNotListPurchasesOfValidCustomerWithInvalidPassword stamp: 'TC 11/10/2022 12:55:05'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test17CanNotAddToCartWhenSessionIsExpired stamp: 'TC 11/10/2022 12:55:05'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test18CanNotListCartWhenSessionIsExpired stamp: 'TC 11/10/2022 12:55:05'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test19CanNotCheckOutCartWhenSessionIsExpired stamp: 'TC 11/10/2022 12:55:05'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test20BookPerformanceShouldNotTakeTooLong stamp: 'TC 11/10/2022 12:55:06'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test21StorePerformanceShouldNotTakeTooLong stamp: 'TC 11/10/2022 12:55:07'!
+PASSED!
+
+----SNAPSHOT----(10 November 2022 12:56:59) CuisUniversity-5510.image priorSource: 7155150!
