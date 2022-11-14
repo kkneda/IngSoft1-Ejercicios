@@ -1,0 +1,2968 @@
+
+
+----QUIT----(26 October 2022 08:07:27) CuisUniversity-5510.image priorSource: 2900072!
+
+----STARTUP---- (26 October 2022 08:07:28) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5510.image!
+
+
+----QUIT----(26 October 2022 08:07:28) CuisUniversity-5510.image priorSource: 7154921!
+
+----STARTUP---- (14 November 2022 09:09:34) as /home/kaneda/Downloads/linux64/CuisUniversity-5510.image!
+
+
+----End fileIn of /home/kaneda/Downloads/linux64/CustomerImporter.st----!
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 09:10:07'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 09:43:38' prior: 50555267!
+test01Import
+	
+	| session |
+	
+	Customer importCustomers.
+	
+	session := DataBaseSession for: (Array with: Address with: Customer).! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 09:45:28' prior: 50555529!
+test01Import
+	
+	| session |
+	
+	Customer importCustomers.
+	
+	session := DataBaseSession for: (Array with: Address with: Customer).
+	
+	self assert: 2 equals: (session  selectAllOfType: Customer) size.
+	
+	session commit.
+	session close.! !
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 09:45:33'!
+FAILURE!
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 09:45:34'!
+FAILURE!
+
+!methodRemoval: Customer class #importCustomers stamp: 'TC 11/14/2022 09:56:38'!
+importCustomers
+
+	"
+	self importCustomers
+	"
+	| inputStream session newCustomer line |
+
+	inputStream := StandardFileStream new open: 'input.txt' forWrite: false.
+	session := DataBaseSession for: (Array with: Address with: Customer).
+	session beginTransaction.
+
+	line := inputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fourth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData fourth ].
+
+		line := inputStream nextLine. ].
+
+	session commit.
+	session close.
+
+	inputStream close.
+	!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 09:56:38' prior: 50555537!
+test01Import
+	
+	| session inputStream session1 newCustomer line |
+	
+	inputStream := StandardFileStream new open: 'input.txt' forWrite: false.
+	session1 := DataBaseSession for: (Array with: Address with: Customer).
+	session1 beginTransaction.
+	line := inputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fourth.
+			session1 persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData fourth ].
+
+		line := inputStream nextLine. ].
+	session1 commit.
+	session1 close.
+inputStream close.
+	
+	session := DataBaseSession for: (Array with: Address with: Customer).
+	
+	self assert: 2 equals: (session  selectAllOfType: Customer) size.
+	
+	session commit.
+	session close.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 09:58:06' prior: 50555593!
+test01Import
+	
+	| inputStream session newCustomer line |
+	
+	inputStream := StandardFileStream new open: 'input.txt' forWrite: false.
+	session := DataBaseSession for: (Array with: Address with: Customer).
+	session beginTransaction.
+	line := inputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fourth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData fourth ].
+
+		line := inputStream nextLine. ].
+	session commit.
+	session close.
+inputStream close.
+	
+	session := DataBaseSession for: (Array with: Address with: Customer).
+	
+	self assert: 2 equals: (session  selectAllOfType: Customer) size.
+	
+	session commit.
+	session close.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 09:58:30' prior: 50555639!
+test01Import
+	
+	| inputStream session newCustomer line |
+	
+	inputStream := StandardFileStream new open: 'input.txt' forWrite: false.
+	session := DataBaseSession for: (Array with: Address with: Customer).
+	session beginTransaction.
+	line := inputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fourth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData fourth ].
+
+		line := inputStream nextLine. ].
+	session commit.
+	session close.
+inputStream close.
+	
+	self assert: 2 equals: (session  selectAllOfType: Customer) size.
+	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 09:58:45' prior: 50555684!
+test01Import
+	
+	| inputStream session newCustomer line |
+	
+	inputStream := StandardFileStream new open: 'input.txt' forWrite: false.
+	session := DataBaseSession for: (Array with: Address with: Customer).
+	session beginTransaction.
+	line := inputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fourth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData fourth ].
+
+		line := inputStream nextLine. ].
+	session commit.
+	session close.
+inputStream close.
+	
+	"self assert: 2 equals: (session  selectAllOfType: Customer) size."
+	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 09:58:58'!
+importCustomers
+
+	| inputStream session newCustomer line |
+	
+	inputStream := StandardFileStream new open: 'input.txt' forWrite: false.
+	session := DataBaseSession for: (Array with: Address with: Customer).
+	session beginTransaction.
+	line := inputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fourth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData fourth ].
+
+		line := inputStream nextLine. ].
+	session commit.
+	session close.
+inputStream close! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 09:58:58' prior: 50555726!
+test01Import
+	
+	self importCustomers.
+	
+	"self assert: 2 equals: (session  selectAllOfType: Customer) size."
+	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 09:59:10' prior: 50555807!
+test01Import
+	
+	self importCustomers.
+	
+	"self assert: 2 equals: (session  selectAllOfType: Customer) size."
+	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 09:59:49' prior: 50555767!
+importCustomers
+
+	| inputStream  newCustomer line |
+	
+	inputStream := StandardFileStream new open: 'input.txt' forWrite: false.
+	session := DataBaseSession for: (Array with: Address with: Customer).
+	session beginTransaction.
+	line := inputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fourth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData fourth ].
+
+		line := inputStream nextLine. ].
+	session commit.
+	session close.
+inputStream close! !
+
+!classDefinition: #ImportTest category: 'CustomerImporter' stamp: 'TC 11/14/2022 09:59:49'!
+TestCase subclass: #ImportTest
+	instanceVariableNames: 'session'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 09:59:57' prior: 50555814!
+test01Import
+	
+	self importCustomers.
+	
+	self assert: 2 equals: (session  selectAllOfType: Customer) size.
+	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 10:00:04' prior: 50555868!
+test01Import
+	
+	self importCustomers.
+	
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	! !
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 10:00:12'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 10:00:50' overrides: 16961394!
+setUp
+
+	^ session := DataBaseSession for: (Array with: Address with: Customer)! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 10:00:50' prior: 50555821!
+importCustomers
+
+	| inputStream  newCustomer line |
+	
+	inputStream := StandardFileStream new open: 'input.txt' forWrite: false.
+	self setUp.
+	session beginTransaction.
+	line := inputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fourth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData fourth ].
+
+		line := inputStream nextLine. ].
+	session commit.
+	session close.
+inputStream close! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 10:01:12' prior: 50555890!
+importCustomers
+
+	| inputStream  newCustomer line |
+	
+	inputStream := StandardFileStream new open: 'input.txt' forWrite: false.
+	session beginTransaction.
+	line := inputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fourth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData fourth ].
+
+		line := inputStream nextLine. ].
+	session commit.
+	session close.
+inputStream close! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 10:01:22' overrides: 16961402!
+tearDown
+
+	^ session close! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 10:01:22' prior: 50555928!
+importCustomers
+
+	| inputStream  newCustomer line |
+	
+	inputStream := StandardFileStream new open: 'input.txt' forWrite: false.
+	session beginTransaction.
+	line := inputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fourth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData fourth ].
+
+		line := inputStream nextLine. ].
+	session commit.
+	self tearDown.
+inputStream close! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 10:01:28' prior: 50555969!
+importCustomers
+
+	| inputStream  newCustomer line |
+	
+	inputStream := StandardFileStream new open: 'input.txt' forWrite: false.
+	session beginTransaction.
+	line := inputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fourth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData fourth ].
+
+		line := inputStream nextLine. ].
+	session commit.
+inputStream close! !
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 10:01:33'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 10:01:40' prior: 50555875!
+test01Import
+	
+	self importCustomers.
+	
+	self assert: 2 equals: (session selectAllOfType: Customer) size.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 10:06:54' prior: 50556045!
+test01Import
+	
+	| client |
+	
+	self importCustomers.
+	
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	
+	"client := session select: [  ] ofType: Customer.
+	
+	self assert: "! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 10:10:57' prior: 50556052!
+test01Import
+	
+	| client |
+	
+	self importCustomers.
+	
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	
+	client := session select: [ :aCustomer | (aCustomer identificationType = 'D') and: [ aCustomer identificationNumber = '22333444'. ]. ] ofType: Customer.
+	
+	self assert: 'Pepe' equals: client firstName.
+	self assert: 'Sanchez' equals: client secondName.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 10:11:12' prior: 50556062!
+test01Import
+	
+	| customer |
+	
+	self importCustomers.
+	
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	
+	customer := session select: [ :aCustomer | (aCustomer identificationType = 'D') and: [ aCustomer identificationNumber = '22333444'. ]. ] ofType: Customer.
+	
+	self assert: 'Pepe' equals: customer firstName.
+	self assert: 'Sanchez' equals: customer secondName.! !
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 10:11:18'!
+ERROR!
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 10:11:19'!
+ERROR!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 10:11:32' prior: 50556077!
+test01Import
+	
+	| customer |
+	
+	self importCustomers.
+	
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	
+	customer := (session select: [ :aCustomer | (aCustomer identificationType = 'D') and: [ aCustomer identificationNumber = '22333444'. ]. ] ofType: Customer) anyOne.
+	
+	self assert: 'Pepe' equals: customer firstName.
+	self assert: 'Sanchez' equals: customer secondName.! !
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 10:11:47'!
+ERROR!
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 10:11:48'!
+ERROR!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 10:14:26' prior: 50556006!
+importCustomers
+
+	| inputStream  newCustomer line |
+	
+	inputStream := StandardFileStream new open: 'input.txt' forWrite: false.
+	session beginTransaction.
+	line := inputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData fourth ].
+
+		line := inputStream nextLine. ].
+	session commit.
+inputStream close! !
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 10:14:29'!
+ERROR!
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 10:14:30'!
+ERROR!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 10:14:50' prior: 50556097!
+test01Import
+	
+	| customer |
+	
+	self importCustomers.
+	
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	
+	customer := (session select: [ :aCustomer | (aCustomer identificationType = 'D') and: [ aCustomer identificationNumber = '22333444'. ]. ] ofType: Customer) anyOne.
+	
+	self assert: 'Pepe' equals: customer firstName.
+	self assert: 'Sanchez' equals: customer lastName.! !
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 10:14:53'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 10:16:49' prior: 50556160!
+test01Import
+	
+	| customer |
+	
+	self importCustomers.
+	
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	
+	customer := (session select: [ :aCustomer | (aCustomer identificationType = 'D') and: [ aCustomer identificationNumber = '22333444'. ]. ] ofType: Customer) anyOne.
+	
+	self assert: 'Pepe' equals: customer firstName.
+	self assert: 'Sanchez' equals: customer lastName.
+	self assert: 2 equals: customer numberOfAddresses.! !
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 10:17:02'!
+ERROR!
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 10:17:03'!
+ERROR!
+!Customer methodsFor: 'addresses' stamp: 'TC 11/14/2022 10:17:17'!
+numberOfAddresses
+	self shouldBeImplemented.! !
+!Customer methodsFor: 'addresses' stamp: 'TC 11/14/2022 10:17:30' prior: 50556199!
+numberOfAddresses
+	
+	^addresses size.! !
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 10:18:02'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 10:25:46' prior: 50556178!
+test01Import
+	
+	| customer address |
+	
+	self importCustomers.
+	
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	
+	customer := (session select: [ :aCustomer | (aCustomer identificationType = 'D') and: [ aCustomer identificationNumber = '22333444'. ]. ] ofType: Customer) anyOne.
+	
+	self assert: 'Pepe' equals: customer firstName.
+	self assert: 'Sanchez' equals: customer lastName.
+	self assert: 2 equals: customer numberOfAddresses.
+	
+	address := customer addressAt: 'San Martin' ifNone: [ self fail. ].
+	
+	self assert: '3322' equals: address streetNumber.
+	self assert: 'Olivos' equals: address town.
+	self assert: '1636' equals: address zipCode.
+	self assert: 'BsAs' equals: address province.! !
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 10:25:51'!
+ERROR!
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 10:25:52'!
+ERROR!
+!Customer methodsFor: 'addresses' stamp: 'TC 11/14/2022 10:26:01'!
+addressAt: aString ifNone: aString2 
+	self shouldBeImplemented.! !
+!Customer methodsFor: 'addresses' stamp: 'TC 11/14/2022 10:32:53' prior: 50556241!
+addressAt: aStreetName ifNone: aNoneBlock
+	
+	"TODO: Un test que llegue al aNoneBlock."
+	^addresses detect: [ :anAddress | anAddress isAt: aStreetName. ] ifNone: addresses first.! !
+!Customer methodsFor: 'addresses' stamp: 'TC 11/14/2022 10:33:27' prior: 50556246!
+addressAt: aStreetName ifNone: aNoneBlock
+	
+	"TODO: Un test que llegue al aNoneBlock (que no se ecnuentre la dirección)."
+	^addresses detect: [ :anAddress | anAddress isAt: aStreetName. ] ifNone: addresses first.! !
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 10:33:51'!
+ERROR!
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 10:33:52'!
+ERROR!
+!Address methodsFor: 'street' stamp: 'TC 11/14/2022 10:34:03'!
+isAt: aStreetName 
+	self shouldBeImplemented.! !
+!Address methodsFor: 'street' stamp: 'TC 11/14/2022 10:38:50' prior: 50556269!
+isAt: aStreetName 
+	
+	^streetName = aStreetName.! !
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 10:38:58'!
+FAILURE!
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 10:38:58'!
+FAILURE!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 10:39:11' prior: 50556211!
+test01Import
+	
+	| customer address |
+	
+	self importCustomers.
+	
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	
+	customer := (session select: [ :aCustomer | (aCustomer identificationType = 'D') and: [ aCustomer identificationNumber = '22333444'. ]. ] ofType: Customer) anyOne.
+	
+	self assert: 'Pepe' equals: customer firstName.
+	self assert: 'Sanchez' equals: customer lastName.
+	self assert: 2 equals: customer numberOfAddresses.
+	
+	address := customer addressAt: 'San Martin' ifNone: [ self fail. ].
+	
+	self assert: 3322 equals: address streetNumber.
+	self assert: 'Olivos' equals: address town.
+	self assert: '1636' equals: address zipCode.
+	self assert: 'BsAs' equals: address province.! !
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 10:39:14'!
+FAILURE!
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 10:39:15'!
+FAILURE!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 10:39:22' prior: 50556283!
+test01Import
+	
+	| customer address |
+	
+	self importCustomers.
+	
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	
+	customer := (session select: [ :aCustomer | (aCustomer identificationType = 'D') and: [ aCustomer identificationNumber = '22333444'. ]. ] ofType: Customer) anyOne.
+	
+	self assert: 'Pepe' equals: customer firstName.
+	self assert: 'Sanchez' equals: customer lastName.
+	self assert: 2 equals: customer numberOfAddresses.
+	
+	address := customer addressAt: 'San Martin' ifNone: [ self fail. ].
+	
+	self assert: 3322 equals: address streetNumber.
+	self assert: 'Olivos' equals: address town.
+	self assert: 1636 equals: address zipCode.
+	self assert: 'BsAs' equals: address province.! !
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 10:39:30'!
+FAILURE!
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 10:39:31'!
+FAILURE!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 10:41:55' prior: 50556118!
+importCustomers
+
+	| inputStream  newCustomer line |
+	
+	inputStream := StandardFileStream new open: 'input.txt' forWrite: false.
+	session beginTransaction.
+	line := inputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := inputStream nextLine. ].
+	session commit.
+inputStream close! !
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 10:41:59'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 10:42:53' prior: 50556314!
+test01Import
+	
+	| customer address |
+	
+	self importCustomers.
+	
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	
+	customer := (session select: [ :aCustomer | (aCustomer identificationType = 'D') and: [ aCustomer identificationNumber = '22333444'. ]. ] ofType: Customer) anyOne.
+	
+	self assert: 'Pepe' equals: customer firstName.
+	self assert: 'Sanchez' equals: customer lastName.
+	self assert: 2 equals: customer numberOfAddresses.
+	
+	address := customer addressAt: 'San Martin' ifNone: [ self fail. ].
+	
+	self assert: 3322 equals: address streetNumber.
+	self assert: 'Olivos' equals: address town.
+	self assert: 1636 equals: address zipCode.
+	self assert: 'BsAs' equals: address province.
+	
+	address := customer addressAt: 'Maipu' ifNone: [ self fail. ].
+	
+	self assert: 888 equals: address streetNumber.
+	self assert: 'Florida' equals: address town.
+	self assert: 1122 equals: address zipCode.
+	self assert: 'Buenos Aires' equals: address province.! !
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 10:42:56'!
+PASSED!
+
+----SNAPSHOT----(14 November 2022 10:45:05) CuisUniversity-5510.image priorSource: 7155150!
+
+----SNAPSHOT----(14 November 2022 11:06:18) CuisUniversity-5510.image priorSource: 7192602!
+
+----STARTUP---- (14 November 2022 11:14:27) as /home/kaneda/Downloads/linux64_customerImporter/CuisUniversity-5510.image!
+
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 11:17:47' prior: 50556384!
+test01Import
+	
+	| customer address |
+	
+	self importCustomers.
+	
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	
+	customer := (session select: [ :aCustomer | (aCustomer identificationType = 'D') and: [ aCustomer identificationNumber = '22333444'. ]. ] ofType: Customer) anyOne.
+	
+	self assert: 'Pepe' equals: customer firstName.
+	self assert: 'Sanchez' equals: customer lastName.
+	self assert: 2 equals: customer numberOfAddresses.
+	
+	address := customer addressAt: 'San Martin' ifNone: [ self fail. ].
+	
+	self assert: 3322 equals: address streetNumber.
+	self assert: 'Olivos' equals: address town.
+	self assert: 1636 equals: address zipCode.
+	self assert: 'BsAs' equals: address province.
+	
+	address := customer addressAt: 'Maipu' ifNone: [ self fail. ].
+	
+	self assert: 888 equals: address streetNumber.
+	self assert: 'Florida' equals: address town.
+	self assert: 1122 equals: address zipCode.
+	self assert: 'Buenos Aires' equals: address province.
+	
+	customer := (session select: [ :aCustomer | (aCustomer identificationType = 'C') and: [ aCustomer identificationNumber = '23-25666777-9'. ]. ] ofType: Customer) anyOne.
+	
+	self assert: 'Juan' equals: customer firstName.
+	self assert: 'Perez' equals: customer lastName.
+	self assert: 2 equals: customer numberOfAddresses.
+	
+	address := customer addressAt: 'Alem' ifNone: [ self fail. ].
+	
+	self assert: 1122 equals: address streetNumber.
+	self assert: 'CABA' equals: address town.
+	self assert: 1001 equals: address zipCode.
+	self assert: 'CABA' equals: address province.! !
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 11:17:55'!
+FAILURE!
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 11:17:56'!
+FAILURE!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 11:18:07' prior: 50556430!
+test01Import
+	
+	| customer address |
+	
+	self importCustomers.
+	
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	
+	customer := (session select: [ :aCustomer | (aCustomer identificationType = 'D') and: [ aCustomer identificationNumber = '22333444'. ]. ] ofType: Customer) anyOne.
+	
+	self assert: 'Pepe' equals: customer firstName.
+	self assert: 'Sanchez' equals: customer lastName.
+	self assert: 1 equals: customer numberOfAddresses.
+	
+	address := customer addressAt: 'San Martin' ifNone: [ self fail. ].
+	
+	self assert: 3322 equals: address streetNumber.
+	self assert: 'Olivos' equals: address town.
+	self assert: 1636 equals: address zipCode.
+	self assert: 'BsAs' equals: address province.
+	
+	address := customer addressAt: 'Maipu' ifNone: [ self fail. ].
+	
+	self assert: 888 equals: address streetNumber.
+	self assert: 'Florida' equals: address town.
+	self assert: 1122 equals: address zipCode.
+	self assert: 'Buenos Aires' equals: address province.
+	
+	customer := (session select: [ :aCustomer | (aCustomer identificationType = 'C') and: [ aCustomer identificationNumber = '23-25666777-9'. ]. ] ofType: Customer) anyOne.
+	
+	self assert: 'Juan' equals: customer firstName.
+	self assert: 'Perez' equals: customer lastName.
+	self assert: 2 equals: customer numberOfAddresses.
+	
+	address := customer addressAt: 'Alem' ifNone: [ self fail. ].
+	
+	self assert: 1122 equals: address streetNumber.
+	self assert: 'CABA' equals: address town.
+	self assert: 1001 equals: address zipCode.
+	self assert: 'CABA' equals: address province.! !
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 11:18:11'!
+FAILURE!
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 11:18:11'!
+FAILURE!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 11:18:30' prior: 50556487!
+test01Import
+	
+	| customer address |
+	
+	self importCustomers.
+	
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	
+	customer := (session select: [ :aCustomer | (aCustomer identificationType = 'D') and: [ aCustomer identificationNumber = '22333444'. ]. ] ofType: Customer) anyOne.
+	
+	self assert: 'Pepe' equals: customer firstName.
+	self assert: 'Sanchez' equals: customer lastName.
+	self assert: 2 equals: customer numberOfAddresses.
+	
+	address := customer addressAt: 'San Martin' ifNone: [ self fail. ].
+	
+	self assert: 3322 equals: address streetNumber.
+	self assert: 'Olivos' equals: address town.
+	self assert: 1636 equals: address zipCode.
+	self assert: 'BsAs' equals: address province.
+	
+	address := customer addressAt: 'Maipu' ifNone: [ self fail. ].
+	
+	self assert: 888 equals: address streetNumber.
+	self assert: 'Florida' equals: address town.
+	self assert: 1122 equals: address zipCode.
+	self assert: 'Buenos Aires' equals: address province.
+	
+	customer := (session select: [ :aCustomer | (aCustomer identificationType = 'C') and: [ aCustomer identificationNumber = '23-25666777-9'. ]. ] ofType: Customer) anyOne.
+	
+	self assert: 'Juan' equals: customer firstName.
+	self assert: 'Perez' equals: customer lastName.
+	self assert: 1 equals: customer numberOfAddresses.
+	
+	address := customer addressAt: 'Alem' ifNone: [ self fail. ].
+	
+	self assert: 1122 equals: address streetNumber.
+	self assert: 'CABA' equals: address town.
+	self assert: 1001 equals: address zipCode.
+	self assert: 'CABA' equals: address province.! !
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 11:18:33'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 11:23:58'!
+importCustomers: anInputStream
+
+	| inputStream  newCustomer line |
+	
+	inputStream := StandardFileStream new open: 'input.txt' forWrite: false.
+	session beginTransaction.
+	line := inputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := inputStream nextLine. ].
+	session commit.
+inputStream close! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 11:23:58' prior: 50556544!
+test01Import
+	
+	| customer address |
+	
+	self importCustomers: (StandardFileStream new open: 'input.txt' forWrite: false).
+	
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	
+	customer := (session select: [ :aCustomer | (aCustomer identificationType = 'D') and: [ aCustomer identificationNumber = '22333444'. ]. ] ofType: Customer) anyOne.
+	
+	self assert: 'Pepe' equals: customer firstName.
+	self assert: 'Sanchez' equals: customer lastName.
+	self assert: 2 equals: customer numberOfAddresses.
+	
+	address := customer addressAt: 'San Martin' ifNone: [ self fail. ].
+	
+	self assert: 3322 equals: address streetNumber.
+	self assert: 'Olivos' equals: address town.
+	self assert: 1636 equals: address zipCode.
+	self assert: 'BsAs' equals: address province.
+	
+	address := customer addressAt: 'Maipu' ifNone: [ self fail. ].
+	
+	self assert: 888 equals: address streetNumber.
+	self assert: 'Florida' equals: address town.
+	self assert: 1122 equals: address zipCode.
+	self assert: 'Buenos Aires' equals: address province.
+	
+	customer := (session select: [ :aCustomer | (aCustomer identificationType = 'C') and: [ aCustomer identificationNumber = '23-25666777-9'. ]. ] ofType: Customer) anyOne.
+	
+	self assert: 'Juan' equals: customer firstName.
+	self assert: 'Perez' equals: customer lastName.
+	self assert: 1 equals: customer numberOfAddresses.
+	
+	address := customer addressAt: 'Alem' ifNone: [ self fail. ].
+	
+	self assert: 1122 equals: address streetNumber.
+	self assert: 'CABA' equals: address town.
+	self assert: 1001 equals: address zipCode.
+	self assert: 'CABA' equals: address province.! !
+
+!methodRemoval: ImportTest #importCustomers stamp: 'TC 11/14/2022 11:23:58'!
+importCustomers
+
+	| inputStream  newCustomer line |
+	
+	inputStream := StandardFileStream new open: 'input.txt' forWrite: false.
+	session beginTransaction.
+	line := inputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := inputStream nextLine. ].
+	session commit.
+inputStream close!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 11:23:58' prior: 50556598!
+importCustomers: anInputStream
+
+	| inputStream  newCustomer line |
+	
+	inputStream := anInputStream.
+	session beginTransaction.
+	line := inputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := inputStream nextLine. ].
+	session commit.
+inputStream close! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 11:24:39' prior: 50556724!
+importCustomers: anInputStream
+
+	| newCustomer line |
+	
+	session beginTransaction.
+	line := anInputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := anInputStream nextLine. ].
+	session commit.
+anInputStream close! !
+
+----End fileIn of /home/kaneda/Downloads/linux64_customerImporter/Packages/TerseGuide.pck.st----!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 11:28:14' prior: 50556635!
+test01Import
+	
+	| customer address |
+	
+	self importCustomers: (ReadStream on: 
+	'C,Pepe,Sanchez,D,22333444
+	A,San Martin,3322,Olivos,1636,BsAs
+	A,Maipu,888,Florida,1122,Buenos Aires
+	C,Juan,Perez,C,23-25666777-9
+	A,Alem,1122,CABA,1001,CABA').
+	
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	
+	customer := (session select: [ :aCustomer | (aCustomer identificationType = 'D') and: [ aCustomer identificationNumber = '22333444'. ]. ] ofType: Customer) anyOne.
+	
+	self assert: 'Pepe' equals: customer firstName.
+	self assert: 'Sanchez' equals: customer lastName.
+	self assert: 2 equals: customer numberOfAddresses.
+	
+	address := customer addressAt: 'San Martin' ifNone: [ self fail. ].
+	
+	self assert: 3322 equals: address streetNumber.
+	self assert: 'Olivos' equals: address town.
+	self assert: 1636 equals: address zipCode.
+	self assert: 'BsAs' equals: address province.
+	
+	address := customer addressAt: 'Maipu' ifNone: [ self fail. ].
+	
+	self assert: 888 equals: address streetNumber.
+	self assert: 'Florida' equals: address town.
+	self assert: 1122 equals: address zipCode.
+	self assert: 'Buenos Aires' equals: address province.
+	
+	customer := (session select: [ :aCustomer | (aCustomer identificationType = 'C') and: [ aCustomer identificationNumber = '23-25666777-9'. ]. ] ofType: Customer) anyOne.
+	
+	self assert: 'Juan' equals: customer firstName.
+	self assert: 'Perez' equals: customer lastName.
+	self assert: 1 equals: customer numberOfAddresses.
+	
+	address := customer addressAt: 'Alem' ifNone: [ self fail. ].
+	
+	self assert: 1122 equals: address streetNumber.
+	self assert: 'CABA' equals: address town.
+	self assert: 1001 equals: address zipCode.
+	self assert: 'CABA' equals: address province.! !
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 11:28:23'!
+FAILURE!
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 11:28:23'!
+FAILURE!
+
+ios  ReadStream on: 'Hello read stream'.
+!
+
+[(x  ios nextLine) notNil]
+   whileTrue: [Transcript show: x; newLine].!
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 11:30:35'!
+FAILURE!
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 11:30:35'!
+FAILURE!
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 11:30:49'!
+FAILURE!
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 11:31:19'!
+FAILURE!
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 11:31:34'!
+FAILURE!
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 11:31:34'!
+FAILURE!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 11:34:36' prior: 50559715!
+test01Import
+	
+	| customer address |
+	
+	self importCustomers: (ReadStream on: 
+	'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA').
+	
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	
+	customer := (session select: [ :aCustomer | (aCustomer identificationType = 'D') and: [ aCustomer identificationNumber = '22333444'. ]. ] ofType: Customer) anyOne.
+	
+	self assert: 'Pepe' equals: customer firstName.
+	self assert: 'Sanchez' equals: customer lastName.
+	self assert: 2 equals: customer numberOfAddresses.
+	
+	address := customer addressAt: 'San Martin' ifNone: [ self fail. ].
+	
+	self assert: 3322 equals: address streetNumber.
+	self assert: 'Olivos' equals: address town.
+	self assert: 1636 equals: address zipCode.
+	self assert: 'BsAs' equals: address province.
+	
+	address := customer addressAt: 'Maipu' ifNone: [ self fail. ].
+	
+	self assert: 888 equals: address streetNumber.
+	self assert: 'Florida' equals: address town.
+	self assert: 1122 equals: address zipCode.
+	self assert: 'Buenos Aires' equals: address province.
+	
+	customer := (session select: [ :aCustomer | (aCustomer identificationType = 'C') and: [ aCustomer identificationNumber = '23-25666777-9'. ]. ] ofType: Customer) anyOne.
+	
+	self assert: 'Juan' equals: customer firstName.
+	self assert: 'Perez' equals: customer lastName.
+	self assert: 1 equals: customer numberOfAddresses.
+	
+	address := customer addressAt: 'Alem' ifNone: [ self fail. ].
+	
+	self assert: 1122 equals: address streetNumber.
+	self assert: 'CABA' equals: address town.
+	self assert: 1001 equals: address zipCode.
+	self assert: 'CABA' equals: address province.! !
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 11:34:41'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 11:45:05'!
+twoCustomersAndThreeAdressesStream
+
+	^ ReadStream on: 
+	'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 11:45:05' prior: 50559796!
+test01Import
+	
+	| customer address |
+	
+	self importCustomers: (self twoCustomersAndThreeAdressesStream).
+	
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	
+	customer := (session select: [ :aCustomer | (aCustomer identificationType = 'D') and: [ aCustomer identificationNumber = '22333444'. ]. ] ofType: Customer) anyOne.
+	
+	self assert: 'Pepe' equals: customer firstName.
+	self assert: 'Sanchez' equals: customer lastName.
+	self assert: 2 equals: customer numberOfAddresses.
+	
+	address := customer addressAt: 'San Martin' ifNone: [ self fail. ].
+	
+	self assert: 3322 equals: address streetNumber.
+	self assert: 'Olivos' equals: address town.
+	self assert: 1636 equals: address zipCode.
+	self assert: 'BsAs' equals: address province.
+	
+	address := customer addressAt: 'Maipu' ifNone: [ self fail. ].
+	
+	self assert: 888 equals: address streetNumber.
+	self assert: 'Florida' equals: address town.
+	self assert: 1122 equals: address zipCode.
+	self assert: 'Buenos Aires' equals: address province.
+	
+	customer := (session select: [ :aCustomer | (aCustomer identificationType = 'C') and: [ aCustomer identificationNumber = '23-25666777-9'. ]. ] ofType: Customer) anyOne.
+	
+	self assert: 'Juan' equals: customer firstName.
+	self assert: 'Perez' equals: customer lastName.
+	self assert: 1 equals: customer numberOfAddresses.
+	
+	address := customer addressAt: 'Alem' ifNone: [ self fail. ].
+	
+	self assert: 1122 equals: address streetNumber.
+	self assert: 'CABA' equals: address town.
+	self assert: 1001 equals: address zipCode.
+	self assert: 'CABA' equals: address province.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 11:45:14' prior: 50559865!
+test01Import
+	
+	| customer address |
+	
+	self importCustomers: self twoCustomersAndThreeAdressesStream.
+	
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	
+	customer := (session select: [ :aCustomer | (aCustomer identificationType = 'D') and: [ aCustomer identificationNumber = '22333444'. ]. ] ofType: Customer) anyOne.
+	
+	self assert: 'Pepe' equals: customer firstName.
+	self assert: 'Sanchez' equals: customer lastName.
+	self assert: 2 equals: customer numberOfAddresses.
+	
+	address := customer addressAt: 'San Martin' ifNone: [ self fail. ].
+	
+	self assert: 3322 equals: address streetNumber.
+	self assert: 'Olivos' equals: address town.
+	self assert: 1636 equals: address zipCode.
+	self assert: 'BsAs' equals: address province.
+	
+	address := customer addressAt: 'Maipu' ifNone: [ self fail. ].
+	
+	self assert: 888 equals: address streetNumber.
+	self assert: 'Florida' equals: address town.
+	self assert: 1122 equals: address zipCode.
+	self assert: 'Buenos Aires' equals: address province.
+	
+	customer := (session select: [ :aCustomer | (aCustomer identificationType = 'C') and: [ aCustomer identificationNumber = '23-25666777-9'. ]. ] ofType: Customer) anyOne.
+	
+	self assert: 'Juan' equals: customer firstName.
+	self assert: 'Perez' equals: customer lastName.
+	self assert: 1 equals: customer numberOfAddresses.
+	
+	address := customer addressAt: 'Alem' ifNone: [ self fail. ].
+	
+	self assert: 1122 equals: address streetNumber.
+	self assert: 'CABA' equals: address town.
+	self assert: 1001 equals: address zipCode.
+	self assert: 'CABA' equals: address province.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 11:56:43'!
+streamWithCustomersPepeAndJuan
+
+	^ ReadStream on: 
+	'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 11:56:43' prior: 50559918!
+test01Import
+	
+	| customer address |
+	
+	self importCustomers: self streamWithCustomersPepeAndJuan.
+	
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	
+	customer := (session select: [ :aCustomer | (aCustomer identificationType = 'D') and: [ aCustomer identificationNumber = '22333444'. ]. ] ofType: Customer) anyOne.
+	
+	self assert: 'Pepe' equals: customer firstName.
+	self assert: 'Sanchez' equals: customer lastName.
+	self assert: 2 equals: customer numberOfAddresses.
+	
+	address := customer addressAt: 'San Martin' ifNone: [ self fail. ].
+	
+	self assert: 3322 equals: address streetNumber.
+	self assert: 'Olivos' equals: address town.
+	self assert: 1636 equals: address zipCode.
+	self assert: 'BsAs' equals: address province.
+	
+	address := customer addressAt: 'Maipu' ifNone: [ self fail. ].
+	
+	self assert: 888 equals: address streetNumber.
+	self assert: 'Florida' equals: address town.
+	self assert: 1122 equals: address zipCode.
+	self assert: 'Buenos Aires' equals: address province.
+	
+	customer := (session select: [ :aCustomer | (aCustomer identificationType = 'C') and: [ aCustomer identificationNumber = '23-25666777-9'. ]. ] ofType: Customer) anyOne.
+	
+	self assert: 'Juan' equals: customer firstName.
+	self assert: 'Perez' equals: customer lastName.
+	self assert: 1 equals: customer numberOfAddresses.
+	
+	address := customer addressAt: 'Alem' ifNone: [ self fail. ].
+	
+	self assert: 1122 equals: address streetNumber.
+	self assert: 'CABA' equals: address town.
+	self assert: 1001 equals: address zipCode.
+	self assert: 'CABA' equals: address province.! !
+
+!methodRemoval: ImportTest #twoCustomersAndThreeAdressesStream stamp: 'TC 11/14/2022 11:56:43'!
+twoCustomersAndThreeAdressesStream
+
+	^ ReadStream on: 
+	'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'!
+!ImportTest methodsFor: 'nil' stamp: 'TC 11/14/2022 11:59:31'!
+customerPepeIsImportedCorrectly
+	
+	| customerPepe addressOfPepe |
+	
+	customerPepe := (session select: [ :aCustomer | (aCustomer identificationType = 'D') and: [ aCustomer identificationNumber = '22333444'. ]. ] ofType: Customer) anyOne.
+	
+	self assert: 'Pepe' equals: customerPepe firstName.
+	self assert: 'Sanchez' equals: customerPepe lastName.
+	self assert: 2 equals: customerPepe numberOfAddresses.
+	
+	addressOfPepe := customerPepe addressAt: 'San Martin' ifNone: [ self fail. ].
+	
+	self assert: 3322 equals: addressOfPepe streetNumber.
+	self assert: 'Olivos' equals: addressOfPepe town.
+	self assert: 1636 equals: addressOfPepe zipCode.
+	self assert: 'BsAs' equals: addressOfPepe province.
+	
+	addressOfPepe := customerPepe addressAt: 'Maipu' ifNone: [ self fail. ].
+	
+	self assert: 888 equals: addressOfPepe streetNumber.
+	self assert: 'Florida' equals: addressOfPepe town.
+	self assert: 1122 equals: addressOfPepe zipCode.
+	self assert: 'Buenos Aires' equals: addressOfPepe province.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 12:00:03' prior: 50559981!
+test01Import
+	
+	| customer address |
+	
+	self importCustomers: self streamWithCustomersPepeAndJuan.
+	
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	
+	self customerPepeIsImportedCorrectly.
+	
+	customer := (session select: [ :aCustomer | (aCustomer identificationType = 'C') and: [ aCustomer identificationNumber = '23-25666777-9'. ]. ] ofType: Customer) anyOne.
+	
+	self assert: 'Juan' equals: customer firstName.
+	self assert: 'Perez' equals: customer lastName.
+	self assert: 1 equals: customer numberOfAddresses.
+	
+	address := customer addressAt: 'Alem' ifNone: [ self fail. ].
+	
+	self assert: 1122 equals: address streetNumber.
+	self assert: 'CABA' equals: address town.
+	self assert: 1001 equals: address zipCode.
+	self assert: 'CABA' equals: address province.! !
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 12:00:07'!
+PASSED!
+!ImportTest methodsFor: 'nil' stamp: 'TC 11/14/2022 12:00:51'!
+customerJuanIsImportedCorrectly
+	
+	| customer address |
+	
+	customer := (session select: [ :aCustomer | (aCustomer identificationType = 'C') and: [ aCustomer identificationNumber = '23-25666777-9'. ]. ] ofType: Customer) anyOne.
+	
+	self assert: 'Juan' equals: customer firstName.
+	self assert: 'Perez' equals: customer lastName.
+	self assert: 1 equals: customer numberOfAddresses.
+	
+	address := customer addressAt: 'Alem' ifNone: [ self fail. ].
+	
+	self assert: 1122 equals: address streetNumber.
+	self assert: 'CABA' equals: address town.
+	self assert: 1001 equals: address zipCode.
+	self assert: 'CABA' equals: address province.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 12:00:58' prior: 50560106!
+customerJuanIsImportedCorrectly
+	
+	| customerJuan address |
+	
+	customerJuan := (session select: [ :aCustomer | (aCustomer identificationType = 'C') and: [ aCustomer identificationNumber = '23-25666777-9'. ]. ] ofType: Customer) anyOne.
+	
+	self assert: 'Juan' equals: customerJuan firstName.
+	self assert: 'Perez' equals: customerJuan lastName.
+	self assert: 1 equals: customerJuan numberOfAddresses.
+	
+	address := customerJuan addressAt: 'Alem' ifNone: [ self fail. ].
+	
+	self assert: 1122 equals: address streetNumber.
+	self assert: 'CABA' equals: address town.
+	self assert: 1001 equals: address zipCode.
+	self assert: 'CABA' equals: address province.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 12:01:08' prior: 50560129!
+customerJuanIsImportedCorrectly
+	
+	| customerJuan addressOfJuan |
+	
+	customerJuan := (session select: [ :aCustomer | (aCustomer identificationType = 'C') and: [ aCustomer identificationNumber = '23-25666777-9'. ]. ] ofType: Customer) anyOne.
+	
+	self assert: 'Juan' equals: customerJuan firstName.
+	self assert: 'Perez' equals: customerJuan lastName.
+	self assert: 1 equals: customerJuan numberOfAddresses.
+	
+	addressOfJuan := customerJuan addressAt: 'Alem' ifNone: [ self fail. ].
+	
+	self assert: 1122 equals: addressOfJuan streetNumber.
+	self assert: 'CABA' equals: addressOfJuan town.
+	self assert: 1001 equals: addressOfJuan zipCode.
+	self assert: 'CABA' equals: addressOfJuan province.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 12:01:23' prior: 50560077!
+test01Import
+	
+	
+	
+	self importCustomers: self streamWithCustomersPepeAndJuan.
+	
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	
+	self customerPepeIsImportedCorrectly.
+	
+	self customerJuanIsImportedCorrectly.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 12:01:31' prior: 50560178!
+test01Import
+	
+	self importCustomers: self streamWithCustomersPepeAndJuan.
+	
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	
+	self customerPepeIsImportedCorrectly.
+	
+	self customerJuanIsImportedCorrectly.! !
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 12:01:34'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 12:02:55'!
+twoCustomersWereImported
+
+	^ self assert: 2 equals: (session selectAllOfType: Customer) size! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 12:02:55' prior: 50560189!
+test01Import
+	
+	self importCustomers: self streamWithCustomersPepeAndJuan.
+	
+	self twoCustomersWereImported.
+	
+	self customerPepeIsImportedCorrectly.
+	
+	self customerJuanIsImportedCorrectly.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 12:03:17'!
+twoCustomersAreImported
+
+	^ self assert: 2 equals: (session selectAllOfType: Customer) size! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 12:03:17' prior: 50560208!
+test01Import
+	
+	self importCustomers: self streamWithCustomersPepeAndJuan.
+	
+	self twoCustomersAreImported.
+	
+	self customerPepeIsImportedCorrectly.
+	
+	self customerJuanIsImportedCorrectly.! !
+
+!methodRemoval: ImportTest #twoCustomersWereImported stamp: 'TC 11/14/2022 12:03:17'!
+twoCustomersWereImported
+
+	^ self assert: 2 equals: (session selectAllOfType: Customer) size!
+!ImportTest methodsFor: 'assertions' stamp: 'TC 11/14/2022 12:12:40'!
+m1
+
+	^ (session select: [ :aCustomer | (aCustomer identificationType = 'C') and: [ aCustomer identificationNumber = '23-25666777-9'. ]. ] ofType: Customer) anyOne! !
+!ImportTest methodsFor: 'assertions' stamp: 'TC 11/14/2022 12:12:40' prior: 50560153!
+customerJuanIsImportedCorrectly
+	
+	| customerJuan addressOfJuan |
+	
+	customerJuan := self m1.
+	
+	self assert: 'Juan' equals: customerJuan firstName.
+	self assert: 'Perez' equals: customerJuan lastName.
+	self assert: 1 equals: customerJuan numberOfAddresses.
+	
+	addressOfJuan := customerJuan addressAt: 'Alem' ifNone: [ self fail. ].
+	
+	self assert: 1122 equals: addressOfJuan streetNumber.
+	self assert: 'CABA' equals: addressOfJuan town.
+	self assert: 1001 equals: addressOfJuan zipCode.
+	self assert: 'CABA' equals: addressOfJuan province.! !
+!ImportTest methodsFor: 'assertions' stamp: 'TC 11/14/2022 12:13:32'!
+m1: anIdentificationType
+
+	^ (session select: [ :aCustomer | (aCustomer identificationType = 'C') and: [ aCustomer identificationNumber = '23-25666777-9'. ]. ] ofType: Customer) anyOne! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 12:13:32' prior: 50560245!
+customerJuanIsImportedCorrectly
+	
+	| customerJuan addressOfJuan |
+	
+	customerJuan := self m1: 'C'.
+	
+	self assert: 'Juan' equals: customerJuan firstName.
+	self assert: 'Perez' equals: customerJuan lastName.
+	self assert: 1 equals: customerJuan numberOfAddresses.
+	
+	addressOfJuan := customerJuan addressAt: 'Alem' ifNone: [ self fail. ].
+	
+	self assert: 1122 equals: addressOfJuan streetNumber.
+	self assert: 'CABA' equals: addressOfJuan town.
+	self assert: 1001 equals: addressOfJuan zipCode.
+	self assert: 'CABA' equals: addressOfJuan province.! !
+
+!methodRemoval: ImportTest #m1 stamp: 'TC 11/14/2022 12:13:32'!
+m1
+
+	^ (session select: [ :aCustomer | (aCustomer identificationType = 'C') and: [ aCustomer identificationNumber = '23-25666777-9'. ]. ] ofType: Customer) anyOne!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 12:13:32' prior: 50560265!
+m1: anIdentificationType
+
+	^ (session select: [ :aCustomer | (aCustomer identificationType = anIdentificationType) and: [ aCustomer identificationNumber = '23-25666777-9'. ]. ] ofType: Customer) anyOne! !
+!ImportTest methodsFor: 'assertions' stamp: 'TC 11/14/2022 12:14:07'!
+m1: anIdentificationType m2: anIdentificationNumber 
+
+	^ (session select: [ :aCustomer | (aCustomer identificationType = anIdentificationType) and: [ aCustomer identificationNumber = '23-25666777-9'. ]. ] ofType: Customer) anyOne! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 12:14:07' prior: 50560274!
+customerJuanIsImportedCorrectly
+	
+	| customerJuan addressOfJuan |
+	
+	customerJuan := self m1: 'C' m2: '23-25666777-9'.
+	
+	self assert: 'Juan' equals: customerJuan firstName.
+	self assert: 'Perez' equals: customerJuan lastName.
+	self assert: 1 equals: customerJuan numberOfAddresses.
+	
+	addressOfJuan := customerJuan addressAt: 'Alem' ifNone: [ self fail. ].
+	
+	self assert: 1122 equals: addressOfJuan streetNumber.
+	self assert: 'CABA' equals: addressOfJuan town.
+	self assert: 1001 equals: addressOfJuan zipCode.
+	self assert: 'CABA' equals: addressOfJuan province.! !
+
+!methodRemoval: ImportTest #m1: stamp: 'TC 11/14/2022 12:14:07'!
+m1: anIdentificationType
+
+	^ (session select: [ :aCustomer | (aCustomer identificationType = anIdentificationType) and: [ aCustomer identificationNumber = '23-25666777-9'. ]. ] ofType: Customer) anyOne!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 12:14:07' prior: 50560311!
+m1: anIdentificationType m2: anIdentificationNumber 
+
+	^ (session select: [ :aCustomer | (aCustomer identificationType = anIdentificationType) and: [ aCustomer identificationNumber = anIdentificationNumber. ]. ] ofType: Customer) anyOne! !
+!ImportTest methodsFor: 'assertions' stamp: 'TC 11/14/2022 12:15:03'!
+getACostumerWithIDType: anIdentificationType andIDNumber: anIdentificationNumber 
+
+	^ (session select: [ :aCustomer | (aCustomer identificationType = anIdentificationType) and: [ aCustomer identificationNumber = anIdentificationNumber. ]. ] ofType: Customer) anyOne! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 12:15:03' prior: 50560322!
+customerJuanIsImportedCorrectly
+	
+	| customerJuan addressOfJuan |
+	
+	customerJuan := self getACostumerWithIDType: 'C' andIDNumber: '23-25666777-9'.
+	
+	self assert: 'Juan' equals: customerJuan firstName.
+	self assert: 'Perez' equals: customerJuan lastName.
+	self assert: 1 equals: customerJuan numberOfAddresses.
+	
+	addressOfJuan := customerJuan addressAt: 'Alem' ifNone: [ self fail. ].
+	
+	self assert: 1122 equals: addressOfJuan streetNumber.
+	self assert: 'CABA' equals: addressOfJuan town.
+	self assert: 1001 equals: addressOfJuan zipCode.
+	self assert: 'CABA' equals: addressOfJuan province.! !
+
+!methodRemoval: ImportTest #m1:m2: stamp: 'TC 11/14/2022 12:15:03'!
+m1: anIdentificationType m2: anIdentificationNumber 
+
+	^ (session select: [ :aCustomer | (aCustomer identificationType = anIdentificationType) and: [ aCustomer identificationNumber = anIdentificationNumber. ]. ] ofType: Customer) anyOne!
+!ImportTest methodsFor: 'assertions' stamp: 'TC 11/14/2022 12:17:28'!
+checkCustomer: aCustomer hasFirstName: aFirstName andLastName: aLastName
+	
+	self assert: aFirstName equals: aCustomer firstName.
+	self assert: aLastName equals: aCustomer lastName.
+	self assert: 1 equals: aCustomer numberOfAddresses.! !
+!ImportTest methodsFor: 'assertions' stamp: 'TC 11/14/2022 12:18:05'!
+assertCustomer: aCustomer hasFirstName: aFirstName andLastName: aLastName
+	
+	self assert: aFirstName equals: aCustomer firstName.
+	self assert: aLastName equals: aCustomer lastName.
+	self assert: 1 equals: aCustomer numberOfAddresses.! !
+
+!methodRemoval: ImportTest #checkCustomer:hasFirstName:andLastName: stamp: 'TC 11/14/2022 12:18:05'!
+checkCustomer: aCustomer hasFirstName: aFirstName andLastName: aLastName
+	
+	self assert: aFirstName equals: aCustomer firstName.
+	self assert: aLastName equals: aCustomer lastName.
+	self assert: 1 equals: aCustomer numberOfAddresses.!
+!ImportTest methodsFor: 'assertions' stamp: 'TC 11/14/2022 12:18:36'!
+assertCustomerJuanIsImportedCorrectly
+	
+	| customerJuan addressOfJuan |
+	
+	customerJuan := self getACostumerWithIDType: 'C' andIDNumber: '23-25666777-9'.
+	
+	self assert: 'Juan' equals: customerJuan firstName.
+	self assert: 'Perez' equals: customerJuan lastName.
+	self assert: 1 equals: customerJuan numberOfAddresses.
+	
+	addressOfJuan := customerJuan addressAt: 'Alem' ifNone: [ self fail. ].
+	
+	self assert: 1122 equals: addressOfJuan streetNumber.
+	self assert: 'CABA' equals: addressOfJuan town.
+	self assert: 1001 equals: addressOfJuan zipCode.
+	self assert: 'CABA' equals: addressOfJuan province.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 12:18:36' prior: 50560223!
+test01Import
+	
+	self importCustomers: self streamWithCustomersPepeAndJuan.
+	
+	self twoCustomersAreImported.
+	
+	self customerPepeIsImportedCorrectly.
+	
+	self assertCustomerJuanIsImportedCorrectly.! !
+
+!methodRemoval: ImportTest #customerJuanIsImportedCorrectly stamp: 'TC 11/14/2022 12:18:36'!
+customerJuanIsImportedCorrectly
+	
+	| customerJuan addressOfJuan |
+	
+	customerJuan := self getACostumerWithIDType: 'C' andIDNumber: '23-25666777-9'.
+	
+	self assert: 'Juan' equals: customerJuan firstName.
+	self assert: 'Perez' equals: customerJuan lastName.
+	self assert: 1 equals: customerJuan numberOfAddresses.
+	
+	addressOfJuan := customerJuan addressAt: 'Alem' ifNone: [ self fail. ].
+	
+	self assert: 1122 equals: addressOfJuan streetNumber.
+	self assert: 'CABA' equals: addressOfJuan town.
+	self assert: 1001 equals: addressOfJuan zipCode.
+	self assert: 'CABA' equals: addressOfJuan province.!
+!ImportTest methodsFor: 'assertions' stamp: 'TC 11/14/2022 12:18:47'!
+assertCustomerPepeIsImportedCorrectly
+	
+	| customerPepe addressOfPepe |
+	
+	customerPepe := (session select: [ :aCustomer | (aCustomer identificationType = 'D') and: [ aCustomer identificationNumber = '22333444'. ]. ] ofType: Customer) anyOne.
+	
+	self assert: 'Pepe' equals: customerPepe firstName.
+	self assert: 'Sanchez' equals: customerPepe lastName.
+	self assert: 2 equals: customerPepe numberOfAddresses.
+	
+	addressOfPepe := customerPepe addressAt: 'San Martin' ifNone: [ self fail. ].
+	
+	self assert: 3322 equals: addressOfPepe streetNumber.
+	self assert: 'Olivos' equals: addressOfPepe town.
+	self assert: 1636 equals: addressOfPepe zipCode.
+	self assert: 'BsAs' equals: addressOfPepe province.
+	
+	addressOfPepe := customerPepe addressAt: 'Maipu' ifNone: [ self fail. ].
+	
+	self assert: 888 equals: addressOfPepe streetNumber.
+	self assert: 'Florida' equals: addressOfPepe town.
+	self assert: 1122 equals: addressOfPepe zipCode.
+	self assert: 'Buenos Aires' equals: addressOfPepe province.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 12:18:47' prior: 50560458!
+test01Import
+	
+	self importCustomers: self streamWithCustomersPepeAndJuan.
+	
+	self twoCustomersAreImported.
+	
+	self assertCustomerPepeIsImportedCorrectly.
+	
+	self assertCustomerJuanIsImportedCorrectly.! !
+
+!methodRemoval: ImportTest #customerPepeIsImportedCorrectly stamp: 'TC 11/14/2022 12:18:47'!
+customerPepeIsImportedCorrectly
+	
+	| customerPepe addressOfPepe |
+	
+	customerPepe := (session select: [ :aCustomer | (aCustomer identificationType = 'D') and: [ aCustomer identificationNumber = '22333444'. ]. ] ofType: Customer) anyOne.
+	
+	self assert: 'Pepe' equals: customerPepe firstName.
+	self assert: 'Sanchez' equals: customerPepe lastName.
+	self assert: 2 equals: customerPepe numberOfAddresses.
+	
+	addressOfPepe := customerPepe addressAt: 'San Martin' ifNone: [ self fail. ].
+	
+	self assert: 3322 equals: addressOfPepe streetNumber.
+	self assert: 'Olivos' equals: addressOfPepe town.
+	self assert: 1636 equals: addressOfPepe zipCode.
+	self assert: 'BsAs' equals: addressOfPepe province.
+	
+	addressOfPepe := customerPepe addressAt: 'Maipu' ifNone: [ self fail. ].
+	
+	self assert: 888 equals: addressOfPepe streetNumber.
+	self assert: 'Florida' equals: addressOfPepe town.
+	self assert: 1122 equals: addressOfPepe zipCode.
+	self assert: 'Buenos Aires' equals: addressOfPepe province.!
+!ImportTest methodsFor: 'assertions' stamp: 'TC 11/14/2022 12:18:58'!
+assertTwoCustomersAreImported
+
+	^ self assert: 2 equals: (session selectAllOfType: Customer) size! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 12:18:58' prior: 50560523!
+test01Import
+	
+	self importCustomers: self streamWithCustomersPepeAndJuan.
+	
+	self assertTwoCustomersAreImported.
+	
+	self assertCustomerPepeIsImportedCorrectly.
+	
+	self assertCustomerJuanIsImportedCorrectly.! !
+
+!methodRemoval: ImportTest #twoCustomersAreImported stamp: 'TC 11/14/2022 12:18:58'!
+twoCustomersAreImported
+
+	^ self assert: 2 equals: (session selectAllOfType: Customer) size!
+!ImportTest methodsFor: 'assertions' stamp: 'TC 11/14/2022 12:20:16'!
+assertCustomer: aCustomer hasFirstName: aFirstName andLastName: aLastName withNumberOfCustomers: aNumberOfCustomers
+	
+	self assert: aFirstName equals: aCustomer firstName.
+	self assert: aLastName equals: aCustomer lastName.
+	self assert: aNumberOfCustomers equals: aCustomer numberOfAddresses.! !
+
+!methodRemoval: ImportTest #assertCustomer:hasFirstName:andLastName: stamp: 'TC 11/14/2022 12:20:20'!
+assertCustomer: aCustomer hasFirstName: aFirstName andLastName: aLastName
+	
+	self assert: aFirstName equals: aCustomer firstName.
+	self assert: aLastName equals: aCustomer lastName.
+	self assert: 1 equals: aCustomer numberOfAddresses.!
+!ImportTest methodsFor: 'assertions' stamp: 'TC 11/14/2022 12:21:04' prior: 50560436!
+assertCustomerJuanIsImportedCorrectly
+	
+	| customerJuan addressOfJuan |
+	
+	customerJuan := self getACostumerWithIDType: 'C' andIDNumber: '23-25666777-9'.
+	
+	self assertCustomer: customerJuan hasFirstName: 'Juan' andLastName: 'Perez' withNumberOfCustomers: 1.
+	
+	addressOfJuan := customerJuan addressAt: 'Alem' ifNone: [ self fail. ].
+	
+	self assert: 1122 equals: addressOfJuan streetNumber.
+	self assert: 'CABA' equals: addressOfJuan town.
+	self assert: 1001 equals: addressOfJuan zipCode.
+	self assert: 'CABA' equals: addressOfJuan province.! !
+!ImportTest methodsFor: 'assertions' stamp: 'TC 11/14/2022 12:22:03'!
+m1: customerJuan
+
+	^ customerJuan addressAt: 'Alem' ifNone: [ self fail. ]! !
+!ImportTest methodsFor: 'assertions' stamp: 'TC 11/14/2022 12:22:03' prior: 50560611!
+assertCustomerJuanIsImportedCorrectly
+	
+	| customerJuan addressOfJuan |
+	
+	customerJuan := self getACostumerWithIDType: 'C' andIDNumber: '23-25666777-9'.
+	
+	self assertCustomer: customerJuan hasFirstName: 'Juan' andLastName: 'Perez' withNumberOfCustomers: 1.
+	
+	addressOfJuan := self m1: customerJuan.
+	
+	self assert: 1122 equals: addressOfJuan streetNumber.
+	self assert: 'CABA' equals: addressOfJuan town.
+	self assert: 1001 equals: addressOfJuan zipCode.
+	self assert: 'CABA' equals: addressOfJuan province.! !
+!ImportTest methodsFor: 'assertions' stamp: 'TC 11/14/2022 12:23:21'!
+getAdressAtStreet: aStreetName forCustomer: aCustomer
+
+	^ aCustomer addressAt: aStreetName ifNone: [ self fail. ]! !
+!ImportTest methodsFor: 'assertions' stamp: 'TC 11/14/2022 12:23:46' prior: 50560637!
+assertCustomerJuanIsImportedCorrectly
+	
+	| customerJuan addressOfJuan |
+	
+	customerJuan := self getACostumerWithIDType: 'C' andIDNumber: '23-25666777-9'.
+	
+	self assertCustomer: customerJuan hasFirstName: 'Juan' andLastName: 'Perez' withNumberOfCustomers: 1.
+	
+	addressOfJuan := self getAdressAtStreet: 'Alem' forCustomer: customerJuan.
+	
+	self assert: 1122 equals: addressOfJuan streetNumber.
+	self assert: 'CABA' equals: addressOfJuan town.
+	self assert: 1001 equals: addressOfJuan zipCode.
+	self assert: 'CABA' equals: addressOfJuan province.! !
+
+!methodRemoval: ImportTest #m1: stamp: 'TC 11/14/2022 12:24:14'!
+m1: customerJuan
+
+	^ customerJuan addressAt: 'Alem' ifNone: [ self fail. ]!
+!ImportTest methodsFor: 'assertions' stamp: 'TC 11/14/2022 12:24:48'!
+m1: addressOfJuan
+
+	self assert: 1122 equals: addressOfJuan streetNumber.
+	self assert: 'CABA' equals: addressOfJuan town.
+	self assert: 1001 equals: addressOfJuan zipCode.
+	self assert: 'CABA' equals: addressOfJuan province! !
+!ImportTest methodsFor: 'assertions' stamp: 'TC 11/14/2022 12:24:48' prior: 50560663!
+assertCustomerJuanIsImportedCorrectly
+	
+	| customerJuan addressOfJuan |
+	
+	customerJuan := self getACostumerWithIDType: 'C' andIDNumber: '23-25666777-9'.
+	
+	self assertCustomer: customerJuan hasFirstName: 'Juan' andLastName: 'Perez' withNumberOfCustomers: 1.
+	
+	addressOfJuan := self getAdressAtStreet: 'Alem' forCustomer: customerJuan.
+	
+	self m1: addressOfJuan.! !
+!ImportTest methodsFor: 'assertions' stamp: 'TC 11/14/2022 12:25:19'!
+m1: addressOfJuan m2: aStreetNumber 
+
+	self assert: 1122 equals: addressOfJuan streetNumber.
+	self assert: 'CABA' equals: addressOfJuan town.
+	self assert: 1001 equals: addressOfJuan zipCode.
+	self assert: 'CABA' equals: addressOfJuan province! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 12:25:19' prior: 50560697!
+assertCustomerJuanIsImportedCorrectly
+	
+	| customerJuan addressOfJuan |
+	
+	customerJuan := self getACostumerWithIDType: 'C' andIDNumber: '23-25666777-9'.
+	
+	self assertCustomer: customerJuan hasFirstName: 'Juan' andLastName: 'Perez' withNumberOfCustomers: 1.
+	
+	addressOfJuan := self getAdressAtStreet: 'Alem' forCustomer: customerJuan.
+	
+	self m1: addressOfJuan m2: 1122.! !
+
+!methodRemoval: ImportTest #m1: stamp: 'TC 11/14/2022 12:25:19'!
+m1: addressOfJuan
+
+	self assert: 1122 equals: addressOfJuan streetNumber.
+	self assert: 'CABA' equals: addressOfJuan town.
+	self assert: 1001 equals: addressOfJuan zipCode.
+	self assert: 'CABA' equals: addressOfJuan province!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 12:25:19' prior: 50560711!
+m1: addressOfJuan m2: aStreetNumber 
+
+	self assert: aStreetNumber equals: addressOfJuan streetNumber.
+	self assert: 'CABA' equals: addressOfJuan town.
+	self assert: 1001 equals: addressOfJuan zipCode.
+	self assert: 'CABA' equals: addressOfJuan province! !
+!ImportTest methodsFor: 'assertions' stamp: 'TC 11/14/2022 12:25:48'!
+m1: addressOfJuan m2: aStreetNumber m3: aTown  
+
+	self assert: aStreetNumber equals: addressOfJuan streetNumber.
+	self assert: 'CABA' equals: addressOfJuan town.
+	self assert: 1001 equals: addressOfJuan zipCode.
+	self assert: 'CABA' equals: addressOfJuan province! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 12:25:48' prior: 50560722!
+assertCustomerJuanIsImportedCorrectly
+	
+	| customerJuan addressOfJuan |
+	
+	customerJuan := self getACostumerWithIDType: 'C' andIDNumber: '23-25666777-9'.
+	
+	self assertCustomer: customerJuan hasFirstName: 'Juan' andLastName: 'Perez' withNumberOfCustomers: 1.
+	
+	addressOfJuan := self getAdressAtStreet: 'Alem' forCustomer: customerJuan.
+	
+	self m1: addressOfJuan m2: 1122 m3: 'CABA'.! !
+
+!methodRemoval: ImportTest #m1:m2: stamp: 'TC 11/14/2022 12:25:48'!
+m1: addressOfJuan m2: aStreetNumber 
+
+	self assert: aStreetNumber equals: addressOfJuan streetNumber.
+	self assert: 'CABA' equals: addressOfJuan town.
+	self assert: 1001 equals: addressOfJuan zipCode.
+	self assert: 'CABA' equals: addressOfJuan province!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 12:25:48' prior: 50560757!
+m1: addressOfJuan m2: aStreetNumber m3: aTown  
+
+	self assert: aStreetNumber equals: addressOfJuan streetNumber.
+	self assert: aTown equals: addressOfJuan town.
+	self assert: 1001 equals: addressOfJuan zipCode.
+	self assert: 'CABA' equals: addressOfJuan province! !
+!ImportTest methodsFor: 'assertions' stamp: 'TC 11/14/2022 12:26:05'!
+m1: addressOfJuan m2: aStreetNumber m3: aTown m4: aZipCode   
+
+	self assert: aStreetNumber equals: addressOfJuan streetNumber.
+	self assert: aTown equals: addressOfJuan town.
+	self assert: 1001 equals: addressOfJuan zipCode.
+	self assert: 'CABA' equals: addressOfJuan province! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 12:26:05' prior: 50560769!
+assertCustomerJuanIsImportedCorrectly
+	
+	| customerJuan addressOfJuan |
+	
+	customerJuan := self getACostumerWithIDType: 'C' andIDNumber: '23-25666777-9'.
+	
+	self assertCustomer: customerJuan hasFirstName: 'Juan' andLastName: 'Perez' withNumberOfCustomers: 1.
+	
+	addressOfJuan := self getAdressAtStreet: 'Alem' forCustomer: customerJuan.
+	
+	self m1: addressOfJuan m2: 1122 m3: 'CABA' m4: 1001.! !
+
+!methodRemoval: ImportTest #m1:m2:m3: stamp: 'TC 11/14/2022 12:26:05'!
+m1: addressOfJuan m2: aStreetNumber m3: aTown  
+
+	self assert: aStreetNumber equals: addressOfJuan streetNumber.
+	self assert: aTown equals: addressOfJuan town.
+	self assert: 1001 equals: addressOfJuan zipCode.
+	self assert: 'CABA' equals: addressOfJuan province!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 12:26:05' prior: 50560806!
+m1: addressOfJuan m2: aStreetNumber m3: aTown m4: aZipCode   
+
+	self assert: aStreetNumber equals: addressOfJuan streetNumber.
+	self assert: aTown equals: addressOfJuan town.
+	self assert: aZipCode equals: addressOfJuan zipCode.
+	self assert: 'CABA' equals: addressOfJuan province! !
+!ImportTest methodsFor: 'assertions' stamp: 'TC 11/14/2022 12:26:24'!
+m1: addressOfJuan m2: aStreetNumber m3: aTown m4: aZipCode m5: aProvince    
+
+	self assert: aStreetNumber equals: addressOfJuan streetNumber.
+	self assert: aTown equals: addressOfJuan town.
+	self assert: aZipCode equals: addressOfJuan zipCode.
+	self assert: 'CABA' equals: addressOfJuan province! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 12:26:24' prior: 50560818!
+assertCustomerJuanIsImportedCorrectly
+	
+	| customerJuan addressOfJuan |
+	
+	customerJuan := self getACostumerWithIDType: 'C' andIDNumber: '23-25666777-9'.
+	
+	self assertCustomer: customerJuan hasFirstName: 'Juan' andLastName: 'Perez' withNumberOfCustomers: 1.
+	
+	addressOfJuan := self getAdressAtStreet: 'Alem' forCustomer: customerJuan.
+	
+	self m1: addressOfJuan m2: 1122 m3: 'CABA' m4: 1001 m5: 'CABA'.! !
+
+!methodRemoval: ImportTest #m1:m2:m3:m4: stamp: 'TC 11/14/2022 12:26:24'!
+m1: addressOfJuan m2: aStreetNumber m3: aTown m4: aZipCode   
+
+	self assert: aStreetNumber equals: addressOfJuan streetNumber.
+	self assert: aTown equals: addressOfJuan town.
+	self assert: aZipCode equals: addressOfJuan zipCode.
+	self assert: 'CABA' equals: addressOfJuan province!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 12:26:24' prior: 50560856!
+m1: addressOfJuan m2: aStreetNumber m3: aTown m4: aZipCode m5: aProvince    
+
+	self assert: aStreetNumber equals: addressOfJuan streetNumber.
+	self assert: aTown equals: addressOfJuan town.
+	self assert: aZipCode equals: addressOfJuan zipCode.
+	self assert: aProvince equals: addressOfJuan province! !
+!ImportTest methodsFor: 'assertions' stamp: 'TC 11/14/2022 12:28:45'!
+AssertAddress: addressOfJuan hasStreetNumber: aStreetNumber inTown: aTown withZipCode: aZipCode inProvince: aProvince    
+
+	self assert: aStreetNumber equals: addressOfJuan streetNumber.
+	self assert: aTown equals: addressOfJuan town.
+	self assert: aZipCode equals: addressOfJuan zipCode.
+	self assert: aProvince equals: addressOfJuan province! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 12:28:45' prior: 50560869!
+assertCustomerJuanIsImportedCorrectly
+	
+	| customerJuan addressOfJuan |
+	
+	customerJuan := self getACostumerWithIDType: 'C' andIDNumber: '23-25666777-9'.
+	
+	self assertCustomer: customerJuan hasFirstName: 'Juan' andLastName: 'Perez' withNumberOfCustomers: 1.
+	
+	addressOfJuan := self getAdressAtStreet: 'Alem' forCustomer: customerJuan.
+	
+	self AssertAddress: addressOfJuan hasStreetNumber: 1122 inTown: 'CABA' withZipCode: 1001 inProvince: 'CABA'.! !
+
+!methodRemoval: ImportTest #m1:m2:m3:m4:m5: stamp: 'TC 11/14/2022 12:28:45'!
+m1: addressOfJuan m2: aStreetNumber m3: aTown m4: aZipCode m5: aProvince    
+
+	self assert: aStreetNumber equals: addressOfJuan streetNumber.
+	self assert: aTown equals: addressOfJuan town.
+	self assert: aZipCode equals: addressOfJuan zipCode.
+	self assert: aProvince equals: addressOfJuan province!
+!ImportTest methodsFor: 'assertions' stamp: 'TC 11/14/2022 12:28:58'!
+assertAddress: addressOfJuan hasStreetNumber: aStreetNumber inTown: aTown withZipCode: aZipCode inProvince: aProvince    
+
+	self assert: aStreetNumber equals: addressOfJuan streetNumber.
+	self assert: aTown equals: addressOfJuan town.
+	self assert: aZipCode equals: addressOfJuan zipCode.
+	self assert: aProvince equals: addressOfJuan province! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 12:28:58' prior: 50560922!
+assertCustomerJuanIsImportedCorrectly
+	
+	| customerJuan addressOfJuan |
+	
+	customerJuan := self getACostumerWithIDType: 'C' andIDNumber: '23-25666777-9'.
+	
+	self assertCustomer: customerJuan hasFirstName: 'Juan' andLastName: 'Perez' withNumberOfCustomers: 1.
+	
+	addressOfJuan := self getAdressAtStreet: 'Alem' forCustomer: customerJuan.
+	
+	self assertAddress: addressOfJuan hasStreetNumber: 1122 inTown: 'CABA' withZipCode: 1001 inProvince: 'CABA'.! !
+
+!methodRemoval: ImportTest #AssertAddress:hasStreetNumber:inTown:withZipCode:inProvince: stamp: 'TC 11/14/2022 12:28:58'!
+AssertAddress: addressOfJuan hasStreetNumber: aStreetNumber inTown: aTown withZipCode: aZipCode inProvince: aProvince    
+
+	self assert: aStreetNumber equals: addressOfJuan streetNumber.
+	self assert: aTown equals: addressOfJuan town.
+	self assert: aZipCode equals: addressOfJuan zipCode.
+	self assert: aProvince equals: addressOfJuan province!
+!ImportTest methodsFor: 'assertions' stamp: 'TC 11/14/2022 12:29:54' prior: 50560488!
+assertCustomerPepeIsImportedCorrectly
+	
+	| customerPepe addressOfPepe |
+	
+	customerPepe := self getACostumerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	self assert: 'Pepe' equals: customerPepe firstName.
+	self assert: 'Sanchez' equals: customerPepe lastName.
+	self assert: 2 equals: customerPepe numberOfAddresses.
+	
+	addressOfPepe := customerPepe addressAt: 'San Martin' ifNone: [ self fail. ].
+	
+	self assert: 3322 equals: addressOfPepe streetNumber.
+	self assert: 'Olivos' equals: addressOfPepe town.
+	self assert: 1636 equals: addressOfPepe zipCode.
+	self assert: 'BsAs' equals: addressOfPepe province.
+	
+	addressOfPepe := customerPepe addressAt: 'Maipu' ifNone: [ self fail. ].
+	
+	self assert: 888 equals: addressOfPepe streetNumber.
+	self assert: 'Florida' equals: addressOfPepe town.
+	self assert: 1122 equals: addressOfPepe zipCode.
+	self assert: 'Buenos Aires' equals: addressOfPepe province.! !
+!ImportTest methodsFor: 'assertions' stamp: 'TC 11/14/2022 12:30:21' prior: 50560997!
+assertCustomerPepeIsImportedCorrectly
+	
+	| customerPepe addressOfPepe |
+	
+	customerPepe := self getACostumerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	self assertCustomer: customerPepe hasFirstName: 'Pepe' andLastName: 'Sanchez' withNumberOfCustomers: 2.
+	
+	addressOfPepe := customerPepe addressAt: 'San Martin' ifNone: [ self fail. ].
+	
+	self assert: 3322 equals: addressOfPepe streetNumber.
+	self assert: 'Olivos' equals: addressOfPepe town.
+	self assert: 1636 equals: addressOfPepe zipCode.
+	self assert: 'BsAs' equals: addressOfPepe province.
+	
+	addressOfPepe := customerPepe addressAt: 'Maipu' ifNone: [ self fail. ].
+	
+	self assert: 888 equals: addressOfPepe streetNumber.
+	self assert: 'Florida' equals: addressOfPepe town.
+	self assert: 1122 equals: addressOfPepe zipCode.
+	self assert: 'Buenos Aires' equals: addressOfPepe province.! !
+!ImportTest methodsFor: 'assertions' stamp: 'TC 11/14/2022 12:30:44' prior: 50561028!
+assertCustomerPepeIsImportedCorrectly
+	
+	| customerPepe addressOfPepe |
+	
+	customerPepe := self getACostumerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	self assertCustomer: customerPepe hasFirstName: 'Pepe' andLastName: 'Sanchez' withNumberOfCustomers: 2.
+	
+	addressOfPepe := self getAdressAtStreet: 'San Martin' forCustomer: customerPepe.
+	
+	self assert: 3322 equals: addressOfPepe streetNumber.
+	self assert: 'Olivos' equals: addressOfPepe town.
+	self assert: 1636 equals: addressOfPepe zipCode.
+	self assert: 'BsAs' equals: addressOfPepe province.
+	
+	addressOfPepe := customerPepe addressAt: 'Maipu' ifNone: [ self fail. ].
+	
+	self assert: 888 equals: addressOfPepe streetNumber.
+	self assert: 'Florida' equals: addressOfPepe town.
+	self assert: 1122 equals: addressOfPepe zipCode.
+	self assert: 'Buenos Aires' equals: addressOfPepe province.! !
+!ImportTest methodsFor: 'assertions' stamp: 'TC 11/14/2022 12:32:07' prior: 50561058!
+assertCustomerPepeIsImportedCorrectly
+	
+	| customerPepe addressOfPepe |
+	
+	customerPepe := self getACostumerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	self assertCustomer: customerPepe hasFirstName: 'Pepe' andLastName: 'Sanchez' withNumberOfCustomers: 2.
+	
+	addressOfPepe := self getAdressAtStreet: 'San Martin' forCustomer: customerPepe.
+	
+	self assertAddress: addressOfPepe hasStreetNumber: 3322 inTown: 'Olivos' withZipCode: 1636 inProvince: 'BsAs'.
+	
+	addressOfPepe := self getAdressAtStreet: 'Maipu' forCustomer: customerPepe.
+	
+	self assertAddress: addressOfPepe hasStreetNumber: 888 inTown: 'Florida' withZipCode: 1122 inProvince: 'Buenos Aires'.! !
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 12:32:12'!
+PASSED!
+!ImportTest methodsFor: 'assertions' stamp: 'TC 11/14/2022 12:37:42'!
+assertCustomerWithIDtype: anIDType andIDNumber: anIDNumber 
+hasFirstName: aFirstName andLastName: aLastName withNumberOfCustomers: aNumberOfCustomers
+	
+	| customer |
+	
+	customer := self getACostumerWithIDType: anIDType andIDNumber: anIDNumber.
+	
+	self assertCustomer: customer hasFirstName: aFirstName andLastName: aLastName withNumberOfCustomers: aNumberOfCustomers.! !
+!ImportTest methodsFor: 'assertions' stamp: 'TC 11/14/2022 12:44:05' prior: 50560965!
+assertCustomerJuanIsImportedCorrectly
+	
+	| customerJuan addressOfJuan |
+	
+	customerJuan := self assertCustomerWithIDtype: 'C' andIDNumber: '23-25666777-9' hasFirstName: 'Juan' andLastName: 'Perez' withNumberOfCustomers: 1.
+	
+	addressOfJuan := self getAdressAtStreet: 'Alem' forCustomer: customerJuan.
+	
+	self assertAddress: addressOfJuan hasStreetNumber: 1122 inTown: 'CABA' withZipCode: 1001 inProvince: 'CABA'.! !
+!ImportTest methodsFor: 'assertions' stamp: 'TC 11/14/2022 12:45:13'!
+getCustomerWithIDtype: anIDType andIDNumber: anIDNumber 
+andAssertItsFirstNameIs: aFirstName lastNameIs: aLastName andNumberOfCustomersIs: aNumberOfCustomers
+	
+	| customer |
+	
+	customer := self getACostumerWithIDType: anIDType andIDNumber: anIDNumber.
+	
+	self assertCustomer: customer hasFirstName: aFirstName andLastName: aLastName withNumberOfCustomers: aNumberOfCustomers.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/14/2022 12:45:13' prior: 50561129!
+assertCustomerJuanIsImportedCorrectly
+	
+	| customerJuan addressOfJuan |
+	
+	customerJuan := self getCustomerWithIDtype: 'C' andIDNumber: '23-25666777-9' andAssertItsFirstNameIs: 'Juan' lastNameIs: 'Perez' andNumberOfCustomersIs: 1.
+	
+	addressOfJuan := self getAdressAtStreet: 'Alem' forCustomer: customerJuan.
+	
+	self assertAddress: addressOfJuan hasStreetNumber: 1122 inTown: 'CABA' withZipCode: 1001 inProvince: 'CABA'.! !
+
+!methodRemoval: ImportTest #assertCustomerWithIDtype:andIDNumber:hasFirstName:andLastName:withNumberOfCustomers: stamp: 'TC 11/14/2022 12:45:13'!
+assertCustomerWithIDtype: anIDType andIDNumber: anIDNumber 
+hasFirstName: aFirstName andLastName: aLastName withNumberOfCustomers: aNumberOfCustomers
+	
+	| customer |
+	
+	customer := self getACostumerWithIDType: anIDType andIDNumber: anIDNumber.
+	
+	self assertCustomer: customer hasFirstName: aFirstName andLastName: aLastName withNumberOfCustomers: aNumberOfCustomers.!
+!ImportTest methodsFor: 'assertions' stamp: 'TC 11/14/2022 12:45:21' prior: 50561145!
+getCustomerWithIDtype: anIDType andIDNumber: anIDNumber 
+andAssertItsFirstNameIs: aFirstName lastNameIs: aLastName andNumberOfCustomersIs: aNumberOfCustomers
+	
+	| customer |
+	
+	customer := self getACostumerWithIDType: anIDType andIDNumber: anIDNumber.
+	
+	self assertCustomer: customer hasFirstName: aFirstName andLastName: aLastName withNumberOfCustomers: aNumberOfCustomers.
+	
+	^customer.! !
+!ImportTest methodsFor: 'assertions' stamp: 'TC 11/14/2022 12:49:37'!
+assertAddressAtStreet: aStreetName forCustomer: aCustomer hasStreetNumber: aStreetNumber IsInTown: aTown inProvince: aProvince withZipCode: aZipCode
+
+	| address |
+
+	address := self getAdressAtStreet: aStreetName forCustomer: aCustomer.
+	
+	self assertAddress: address hasStreetNumber: aStreetNumber inTown: aTown withZipCode: aZipCode inProvince: aProvince.! !
+!ImportTest methodsFor: 'assertions' stamp: 'TC 11/14/2022 12:50:33' prior: 50561160!
+assertCustomerJuanIsImportedCorrectly
+	
+	| customerJuan |
+	
+	customerJuan := self getCustomerWithIDtype: 'C' andIDNumber: '23-25666777-9' andAssertItsFirstNameIs: 'Juan' lastNameIs: 'Perez' andNumberOfCustomersIs: 1.
+	
+	self assertAddressAtStreet: 'Alem' forCustomer: customerJuan hasStreetNumber: 1122 IsInTown: 'CABA' inProvince: 'CABA' withZipCode: 1001.! !
+!ImportTest methodsFor: 'assertions' stamp: 'TC 11/14/2022 12:54:02' prior: 50561088!
+assertCustomerPepeIsImportedCorrectly
+	
+	| customerPepe |
+	
+	customerPepe := self getCustomerWithIDtype: 'D' andIDNumber: '22333444' andAssertItsFirstNameIs: 'Pepe' lastNameIs: 'Sanchez' andNumberOfCustomersIs: 2.
+	
+	self assertAddressAtStreet: 'San Martin' forCustomer: customerPepe hasStreetNumber: 3322 IsInTown: 'Olivos' inProvince: 'BsAs' withZipCode: 1636.
+	
+	self assertAddressAtStreet: 'Maipu' forCustomer: customerPepe hasStreetNumber: 888 IsInTown: 'Florida' inProvince: 'Buenos Aires' withZipCode: 1122.! !
+
+!testRun: #ImportTest #test01Import stamp: 'TC 11/14/2022 12:54:10'!
+PASSED!
+!ImportTest methodsFor: 'session querying' stamp: 'TC 11/14/2022 12:55:28' prior: 50561193!
+getCustomerWithIDtype: anIDType andIDNumber: anIDNumber 
+andAssertItsFirstNameIs: aFirstName lastNameIs: aLastName andNumberOfCustomersIs: aNumberOfCustomers
+	
+	"Tener este método no parece muy buena idea, mezcal una query con una aserción."
+	
+	| customer |
+	
+	customer := self getACostumerWithIDType: anIDType andIDNumber: anIDNumber.
+	
+	self assertCustomer: customer hasFirstName: aFirstName andLastName: aLastName withNumberOfCustomers: aNumberOfCustomers.
+	
+	^customer.! !
+!ImportTest methodsFor: 'session querying' stamp: 'TC 11/14/2022 12:55:32' prior: 50561258!
+getCustomerWithIDtype: anIDType andIDNumber: anIDNumber 
+andAssertItsFirstNameIs: aFirstName lastNameIs: aLastName andNumberOfCustomersIs: aNumberOfCustomers
+	
+	"Tener este método no parece muy buena idea, mezcla una query con una aserción."
+	
+	| customer |
+	
+	customer := self getACostumerWithIDType: anIDType andIDNumber: anIDNumber.
+	
+	self assertCustomer: customer hasFirstName: aFirstName andLastName: aLastName withNumberOfCustomers: aNumberOfCustomers.
+	
+	^customer.! !
+!ImportTest methodsFor: 'tests' stamp: 'TC 11/14/2022 12:56:53'!
+test01ImprtingTwoCustomersWithAddressesWorksAsExpected
+	
+	self importCustomers: self streamWithCustomersPepeAndJuan.
+	
+	self assertTwoCustomersAreImported.
+	
+	self assertCustomerPepeIsImportedCorrectly.
+	
+	self assertCustomerJuanIsImportedCorrectly.! !
+
+!methodRemoval: ImportTest #test01Import stamp: 'TC 11/14/2022 12:56:53'!
+test01Import
+	
+	self importCustomers: self streamWithCustomersPepeAndJuan.
+	
+	self assertTwoCustomersAreImported.
+	
+	self assertCustomerPepeIsImportedCorrectly.
+	
+	self assertCustomerJuanIsImportedCorrectly.!
+!ImportTest methodsFor: 'tests' stamp: 'TC 11/14/2022 12:57:01'!
+test01ImportingTwoCustomersWithAddressesWorksAsExpected
+	
+	self importCustomers: self streamWithCustomersPepeAndJuan.
+	
+	self assertTwoCustomersAreImported.
+	
+	self assertCustomerPepeIsImportedCorrectly.
+	
+	self assertCustomerJuanIsImportedCorrectly.! !
+
+!methodRemoval: ImportTest #test01ImprtingTwoCustomersWithAddressesWorksAsExpected stamp: 'TC 11/14/2022 12:57:01'!
+test01ImprtingTwoCustomersWithAddressesWorksAsExpected
+	
+	self importCustomers: self streamWithCustomersPepeAndJuan.
+	
+	self assertTwoCustomersAreImported.
+	
+	self assertCustomerPepeIsImportedCorrectly.
+	
+	self assertCustomerJuanIsImportedCorrectly.!
+!ImportTest methodsFor: 'tests' stamp: 'TC 11/14/2022 12:58:55'!
+test01ImportingTwoCustomersWithAddressesResultsInTheirPersistenceInTheSession
+	
+	self importCustomers: self streamWithCustomersPepeAndJuan.
+	
+	self assertTwoCustomersAreImported.
+	
+	self assertCustomerPepeIsImportedCorrectly.
+	
+	self assertCustomerJuanIsImportedCorrectly.! !
+
+!methodRemoval: ImportTest #test01ImportingTwoCustomersWithAddressesWorksAsExpected stamp: 'TC 11/14/2022 12:58:55'!
+test01ImportingTwoCustomersWithAddressesWorksAsExpected
+	
+	self importCustomers: self streamWithCustomersPepeAndJuan.
+	
+	self assertTwoCustomersAreImported.
+	
+	self assertCustomerPepeIsImportedCorrectly.
+	
+	self assertCustomerJuanIsImportedCorrectly.!
+
+----SNAPSHOT----(14 November 2022 13:05:09) CuisUniversity-5510.image priorSource: 7192695!
+
+----SNAPSHOT----(14 November 2022 13:05:17) CuisUniversity-5510.image priorSource: 7350597!
+
+!testRun: #ImportTest #test01ImportingTwoCustomersWithAddressesResultsInTheirPersistenceInTheSession stamp: 'TC 11/14/2022 13:07:50'!
+PASSED!
+
+----STARTUP---- (14 November 2022 13:26:51) as /home/kaneda/Downloads/linux64_customerImporter_expo/CuisUniversity-5510.image!
+
+!ImportTest methodsFor: 'assertions' stamp: 'TC&OLT 11/14/2022 13:36:08'!
+assertCustomer: aCustomer hasFirstName: aFirstName andLastName: aLastName withNumberOfAddresses: aNumberOfCustomers
+	
+	self assert: aFirstName equals: aCustomer firstName.
+	self assert: aLastName equals: aCustomer lastName.
+	self assert: aNumberOfCustomers equals: aCustomer numberOfAddresses.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC&OLT 11/14/2022 13:36:08' prior: 50561276!
+getCustomerWithIDtype: anIDType andIDNumber: anIDNumber 
+andAssertItsFirstNameIs: aFirstName lastNameIs: aLastName andNumberOfCustomersIs: aNumberOfCustomers
+	
+	"Tener este método no parece muy buena idea, mezcla una query con una aserción."
+	
+	| customer |
+	
+	customer := self getACostumerWithIDType: anIDType andIDNumber: anIDNumber.
+	
+	self assertCustomer: customer hasFirstName: aFirstName andLastName: aLastName withNumberOfAddresses: aNumberOfCustomers.
+	
+	^customer.! !
+
+!methodRemoval: ImportTest #assertCustomer:hasFirstName:andLastName:withNumberOfCustomers: stamp: 'TC&OLT 11/14/2022 13:36:09'!
+assertCustomer: aCustomer hasFirstName: aFirstName andLastName: aLastName withNumberOfCustomers: aNumberOfCustomers
+	
+	self assert: aFirstName equals: aCustomer firstName.
+	self assert: aLastName equals: aCustomer lastName.
+	self assert: aNumberOfCustomers equals: aCustomer numberOfAddresses.!
+!ImportTest methodsFor: 'assertions' stamp: 'TC&OLT 11/14/2022 13:36:32' prior: 50561367!
+assertCustomer: aCustomer hasFirstName: aFirstName andLastName: aLastName withNumberOfAddresses: aNumberOfAddresses
+	
+	self assert: aFirstName equals: aCustomer firstName.
+	self assert: aLastName equals: aCustomer lastName.
+	self assert: aNumberOfAddresses equals: aCustomer numberOfAddresses.! !
+!ImportTest methodsFor: 'session querying' stamp: 'TC&OLT 11/14/2022 13:37:47'!
+getCustomerWithIDtype: anIDType andIDNumber: anIDNumber 
+andAssertItsFirstNameIs: aFirstName lastNameIs: aLastName andNumberOfAddressesIs: aNumberOfCustomers
+	
+	"Tener este método no parece muy buena idea, mezcla una query con una aserción."
+	
+	| customer |
+	
+	customer := self getACostumerWithIDType: anIDType andIDNumber: anIDNumber.
+	
+	self assertCustomer: customer hasFirstName: aFirstName andLastName: aLastName withNumberOfAddresses: aNumberOfCustomers.
+	
+	^customer.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC&OLT 11/14/2022 13:37:47' prior: 50561236!
+assertCustomerPepeIsImportedCorrectly
+	
+	| customerPepe |
+	
+	customerPepe := self getCustomerWithIDtype: 'D' andIDNumber: '22333444' andAssertItsFirstNameIs: 'Pepe' lastNameIs: 'Sanchez' andNumberOfAddressesIs: 2.
+	
+	self assertAddressAtStreet: 'San Martin' forCustomer: customerPepe hasStreetNumber: 3322 IsInTown: 'Olivos' inProvince: 'BsAs' withZipCode: 1636.
+	
+	self assertAddressAtStreet: 'Maipu' forCustomer: customerPepe hasStreetNumber: 888 IsInTown: 'Florida' inProvince: 'Buenos Aires' withZipCode: 1122.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC&OLT 11/14/2022 13:37:47' prior: 50561222!
+assertCustomerJuanIsImportedCorrectly
+	
+	| customerJuan |
+	
+	customerJuan := self getCustomerWithIDtype: 'C' andIDNumber: '23-25666777-9' andAssertItsFirstNameIs: 'Juan' lastNameIs: 'Perez' andNumberOfAddressesIs: 1.
+	
+	self assertAddressAtStreet: 'Alem' forCustomer: customerJuan hasStreetNumber: 1122 IsInTown: 'CABA' inProvince: 'CABA' withZipCode: 1001.! !
+
+!methodRemoval: ImportTest #getCustomerWithIDtype:andIDNumber:andAssertItsFirstNameIs:lastNameIs:andNumberOfCustomersIs: stamp: 'TC&OLT 11/14/2022 13:37:47'!
+getCustomerWithIDtype: anIDType andIDNumber: anIDNumber 
+andAssertItsFirstNameIs: aFirstName lastNameIs: aLastName andNumberOfCustomersIs: aNumberOfCustomers
+	
+	"Tener este método no parece muy buena idea, mezcla una query con una aserción."
+	
+	| customer |
+	
+	customer := self getACostumerWithIDType: anIDType andIDNumber: anIDNumber.
+	
+	self assertCustomer: customer hasFirstName: aFirstName andLastName: aLastName withNumberOfAddresses: aNumberOfCustomers.
+	
+	^customer.!
+!ImportTest methodsFor: 'session querying' stamp: 'TC&OLT 11/14/2022 13:37:58' prior: 50561423!
+getCustomerWithIDtype: anIDType andIDNumber: anIDNumber 
+andAssertItsFirstNameIs: aFirstName lastNameIs: aLastName andNumberOfAddressesIs: aNumberOfAddresses
+	
+	"Tener este método no parece muy buena idea, mezcla una query con una aserción."
+	
+	| customer |
+	
+	customer := self getACostumerWithIDType: anIDType andIDNumber: anIDNumber.
+	
+	self assertCustomer: customer hasFirstName: aFirstName andLastName: aLastName withNumberOfAddresses: aNumberOfAddresses.
+	
+	^customer.! !
+!ImportTest methodsFor: 'customer importing' stamp: 'TC&OLT 11/14/2022 13:57:32' prior: 50556760!
+importCustomers: readStream
+
+	| newCustomer line |
+	
+	session beginTransaction.
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := readStream nextLine. ].
+	session commit.
+readStream close! !
+!ImportTest methodsFor: 'customer importing' stamp: 'TC&OLT 11/14/2022 13:57:57' prior: 50561514!
+importCustomers: aReadStream
+
+	| newCustomer line |
+	
+	session beginTransaction.
+	line := aReadStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := aReadStream nextLine. ].
+	session commit.
+aReadStream close! !
+
+!classDefinition: #CustomerImporter category: 'CustomerImporter' stamp: 'TC&OLT 11/14/2022 14:01:27'!
+Object subclass: #CustomerImporter
+	instanceVariableNames: 'session readStream'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!CustomerImporter class methodsFor: 'as yet unclassified' stamp: 'TC&OLT 11/14/2022 14:01:27'!
+for: aSession with: aReadStream
+	^self new initializeFor: aSession with: aReadStream! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'TC&OLT 11/14/2022 14:01:27'!
+initializeFor: aSession with: aReadStream
+	session := aSession.
+	readStream := aReadStream.! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'TC&OLT 11/14/2022 14:01:27'!
+import
+
+	| newCustomer line |
+	
+	session beginTransaction.
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := readStream nextLine. ].
+	session commit.
+readStream close! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC&OLT 11/14/2022 14:01:27' prior: 50561548!
+importCustomers: aReadStream
+	(CustomerImporter for: session with: aReadStream) import! !
+
+!testRun: #ImportTest #test01ImportingTwoCustomersWithAddressesResultsInTheirPersistenceInTheSession stamp: 'TC&OLT 11/14/2022 14:01:44'!
+PASSED!
+!ImportTest methodsFor: 'tests' stamp: 'TC&OLT 11/14/2022 14:04:26'!
+test02ImportingACustomersWithNoAddressesResultsInItsPersistenceInTheSession
+	
+	self importCustomers: self streamWithCustomerOctavio.
+	
+	self assertACustomerIsImported.
+	
+	self assertCustomerOctavioIsImportedCorrectly.! !
+!ImportTest methodsFor: 'streams' stamp: 'TC&OLT 11/14/2022 14:05:30'!
+streamWithCustomerOctavio
+
+	^ ReadStream on: 
+	'C,Octavio,LaTessa,D,39374052'! !
+!ImportTest methodsFor: 'assertions' stamp: 'TC&OLT 11/14/2022 14:06:27'!
+assertTwoCustomersAreImported: aNumberOfCustomers
+
+	^ self assert: 2 equals: (session selectAllOfType: Customer) size! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC&OLT 11/14/2022 14:06:27' prior: 50561334!
+test01ImportingTwoCustomersWithAddressesResultsInTheirPersistenceInTheSession
+	
+	self importCustomers: self streamWithCustomersPepeAndJuan.
+	
+	self assertTwoCustomersAreImported: 2.
+	
+	self assertCustomerPepeIsImportedCorrectly.
+	
+	self assertCustomerJuanIsImportedCorrectly.! !
+
+!methodRemoval: ImportTest #assertTwoCustomersAreImported stamp: 'TC&OLT 11/14/2022 14:06:27'!
+assertTwoCustomersAreImported
+
+	^ self assert: 2 equals: (session selectAllOfType: Customer) size!
+!ImportTest methodsFor: 'assertions' stamp: 'TC&OLT 11/14/2022 14:07:21'!
+assertNumberOfImportedCustomersIs: aNumberOfCustomers
+
+	^ self assert: 2 equals: (session selectAllOfType: Customer) size! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC&OLT 11/14/2022 14:07:21' prior: 50561669!
+test01ImportingTwoCustomersWithAddressesResultsInTheirPersistenceInTheSession
+	
+	self importCustomers: self streamWithCustomersPepeAndJuan.
+	
+	self assertNumberOfImportedCustomersIs: 2.
+	
+	self assertCustomerPepeIsImportedCorrectly.
+	
+	self assertCustomerJuanIsImportedCorrectly.! !
+
+!methodRemoval: ImportTest #assertTwoCustomersAreImported: stamp: 'TC&OLT 11/14/2022 14:07:21'!
+assertTwoCustomersAreImported: aNumberOfCustomers
+
+	^ self assert: 2 equals: (session selectAllOfType: Customer) size!
+
+!testRun: #ImportTest #test01ImportingTwoCustomersWithAddressesResultsInTheirPersistenceInTheSession stamp: 'TC&OLT 11/14/2022 14:07:28'!
+PASSED!
+
+	self assertNumberOfImportedCustomersIs: 1.!
+!ImportTest methodsFor: 'tests' stamp: 'TC&OLT 11/14/2022 14:07:57' prior: 50561647!
+test02ImportingACustomersWithNoAddressesResultsInItsPersistenceInTheSession
+	
+	self importCustomers: self streamWithCustomerOctavio.
+	
+	self assertNumberOfImportedCustomersIs: 1.
+	
+	self assertCustomerOctavioIsImportedCorrectly.! !
+!ImportTest methodsFor: 'assertions' stamp: 'TC&OLT 11/14/2022 14:08:39'!
+assertCustomerOctavioIsImportedCorrectly
+	
+	| customerJuan |
+	
+	customerJuan := self getCustomerWithIDtype: 'C' andIDNumber: '39374052' andAssertItsFirstNameIs: 'Octavio' lastNameIs: 'LaTessa' andNumberOfAddressesIs: 0.! !
+!ImportTest methodsFor: 'assertions' stamp: 'TC&OLT 11/14/2022 14:09:01' prior: 50561729!
+assertCustomerOctavioIsImportedCorrectly
+	
+	| customerOctavio |
+	
+	customerOctavio := self getCustomerWithIDtype: 'C' andIDNumber: '39374052' andAssertItsFirstNameIs: 'Octavio' lastNameIs: 'LaTessa' andNumberOfAddressesIs: 0.! !
+!ImportTest methodsFor: 'assertions' stamp: 'TC&OLT 11/14/2022 14:11:00' prior: 50561739!
+assertCustomerOctavioIsImportedCorrectly
+	
+	| customerOctavio |
+	
+	customerOctavio := self getCustomerWithIDtype: 'C' andIDNumber: '39374052' andAssertItsFirstNameIs: 'Octavio' lastNameIs: 'LaTessa' andNumberOfAddressesIs: 0.
+	
+	self assertNoAddressesForCustomer: customerOctavio.! !
+!ImportTest methodsFor: 'assertions' stamp: 'TC&OLT 11/14/2022 14:11:42'!
+assertNoAddressesForCustomer: aCustomer
+	
+	! !
+!ImportTest methodsFor: 'assertions' stamp: 'TC&OLT 11/14/2022 14:12:19' prior: 50561687!
+assertNumberOfImportedCustomersIs: aNumberOfCustomers
+
+	^ self assert: aNumberOfCustomers equals: (session selectAllOfType: Customer) size! !
+
+!testRun: #ImportTest #test02ImportingACustomersWithNoAddressesResultsInItsPersistenceInTheSession stamp: 'TC&OLT 11/14/2022 14:17:28'!
+ERROR!
+
+!testRun: #ImportTest #test02ImportingACustomersWithNoAddressesResultsInItsPersistenceInTheSession stamp: 'TC&OLT 11/14/2022 14:17:29'!
+ERROR!
+
+!testRun: #ImportTest #test02ImportingACustomersWithNoAddressesResultsInItsPersistenceInTheSession stamp: 'TC&OLT 11/14/2022 14:17:52'!
+ERROR!
+
+!testRun: #ImportTest #test02ImportingACustomersWithNoAddressesResultsInItsPersistenceInTheSession stamp: 'TC&OLT 11/14/2022 14:17:53'!
+ERROR!
+
+!testRun: #ImportTest #test02ImportingACustomersWithNoAddressesResultsInItsPersistenceInTheSession stamp: 'TC&OLT 11/14/2022 14:18:27'!
+ERROR!
+
+!testRun: #ImportTest #test02ImportingACustomersWithNoAddressesResultsInItsPersistenceInTheSession stamp: 'TC&OLT 11/14/2022 14:18:28'!
+ERROR!
+
+TestCase subclass: #CustomerTest
+	instanceVariableNames: 'session'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+!classDefinition: #CustomerTest category: 'CustomerImporter' stamp: 'TC&OLT 11/14/2022 14:19:11'!
+TestCase subclass: #CustomerTest
+	instanceVariableNames: 'session'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+TestCase subclass: #CustomerTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+!classDefinition: #CustomerTest category: 'CustomerImporter' stamp: 'TC&OLT 11/14/2022 14:19:15'!
+TestCase subclass: #CustomerTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!CustomerTest methodsFor: 'no messages' stamp: 'TC&OLT 11/14/2022 14:21:52'!
+test01
+	
+	self should: [ (Customer new) addressAt: 'invalid address' ifNone: [ self fail. ].]
+	raise: Error - MessageNotUnderstood.! !
+
+!testRun: #CustomerTest #test01 stamp: 'TC&OLT 11/14/2022 14:22:01'!
+PASSED!
+!CustomerTest methodsFor: 'as yet unclassified' stamp: 'TC&OLT 11/14/2022 14:23:49' prior: 50561824!
+test01
+	
+	self should: [ (Customer new) addressAt: 'invalid address' ifNone: [ self error: self test01InvalidAddressErrorDescription. ].]
+	raise: Error - MessageNotUnderstood.! !
+!CustomerTest methodsFor: 'nil' stamp: 'TC&OLT 11/14/2022 14:24:04'!
+test01InvalidAddressErrorDescription
+	
+	^'Invalid address.'.! !
+!CustomerTest methodsFor: 'as yet unclassified' stamp: 'TC&OLT 11/14/2022 14:24:12' prior: 50561834!
+test01
+	
+	self should: [ (Customer new) addressAt: 'invalid address' ifNone: [ self error: self InvalidAddressErrorDescription. ].]
+	raise: Error - MessageNotUnderstood.! !
+!CustomerTest methodsFor: 'as yet unclassified' stamp: 'TC&OLT 11/14/2022 14:24:16' prior: 50561848!
+test01
+	
+	self should: [ (Customer new) addressAt: 'invalid address' ifNone: [ self error: self invalidAddressErrorDescription. ].]
+	raise: Error - MessageNotUnderstood.! !
+!CustomerTest methodsFor: 'as yet unclassified' stamp: 'TC&OLT 11/14/2022 14:24:25'!
+invalidAddressErrorDescription
+	
+	^'Invalid address.'.! !
+
+!methodRemoval: CustomerTest #test01InvalidAddressErrorDescription stamp: 'TC&OLT 11/14/2022 14:24:25'!
+test01InvalidAddressErrorDescription
+	
+	^'Invalid address.'.!
+
+!testRun: #CustomerTest #test01 stamp: 'TC&OLT 11/14/2022 14:24:28'!
+PASSED!
+!CustomerTest methodsFor: 'as yet unclassified' stamp: 'TC&OLT 11/14/2022 14:26:55' prior: 50561857!
+test01
+	
+	| address customer |
+	
+	address := Address new.
+	address streetName: 'valid street name'.
+	
+	customer := Customer new.
+	customer addAddress: address.
+	
+	self should: [ customer addressAt: 'invalid street name' ifNone: [ self fail. ].]
+	raise: Error - MessageNotUnderstood.! !
+
+!methodRemoval: CustomerTest #invalidAddressErrorDescription stamp: 'TC&OLT 11/14/2022 14:26:58'!
+invalidAddressErrorDescription
+	
+	^'Invalid address.'.!
+
+!testRun: #CustomerTest #test01 stamp: 'TC&OLT 11/14/2022 14:27:01'!
+FAILURE!
+
+!testRun: #CustomerTest #test01 stamp: 'TC&OLT 11/14/2022 14:27:01'!
+FAILURE!
+!Customer methodsFor: 'addresses' stamp: 'TC&OLT 11/14/2022 14:28:30' prior: 50556255!
+addressAt: aStreetName ifNone: aNoneBlock
+	
+	"TODO: Un test que llegue al aNoneBlock (que no se ecnuentre la dirección)."
+	^addresses detect: [ :anAddress | anAddress isAt: aStreetName. ] ifNone: aNoneBlock.! !
+
+!testRun: #CustomerTest #test01 stamp: 'TC&OLT 11/14/2022 14:28:35'!
+FAILURE!
+
+!testRun: #CustomerTest #test01 stamp: 'TC&OLT 11/14/2022 14:28:35'!
+FAILURE!
+
+!testRun: #CustomerTest #test01 stamp: 'TC&OLT 11/14/2022 14:29:00'!
+FAILURE!
+!CustomerTest methodsFor: 'as yet unclassified' stamp: 'TC&OLT 11/14/2022 14:32:41' prior: 50561879!
+test01
+	
+	| address customer |
+	
+	address := Address new.
+	address streetName: 'valid street name'.
+	
+	customer := Customer new.
+	customer addAddress: address.
+	
+	self should: [ customer addressAt: 'invalid street name' ifNone: [ self error: self invalidStreetNameErrorDescription. ].]
+	raise: Error - MessageNotUnderstood.! !
+!CustomerTest methodsFor: 'nil' stamp: 'TC&OLT 11/14/2022 14:32:53'!
+invalidStreetNameErrorDescription
+	
+	^'Invalid street name.'.! !
+
+!testRun: #CustomerTest #test01 stamp: 'TC&OLT 11/14/2022 14:32:56'!
+PASSED!
+!CustomerTest methodsFor: 'tests' stamp: 'TC&OLT 11/14/2022 14:35:21' prior: 50561919!
+test01
+	
+	| address customer blockWasExecuted |
+	
+	address := Address new.
+	address streetName: 'valid street name'.
+	
+	customer := Customer new.
+	customer addAddress: address.
+	
+	blockWasExecuted := false.
+	
+	customer addressAt: 'invalid street name' ifNone: [ blockWasExecuted := true. ].
+	
+	self assert: blockWasExecuted.! !
+
+!methodRemoval: CustomerTest #invalidStreetNameErrorDescription stamp: 'TC&OLT 11/14/2022 14:35:24'!
+invalidStreetNameErrorDescription
+	
+	^'Invalid street name.'.!
+
+!testRun: #CustomerTest #test01 stamp: 'TC&OLT 11/14/2022 14:35:26'!
+PASSED!
+
+!methodRemoval: ImportTest #test02ImportingACustomersWithNoAddressesResultsInItsPersistenceInTheSession stamp: 'TC&OLT 11/14/2022 14:35:53'!
+test02ImportingACustomersWithNoAddressesResultsInItsPersistenceInTheSession
+	
+	self importCustomers: self streamWithCustomerOctavio.
+	
+	self assertNumberOfImportedCustomersIs: 1.
+	
+	self assertCustomerOctavioIsImportedCorrectly.!
+!CustomerTest methodsFor: 'tests' stamp: 'TC&OLT 11/14/2022 14:37:04'!
+test01SearchingForAddressWithInvalidNameExecutesFailureBlock
+	
+	| address customer blockWasExecuted |
+	
+	address := Address new.
+	address streetName: 'valid street name'.
+	
+	customer := Customer new.
+	customer addAddress: address.
+	
+	blockWasExecuted := false.
+	
+	customer addressAt: 'invalid street name' ifNone: [ blockWasExecuted := true. ].
+	
+	self assert: blockWasExecuted.! !
+
+!methodRemoval: CustomerTest #test01 stamp: 'TC&OLT 11/14/2022 14:37:04'!
+test01
+	
+	| address customer blockWasExecuted |
+	
+	address := Address new.
+	address streetName: 'valid street name'.
+	
+	customer := Customer new.
+	customer addAddress: address.
+	
+	blockWasExecuted := false.
+	
+	customer addressAt: 'invalid street name' ifNone: [ blockWasExecuted := true. ].
+	
+	self assert: blockWasExecuted.!
+
+!methodRemoval: ImportTest #streamWithCustomerOctavio stamp: 'TC&OLT 11/14/2022 14:38:58'!
+streamWithCustomerOctavio
+
+	^ ReadStream on: 
+	'C,Octavio,LaTessa,D,39374052'!
+
+----SNAPSHOT----(14 November 2022 14:42:19) CuisUniversity-5510.image priorSource: 7350690!
+
+----STARTUP---- (14 November 2022 14:45:21) as /media/elage3/7e7b8103-5bbe-454e-bc02-f2be1a6d15c7/home/elage/Desktop/Ciencias_de_la_Computacion/ISW1/Ejercicios/customer_importer/coustomerImporterCaneda/linux64/CuisUniversity-5510.image!
+
+
+----End fileIn of /media/elage3/7e7b8103-5bbe-454e-bc02-f2be1a6d15c7/home/elage/Desktop/Ciencias_de_la_Computacion/ISW1/Ejercicios/customer_importer/coustomerImporterCaneda/linux64/CustomerImporter.st----!
+
+!testRun: #CustomerTest #test01SearchingForAddressWithInvalidNameExecutesFailureBlock stamp: 'olt 11/14/2022 14:45:43'!
+PASSED!
+
+!testRun: #ImportTest #test01ImportingTwoCustomersWithAddressesResultsInTheirPersistenceInTheSession stamp: 'olt 11/14/2022 14:45:50'!
+PASSED!
+!ImportTest methodsFor: 'tests' stamp: 'olt 11/14/2022 16:07:32'!
+test02ImportingACustomerWithNoAddressesResultsInItsPersistenceInTheSession
+	
+	self importCustomers: self streamWithCustomersOctavio.
+	
+	self assertNumberOfImportedCustomersIs: 1.
+	
+	self assertCustomerOctavioIsImportedCorrectly.
+	! !
+!ImportTest methodsFor: 'streams' stamp: 'olt 11/14/2022 16:08:21'!
+streamWithCustomersOctavio
+
+	^ ReadStream on: 
+	'C,Octavio,LaTessa,D,39374052'! !
+
+!testRun: #ImportTest #test02ImportingACustomerWithNoAddressesResultsInItsPersistenceInTheSession stamp: 'olt 11/14/2022 16:08:31'!
+ERROR!
+
+!testRun: #ImportTest #test02ImportingACustomerWithNoAddressesResultsInItsPersistenceInTheSession stamp: 'olt 11/14/2022 16:08:32'!
+ERROR!
+
+!testRun: #ImportTest #test02ImportingACustomerWithNoAddressesResultsInItsPersistenceInTheSession stamp: 'olt 11/14/2022 16:08:49'!
+ERROR!
+
+!testRun: #ImportTest #test02ImportingACustomerWithNoAddressesResultsInItsPersistenceInTheSession stamp: 'olt 11/14/2022 16:09:04'!
+ERROR!
+
+anIdentificationType!
+
+!testRun: #ImportTest #test02ImportingACustomerWithNoAddressesResultsInItsPersistenceInTheSession stamp: 'olt 11/14/2022 16:17:02'!
+ERROR!
+
+(session select: [ :aCustomer | (aCustomer identificationType = anIdentificationType) and: [ aCustomer identificationNumber = anIdentificationNumber. ]. ] ofType: Customer)!
+
+DataBaseSession!
+!ImportTest methodsFor: 'assertions' stamp: 'olt 11/14/2022 16:22:57' prior: 50562168!
+assertCustomerOctavioIsImportedCorrectly
+	
+	| customerOctavio |
+	
+	customerOctavio := self getCustomerWithIDtype: 'D' andIDNumber: '39374052' andAssertItsFirstNameIs: 'Octavio' lastNameIs: 'LaTessa' andNumberOfAddressesIs: 0.
+	
+	self assertNoAddressesForCustomer: customerOctavio.! !
+
+!testRun: #ImportTest #test02ImportingACustomerWithNoAddressesResultsInItsPersistenceInTheSession stamp: 'olt 11/14/2022 16:23:02'!
+PASSED!
+
+!testRun: #ImportTest #test01ImportingTwoCustomersWithAddressesResultsInTheirPersistenceInTheSession stamp: 'olt 11/14/2022 16:23:07'!
+PASSED!
+
+!testRun: #ImportTest #test02ImportingACustomerWithNoAddressesResultsInItsPersistenceInTheSession stamp: 'olt 11/14/2022 16:23:07'!
+PASSED!
+!ImportTest methodsFor: 'streams' stamp: 'olt 11/14/2022 16:23:36'!
+streamWithNoCustomers
+
+	^ ReadStream on: 
+	''! !
+!ImportTest methodsFor: 'tests' stamp: 'olt 11/14/2022 16:24:44'!
+test03ImportingNoCustomersDoesNotChangeNumberOfImportedCustomers
+	
+	self importCustomers: self streamWithNoCustomers .
+	
+	self assertNumberOfImportedCustomersIs: 0.
+
+	! !
+
+!testRun: #ImportTest #test03ImportingNoCustomersDoesNotChangeNumberOfImportedCustomers stamp: 'olt 11/14/2022 16:24:47'!
+PASSED!
+
+!testRun: #ImportTest #test01ImportingTwoCustomersWithAddressesResultsInTheirPersistenceInTheSession stamp: 'olt 11/14/2022 16:24:48'!
+PASSED!
+
+!testRun: #ImportTest #test02ImportingACustomerWithNoAddressesResultsInItsPersistenceInTheSession stamp: 'olt 11/14/2022 16:24:48'!
+PASSED!
+
+!testRun: #ImportTest #test03ImportingNoCustomersDoesNotChangeNumberOfImportedCustomers stamp: 'olt 11/14/2022 16:24:48'!
+PASSED!
+
+!testRun: #ImportTest #test02ImportingACustomerWithNoAddressesResultsInItsPersistenceInTheSession stamp: 'olt 11/14/2022 16:24:59'!
+ERROR!
+
+!testRun: #ImportTest #test01ImportingTwoCustomersWithAddressesResultsInTheirPersistenceInTheSession stamp: 'olt 11/14/2022 16:25:05'!
+PASSED!
+
+!testRun: #ImportTest #test02ImportingACustomerWithNoAddressesResultsInItsPersistenceInTheSession stamp: 'olt 11/14/2022 16:25:06'!
+PASSED!
+
+!testRun: #ImportTest #test03ImportingNoCustomersDoesNotChangeNumberOfImportedCustomers stamp: 'olt 11/14/2022 16:25:06'!
+PASSED!
+
+----SNAPSHOT----(14 November 2022 16:25:27) CuisUniversity-5510.image priorSource: 7371321!
