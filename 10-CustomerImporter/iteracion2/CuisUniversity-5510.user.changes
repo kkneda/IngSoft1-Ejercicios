@@ -1,0 +1,3394 @@
+
+
+----QUIT----(26 October 2022 08:07:27) CuisUniversity-5510.image priorSource: 2900072!
+
+----STARTUP---- (26 October 2022 08:07:28) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5510.image!
+
+
+----QUIT----(26 October 2022 08:07:28) CuisUniversity-5510.image priorSource: 7154921!
+
+----STARTUP---- (14 November 2022 18:07:06) as /home/clinux01/Descargas/is1/linux64/CuisUniversity-5510.image!
+
+
+----End fileIn of /home/clinux01/Descargas/is1/linux64/CustomerImporter-35.st----!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 18:13:32' prior: 50555519 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| newCustomer line |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [| customerData |
+		customerData := line findTokens: $,.
+		(line beginsWith: 'C') ifTrue: [ 
+			
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 18:13:55' prior: 50555671 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| newCustomer line |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [| customerData |
+		customerData := line findTokens: $,.
+		(line beginsWith: 'C') ifTrue: [ 
+			
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | Recor newAddress |
+			Recor := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: Recor second.
+			newAddress streetNumber: Recor third asNumber .
+			newAddress town: Recor fourth.
+			newAddress zipCode: Recor fifth asNumber .
+			newAddress province: Recor sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 18:14:13' prior: 50555704 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| newCustomer line |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [| customerData |
+		customerData := line findTokens: $,.
+		(line beginsWith: 'C') ifTrue: [ 
+			
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | record newAddress |
+			record := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: record second.
+			newAddress streetNumber: record third asNumber .
+			newAddress town: record fourth.
+			newAddress zipCode: record fifth asNumber .
+			newAddress province: record sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'HAW 5/22/2022 18:06:47' prior: 50555736 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| newCustomer line |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 18:15:57' prior: 50555768 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| newCustomer line |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [|record customerData |
+		customerData := line findTokens: $,.
+		(line beginsWith: 'C') ifTrue: [ 
+			
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | newAddress |
+			record := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: record second.
+			newAddress streetNumber: record third asNumber .
+			newAddress town: record fourth.
+			newAddress zipCode: record fifth asNumber .
+			newAddress province: record sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'HAW 5/22/2022 18:06:47' prior: 50555801 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| newCustomer line |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 18:16:58' prior: 50555833 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| newCustomer line |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [ | customerData |
+		(line beginsWith: 'C') ifTrue: [ 
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 18:17:11' prior: 50555866 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| newCustomer line |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [ | record |
+		(line beginsWith: 'C') ifTrue: [ 
+			record := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: record second.
+			newCustomer lastName: record third.
+			newCustomer identificationType: record fourth.
+			newCustomer identificationNumber: record fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 18:17:17' prior: 50555899 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| newCustomer line |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [ | record |
+		record := line findTokens: $,.
+		(line beginsWith: 'C') ifTrue: [ 
+			
+			newCustomer := Customer new.
+			newCustomer firstName: record second.
+			newCustomer lastName: record third.
+			newCustomer identificationType: record fourth.
+			newCustomer identificationNumber: record fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 18:18:19' prior: 50555931 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| newCustomer line |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [ | record |
+		record := line findTokens: $,.
+		(line beginsWith: 'C') ifTrue: [ 
+			
+			newCustomer := Customer new.
+			newCustomer firstName: record second.
+			newCustomer lastName: record third.
+			newCustomer identificationType: record fourth.
+			newCustomer identificationNumber: record fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | newAddress |
+			record := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: record second.
+			newAddress streetNumber: record third asNumber .
+			newAddress town: record fourth.
+			newAddress zipCode: record fifth asNumber .
+			newAddress province: record sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 18:18:42' prior: 50555963 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| newCustomer line |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [ | record |
+		record := line findTokens: $,.
+		(line beginsWith: 'C') ifTrue: [ 
+			
+			newCustomer := Customer new.
+			newCustomer firstName: record second.
+			newCustomer lastName: record third.
+			newCustomer identificationType: record fourth.
+			newCustomer identificationNumber: record fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | newAddress |
+			
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: record second.
+			newAddress streetNumber: record third asNumber .
+			newAddress town: record fourth.
+			newAddress zipCode: record fifth asNumber .
+			newAddress province: record sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 18:18:53' prior: 50555994 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| newCustomer line |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [ | record |
+		record := line findTokens: $,.
+		(line beginsWith: 'C') ifTrue: [ 
+			newCustomer := Customer new.
+			newCustomer firstName: record second.
+			newCustomer lastName: record third.
+			newCustomer identificationType: record fourth.
+			newCustomer identificationNumber: record fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | newAddress |
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: record second.
+			newAddress streetNumber: record third asNumber .
+			newAddress town: record fourth.
+			newAddress zipCode: record fifth asNumber .
+			newAddress province: record sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 18:19:03' prior: 50556024 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| newCustomer line |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		| record |
+		record := line findTokens: $,.
+		(line beginsWith: 'C') ifTrue: [ 
+			newCustomer := Customer new.
+			newCustomer firstName: record second.
+			newCustomer lastName: record third.
+			newCustomer identificationType: record fourth.
+			newCustomer identificationNumber: record fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | newAddress |
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: record second.
+			newAddress streetNumber: record third asNumber .
+			newAddress town: record fourth.
+			newAddress zipCode: record fifth asNumber .
+			newAddress province: record sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'TC&OLT 11/14/2022 18:21:03' prior: 50556054 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	|  line |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		| record |
+		record := line findTokens: $,.
+		(line beginsWith: 'C') ifTrue: [ 
+			newCustomer := Customer new.
+			newCustomer firstName: record second.
+			newCustomer lastName: record third.
+			newCustomer identificationType: record fourth.
+			newCustomer identificationNumber: record fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | newAddress |
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: record second.
+			newAddress streetNumber: record third asNumber .
+			newAddress town: record fourth.
+			newAddress zipCode: record fifth asNumber .
+			newAddress province: record sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+
+!classDefinition: #CustomerImporter category: 'CustomerImporter' stamp: 'TC&OLT 11/14/2022 18:21:03'!
+Object subclass: #CustomerImporter
+	instanceVariableNames: 'session readStream newCustomer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 18:21:26'!
+m1: record
+
+	newCustomer := Customer new.
+			newCustomer firstName: record second.
+			newCustomer lastName: record third.
+			newCustomer identificationType: record fourth.
+			newCustomer identificationNumber: record fifth.
+			session persist: newCustomer! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 18:21:26' prior: 50556084 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	|  line |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		| record |
+		record := line findTokens: $,.
+		(line beginsWith: 'C') ifTrue: [ 
+			self m1: record ].
+
+		(line beginsWith: 'A') ifTrue: [ | newAddress |
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: record second.
+			newAddress streetNumber: record third asNumber .
+			newAddress town: record fourth.
+			newAddress zipCode: record fifth asNumber .
+			newAddress province: record sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 18:21:26' prior: 50556133 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	|  line |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		| record |
+		record := line findTokens: $,.
+		(line beginsWith: 'C') ifTrue: [ 
+			self m1: record ].
+
+		(line beginsWith: 'A') ifTrue: [ | newAddress |
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: record second.
+			newAddress streetNumber: record third asNumber .
+			newAddress town: record fourth.
+			newAddress zipCode: record fifth asNumber .
+			newAddress province: record sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 18:21:03' prior: 50556155 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	|  line |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		| record |
+		record := line findTokens: $,.
+		(line beginsWith: 'C') ifTrue: [ 
+			newCustomer := Customer new.
+			newCustomer firstName: record second.
+			newCustomer lastName: record third.
+			newCustomer identificationType: record fourth.
+			newCustomer identificationNumber: record fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | newAddress |
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: record second.
+			newAddress streetNumber: record third asNumber .
+			newAddress town: record fourth.
+			newAddress zipCode: record fifth asNumber .
+			newAddress province: record sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+
+!methodRemoval: CustomerImporter #m1: stamp: 'TC&OLT 11/14/2022 18:23:08'!
+m1: record
+
+	newCustomer := Customer new.
+			newCustomer firstName: record second.
+			newCustomer lastName: record third.
+			newCustomer identificationType: record fourth.
+			newCustomer identificationNumber: record fifth.
+			session persist: newCustomer!
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'TC&OLT 11/14/2022 18:23:19' prior: 50556177 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	|  line |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		 
+		record := line findTokens: $,.
+		(line beginsWith: 'C') ifTrue: [ 
+			newCustomer := Customer new.
+			newCustomer firstName: record second.
+			newCustomer lastName: record third.
+			newCustomer identificationType: record fourth.
+			newCustomer identificationNumber: record fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | newAddress |
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: record second.
+			newAddress streetNumber: record third asNumber .
+			newAddress town: record fourth.
+			newAddress zipCode: record fifth asNumber .
+			newAddress province: record sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+
+!classDefinition: #CustomerImporter category: 'CustomerImporter' stamp: 'TC&OLT 11/14/2022 18:23:19'!
+Object subclass: #CustomerImporter
+	instanceVariableNames: 'session readStream newCustomer record'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 18:23:50'!
+importCustomer
+
+	newCustomer := Customer new.
+			newCustomer firstName: record second.
+			newCustomer lastName: record third.
+			newCustomer identificationType: record fourth.
+			newCustomer identificationNumber: record fifth.
+			session persist: newCustomer! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 18:23:50' prior: 50556217 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	|  line |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		 
+		record := line findTokens: $,.
+		(line beginsWith: 'C') ifTrue: [ 
+			self importCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | newAddress |
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: record second.
+			newAddress streetNumber: record third asNumber .
+			newAddress town: record fourth.
+			newAddress zipCode: record fifth asNumber .
+			newAddress province: record sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 18:24:39'!
+importAddress
+
+	| newAddress |
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: record second.
+			newAddress streetNumber: record third asNumber .
+			newAddress town: record fourth.
+			newAddress zipCode: record fifth asNumber .
+			newAddress province: record sixth! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 18:24:39' prior: 50556266 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	|  line |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		 
+		record := line findTokens: $,.
+		(line beginsWith: 'C') ifTrue: [ 
+			self importCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ self importAddress ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 18:27:00' prior: 50556301 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	|  line |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		 
+		record := line findTokens: $,.
+		(record first = 'C') ifTrue: [ 
+			self importCustomer ].
+
+		(record first = 'A') ifTrue: [ self importAddress ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 18:27:39'!
+recordIsForACustomer
+
+	^ record first = 'C'! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 18:27:39' prior: 50556315 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	|  line |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		 
+		record := line findTokens: $,.
+		(self recordIsForACustomer) ifTrue: [ 
+			self importCustomer ].
+
+		(record first = 'A') ifTrue: [ self importAddress ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 18:27:56'!
+recordIsForAnAddress
+
+	^ record first = 'A'! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 18:27:56' prior: 50556333 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	|  line |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		 
+		record := line findTokens: $,.
+		(self recordIsForACustomer) ifTrue: [ 
+			self importCustomer ].
+
+		(self recordIsForAnAddress) ifTrue: [ self importAddress ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 18:28:03' prior: 50556352 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	|  line |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		 
+		record := line findTokens: $,.
+		(self recordIsForACustomer) ifTrue: [			self importCustomer ].
+
+		(self recordIsForAnAddress) ifTrue: [ self importAddress ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 18:28:18' prior: 50556366 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	|  line |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		 
+		record := line findTokens: $,.
+		(self recordIsForACustomer) ifTrue: [			self importCustomer ].
+
+		(self recordIsForAnAddress) ifTrue: [ self importAddress ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 18:28:52'!
+importRecord
+
+	(self recordIsForACustomer) ifTrue: [			self importCustomer ].
+
+		(self recordIsForAnAddress) ifTrue: [ self importAddress ]! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 18:28:52' prior: 50556380 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	|  line |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		 
+		record := line findTokens: $,.
+		self importRecord.
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 18:29:05' prior: 50556402 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	|  line |
+
+	[line := readStream nextLine.  line notNil ] whileTrue: [
+		 
+		record := line findTokens: $,.
+		self importRecord.
+
+		].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 18:31:49' prior: 50556413 overrides: 16902254!
+value
+
+	|  line |
+
+	[line := readStream nextLine.  line notNil ] whileTrue: [
+		 
+		record := line findTokens: $,.
+		self importRecord.
+
+		].
+
+	! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'TC&OLT 11/14/2022 18:33:58' prior: 50556423 overrides: 16902254!
+value
+
+	 
+
+	[line := readStream nextLine.  line notNil ] whileTrue: [
+		 
+		record := line findTokens: $,.
+		self importRecord.
+
+		].
+
+	! !
+
+!classDefinition: #CustomerImporter category: 'CustomerImporter' stamp: 'TC&OLT 11/14/2022 18:33:58'!
+Object subclass: #CustomerImporter
+	instanceVariableNames: 'session readStream newCustomer record line'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 18:34:32'!
+nextLineNotNil
+
+	line := readStream nextLine.  line notNil! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 18:34:32' prior: 50556432 overrides: 16902254!
+value
+
+	 
+
+	[self nextLineNotNil ] whileTrue: [
+		 
+		record := line findTokens: $,.
+		self importRecord.
+
+		].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 18:34:54'!
+hasNextLine
+
+	line := readStream nextLine.  line notNil! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'TC&OLT 11/14/2022 18:34:54' prior: 50556454 overrides: 16902254!
+value
+
+	 
+
+	[self hasNextLine ] whileTrue: [
+		 
+		record := line findTokens: $,.
+		self importRecord.
+
+		].
+
+	! !
+
+!methodRemoval: CustomerImporter #nextLineNotNil stamp: 'TC&OLT 11/14/2022 18:34:54'!
+nextLineNotNil
+
+	line := readStream nextLine.  line notNil!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 18:35:18' prior: 50556461!
+hasNextLine
+
+	line := readStream nextLine.  ^line notNil! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 18:35:23' prior: 50556479!
+hasNextLine
+
+	line := readStream nextLine.
+	^line notNil! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 18:35:25' prior: 50556484!
+hasNextLine
+
+	line := readStream nextLine.
+	^line notNil.! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 18:36:26' prior: 50556467 overrides: 16902254!
+value
+
+	 
+
+	[self hasNextLine ] whileTrue: [
+		 
+		self importRecord.
+
+		].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 18:36:54' prior: 50556393!
+importRecord
+
+	record := line findTokens: $,.
+	(self recordIsForACustomer) ifTrue: [			self importCustomer ].
+	(self recordIsForAnAddress) ifTrue: [ self importAddress ].! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 18:37:30' prior: 50556495 overrides: 16902254!
+value
+
+	[self hasNextLine ] whileTrue: [	self importRecord.	].
+
+	! !
+
+!testRun: #ImportTest #test01Import stamp: 'TC&OLT 11/14/2022 18:37:43'!
+PASSED!
+!ImportTest methodsFor: 'tests' stamp: 'TC&OLT 11/14/2022 18:39:59'!
+test01ImportWithValidInputWorksAsExpected
+
+	CustomerImporter valueFrom: self validImportData into: session..
+
+	self assertImportedRightNumberOfCustomers.
+	self assertPepeSanchezWasImportedCorrecty.
+	self assertJuanPerezWasImportedCorrectly ! !
+
+!methodRemoval: ImportTest #test01Import stamp: 'TC&OLT 11/14/2022 18:39:59'!
+test01Import
+
+	CustomerImporter valueFrom: self validImportData into: session..
+
+	self assertImportedRightNumberOfCustomers.
+	self assertPepeSanchezWasImportedCorrecty.
+	self assertJuanPerezWasImportedCorrectly !
+!ImportTest methodsFor: 'tests' stamp: 'TC&OLT 11/14/2022 18:41:23'!
+test02
+
+	CustomerImporter valueFrom: self validImportData into: session..
+
+	self assertImportedRightNumberOfCustomers.
+	self assertPepeSanchezWasImportedCorrecty.
+	self assertJuanPerezWasImportedCorrectly ! !
+!ImportTest methodsFor: 'test data' stamp: 'TC&OLT 11/14/2022 18:42:18'!
+invalidImportDataWrongIDType
+
+	^ ReadStream on:
+'Z'! !
+!ImportTest methodsFor: 'test data' stamp: 'TC&OLT 11/14/2022 18:42:21' prior: 50556546!
+invalidImportDataWrongIDType
+
+	^ ReadStream on: 'Z'! !
+!ImportTest methodsFor: 'tests' stamp: 'TC&OLT 11/14/2022 18:42:52' prior: 50556537!
+test02
+
+	CustomerImporter valueFrom: self invalidImportDataWrongIDType into: session..
+
+	self assertImportedRightNumberOfCustomers.
+	self assertPepeSanchezWasImportedCorrecty.
+	self assertJuanPerezWasImportedCorrectly ! !
+
+!testRun: #ImportTest #test02 stamp: 'TC&OLT 11/14/2022 18:42:55'!
+FAILURE!
+!ImportTest methodsFor: 'tests' stamp: 'TC&OLT 11/14/2022 18:43:07' prior: 50556556!
+test02
+
+	CustomerImporter valueFrom: self invalidImportDataWrongIDType into: session..
+
+	self assertImportedRightNumberOfCustomers.
+	self assertPepeSanchezWasImportedCorrecty.! !
+!ImportTest methodsFor: 'assertions' stamp: 'TC&OLT 11/14/2022 18:45:29'!
+assertImportedRightNumberOfCustomers: aNumberOfCustomers
+
+	^ self assert: 2 equals: (session selectAllOfType: Customer) size! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC&OLT 11/14/2022 18:45:29' prior: 50556518!
+test01ImportWithValidInputWorksAsExpected
+
+	CustomerImporter valueFrom: self validImportData into: session..
+
+	self assertImportedRightNumberOfCustomers: 2.
+	self assertPepeSanchezWasImportedCorrecty.
+	self assertJuanPerezWasImportedCorrectly ! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC&OLT 11/14/2022 18:45:29' prior: 50556568!
+test02
+
+	CustomerImporter valueFrom: self invalidImportDataWrongIDType into: session..
+
+	self assertImportedRightNumberOfCustomers: 2.
+	self assertPepeSanchezWasImportedCorrecty.! !
+
+!methodRemoval: ImportTest #assertImportedRightNumberOfCustomers stamp: 'TC&OLT 11/14/2022 18:45:29'!
+assertImportedRightNumberOfCustomers
+
+	^ self assert: 2 equals: (session selectAllOfType: Customer) size!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC&OLT 11/14/2022 18:45:29' prior: 50556576!
+assertImportedRightNumberOfCustomers: aNumberOfCustomers
+
+	^ self assert: aNumberOfCustomers equals: (session selectAllOfType: Customer) size! !
+!ImportTest methodsFor: 'assertions' stamp: 'TC&OLT 11/14/2022 18:46:41'!
+assertNumberOfCustomersImportedIs: aNumberOfCustomers
+
+	^ self assert: aNumberOfCustomers equals: (session selectAllOfType: Customer) size! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC&OLT 11/14/2022 18:46:41' prior: 50556595!
+test02
+
+	CustomerImporter valueFrom: self invalidImportDataWrongIDType into: session..
+
+	self assertNumberOfCustomersImportedIs: 2.
+	self assertPepeSanchezWasImportedCorrecty.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC&OLT 11/14/2022 18:46:41' prior: 50556584!
+test01ImportWithValidInputWorksAsExpected
+
+	CustomerImporter valueFrom: self validImportData into: session..
+
+	self assertNumberOfCustomersImportedIs: 2.
+	self assertPepeSanchezWasImportedCorrecty.
+	self assertJuanPerezWasImportedCorrectly ! !
+
+!methodRemoval: ImportTest #assertImportedRightNumberOfCustomers: stamp: 'TC&OLT 11/14/2022 18:46:41'!
+assertImportedRightNumberOfCustomers: aNumberOfCustomers
+
+	^ self assert: aNumberOfCustomers equals: (session selectAllOfType: Customer) size!
+!ImportTest methodsFor: 'tests' stamp: 'TC&OLT 11/14/2022 18:46:54' prior: 50556626!
+test02
+
+	CustomerImporter valueFrom: self invalidImportDataWrongIDType into: session..
+
+	self assertNumberOfCustomersImportedIs: 0.
+	self assertPepeSanchezWasImportedCorrecty.! !
+!ImportTest methodsFor: 'tests' stamp: 'TC&OLT 11/14/2022 18:47:13' prior: 50556653!
+test02
+
+	CustomerImporter valueFrom: self invalidImportDataWrongIDType into: session..
+
+	self assertNumberOfCustomersImportedIs: 0.
+	! !
+!ImportTest methodsFor: 'tests' stamp: 'TC&OLT 11/14/2022 18:53:40' prior: 50556662!
+test02
+
+	CustomerImporter valueFrom: self invalidImportDataWrongIDType into: session.
+	
+	self should: [self assertNumberOfCustomersImportedIs: 0.]
+	raise: Error-MessageNotUnderstood 
+	withExceptionDo: [:anError | self assert: anError messageText equals: self invalidRecord].
+	! !
+!ImportTest methodsFor: 'tests' stamp: 'TC&OLT 11/14/2022 18:54:10' prior: 50556669!
+test02
+
+	CustomerImporter valueFrom: self invalidImportDataWrongIDType into: session.
+	
+	self should: [self assertNumberOfCustomersImportedIs: 0.]
+	raise: Error-MessageNotUnderstood 
+	withExceptionDo: [:anError | self assert: anError messageText equals: self invalidRecordErrorDescription].
+	! !
+!ImportTest methodsFor: 'tests' stamp: 'TC&OLT 11/14/2022 18:58:25' prior: 50556681!
+test02
+
+	CustomerImporter valueFrom: self invalidImportDataWrongIDType into: session.
+	
+	self should: [self assertNumberOfCustomersImportedIs: 0.]
+	raise: Error-MessageNotUnderstood 
+	withExceptionDo: [:anError | self assert: anError messageText equals: self invalidLineHeaderErrorDescription].
+	! !
+!ImportTest methodsFor: 'tests' stamp: 'TC&OLT 11/14/2022 18:59:10' prior: 50556693!
+test02
+
+	CustomerImporter valueFrom: self invalidImportDataWrongIDType into: session.
+	
+	self should: [self assertNumberOfCustomersImportedIs: 0.]
+	raise: Error-MessageNotUnderstood 
+	withExceptionDo: [:anError | self assert: anError messageText equals: CustomerImporter invalidLineHeaderErrorDescription].
+	! !
+!CustomerImporter methodsFor: 'nil' stamp: 'TC&OLT 11/14/2022 19:01:11'!
+invalidLineHeaderErrorDescription
+
+	^'Invalid line header'! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'TC&OLT 11/14/2022 19:01:17' prior: 50556719!
+invalidLineHeaderErrorDescription
+
+	^'Invalid line header.'.! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'TC&OLT 11/14/2022 19:01:41' prior: 50556725!
+invalidLineHeaderErrorDescription
+
+	^'Invalid line header.'.! !
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'TC&OLT 11/14/2022 19:02:48'!
+invalidLineHeaderErrorDescription
+
+	^'Invalid line header.'.! !
+
+!methodRemoval: CustomerImporter #invalidLineHeaderErrorDescription stamp: 'TC&OLT 11/14/2022 19:02:48'!
+invalidLineHeaderErrorDescription
+
+	^'Invalid line header.'.!
+
+!testRun: #ImportTest #test02 stamp: 'TC&OLT 11/14/2022 19:04:26'!
+FAILURE!
+
+!testRun: #ImportTest #test02 stamp: 'TC&OLT 11/14/2022 19:04:26'!
+FAILURE!
+
+!testRun: #ImportTest #test02 stamp: 'TC&OLT 11/14/2022 19:04:50'!
+FAILURE!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 19:11:35' prior: 50556501!
+importRecord
+
+	record := line findTokens: $,.
+	(self recordIsForACustomer) ifTrue: [			self importCustomer ]
+	ifFalse: 	[
+		(self recordIsForAnAddress) ifTrue: [ self importAddress ]
+		ifFalse: [ self error: self class invalidLineHeaderErrorDescription ].		
+	].
+	
+	! !
+
+!testRun: #ImportTest #test01ImportWithValidInputWorksAsExpected stamp: 'TC&OLT 11/14/2022 19:11:45'!
+PASSED!
+
+!testRun: #ImportTest #test02 stamp: 'TC&OLT 11/14/2022 19:11:46'!
+ERROR!
+
+!testRun: #ImportTest #test02 stamp: 'TC&OLT 11/14/2022 19:11:46'!
+ERROR!
+!ImportTest methodsFor: 'tests' stamp: 'TC&OLT 11/14/2022 19:12:59' prior: 50556706!
+test02
+
+	CustomerImporter valueFrom: self invalidImportDataWrongIDType into: session.
+	
+	self should: [self assertNumberOfCustomersImportedIs: 0.]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:anError | self assert: anError messageText equals: CustomerImporter invalidLineHeaderErrorDescription].
+	! !
+
+!testRun: #ImportTest #test02 stamp: 'TC&OLT 11/14/2022 19:13:02'!
+ERROR!
+
+!testRun: #ImportTest #test02 stamp: 'TC&OLT 11/14/2022 19:13:02'!
+ERROR!
+
+!testRun: #ImportTest #test02 stamp: 'TC&OLT 11/14/2022 19:13:07'!
+ERROR!
+
+!testRun: #ImportTest #test02 stamp: 'TC&OLT 11/14/2022 19:13:12'!
+ERROR!
+!ImportTest methodsFor: 'tests' stamp: 'TC&OLT 11/14/2022 19:14:48' prior: 50556774!
+test02
+
+	CustomerImporter from: self invalidImportDataWrongIDType into: session.
+	
+	self should: [self assertNumberOfCustomersImportedIs: 0.]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:anError | self assert: anError messageText equals: CustomerImporter invalidLineHeaderErrorDescription].
+	! !
+
+!testRun: #ImportTest #test02 stamp: 'TC&OLT 11/14/2022 19:15:27'!
+FAILURE!
+
+!testRun: #ImportTest #test02 stamp: 'TC&OLT 11/14/2022 19:15:27'!
+FAILURE!
+!ImportTest methodsFor: 'tests' stamp: 'TC&OLT 11/14/2022 19:17:14' prior: 50556796!
+test02
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self invalidImportDataWrongIDType into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:anError |
+		self assert: anError messageText equals: customerImporter class invalidLineHeaderErrorDescription.
+		self assertNumberOfCustomersImportedIs: 0.
+	].
+	! !
+
+!testRun: #ImportTest #test02 stamp: 'TC&OLT 11/14/2022 19:17:16'!
+PASSED!
+
+!testRun: #ImportTest #test01ImportWithValidInputWorksAsExpected stamp: 'TC&OLT 11/14/2022 19:17:25'!
+PASSED!
+
+!testRun: #ImportTest #test02 stamp: 'TC&OLT 11/14/2022 19:17:26'!
+PASSED!
+!ImportTest methodsFor: 'tests' stamp: 'TC&OLT 11/14/2022 19:18:29' prior: 50556814!
+test02
+	
+	"headerWithInvalidFirstValueRaisesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self invalidImportDataWrongIDType into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:anError |
+		self assert: anError messageText equals: customerImporter class invalidLineHeaderErrorDescription.
+		self assertNumberOfCustomersImportedIs: 0.
+	].
+	! !
+!ImportTest methodsFor: 'tests' stamp: 'TC&OLT 11/14/2022 19:19:17'!
+test03
+	
+	"headerWithInvalidSecondValueRaisesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self invalidImportDataWrongIDType into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:anError |
+		self assert: anError messageText equals: customerImporter class invalidLineHeaderErrorDescription.
+		self assertNumberOfCustomersImportedIs: 0.
+	].
+	! !
+!ImportTest methodsFor: 'tests' stamp: 'TC&OLT 11/14/2022 19:19:23' prior: 50556838!
+test02
+	
+	"headerWithInvalidFirstCharacterRaisesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self invalidImportDataWrongIDType into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:anError |
+		self assert: anError messageText equals: customerImporter class invalidLineHeaderErrorDescription.
+		self assertNumberOfCustomersImportedIs: 0.
+	].
+	! !
+!ImportTest methodsFor: 'tests' stamp: 'TC&OLT 11/14/2022 19:19:33' prior: 50556854!
+test03
+	
+	"headerWithInvalidSecondCharacterRaisesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self invalidImportDataWrongIDType into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:anError |
+		self assert: anError messageText equals: customerImporter class invalidLineHeaderErrorDescription.
+		self assertNumberOfCustomersImportedIs: 0.
+	].
+	! !
+!ImportTest methodsFor: 'test data' stamp: 'TC&OLT 11/14/2022 19:21:12'!
+invalidImportDataWrongSecondCharacter
+
+	^ ReadStream on: 'Z'! !
+!ImportTest methodsFor: 'test data' stamp: 'TC&OLT 11/14/2022 19:22:36' prior: 50556905!
+invalidImportDataWrongSecondCharacter
+
+	^ ReadStream on: 'C, '! !
+!ImportTest methodsFor: 'test data' stamp: 'TC&OLT 11/14/2022 19:22:42' prior: 50556910!
+invalidImportDataWrongSecondCharacter
+
+	^ ReadStream on: 'C, '.! !
+!ImportTest methodsFor: 'tests' stamp: 'TC&OLT 11/14/2022 19:23:15' prior: 50556888!
+test03
+	
+	"headerWithInvalidSecondCharacterRaisesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self invalidImportDataWrongSecondCharacter into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:anError |
+		self assert: anError messageText equals: customerImporter class invalidLineHeaderErrorDescription.
+		self assertNumberOfCustomersImportedIs: 0.
+	].
+	! !
+!ImportTest methodsFor: 'test data' stamp: 'TC&OLT 11/14/2022 19:24:01' prior: 50556915!
+invalidImportDataWrongSecondCharacter
+
+	^ ReadStream on: ''.! !
+!ImportTest methodsFor: 'test data' stamp: 'TC&OLT 11/14/2022 19:26:19'!
+emptyData
+
+	^ ReadStream on: ''.! !
+!ImportTest methodsFor: 'tests' stamp: 'TC&OLT 11/14/2022 19:27:11'!
+test04
+	
+	"headerWithInvalidSecondCharacterRaisesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self invalidImportDataWrongSecondCharacter into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:anError |
+		self assert: anError messageText equals: customerImporter class invalidLineHeaderErrorDescription.
+		self assertNumberOfCustomersImportedIs: 0.
+	].
+	! !
+
+!methodRemoval: ImportTest #test03 stamp: 'TC&OLT 11/14/2022 19:27:11'!
+test03
+	
+	"headerWithInvalidSecondCharacterRaisesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self invalidImportDataWrongSecondCharacter into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:anError |
+		self assert: anError messageText equals: customerImporter class invalidLineHeaderErrorDescription.
+		self assertNumberOfCustomersImportedIs: 0.
+	].
+	!
+!ImportTest methodsFor: 'tests' stamp: 'TC&OLT 11/14/2022 19:28:14'!
+test03
+	
+	"headerWithInvalidSecondCharacterRaisesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self invalidImportDataWrongSecondCharacter into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:anError |
+		self assert: anError messageText equals: customerImporter class invalidLineHeaderErrorDescription.
+		self assertNumberOfCustomersImportedIs: 0.
+	].
+	! !
+
+!methodRemoval: ImportTest #test04 stamp: 'TC&OLT 11/14/2022 19:28:14'!
+test04
+	
+	"headerWithInvalidSecondCharacterRaisesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self invalidImportDataWrongSecondCharacter into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:anError |
+		self assert: anError messageText equals: customerImporter class invalidLineHeaderErrorDescription.
+		self assertNumberOfCustomersImportedIs: 0.
+	].
+	!
+
+!methodRemoval: ImportTest #invalidImportDataWrongSecondCharacter stamp: 'TC&OLT 11/14/2022 19:28:23'!
+invalidImportDataWrongSecondCharacter
+
+	^ ReadStream on: ''.!
+!ImportTest methodsFor: 'tests' stamp: 'TC&OLT 11/14/2022 19:29:19' prior: 50556979!
+test03
+	
+	"headerWithInvalidSecondCharacterRaisesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self emptyData into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:anError |
+		self assert: anError messageText equals: customerImporter class emptyDataErrorDescription.
+		self assertNumberOfCustomersImportedIs: 0.
+	].
+	! !
+
+!testRun: #ImportTest #test03 stamp: 'TC&OLT 11/14/2022 19:29:21'!
+FAILURE!
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'TC&OLT 11/14/2022 19:29:48'!
+emptyDataErrorDescription
+
+	^'Empty data.'.! !
+
+!testRun: #ImportTest #test03 stamp: 'TC&OLT 11/14/2022 19:30:47'!
+FAILURE!
+
+!testRun: #ImportTest #test03 stamp: 'TC&OLT 11/14/2022 19:30:47'!
+FAILURE!
+!ImportTest methodsFor: 'test data' stamp: 'TC&OLT 11/14/2022 19:32:02' prior: 50556942!
+emptyData
+
+	^ ReadStream on: ','.! !
+!ImportTest methodsFor: 'test data' stamp: 'TC&OLT 11/14/2022 19:32:41' prior: 50557047!
+emptyData
+
+	^ ReadStream on: '
+	'.! !
+
+!testRun: #ImportTest #test03 stamp: 'TC&OLT 11/14/2022 19:32:52'!
+FAILURE!
+
+!testRun: #ImportTest #test03 stamp: 'TC&OLT 11/14/2022 19:32:52'!
+FAILURE!
+
+!testRun: #ImportTest #test03 stamp: 'TC&OLT 11/14/2022 19:33:49'!
+FAILURE!
+
+!testRun: #ImportTest #test03 stamp: 'TC&OLT 11/14/2022 19:34:32'!
+FAILURE!
+
+!testRun: #ImportTest #test03 stamp: 'TC&OLT 11/14/2022 19:35:00'!
+FAILURE!
+
+!testRun: #ImportTest #test03 stamp: 'TC&OLT 11/14/2022 19:36:06'!
+FAILURE!
+
+!testRun: #ImportTest #test03 stamp: 'TC&OLT 11/14/2022 19:36:37'!
+FAILURE!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 19:39:35' prior: 50556327!
+recordIsForACustomer
+
+	record isEmpty ifTrue: [self error: self class emptyDataErrorDescription ].
+	^ record first = 'C'.
+	! !
+
+!testRun: #ImportTest #test03 stamp: 'TC&OLT 11/14/2022 19:40:04'!
+PASSED!
+
+!testRun: #ImportTest #test01ImportWithValidInputWorksAsExpected stamp: 'TC&OLT 11/14/2022 19:40:08'!
+PASSED!
+
+!testRun: #ImportTest #test02 stamp: 'TC&OLT 11/14/2022 19:40:08'!
+PASSED!
+
+!testRun: #ImportTest #test03 stamp: 'TC&OLT 11/14/2022 19:40:09'!
+PASSED!
+!ImportTest methodsFor: 'test data' stamp: 'TC&OLT 11/14/2022 19:45:13'!
+invalidImportDataWithMoreThanFiveFields
+
+	^ ReadStream on:
+'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+!ImportTest methodsFor: 'test data' stamp: 'TC&OLT 11/14/2022 19:46:37' prior: 50557090!
+invalidImportDataWithMoreThanFiveFields
+
+	^ ReadStream on:
+'C,Bingus,MyBeloved,D,1,invalidField'! !
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'TC&OLT 11/14/2022 19:51:04'!
+moreThanFiveFieldsErrorDescription
+
+	^'more than five fields'.! !
+
+!testRun: #ImportTest #test01ImportWithValidInputWorksAsExpected stamp: 'TC&OLT 11/14/2022 19:51:46'!
+PASSED!
+
+!testRun: #ImportTest #test02 stamp: 'TC&OLT 11/14/2022 19:51:46'!
+PASSED!
+
+!testRun: #ImportTest #test03 stamp: 'TC&OLT 11/14/2022 19:51:46'!
+PASSED!
+!ImportTest methodsFor: 'tests' stamp: 'TC&OLT 11/14/2022 19:52:18'!
+test04
+	
+	"headerWithInvalidSecondCharacterRaisesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self emptyData into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:anError |
+		self assert: anError messageText equals: customerImporter class invalidImportDataWithMoreThanFiveFields .
+		self assertNumberOfCustomersImportedIs: 0.
+	].
+	! !
+
+!testRun: #ImportTest #test04 stamp: 'TC&OLT 11/14/2022 19:52:35'!
+ERROR!
+
+!testRun: #ImportTest #test04 stamp: 'TC&OLT 11/14/2022 19:52:35'!
+ERROR!
+!ImportTest methodsFor: 'tests' stamp: 'TC&OLT 11/14/2022 19:53:10' prior: 50557120!
+test04
+	
+	"headerWithInvalidSecondCharacterRaisesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self emptyData into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:anError |
+		self assert: anError messageText equals: customerImporter class moreThanFiveFieldsErrorDescription .
+		self assertNumberOfCustomersImportedIs: 0.
+	].
+	! !
+
+!testRun: #ImportTest #test04 stamp: 'TC&OLT 11/14/2022 19:53:11'!
+FAILURE!
+!ImportTest methodsFor: 'tests' stamp: 'TC&OLT 11/14/2022 19:53:20' prior: 50557141!
+test04
+	
+	"headerWithInvalidSecondCharacterRaisesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self emptyData into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:anError |
+		self assert: anError messageText equals: customerImporter class invalidImportDataWithMoreThanFiveFields .
+		self assertNumberOfCustomersImportedIs: 0.
+	].
+	! !
+
+!testRun: #ImportTest #test04 stamp: 'TC&OLT 11/14/2022 19:53:20'!
+ERROR!
+!ImportTest methodsFor: 'tests' stamp: 'TC&OLT 11/14/2022 19:53:25' prior: 50557160!
+test04
+	
+	"headerWithInvalidSecondCharacterRaisesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self emptyData into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:anError |
+		self assert: anError messageText equals: customerImporter class moreThanFiveFieldsErrorDescription .
+		self assertNumberOfCustomersImportedIs: 0.
+	].
+	! !
+
+!testRun: #ImportTest #test04 stamp: 'TC&OLT 11/14/2022 19:53:27'!
+FAILURE!
+
+!testRun: #ImportTest #test04 stamp: 'TC&OLT 11/14/2022 19:53:27'!
+FAILURE!
+
+!testRun: #ImportTest #test04 stamp: 'TC&OLT 11/14/2022 19:53:33'!
+FAILURE!
+
+!testRun: #ImportTest #test04 stamp: 'TC&OLT 11/14/2022 19:53:33'!
+FAILURE!
+!ImportTest methodsFor: 'tests' stamp: 'TC&OLT 11/14/2022 19:54:47' prior: 50557179!
+test04
+	
+	"headerWithInvalidSecondCharacterRaisesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self invalidImportDataWithMoreThanFiveFields into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:anError |
+		self assert: anError messageText equals: customerImporter class moreThanFiveFieldsErrorDescription .
+		self assertNumberOfCustomersImportedIs: 0.
+	].
+	! !
+
+!testRun: #ImportTest #test04 stamp: 'TC&OLT 11/14/2022 19:54:50'!
+FAILURE!
+
+!testRun: #ImportTest #test04 stamp: 'TC&OLT 11/14/2022 19:54:50'!
+FAILURE!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 19:57:11' prior: 50556754!
+importRecord
+
+	record := line findTokens: $,.
+	record size > 5 ifTrue:[self class invalidLineHeaderErrorDescription ].
+	(self recordIsForACustomer) ifTrue: [			self importCustomer ]
+	ifFalse: 	[
+		(self recordIsForAnAddress) ifTrue: [ self importAddress ]
+		ifFalse: [ self error: self class invalidLineHeaderErrorDescription ].		
+	].
+	
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 19:57:14' prior: 50557228!
+importRecord
+
+	record := line findTokens: $,.
+	record size > 5 ifTrue:[self class invalidLineHeaderErrorDescription ].
+	
+	(self recordIsForACustomer) ifTrue: [			self importCustomer ]
+	ifFalse: 	[
+		(self recordIsForAnAddress) ifTrue: [ self importAddress ]
+		ifFalse: [ self error: self class invalidLineHeaderErrorDescription ].		
+	].
+	
+	! !
+
+!testRun: #ImportTest #test04 stamp: 'TC&OLT 11/14/2022 19:57:16'!
+FAILURE!
+
+!testRun: #ImportTest #test04 stamp: 'TC&OLT 11/14/2022 19:57:20'!
+FAILURE!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 19:57:56' prior: 50557242!
+importRecord
+
+	record := line findTokens: $,.
+	record size > 5 ifTrue:[self error: self class invalidLineHeaderErrorDescription ].
+	
+	(self recordIsForACustomer) ifTrue: [			self importCustomer ]
+	ifFalse: 	[
+		(self recordIsForAnAddress) ifTrue: [ self importAddress ]
+		ifFalse: [ self error: self class invalidLineHeaderErrorDescription ].		
+	].
+	
+	! !
+
+!testRun: #ImportTest #test04 stamp: 'TC&OLT 11/14/2022 19:57:58'!
+FAILURE!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 19:58:51' prior: 50557261!
+importRecord
+
+	record := line findTokens: $,.
+	record size > 5 ifTrue:[self error: self class moreThanFiveFieldsErrorDescription ].
+	
+	(self recordIsForACustomer) ifTrue: [			self importCustomer ]
+	ifFalse: 	[
+		(self recordIsForAnAddress) ifTrue: [ self importAddress ]
+		ifFalse: [ self error: self class invalidLineHeaderErrorDescription ].		
+	].
+	
+	! !
+
+!testRun: #ImportTest #test01ImportWithValidInputWorksAsExpected stamp: 'TC&OLT 11/14/2022 19:58:55'!
+ERROR!
+
+!testRun: #ImportTest #test02 stamp: 'TC&OLT 11/14/2022 19:58:55'!
+PASSED!
+
+!testRun: #ImportTest #test03 stamp: 'TC&OLT 11/14/2022 19:58:55'!
+PASSED!
+
+!testRun: #ImportTest #test04 stamp: 'TC&OLT 11/14/2022 19:58:55'!
+PASSED!
+
+!testRun: #ImportTest #test01ImportWithValidInputWorksAsExpected stamp: 'TC&OLT 11/14/2022 19:58:55'!
+ERROR!
+
+!testRun: #ImportTest #test04 stamp: 'TC&OLT 11/14/2022 19:59:02'!
+PASSED!
+
+!testRun: #ImportTest #test03 stamp: 'TC&OLT 11/14/2022 19:59:04'!
+PASSED!
+
+!testRun: #ImportTest #test02 stamp: 'TC&OLT 11/14/2022 19:59:07'!
+PASSED!
+
+!testRun: #ImportTest #test01ImportWithValidInputWorksAsExpected stamp: 'TC&OLT 11/14/2022 19:59:09'!
+ERROR!
+
+!testRun: #ImportTest #test01ImportWithValidInputWorksAsExpected stamp: 'TC&OLT 11/14/2022 19:59:09'!
+ERROR!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC&OLT 11/14/2022 20:02:54' prior: 50557278!
+importRecord
+
+	record := line findTokens: $,.
+	
+	(self recordIsForACustomer) ifTrue: [		
+		record size > 5 ifTrue: [ self error: self class moreThanFiveFieldsErrorDescription ].
+		self importCustomer.
+	]
+	ifFalse: 	[
+		(self recordIsForAnAddress) ifTrue: [ self importAddress ]
+		ifFalse: [ self error: self class invalidLineHeaderErrorDescription ].		
+	].! !
+
+!testRun: #ImportTest #test01ImportWithValidInputWorksAsExpected stamp: 'TC&OLT 11/14/2022 20:03:09'!
+PASSED!
+
+!testRun: #ImportTest #test02 stamp: 'TC&OLT 11/14/2022 20:03:09'!
+PASSED!
+
+!testRun: #ImportTest #test03 stamp: 'TC&OLT 11/14/2022 20:03:09'!
+PASSED!
+
+!testRun: #ImportTest #test04 stamp: 'TC&OLT 11/14/2022 20:03:09'!
+PASSED!
+
+----SNAPSHOT----(14 November 2022 20:05:27) CuisUniversity-5510.image priorSource: 7155150!
+
+----SNAPSHOT----(14 November 2022 20:06:19) CuisUniversity-5510.image priorSource: 7222234!
+
+----STARTUP---- (17 November 2022 12:02:45) as /home/kaneda/Downloads/linux64/CuisUniversity-5510.image!
+
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC 11/17/2022 12:18:28' prior: 50557073!
+recordIsForACustomer
+
+	^ record first = 'C'.
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC 11/17/2022 12:18:30' prior: 50557355!
+recordIsForACustomer
+	
+	^ record first = 'C'.
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC 11/17/2022 12:18:36' prior: 50557321!
+importRecord
+
+	record := line findTokens: $,.
+	
+	record isEmpty ifTrue: [self error: self class emptyDataErrorDescription ].
+	
+	(self recordIsForACustomer) ifTrue: [		
+		record size > 5 ifTrue: [ self error: self class moreThanFiveFieldsErrorDescription ].
+		self importCustomer.
+	]
+	ifFalse: 	[
+		(self recordIsForAnAddress) ifTrue: [ self importAddress ]
+		ifFalse: [ self error: self class invalidLineHeaderErrorDescription ].		
+	].! !
+
+!testRun: #ImportTest #test01ImportWithValidInputWorksAsExpected stamp: 'TC 11/17/2022 14:08:40'!
+PASSED!
+
+!testRun: #ImportTest #test02 stamp: 'TC 11/17/2022 14:08:41'!
+PASSED!
+
+!testRun: #ImportTest #test03 stamp: 'TC 11/17/2022 14:08:41'!
+PASSED!
+
+!testRun: #ImportTest #test04 stamp: 'TC 11/17/2022 14:08:41'!
+PASSED!
+!ImportTest methodsFor: 'tests' stamp: 'TC 11/17/2022 14:09:06'!
+test05
+	
+	"headerWithInvalidSecondCharacterRaisesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self invalidImportDataWithLessThanFiveFields into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:anError |
+		self assert: anError messageText equals: customerImporter class moreThanFiveFieldsErrorDescription .
+		self assertNumberOfCustomersImportedIs: 0.
+	].
+	! !
+!ImportTest methodsFor: 'tests' stamp: 'TC 11/17/2022 14:09:36' prior: 50557391!
+test05
+	
+	"headerWithInvalidSecondCharacterRaisesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self invalidImportDataWithLessThanFiveFields into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class moreThanFiveFieldsErrorDescription .
+		self assertNumberOfCustomersImportedIs: 0.
+	].
+	! !
+!ImportTest methodsFor: 'tests' stamp: 'TC 11/17/2022 14:09:39' prior: 50557205!
+test04
+	
+	"headerWithInvalidSecondCharacterRaisesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self invalidImportDataWithMoreThanFiveFields into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class moreThanFiveFieldsErrorDescription .
+		self assertNumberOfCustomersImportedIs: 0.
+	].
+	! !
+!ImportTest methodsFor: 'tests' stamp: 'TC 11/17/2022 14:09:42' prior: 50557018!
+test03
+	
+	"headerWithInvalidSecondCharacterRaisesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self emptyData into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class emptyDataErrorDescription.
+		self assertNumberOfCustomersImportedIs: 0.
+	].
+	! !
+!ImportTest methodsFor: 'tests' stamp: 'TC 11/17/2022 14:09:47' prior: 50556871!
+test02
+	
+	"headerWithInvalidFirstCharacterRaisesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self invalidImportDataWrongIDType into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class invalidLineHeaderErrorDescription.
+		self assertNumberOfCustomersImportedIs: 0.
+	].
+	! !
+
+!testRun: #ImportTest #test05 stamp: 'TC 11/17/2022 14:10:10'!
+ERROR!
+
+!testRun: #ImportTest #test05 stamp: 'TC 11/17/2022 14:10:10'!
+ERROR!
+!ImportTest methodsFor: 'test data' stamp: 'TC 11/17/2022 14:10:29'!
+invalidImportDataWithLessThanFiveFields
+	self shouldBeImplemented.! !
+!ImportTest methodsFor: 'test data' stamp: 'TC 11/17/2022 14:10:49' prior: 50557100!
+invalidImportDataWithMoreThanFiveFields
+
+	^ ReadStream on: 'C,Bingus,MyBeloved,D,1,invalidField'! !
+!ImportTest methodsFor: 'test data' stamp: 'TC 11/17/2022 14:10:51' prior: 50557484!
+invalidImportDataWithMoreThanFiveFields
+
+	^ ReadStream on: 'C,Bingus,MyBeloved,D,1,invalidField'.! !
+!ImportTest methodsFor: 'test data' stamp: 'TC 11/17/2022 14:11:06' prior: 50557479!
+invalidImportDataWithLessThanFiveFields
+	
+	^ ReadStream on: 'C,Bingus,MyBeloved'.! !
+!ImportTest methodsFor: 'test data' stamp: 'TC 11/17/2022 14:12:25'!
+customerDataWithLessThanFiveFields
+	
+	^ ReadStream on: 'C,Bingus,MyBeloved'.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/17/2022 14:12:25' prior: 50557408!
+test05
+	
+	"headerWithInvalidSecondCharacterRaisesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self customerDataWithLessThanFiveFields into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class moreThanFiveFieldsErrorDescription .
+		self assertNumberOfCustomersImportedIs: 0.
+	].
+	! !
+
+!methodRemoval: ImportTest #invalidImportDataWithLessThanFiveFields stamp: 'TC 11/17/2022 14:12:25'!
+invalidImportDataWithLessThanFiveFields
+	
+	^ ReadStream on: 'C,Bingus,MyBeloved'.!
+!ImportTest methodsFor: 'test data' stamp: 'TC 11/17/2022 14:12:37'!
+vustomerDataWithMoreThanFiveFields
+
+	^ ReadStream on: 'C,Bingus,MyBeloved,D,1,invalidField'.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/17/2022 14:12:37' prior: 50557425!
+test04
+	
+	"headerWithInvalidSecondCharacterRaisesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self vustomerDataWithMoreThanFiveFields into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class moreThanFiveFieldsErrorDescription .
+		self assertNumberOfCustomersImportedIs: 0.
+	].
+	! !
+
+!methodRemoval: ImportTest #invalidImportDataWithMoreThanFiveFields stamp: 'TC 11/17/2022 14:12:37'!
+invalidImportDataWithMoreThanFiveFields
+
+	^ ReadStream on: 'C,Bingus,MyBeloved,D,1,invalidField'.!
+!ImportTest methodsFor: 'test data' stamp: 'TC 11/17/2022 14:12:45'!
+customerDataWithMoreThanFiveFields
+
+	^ ReadStream on: 'C,Bingus,MyBeloved,D,1,invalidField'.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/17/2022 14:12:45' prior: 50557536!
+test04
+	
+	"headerWithInvalidSecondCharacterRaisesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self customerDataWithMoreThanFiveFields into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class moreThanFiveFieldsErrorDescription .
+		self assertNumberOfCustomersImportedIs: 0.
+	].
+	! !
+
+!methodRemoval: ImportTest #vustomerDataWithMoreThanFiveFields stamp: 'TC 11/17/2022 14:12:45'!
+vustomerDataWithMoreThanFiveFields
+
+	^ ReadStream on: 'C,Bingus,MyBeloved,D,1,invalidField'.!
+!ImportTest methodsFor: 'test data' stamp: 'TC 11/17/2022 14:13:07'!
+invalidDataWrongIDType
+
+	^ ReadStream on: 'Z'! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/17/2022 14:13:07' prior: 50557458!
+test02
+	
+	"headerWithInvalidFirstCharacterRaisesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self invalidDataWrongIDType into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class invalidLineHeaderErrorDescription.
+		self assertNumberOfCustomersImportedIs: 0.
+	].
+	! !
+
+!methodRemoval: ImportTest #invalidImportDataWrongIDType stamp: 'TC 11/17/2022 14:13:07'!
+invalidImportDataWrongIDType
+
+	^ ReadStream on: 'Z'!
+!ImportTest methodsFor: 'test data' stamp: 'TC 11/17/2022 14:13:21'!
+invalidImportDataWrongIDType
+
+	^ ReadStream on: 'Z'! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/17/2022 14:13:21' prior: 50557593!
+test02
+	
+	"headerWithInvalidFirstCharacterRaisesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self invalidImportDataWrongIDType into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class invalidLineHeaderErrorDescription.
+		self assertNumberOfCustomersImportedIs: 0.
+	].
+	! !
+
+!methodRemoval: ImportTest #invalidDataWrongIDType stamp: 'TC 11/17/2022 14:13:21'!
+invalidDataWrongIDType
+
+	^ ReadStream on: 'Z'!
+!ImportTest methodsFor: 'test data' stamp: 'TC 11/17/2022 14:13:38'!
+customerImportDataWithLessThanFiveFields
+	
+	^ ReadStream on: 'C,Bingus,MyBeloved'.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/17/2022 14:13:38' prior: 50557507!
+test05
+	
+	"headerWithInvalidSecondCharacterRaisesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self customerImportDataWithLessThanFiveFields into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class moreThanFiveFieldsErrorDescription .
+		self assertNumberOfCustomersImportedIs: 0.
+	].
+	! !
+
+!methodRemoval: ImportTest #customerDataWithLessThanFiveFields stamp: 'TC 11/17/2022 14:13:38'!
+customerDataWithLessThanFiveFields
+	
+	^ ReadStream on: 'C,Bingus,MyBeloved'.!
+!ImportTest methodsFor: 'test data' stamp: 'TC 11/17/2022 14:13:50'!
+customerImportDataWithMoreThanFiveFields
+
+	^ ReadStream on: 'C,Bingus,MyBeloved,D,1,invalidField'.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/17/2022 14:13:50' prior: 50557565!
+test04
+	
+	"headerWithInvalidSecondCharacterRaisesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self customerImportDataWithMoreThanFiveFields into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class moreThanFiveFieldsErrorDescription .
+		self assertNumberOfCustomersImportedIs: 0.
+	].
+	! !
+
+!methodRemoval: ImportTest #customerDataWithMoreThanFiveFields stamp: 'TC 11/17/2022 14:13:50'!
+customerDataWithMoreThanFiveFields
+
+	^ ReadStream on: 'C,Bingus,MyBeloved,D,1,invalidField'.!
+!ImportTest methodsFor: 'tests' stamp: 'TC 11/17/2022 14:14:12' prior: 50557646!
+test05
+	
+	"headerWithInvalidSecondCharacterRaisesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self customerImportDataWithLessThanFiveFields into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class lessThanFiveFieldsErrorDescription .
+		self assertNumberOfCustomersImportedIs: 0.
+	].
+	! !
+
+!testRun: #ImportTest #test05 stamp: 'TC 11/17/2022 14:14:22'!
+ERROR!
+
+!testRun: #ImportTest #test05 stamp: 'TC 11/17/2022 14:14:22'!
+ERROR!
+
+!testRun: #ImportTest #test05 stamp: 'TC 11/17/2022 14:14:54'!
+ERROR!
+
+!testRun: #ImportTest #test05 stamp: 'TC 11/17/2022 14:14:54'!
+ERROR!
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'TC 11/17/2022 14:15:00'!
+lessThanFiveFieldsErrorDescription
+	self shouldBeImplemented.! !
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'TC 11/17/2022 14:15:34' prior: 50557725!
+lessThanFiveFieldsErrorDescription
+	
+	^'Less than five fields.'.! !
+
+!testRun: #ImportTest #test05 stamp: 'TC 11/17/2022 14:15:53'!
+FAILURE!
+
+!testRun: #ImportTest #test05 stamp: 'TC 11/17/2022 14:15:53'!
+FAILURE!
+
+!testRun: #ImportTest #test05 stamp: 'TC 11/17/2022 14:16:54'!
+FAILURE!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC 11/17/2022 14:17:30' prior: 50557365!
+importRecord
+
+	record := line findTokens: $,.
+	
+	record isEmpty ifTrue: [self error: self class emptyDataErrorDescription ].
+	
+	(self recordIsForACustomer) ifTrue: [		
+		record size > 5 ifTrue: [ self error: self class moreThanFiveFieldsErrorDescription ].
+		record size < 5 ifTrue: [ self error: self class lessThanFiveFieldsErrorDescription ].
+		self importCustomer.
+	]
+	ifFalse: 	[
+		(self recordIsForAnAddress) ifTrue: [ self importAddress ]
+		ifFalse: [ self error: self class invalidLineHeaderErrorDescription ].		
+	].! !
+
+!testRun: #ImportTest #test01ImportWithValidInputWorksAsExpected stamp: 'TC 11/17/2022 14:17:36'!
+PASSED!
+
+!testRun: #ImportTest #test02 stamp: 'TC 11/17/2022 14:17:36'!
+PASSED!
+
+!testRun: #ImportTest #test03 stamp: 'TC 11/17/2022 14:17:37'!
+PASSED!
+
+!testRun: #ImportTest #test04 stamp: 'TC 11/17/2022 14:17:37'!
+PASSED!
+
+!testRun: #ImportTest #test05 stamp: 'TC 11/17/2022 14:17:37'!
+PASSED!
+!ImportTest methodsFor: 'tests' stamp: 'TC 11/17/2022 14:18:10' prior: 50557698!
+test05
+	
+	"customerLineWithLessThanFiveFieldsCausesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self customerImportDataWithLessThanFiveFields into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class lessThanFiveFieldsErrorDescription .
+		self assertNumberOfCustomersImportedIs: 0.
+	].
+	! !
+!ImportTest methodsFor: 'tests' stamp: 'TC 11/17/2022 14:18:32' prior: 50557675!
+test04
+	
+	"customerLineWithMoreThanFiveFieldsInDataCausesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self customerImportDataWithMoreThanFiveFields into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class moreThanFiveFieldsErrorDescription .
+		self assertNumberOfCustomersImportedIs: 0.
+	].
+	! !
+!ImportTest methodsFor: 'tests' stamp: 'TC 11/17/2022 14:18:37' prior: 50557775!
+test05
+	
+	"customerLineWithLessThanFiveFieldsInDataCausesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self customerImportDataWithLessThanFiveFields into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class lessThanFiveFieldsErrorDescription .
+		self assertNumberOfCustomersImportedIs: 0.
+	].
+	! !
+!ImportTest methodsFor: 'tests' stamp: 'TC 11/17/2022 14:19:08' prior: 50557442!
+test03
+	
+	"emptyLineInDataCausesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self emptyData into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class emptyDataErrorDescription.
+		self assertNumberOfCustomersImportedIs: 0.
+	].
+	! !
+!ImportTest methodsFor: 'tests' stamp: 'TC 11/17/2022 14:20:32' prior: 50557810!
+test05
+	
+	"addressLineWithMoreThanSixFieldsInDataCausesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self addressImportDataWithMoreThanSixFields into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class moreThanSixFieldsForAddressErrorDescription .
+		self assertNumberOfCustomersImportedIs: 0.
+	].
+	! !
+
+!testRun: #ImportTest #test05 stamp: 'TC 11/17/2022 14:20:39'!
+ERROR!
+
+!testRun: #ImportTest #test05 stamp: 'TC 11/17/2022 14:20:39'!
+ERROR!
+!ImportTest methodsFor: 'test data' stamp: 'TC 11/17/2022 14:20:44'!
+addressImportDataWithMoreThanSixFields
+	self shouldBeImplemented.! !
+!ImportTest methodsFor: 'test data' stamp: 'TC 11/17/2022 14:21:40' prior: 50557866!
+addressImportDataWithMoreThanSixFields
+	
+	^ ReadStream on:
+'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636,BsAs,bingus'.! !
+
+!testRun: #ImportTest #test05 stamp: 'TC 11/17/2022 14:21:52'!
+FAILURE!
+
+!testRun: #ImportTest #test05 stamp: 'TC 11/17/2022 14:21:53'!
+FAILURE!
+
+!testRun: #ImportTest #test05 stamp: 'TC 11/17/2022 14:22:02'!
+FAILURE!
+
+!testRun: #ImportTest #test05 stamp: 'TC 11/17/2022 14:22:03'!
+FAILURE!
+!ImportTest methodsFor: 'tests' stamp: 'TC 11/17/2022 14:23:27'!
+test06
+	
+	"addressLineWithMoreThanSixFieldsInDataCausesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self addressImportDataWithMoreThanSixFields into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class moreThanSixFieldsForAddressErrorDescription .
+		self assertNumberOfCustomersImportedIs: 0.
+	].
+	! !
+!ImportTest methodsFor: 'tests' stamp: 'TC 11/17/2022 14:18:37' prior: 50557844!
+test05
+	
+	"customerLineWithLessThanFiveFieldsInDataCausesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self customerImportDataWithLessThanFiveFields into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class lessThanFiveFieldsErrorDescription .
+		self assertNumberOfCustomersImportedIs: 0.
+	].
+	! !
+
+!testRun: #ImportTest #test01ImportWithValidInputWorksAsExpected stamp: 'TC 11/17/2022 14:24:01'!
+PASSED!
+
+!testRun: #ImportTest #test02 stamp: 'TC 11/17/2022 14:24:04'!
+PASSED!
+
+!testRun: #ImportTest #test03 stamp: 'TC 11/17/2022 14:24:08'!
+PASSED!
+
+!testRun: #ImportTest #test04 stamp: 'TC 11/17/2022 14:24:13'!
+PASSED!
+
+!testRun: #ImportTest #test05 stamp: 'TC 11/17/2022 14:24:17'!
+PASSED!
+
+!testRun: #ImportTest #test06 stamp: 'TC 11/17/2022 14:24:21'!
+FAILURE!
+
+!testRun: #ImportTest #test06 stamp: 'TC 11/17/2022 14:24:21'!
+FAILURE!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC 11/17/2022 14:26:25' prior: 50557743!
+importRecord
+
+	record := line findTokens: $,.
+	
+	record isEmpty ifTrue: [self error: self class emptyDataErrorDescription ].
+	
+	(self recordIsForACustomer) ifTrue: [		
+		record size > 5 ifTrue: [ self error: self class moreThanFiveFieldsErrorDescription ].
+		record size < 5 ifTrue: [ self error: self class lessThanFiveFieldsErrorDescription ].
+		self importCustomer.
+	]
+	ifFalse: 	[
+		(self recordIsForAnAddress) ifTrue: [
+			record size > 6 ifTrue: [ self error: self moreThanSixFieldsForAddressErrorDescription. ].
+			self importAddress.
+		]
+		ifFalse: [ self error: self class invalidLineHeaderErrorDescription ].		
+	].! !
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'TC 11/17/2022 14:26:47'!
+moreThanSixFieldsForAddressErrorDescription
+
+	^'More than six fields for an address.'.! !
+
+!testRun: #ImportTest #test01ImportWithValidInputWorksAsExpected stamp: 'TC 11/17/2022 14:26:56'!
+PASSED!
+
+!testRun: #ImportTest #test02 stamp: 'TC 11/17/2022 14:26:56'!
+PASSED!
+
+!testRun: #ImportTest #test03 stamp: 'TC 11/17/2022 14:26:56'!
+PASSED!
+
+!testRun: #ImportTest #test04 stamp: 'TC 11/17/2022 14:26:56'!
+PASSED!
+
+!testRun: #ImportTest #test05 stamp: 'TC 11/17/2022 14:26:56'!
+PASSED!
+
+!testRun: #ImportTest #test06 stamp: 'TC 11/17/2022 14:26:56'!
+ERROR!
+
+!testRun: #ImportTest #test06 stamp: 'TC 11/17/2022 14:26:57'!
+ERROR!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC 11/17/2022 14:27:09' prior: 50557940!
+importRecord
+
+	record := line findTokens: $,.
+	
+	record isEmpty ifTrue: [self error: self class emptyDataErrorDescription ].
+	
+	(self recordIsForACustomer) ifTrue: [		
+		record size > 5 ifTrue: [ self error: self class moreThanFiveFieldsErrorDescription ].
+		record size < 5 ifTrue: [ self error: self class lessThanFiveFieldsErrorDescription ].
+		self importCustomer.
+	]
+	ifFalse: 	[
+		(self recordIsForAnAddress) ifTrue: [
+			record size > 6 ifTrue: [ self error: self class moreThanSixFieldsForAddressErrorDescription. ].
+			self importAddress.
+		]
+		ifFalse: [ self error: self class invalidLineHeaderErrorDescription ].		
+	].! !
+
+!testRun: #ImportTest #test01ImportWithValidInputWorksAsExpected stamp: 'TC 11/17/2022 14:27:14'!
+PASSED!
+
+!testRun: #ImportTest #test02 stamp: 'TC 11/17/2022 14:27:14'!
+PASSED!
+
+!testRun: #ImportTest #test03 stamp: 'TC 11/17/2022 14:27:14'!
+PASSED!
+
+!testRun: #ImportTest #test04 stamp: 'TC 11/17/2022 14:27:14'!
+PASSED!
+
+!testRun: #ImportTest #test05 stamp: 'TC 11/17/2022 14:27:14'!
+PASSED!
+
+!testRun: #ImportTest #test06 stamp: 'TC 11/17/2022 14:27:15'!
+FAILURE!
+
+!testRun: #ImportTest #test06 stamp: 'TC 11/17/2022 14:27:15'!
+FAILURE!
+!ImportTest methodsFor: 'tests' stamp: 'TC 11/17/2022 14:27:24' prior: 50557887!
+test06
+	
+	"addressLineWithMoreThanSixFieldsInDataCausesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self addressImportDataWithMoreThanSixFields into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class moreThanSixFieldsForAddressErrorDescription .
+		self assertNumberOfCustomersImportedIs: 1.
+	].
+	! !
+
+!testRun: #ImportTest #test06 stamp: 'TC 11/17/2022 14:27:26'!
+PASSED!
+
+!testRun: #ImportTest #test01ImportWithValidInputWorksAsExpected stamp: 'TC 11/17/2022 14:27:30'!
+PASSED!
+
+!testRun: #ImportTest #test02 stamp: 'TC 11/17/2022 14:27:30'!
+PASSED!
+
+!testRun: #ImportTest #test03 stamp: 'TC 11/17/2022 14:27:30'!
+PASSED!
+
+!testRun: #ImportTest #test04 stamp: 'TC 11/17/2022 14:27:30'!
+PASSED!
+
+!testRun: #ImportTest #test05 stamp: 'TC 11/17/2022 14:27:30'!
+PASSED!
+
+!testRun: #ImportTest #test06 stamp: 'TC 11/17/2022 14:27:30'!
+PASSED!
+!ImportTest methodsFor: 'tests' stamp: 'TC 11/17/2022 14:27:50'!
+test07
+	
+	"addressLineWithLessThanSixFieldsInDataCausesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self addressImportDataWithLessThanSixFields into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class lessThanSixFieldsForAddressErrorDescription .
+		self assertNumberOfCustomersImportedIs: 1.
+	].
+	! !
+
+!testRun: #ImportTest #test07 stamp: 'TC 11/17/2022 14:28:00'!
+ERROR!
+
+!testRun: #ImportTest #test07 stamp: 'TC 11/17/2022 14:28:00'!
+ERROR!
+!ImportTest methodsFor: 'test data' stamp: 'TC 11/17/2022 14:28:04'!
+addressImportDataWithLessThanSixFields
+	self shouldBeImplemented.! !
+!ImportTest methodsFor: 'test data' stamp: 'TC 11/17/2022 14:28:25' prior: 50558082!
+addressImportDataWithLessThanSixFields
+	
+	^ ReadStream on:
+'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636'.! !
+
+!testRun: #ImportTest #test07 stamp: 'TC 11/17/2022 14:28:44'!
+ERROR!
+
+!testRun: #ImportTest #test07 stamp: 'TC 11/17/2022 14:28:44'!
+ERROR!
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'TC 11/17/2022 14:28:53'!
+lessThanSixFieldsForAddressErrorDescription
+	self shouldBeImplemented.! !
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'TC 11/17/2022 14:29:16' prior: 50558099!
+lessThanSixFieldsForAddressErrorDescription
+	
+	^'Less than six fields for an address.'.! !
+
+!testRun: #ImportTest #test07 stamp: 'TC 11/17/2022 14:29:24'!
+FAILURE!
+
+!testRun: #ImportTest #test07 stamp: 'TC 11/17/2022 14:29:24'!
+FAILURE!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC 11/17/2022 14:29:49' prior: 50557986!
+importRecord
+
+	record := line findTokens: $,.
+	
+	record isEmpty ifTrue: [self error: self class emptyDataErrorDescription ].
+	
+	(self recordIsForACustomer) ifTrue: [		
+		record size > 5 ifTrue: [ self error: self class moreThanFiveFieldsErrorDescription ].
+		record size < 5 ifTrue: [ self error: self class lessThanFiveFieldsErrorDescription ].
+		self importCustomer.
+	]
+	ifFalse: 	[
+		(self recordIsForAnAddress) ifTrue: [
+			record size > 6 ifTrue: [ self error: self class moreThanSixFieldsForAddressErrorDescription. ].
+			record size < 6 ifTrue: [ self error: self class lessThanSixFieldsForAddressErrorDescription. ].
+			self importAddress.
+		]
+		ifFalse: [ self error: self class invalidLineHeaderErrorDescription ].		
+	].! !
+
+!testRun: #ImportTest #test01ImportWithValidInputWorksAsExpected stamp: 'TC 11/17/2022 14:29:56'!
+PASSED!
+
+!testRun: #ImportTest #test02 stamp: 'TC 11/17/2022 14:29:56'!
+PASSED!
+
+!testRun: #ImportTest #test03 stamp: 'TC 11/17/2022 14:29:56'!
+PASSED!
+
+!testRun: #ImportTest #test04 stamp: 'TC 11/17/2022 14:29:57'!
+PASSED!
+
+!testRun: #ImportTest #test05 stamp: 'TC 11/17/2022 14:29:57'!
+PASSED!
+
+!testRun: #ImportTest #test06 stamp: 'TC 11/17/2022 14:29:57'!
+PASSED!
+
+!testRun: #ImportTest #test07 stamp: 'TC 11/17/2022 14:29:57'!
+PASSED!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC 11/17/2022 14:30:49'!
+assertRecordForCustomerHasFiveFields
+
+	record size > 5 ifTrue: [ self error: self class moreThanFiveFieldsErrorDescription ].
+		record size < 5 ifTrue: [ self error: self class lessThanFiveFieldsErrorDescription ]! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC 11/17/2022 14:30:49' prior: 50558116!
+importRecord
+
+	record := line findTokens: $,.
+	
+	record isEmpty ifTrue: [self error: self class emptyDataErrorDescription ].
+	
+	(self recordIsForACustomer) ifTrue: [		
+		self assertRecordForCustomerHasFiveFields.
+		self importCustomer.
+	]
+	ifFalse: 	[
+		(self recordIsForAnAddress) ifTrue: [
+			record size > 6 ifTrue: [ self error: self class moreThanSixFieldsForAddressErrorDescription. ].
+			record size < 6 ifTrue: [ self error: self class lessThanSixFieldsForAddressErrorDescription. ].
+			self importAddress.
+		]
+		ifFalse: [ self error: self class invalidLineHeaderErrorDescription ].		
+	].! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC 11/17/2022 14:31:07'!
+assertRecordForAddressHasSixFields
+
+	record size > 6 ifTrue: [ self error: self class moreThanSixFieldsForAddressErrorDescription. ].
+			record size < 6 ifTrue: [ self error: self class lessThanSixFieldsForAddressErrorDescription. ]! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC 11/17/2022 14:31:07' prior: 50558169!
+importRecord
+
+	record := line findTokens: $,.
+	
+	record isEmpty ifTrue: [self error: self class emptyDataErrorDescription ].
+	
+	(self recordIsForACustomer) ifTrue: [		
+		self assertRecordForCustomerHasFiveFields.
+		self importCustomer.
+	]
+	ifFalse: 	[
+		(self recordIsForAnAddress) ifTrue: [
+			self assertRecordForAddressHasSixFields.
+			self importAddress.
+		]
+		ifFalse: [ self error: self class invalidLineHeaderErrorDescription ].		
+	].! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC 11/17/2022 14:31:15' prior: 50558191!
+assertRecordForAddressHasSixFields
+
+	record size > 6 ifTrue: [ self error: self class moreThanSixFieldsForAddressErrorDescription. ].
+	record size < 6 ifTrue: [ self error: self class lessThanSixFieldsForAddressErrorDescription. ]! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC 11/17/2022 14:31:19' prior: 50558159!
+assertRecordForCustomerHasFiveFields
+
+	record size > 5 ifTrue: [ self error: self class moreThanFiveFieldsErrorDescription ].
+	record size < 5 ifTrue: [ self error: self class lessThanFiveFieldsErrorDescription ]! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC 11/17/2022 14:32:47'!
+assertRecordIsNotEmpty
+
+	^ record isEmpty ifTrue: [self error: self class emptyDataErrorDescription ]! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC 11/17/2022 14:32:47' prior: 50558202!
+importRecord
+
+	record := line findTokens: $,.
+	
+	self assertRecordIsNotEmpty.
+	
+	(self recordIsForACustomer) ifTrue: [		
+		self assertRecordForCustomerHasFiveFields.
+		self importCustomer.
+	]
+	ifFalse: 	[
+		(self recordIsForAnAddress) ifTrue: [
+			self assertRecordForAddressHasSixFields.
+			self importAddress.
+		]
+		ifFalse: [ self error: self class invalidLineHeaderErrorDescription ].		
+	].! !
+
+!testRun: #ImportTest #test01ImportWithValidInputWorksAsExpected stamp: 'TC 11/17/2022 14:33:05'!
+PASSED!
+
+!testRun: #ImportTest #test02 stamp: 'TC 11/17/2022 14:33:06'!
+PASSED!
+
+!testRun: #ImportTest #test03 stamp: 'TC 11/17/2022 14:33:06'!
+PASSED!
+
+!testRun: #ImportTest #test04 stamp: 'TC 11/17/2022 14:33:06'!
+PASSED!
+
+!testRun: #ImportTest #test05 stamp: 'TC 11/17/2022 14:33:06'!
+PASSED!
+
+!testRun: #ImportTest #test06 stamp: 'TC 11/17/2022 14:33:06'!
+PASSED!
+
+!testRun: #ImportTest #test07 stamp: 'TC 11/17/2022 14:33:06'!
+PASSED!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC 11/17/2022 14:35:30' prior: 50558247!
+importRecord
+
+	record := line findTokens: $,.
+	
+	self assertRecordIsNotEmpty.
+	
+	(self recordIsForACustomer) ifTrue: [		
+		self assertRecordForCustomerHasFiveFields.
+		self importCustomer.
+	]
+	ifFalse: 	[
+		(self recordIsForAnAddress) ifTrue: [
+			self assertRecordForAddressHasSixFields.
+			self importAddress.
+		]
+		ifFalse: [ self error: self class invalidLineHeaderErrorDescription. ].		
+	].! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC 11/17/2022 14:46:06' prior: 50558280!
+importRecord
+
+	record := line findTokens: $,.
+	
+	self assertRecordIsNotEmpty.
+	
+	(self recordIsNeitherForCustomerNorAddress) ifTrue: [self error: self class invalidLineHeaderErrorDescription.].
+	
+	(self recordIsForACustomer) ifTrue: [		
+		self assertRecordForCustomerHasFiveFields.
+		self importCustomer.
+	].
+	
+	(self recordIsForAnAddress) ifTrue: [
+		self assertRecordForAddressHasSixFields.
+		self importAddress.
+	].! !
+!CustomerImporter methodsFor: 'testing' stamp: 'TC 11/17/2022 14:47:12'!
+recordIsNeitherForCustomerNorAddress
+	
+	^((record first = 'C') or: [ record first = 'A'. ]) not.! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC 11/17/2022 14:47:26' prior: 50558296!
+importRecord
+
+	record := line findTokens: $,.
+	
+	self assertRecordIsNotEmpty.
+	
+	(self recordIsNeitherForCustomerNorAddress) ifTrue: [ self error: self class invalidLineHeaderErrorDescription. ].
+	
+	(self recordIsForACustomer) ifTrue: [		
+		self assertRecordForCustomerHasFiveFields.
+		self importCustomer.
+	].
+	
+	(self recordIsForAnAddress) ifTrue: [
+		self assertRecordForAddressHasSixFields.
+		self importAddress.
+	].! !
+
+!testRun: #ImportTest #test01ImportWithValidInputWorksAsExpected stamp: 'TC 11/17/2022 14:47:55'!
+PASSED!
+
+!testRun: #ImportTest #test02 stamp: 'TC 11/17/2022 14:47:56'!
+PASSED!
+
+!testRun: #ImportTest #test03 stamp: 'TC 11/17/2022 14:47:56'!
+PASSED!
+
+!testRun: #ImportTest #test04 stamp: 'TC 11/17/2022 14:47:56'!
+PASSED!
+
+!testRun: #ImportTest #test05 stamp: 'TC 11/17/2022 14:47:56'!
+PASSED!
+
+!testRun: #ImportTest #test06 stamp: 'TC 11/17/2022 14:47:56'!
+PASSED!
+
+!testRun: #ImportTest #test07 stamp: 'TC 11/17/2022 14:47:56'!
+PASSED!
+!ImportTest methodsFor: 'tests' stamp: 'TC 11/17/2022 14:49:56'!
+test08
+	
+	"importDataStartingWithAnAddressLineCausesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self importDataStartingWithAddressLine into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class addressWithNoCustomerErrorDescription.
+		self assertNumberOfCustomersImportedIs: 1.
+	].
+	! !
+
+----SNAPSHOT----(17 November 2022 14:50:08) CuisUniversity-5510.image priorSource: 7222327!
+!ImportTest methodsFor: 'tests' stamp: 'TC 11/17/2022 14:50:12' prior: 50558351!
+test08
+	
+	"importDataStartingWithAnAddressLineCausesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self importDataStartingWithAddressLine into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class addressWithNoCustomerErrorDescription.
+		self assertNumberOfCustomersImportedIs: 1.
+	].! !
+!ImportTest methodsFor: 'tests' stamp: 'TC 11/17/2022 14:50:16' prior: 50558060!
+test07
+	
+	"addressLineWithLessThanSixFieldsInDataCausesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self addressImportDataWithLessThanSixFields into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class lessThanSixFieldsForAddressErrorDescription .
+		self assertNumberOfCustomersImportedIs: 1.
+	].! !
+!ImportTest methodsFor: 'tests' stamp: 'TC 11/17/2022 14:50:18' prior: 50558026!
+test06
+	
+	"addressLineWithMoreThanSixFieldsInDataCausesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self addressImportDataWithMoreThanSixFields into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class moreThanSixFieldsForAddressErrorDescription .
+		self assertNumberOfCustomersImportedIs: 1.
+	].! !
+!ImportTest methodsFor: 'tests' stamp: 'TC 11/17/2022 14:50:20' prior: 50557905!
+test05
+	
+	"customerLineWithLessThanFiveFieldsInDataCausesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self customerImportDataWithLessThanFiveFields into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class lessThanFiveFieldsErrorDescription .
+		self assertNumberOfCustomersImportedIs: 0.
+	].! !
+!ImportTest methodsFor: 'tests' stamp: 'TC 11/17/2022 14:50:22' prior: 50557792!
+test04
+	
+	"customerLineWithMoreThanFiveFieldsInDataCausesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self customerImportDataWithMoreThanFiveFields into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class moreThanFiveFieldsErrorDescription .
+		self assertNumberOfCustomersImportedIs: 0.
+	].! !
+!ImportTest methodsFor: 'tests' stamp: 'TC 11/17/2022 14:50:24' prior: 50557828!
+test03
+	
+	"emptyLineInDataCausesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self emptyData into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class emptyDataErrorDescription.
+		self assertNumberOfCustomersImportedIs: 0.
+	].! !
+!ImportTest methodsFor: 'tests' stamp: 'TC 11/17/2022 14:50:26' prior: 50557619!
+test02
+	
+	"headerWithInvalidFirstCharacterRaisesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self invalidImportDataWrongIDType into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class invalidLineHeaderErrorDescription.
+		self assertNumberOfCustomersImportedIs: 0.
+	].! !
+!ImportTest methodsFor: 'tests' stamp: 'TC 11/17/2022 14:50:29' prior: 50556635!
+test01ImportWithValidInputWorksAsExpected
+
+	CustomerImporter valueFrom: self validImportData into: session..
+
+	self assertNumberOfCustomersImportedIs: 2.
+	self assertPepeSanchezWasImportedCorrecty.
+	self assertJuanPerezWasImportedCorrectly.! !
+
+!testRun: #ImportTest #test08 stamp: 'TC 11/17/2022 14:50:37'!
+ERROR!
+
+!testRun: #ImportTest #test08 stamp: 'TC 11/17/2022 14:50:37'!
+ERROR!
+!ImportTest methodsFor: 'tests' stamp: 'TC 11/17/2022 14:50:46' prior: 50558371!
+test08
+	
+	"importDataStartingWithAnAddressLineCausesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self importDataStartingWithAddressLine into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class addressWithNoCustomerErrorDescription.
+		self assertNumberOfCustomersImportedIs: 0.
+	].! !
+
+!testRun: #ImportTest #test08 stamp: 'TC 11/17/2022 14:50:54'!
+ERROR!
+
+!testRun: #ImportTest #test08 stamp: 'TC 11/17/2022 14:50:54'!
+ERROR!
+!ImportTest methodsFor: 'test data' stamp: 'TC 11/17/2022 14:50:59'!
+importDataStartingWithAddressLine
+	self shouldBeImplemented.! !
+!ImportTest methodsFor: 'test data' stamp: 'TC 11/17/2022 14:51:41' prior: 50558529!
+importDataStartingWithAddressLine
+	
+	^ ReadStream on: 'A,San Martin,3322,Olivos,1636,BsAs'.! !
+
+!testRun: #ImportTest #test08 stamp: 'TC 11/17/2022 14:52:17'!
+ERROR!
+
+!testRun: #ImportTest #test08 stamp: 'TC 11/17/2022 14:52:17'!
+ERROR!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC 11/17/2022 15:03:00' prior: 50556287!
+importAddress
+
+	| newAddress |
+			newAddress := Address new.
+			newCustomer ifNil: [ self error: self class noCustomerForAddressErrorDescription. ].
+			newCustomer addAddress: newAddress.
+			newAddress streetName: record second.
+			newAddress streetNumber: record third asNumber .
+			newAddress town: record fourth.
+			newAddress zipCode: record fifth asNumber .
+			newAddress province: record sixth! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC 11/17/2022 15:03:16' prior: 50558545!
+importAddress
+
+	| newAddress |
+			newAddress := Address new.
+			newCustomer ifNil: [ self error: self class addressWithNoCustomerErrorDescription. ].
+			newCustomer addAddress: newAddress.
+			newAddress streetName: record second.
+			newAddress streetNumber: record third asNumber .
+			newAddress town: record fourth.
+			newAddress zipCode: record fifth asNumber .
+			newAddress province: record sixth! !
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'TC 11/17/2022 15:03:37'!
+addressWithNoCustomerErrorDescription
+
+	^'Address has no customer.'.! !
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'TC 11/17/2022 15:04:02'!
+lessThanFiveFieldsForCustomerErrorDescription
+	
+	^'Less than five fields.'.! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'TC 11/17/2022 15:04:02' prior: 50558230!
+assertRecordForCustomerHasFiveFields
+
+	record size > 5 ifTrue: [ self error: self class moreThanFiveFieldsErrorDescription ].
+	record size < 5 ifTrue: [ self error: self class lessThanFiveFieldsForCustomerErrorDescription ]! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/17/2022 15:04:02' prior: 50558424!
+test05
+	
+	"customerLineWithLessThanFiveFieldsInDataCausesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self customerImportDataWithLessThanFiveFields into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class lessThanFiveFieldsForCustomerErrorDescription .
+		self assertNumberOfCustomersImportedIs: 0.
+	].! !
+
+!methodRemoval: CustomerImporter class #lessThanFiveFieldsErrorDescription stamp: 'TC 11/17/2022 15:04:02'!
+lessThanFiveFieldsErrorDescription
+	
+	^'Less than five fields.'.!
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'TC 11/17/2022 15:04:16'!
+moreThanFiveFieldsForCustomerErrorDescription
+
+	^'more than five fields'.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/17/2022 15:04:16' prior: 50558442!
+test04
+	
+	"customerLineWithMoreThanFiveFieldsInDataCausesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self customerImportDataWithMoreThanFiveFields into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class moreThanFiveFieldsForCustomerErrorDescription .
+		self assertNumberOfCustomersImportedIs: 0.
+	].! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'TC 11/17/2022 15:04:16' prior: 50558589!
+assertRecordForCustomerHasFiveFields
+
+	record size > 5 ifTrue: [ self error: self class moreThanFiveFieldsForCustomerErrorDescription ].
+	record size < 5 ifTrue: [ self error: self class lessThanFiveFieldsForCustomerErrorDescription ]! !
+
+!methodRemoval: CustomerImporter class #moreThanFiveFieldsErrorDescription stamp: 'TC 11/17/2022 15:04:16'!
+moreThanFiveFieldsErrorDescription
+
+	^'more than five fields'.!
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'TC 11/17/2022 15:05:05' prior: 50558624!
+moreThanFiveFieldsForCustomerErrorDescription
+
+	^'More than five fields'.! !
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'TC 11/17/2022 15:05:11' prior: 50558666!
+moreThanFiveFieldsForCustomerErrorDescription
+
+	^'More than five fields froa acustomer'.! !
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'TC 11/17/2022 15:05:16' prior: 50558672!
+moreThanFiveFieldsForCustomerErrorDescription
+
+	^'More than five fields for a customer.'.! !
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'TC 11/17/2022 15:05:23' prior: 50558583!
+lessThanFiveFieldsForCustomerErrorDescription
+	
+	^'Less than five fields for a customer.'.! !
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'TC 11/17/2022 15:05:36' prior: 50557037!
+emptyDataErrorDescription
+
+	^'Empty line.'.! !
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'TC 11/17/2022 15:05:49'!
+emptyLineErrorDescription
+
+	^'Empty line.'.! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'TC 11/17/2022 15:05:49' prior: 50558240!
+assertRecordIsNotEmpty
+
+	^ record isEmpty ifTrue: [self error: self class emptyLineErrorDescription ]! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'TC 11/17/2022 15:05:50' prior: 50558460!
+test03
+	
+	"emptyLineInDataCausesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self emptyData into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class emptyLineErrorDescription.
+		self assertNumberOfCustomersImportedIs: 0.
+	].! !
+
+!methodRemoval: CustomerImporter class #emptyDataErrorDescription stamp: 'TC 11/17/2022 15:05:50'!
+emptyDataErrorDescription
+
+	^'Empty line.'.!
+
+!testRun: #ImportTest #test01ImportWithValidInputWorksAsExpected stamp: 'TC 11/17/2022 15:06:14'!
+PASSED!
+
+!testRun: #ImportTest #test02 stamp: 'TC 11/17/2022 15:06:14'!
+PASSED!
+
+!testRun: #ImportTest #test03 stamp: 'TC 11/17/2022 15:06:15'!
+PASSED!
+
+!testRun: #ImportTest #test04 stamp: 'TC 11/17/2022 15:06:15'!
+PASSED!
+
+!testRun: #ImportTest #test05 stamp: 'TC 11/17/2022 15:06:15'!
+PASSED!
+
+!testRun: #ImportTest #test06 stamp: 'TC 11/17/2022 15:06:15'!
+PASSED!
+
+!testRun: #ImportTest #test07 stamp: 'TC 11/17/2022 15:06:15'!
+PASSED!
+
+!testRun: #ImportTest #test08 stamp: 'TC 11/17/2022 15:06:15'!
+PASSED!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC 11/17/2022 15:06:56'!
+assertCustomerIsNotNil
+
+	^ newCustomer ifNil: [ self error: self class addressWithNoCustomerErrorDescription. ]! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'TC 11/17/2022 15:06:56' prior: 50558561!
+importAddress
+
+	| newAddress |
+			newAddress := Address new.
+			self assertCustomerIsNotNil.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: record second.
+			newAddress streetNumber: record third asNumber .
+			newAddress town: record fourth.
+			newAddress zipCode: record fifth asNumber .
+			newAddress province: record sixth! !
+!CustomerImporter methodsFor: 'assertions' stamp: 'TC 11/17/2022 15:07:13'!
+assertNewCustomerIsNotNil
+
+	^ newCustomer ifNil: [ self error: self class addressWithNoCustomerErrorDescription. ]! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'TC 11/17/2022 15:07:13' prior: 50558756!
+importAddress
+
+	| newAddress |
+			newAddress := Address new.
+			self assertNewCustomerIsNotNil.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: record second.
+			newAddress streetNumber: record third asNumber .
+			newAddress town: record fourth.
+			newAddress zipCode: record fifth asNumber .
+			newAddress province: record sixth! !
+
+!methodRemoval: CustomerImporter #assertCustomerIsNotNil stamp: 'TC 11/17/2022 15:07:13'!
+assertCustomerIsNotNil
+
+	^ newCustomer ifNil: [ self error: self class addressWithNoCustomerErrorDescription. ]!
+!CustomerImporter methodsFor: 'assertions' stamp: 'TC 11/17/2022 15:08:47' prior: 50558770!
+assertNewCustomerIsNotNil
+
+	^ newCustomer ifNil: [ self error: self class addressWithNoCustomerErrorDescription. ].
+	
+	"Nota: esto podría resolverse más 'grácilmente' con un NullObject o algo así, pero no estaba seguro si se permitía modificar clases por fuera de CustomerImporter para esta iteración."! !
+!CustomerImporter methodsFor: 'assertions' stamp: 'TC 11/17/2022 15:12:12' prior: 50558703!
+assertRecordIsNotEmpty
+
+	^ record isEmpty ifTrue: [ self error: self class emptyLineErrorDescription. ]! !
+!ImportTest methodsFor: 'tests' stamp: 'TC 11/17/2022 15:13:22'!
+test02headerWithInvalidFirstCharacterRaisesError
+	
+	"headerWithInvalidFirstCharacterRaisesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self invalidImportDataWrongIDType into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class invalidLineHeaderErrorDescription.
+		self assertNumberOfCustomersImportedIs: 0.
+	].! !
+
+!methodRemoval: ImportTest #test02 stamp: 'TC 11/17/2022 15:13:22'!
+test02
+	
+	"headerWithInvalidFirstCharacterRaisesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self invalidImportDataWrongIDType into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class invalidLineHeaderErrorDescription.
+		self assertNumberOfCustomersImportedIs: 0.
+	].!
+!ImportTest methodsFor: 'tests' stamp: 'TC 11/17/2022 15:13:25' prior: 50558817!
+test02headerWithInvalidFirstCharacterRaisesError
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self invalidImportDataWrongIDType into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class invalidLineHeaderErrorDescription.
+		self assertNumberOfCustomersImportedIs: 0.
+	].! !
+!ImportTest methodsFor: 'tests' stamp: 'TC 11/17/2022 15:13:35'!
+test03emptyLineInDataCausesError
+	
+	"emptyLineInDataCausesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self emptyData into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class emptyLineErrorDescription.
+		self assertNumberOfCustomersImportedIs: 0.
+	].! !
+
+!methodRemoval: ImportTest #test03 stamp: 'TC 11/17/2022 15:13:35'!
+test03
+	
+	"emptyLineInDataCausesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self emptyData into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class emptyLineErrorDescription.
+		self assertNumberOfCustomersImportedIs: 0.
+	].!
+!ImportTest methodsFor: 'tests' stamp: 'TC 11/17/2022 15:13:44' prior: 50558867!
+test03emptyLineInDataCausesError
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self emptyData into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class emptyLineErrorDescription.
+		self assertNumberOfCustomersImportedIs: 0.
+	].! !
+!ImportTest methodsFor: 'tests' stamp: 'TC 11/17/2022 15:13:52'!
+test04customerLineWithMoreThanFiveFieldsInDataCausesError
+	
+	"customerLineWithMoreThanFiveFieldsInDataCausesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self customerImportDataWithMoreThanFiveFields into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class moreThanFiveFieldsForCustomerErrorDescription .
+		self assertNumberOfCustomersImportedIs: 0.
+	].! !
+
+!methodRemoval: ImportTest #test04 stamp: 'TC 11/17/2022 15:13:52'!
+test04
+	
+	"customerLineWithMoreThanFiveFieldsInDataCausesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self customerImportDataWithMoreThanFiveFields into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class moreThanFiveFieldsForCustomerErrorDescription .
+		self assertNumberOfCustomersImportedIs: 0.
+	].!
+!ImportTest methodsFor: 'tests' stamp: 'TC 11/17/2022 15:13:54' prior: 50558913!
+test04customerLineWithMoreThanFiveFieldsInDataCausesError
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self customerImportDataWithMoreThanFiveFields into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class moreThanFiveFieldsForCustomerErrorDescription .
+		self assertNumberOfCustomersImportedIs: 0.
+	].! !
+!ImportTest methodsFor: 'tests' stamp: 'TC 11/17/2022 15:14:09'!
+test05customerLineWithLessThanFiveFieldsInDataCausesError
+	
+	"customerLineWithLessThanFiveFieldsInDataCausesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self customerImportDataWithLessThanFiveFields into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class lessThanFiveFieldsForCustomerErrorDescription .
+		self assertNumberOfCustomersImportedIs: 0.
+	].! !
+
+!methodRemoval: ImportTest #test05 stamp: 'TC 11/17/2022 15:14:09'!
+test05
+	
+	"customerLineWithLessThanFiveFieldsInDataCausesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self customerImportDataWithLessThanFiveFields into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class lessThanFiveFieldsForCustomerErrorDescription .
+		self assertNumberOfCustomersImportedIs: 0.
+	].!
+!ImportTest methodsFor: 'tests' stamp: 'TC 11/17/2022 15:14:15' prior: 50558967!
+test05customerLineWithLessThanFiveFieldsInDataCausesError
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self customerImportDataWithLessThanFiveFields into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class lessThanFiveFieldsForCustomerErrorDescription .
+		self assertNumberOfCustomersImportedIs: 0.
+	].! !
+!ImportTest methodsFor: 'tests' stamp: 'TC 11/17/2022 15:14:21'!
+test06addressLineWithMoreThanSixFieldsInDataCausesError
+	
+	"addressLineWithMoreThanSixFieldsInDataCausesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self addressImportDataWithMoreThanSixFields into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class moreThanSixFieldsForAddressErrorDescription .
+		self assertNumberOfCustomersImportedIs: 1.
+	].! !
+
+!methodRemoval: ImportTest #test06 stamp: 'TC 11/17/2022 15:14:21'!
+test06
+	
+	"addressLineWithMoreThanSixFieldsInDataCausesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self addressImportDataWithMoreThanSixFields into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class moreThanSixFieldsForAddressErrorDescription .
+		self assertNumberOfCustomersImportedIs: 1.
+	].!
+!ImportTest methodsFor: 'tests' stamp: 'TC 11/17/2022 15:14:23' prior: 50559021!
+test06addressLineWithMoreThanSixFieldsInDataCausesError
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self addressImportDataWithMoreThanSixFields into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class moreThanSixFieldsForAddressErrorDescription .
+		self assertNumberOfCustomersImportedIs: 1.
+	].! !
+!ImportTest methodsFor: 'tests' stamp: 'TC 11/17/2022 15:14:30'!
+test07addressLineWithLessThanSixFieldsInDataCausesError
+	
+	"addressLineWithLessThanSixFieldsInDataCausesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self addressImportDataWithLessThanSixFields into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class lessThanSixFieldsForAddressErrorDescription .
+		self assertNumberOfCustomersImportedIs: 1.
+	].! !
+
+!methodRemoval: ImportTest #test07 stamp: 'TC 11/17/2022 15:14:30'!
+test07
+	
+	"addressLineWithLessThanSixFieldsInDataCausesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self addressImportDataWithLessThanSixFields into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class lessThanSixFieldsForAddressErrorDescription .
+		self assertNumberOfCustomersImportedIs: 1.
+	].!
+!ImportTest methodsFor: 'tests' stamp: 'TC 11/17/2022 15:14:33' prior: 50559074!
+test07addressLineWithLessThanSixFieldsInDataCausesError
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self addressImportDataWithLessThanSixFields into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class lessThanSixFieldsForAddressErrorDescription .
+		self assertNumberOfCustomersImportedIs: 1.
+	].! !
+!ImportTest methodsFor: 'tests' stamp: 'TC 11/17/2022 15:14:40'!
+test08importDataStartingWithAnAddressLineCausesError
+	
+	"importDataStartingWithAnAddressLineCausesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self importDataStartingWithAddressLine into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class addressWithNoCustomerErrorDescription.
+		self assertNumberOfCustomersImportedIs: 0.
+	].! !
+
+!methodRemoval: ImportTest #test08 stamp: 'TC 11/17/2022 15:14:40'!
+test08
+	
+	"importDataStartingWithAnAddressLineCausesError"
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self importDataStartingWithAddressLine into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class addressWithNoCustomerErrorDescription.
+		self assertNumberOfCustomersImportedIs: 0.
+	].!
+!ImportTest methodsFor: 'tests' stamp: 'TC 11/17/2022 15:14:42' prior: 50559127!
+test08importDataStartingWithAnAddressLineCausesError
+	
+	| customerImporter | 
+	
+	customerImporter := CustomerImporter from: self importDataStartingWithAddressLine into: session.
+	
+	self should: [ customerImporter value. ]
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [
+		:anError |
+		self assert: anError messageText equals: customerImporter class addressWithNoCustomerErrorDescription.
+		self assertNumberOfCustomersImportedIs: 0.
+	].! !
+
+----SNAPSHOT----(17 November 2022 15:15:21) CuisUniversity-5510.image priorSource: 7254953!
+
+----SNAPSHOT----(17 November 2022 15:15:33) CuisUniversity-5510.image priorSource: 7280897!
